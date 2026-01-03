@@ -1,3 +1,4 @@
+from cards import *
 WarriorsAndDruids  = True
 BerserkersAndNecromancers = False
 DragonSorcerers = False

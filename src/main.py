@@ -1,11 +1,14 @@
+from config import *
 from cards import *
 global AP
+AP = 3
 def main():
     chooseAction()
     return
 
 def chooseAction():
-    #draw() activateLeaderAbility() activateHeroAbility() attack() discardDraw()
+    #draw()  activateHeroAbility() attack() discardDraw()
+    activateLeaderAbility(Leaders["Charismatic Song"])
     return
 
 def activateHeroAbility():
@@ -15,16 +18,43 @@ def activateHeroAbility():
         print("No AP")
     return
 
-def activateLeaderAbility():
-    if checkAP() > 0:
+def activateLeaderAbility(leader):
+    if checkAP() > 0 and Leaders[leader["Activatable"]]:
         reduceAP(1)
+        useLeaderAbility(leader)
     else:
-        print("No AP")
+        print("No AP or no ability")
+    return
+
+def useLeaderAbility(leader):
+    match Leaders[leader["Effect"]]:
+        case cardEffect.ShadowClaw:
+            pullCard()
+            return
+        case cardEffect.GnawingDread:
+            searchDiscard(cardType.Any)
+            return
+    return
+
+def useHeroAbility(hero):
+    match Heroes[hero["Effect"]]:
+        case cardEffect.FuzzyCheeks:
+            drawCard()
+            playCard(cardType.Hero)
+            return
+    return
+
+def pullCard():
+    return
+def searchDiscard(cardType):
+    return
+def playCard(cardType):
     return
 
 def draw():
     if checkAP() > 0:
         reduceAP(1)
+        drawCard()
     else:
         print("No AP")
     return
@@ -59,6 +89,7 @@ def checkAP():
     return AP
 
 def reduceAP(APReduction):
+    global AP
     AP -= APReduction
     print(AP)
     return
