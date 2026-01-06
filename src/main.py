@@ -6,24 +6,26 @@ global AP
 AP = 3
 def startGame():
     #pickLeaders()
-    shuffleDeck()
+    if ranked:    
+        shuffleDeck(rankedMainDeck)
+        shuffleDeck(rankedMonsterDeck)
+        global maxPlayers, HereToSleigh
+        maxPlayers = 2, HereToSleigh = False
+    else:        
+        shuffleDeck(mainDeck)
+        shuffleDeck(monsterDeck)
     #draw(4,all)
     return
 def main():
     chooseAction()
     return
 
-def shuffleDeck():
+def shuffleDeck(deck):
     #Main
-    for i in range(len(mainDeck)-1,0,-1):
+    for i in range(len(deck)-1,0,-1):
         r = random.randint(0,i)
-        mainDeck[i], mainDeck[r] = mainDeck[r], mainDeck[i]
-    #Monster
-    for i in range(len(monsterDeck)-1,0,-1):
-        r = random.randint(0,i)
-        monsterDeck[i], monsterDeck[r] = monsterDeck[r], monsterDeck[i]
-    #print("Main ",mainDeck)
-    #print("Monster ",monsterDeck)
+        deck[i], deck[r] = deck[r], deck[i]
+    #print(deck)
     return
 
 def chooseAction():
