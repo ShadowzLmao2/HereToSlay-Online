@@ -1,6 +1,6 @@
 from enum import Enum
 from config import *
-class cardEffect(Enum):
+class heroEffect(Enum):
     NoEffect        = 0
     #Heroes
     CharismaticSong   = 1
@@ -20,10 +20,176 @@ class cardEffect(Enum):
     MysticalMaestro   = 15
     UnstableUnicorn   = 16
 
+class cardEffect(Enum):
+    NoEffect = 0
     #Action
-    Challenge = 18
-    Modifier = 19
-    FuzzyCheeks = 20
+    Challenge = 1
+    Modifier = 2
+    #Item
+        #Base Game
+    BardMask              = 3
+    DecoyDoll             = 4
+    Mask                  = 5
+    ParticularlyRustyCoin = 6
+    ReallyBigRing         = 7
+        #Warriors and Druids
+    BottomlessBag         = 8
+    EvenBiggerRing        = 9
+    TemporalHourglass     = 10
+        #Berserkers and Necromancers
+    BiggestRingEver       = 11
+    GobletOfCaffeination  = 12
+    SilverLining          = 13
+        #Dragon Sorcerers
+        #KSE
+    MysteriousFeather     = 14
+    #Cursed Items
+    CurseOfTheSnakesEyes  = 15
+    SealingKey            = 16
+    SuspiciouslyShinyCoin = 17
+        #Warriors and Druids
+    CursedGlove           = 18
+    SoulTether            = 19
+        #Berserkers and Necromancers
+    DragonsBile           = 20
+    SoulboundGrimoire     = 21
+        #Dragon Sorcerers
+        #KSE
+    MaskOfMisfortune      = 22
+    
+    #Magic
+        #Base Game
+    CallToTheFallen       = 23
+    CriticalBoost         = 24
+    DestructiveSpell      = 25
+    EnchantedSpell        = 26
+    EntanglingTrap        = 27
+    ForcedExchange        = 28
+    ForcefulWings         = 29
+    WindsOfChange         = 30
+        #Warriors and Druids
+    BeastCall             = 31
+    RapidRefresh          = 32
+        #Berserkers and Necromancers
+    LightningLabrys       = 33
+    MassSacrifice         = 34
+        #Dragon Sorcerers
+    EggOfFortune          = 35
+        #KSE
+    CapitvatingSpell      = 36   
+    #Other Action Cards
+    ClassChallenge        = 37
+    Draw2Modifier         = 38
+    Draw1Modifier         = 39
+    DrawIfHigherThanMod   = 40
+    SearchDiscIfLowerMod  = 41
+    BonusIfAttackingMod   = 42
+    DiscardHandModifier   = 43
+    Discard1Modifier      = 44
+    RuleCard              = 45
+    #Heroes
+    BadAxe = 46
+    BearClaw = 47
+    BearyWise = 48
+    FuryKnuckle = 49
+    HeavyBear = 50
+    PanChucks = 51
+    QiBear = 52
+    ToughTeddy = 53
+    DodyDealer = 54
+    FuzzyCheeks = 55
+    GreedyCheeks = 56
+    LuckyBucky = 57
+    MellowDee = 58
+    NappingNibbles = 59 
+    Peanut = 60
+    TipsyTootie = 61
+    CalmingVoice = 62
+    GuidingLight = 63
+    HolyCurselifter = 64
+    IronResolve = 65
+    MightyBlade = 66
+    RadiantHorn = 67
+    VibrantGlow = 68
+    WiseShield = 69
+    Bullseye = 70
+    Hook = 71
+    LookieRookie = 72
+    QuickDraw = 73
+    SeriousGrey = 74
+    SharpFox = 75
+    Wildshot = 76
+    WilyRed = 77
+    KitNapper = 78
+    Meowzio = 79
+    PlunderingPuma = 80
+    Shurikitty = 81
+    SilentShadow = 82
+    SlipperyPaws = 83
+    SliyPickings = 84
+    SmoothMimimeow = 85
+    BunBun = 86
+    Buttons = 87
+    Fluffy = 88
+    Hopper = 89
+    Snowball = 90
+    Spooky = 91
+    Whiskers = 92
+    Wiggles = 93
+    #Warriors and Druids
+    BigBuckley = 94
+    BuckOmens = 95
+    DoeFallow = 96
+    GlowingAntler = 97
+    Majestelk = 98
+    MagusMoose = 99
+    Maegisty = 100
+    Stagguard = 101
+    AgileDagger = 102
+    BlindingBlade = 103
+    CriticalFang = 104
+    HardenedHunter = 105
+    LootingLupo = 106
+    SilentShield = 107
+    TenaciousTimber = 108
+    WolfgangPack = 109
+    #Berserkers and Necromancers
+    Annihilator = 110
+    BrawlingSpirit = 111
+    GruesomeGladioator = 112
+    Meowntain = 113
+    RabidBeast = 114
+    RoaryalGuard = 115
+    ViciousWildcat = 116
+    UnbridledFury = 117
+    BarkHexer = 118
+    BeholdenRetriever = 119
+    BoneCOllector = 120
+    BostonTerror = 121
+    GrimPupper = 122
+    HollowHusk = 123
+    PerfecVessel = 124
+    ShadowSaint = 125
+    #Dragon Sorcerers
+    Distortivern = 126
+    Extraga = 127
+    Dragalter = 128
+    Luut = 129
+    Ronvern = 130
+    Mirroryu = 131
+    Smok = 132
+    Oracon = 133
+    Shamanaga = 134
+    #KSE
+    Berserker = 135
+    Hamlet = 136
+    ComplexIllusion = 137
+    Enchantlter = 138
+    Hoodwink = 139
+    PurringBandit = 140
+    NimbleGray = 141
+    Mimi = 142
+    
     
 class monsterEffect(Enum):
     noEffect          = 0
@@ -123,77 +289,77 @@ Leaders = {
     },
     "Charismatic Song" : {
         "Class" : heroType.Bard,
-        "Effect" : cardEffect.CharismaticSong,
+        "Effect" : heroEffect.CharismaticSong,
         "Activatable" : False,
         "DLC" : originalGame.Base,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
         "Class" : heroType.Fighter,
-        "Effect" : cardEffect.FistOfReason,
+        "Effect" : heroEffect.FistOfReason,
         "Activatable" : False,
         "DLC" : originalGame.Base,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
         "Class" : heroType.Thief,
-        "Effect" : cardEffect.ShadowClaw,
+        "Effect" : heroEffect.ShadowClaw,
         "Activatable" : True,
         "DLC" : originalGame.Base,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
         "Class" : heroType.Wizard,
-        "Effect" : cardEffect.CloakedSage,
+        "Effect" : heroEffect.CloakedSage,
         "Activatable" : False,
         "DLC" : originalGame.Base,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
         "Class" : heroType.Ranger,
-        "Effect" : cardEffect.DivineArrow,
+        "Effect" : heroEffect.DivineArrow,
         "Activatable" : False,
         "DLC" : originalGame.Base,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
         "Class" : heroType.Guardian,
-        "Effect" : cardEffect.ProtectingHorn,
+        "Effect" : heroEffect.ProtectingHorn,
         "Activatable" : False,
         "DLC" : originalGame.Base,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
         "Class" : heroType.Druid,
-        "Effect" : cardEffect.NobleShaman,
+        "Effect" : heroEffect.NobleShaman,
         "Activatable" : False,
         "DLC" : originalGame.WaD,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
         "Class" : heroType.Warrior,
-        "Effect" : cardEffect.PiercingHowl,
+        "Effect" : heroEffect.PiercingHowl,
         "Activatable" : False,
         "DLC" : originalGame.WaD,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
         "Class" : heroType.Necromancer,
-        "Effect" : cardEffect.GnawingDread,
+        "Effect" : heroEffect.GnawingDread,
         "Activatable" : True,
         "DLC" : originalGame.BaN,
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
         "Class" : heroType.Berserker,
-        "Effect" : cardEffect.RagingManticore,
+        "Effect" : heroEffect.RagingManticore,
         "Activatable" : False,
         "DLC" : originalGame.BaN,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
         "Class" : heroType.Sorcerer,
-        "Effect" : cardEffect.FearlessFlame,
+        "Effect" : heroEffect.FearlessFlame,
         "Activatable" : False,
         "DLC" : originalGame.DrSo,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
@@ -201,7 +367,7 @@ Leaders = {
     "Brutal Bow" : {
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Ranger,
-        "Effect" : cardEffect.BrutalBow,
+        "Effect" : heroEffect.BrutalBow,
         "Activatable" : False,
         "DLC" : originalGame.KSE,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
@@ -209,7 +375,7 @@ Leaders = {
     "Mystical Maestro" : {
         "Class" : heroType.Wizard,
         "Secondary Class" : heroType.Bard,
-        "Effect" : cardEffect.MysticalMaestro,
+        "Effect" : heroEffect.MysticalMaestro,
         "Activatable" : False,
         "DLC" : originalGame.KSE,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
@@ -217,14 +383,14 @@ Leaders = {
     "Veiled Raider" : {
         "Class" : heroType.Guardian,
         "Secondary Class" : heroType.Thief,
-        "Effect" : cardEffect.VeiledRaider,
+        "Effect" : heroEffect.VeiledRaider,
         "Activatable" : False,
         "DLC" : originalGame.KSE,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
         "Class" : heroType.NoClass,
-        "Effect" : cardEffect.UnstableUnicorn,
+        "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
         "DLC" : originalGame.KSE,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
@@ -704,3 +870,41 @@ if MonsterExpansion:
     monsterDeck.append(moeDeck)
 if BannerQuest:
     monsterDeck.append(baqDeck)
+    
+rankedMainDeck = []
+rankedMonsterDeck = [
+    "Abyss Queen",
+    "Anuran Cauldron",
+    "Arctic Aries",
+    "Bloodwing",
+    "Corrupted Sabretooth",
+    "Crowned Serpent",
+    "Dark Dragon King",
+    "Dracos",
+    "Malamammoth",
+    "Mega Slime",
+    "Orthus",
+    "Rex Major",
+    "Terratuga",
+    "Titan Wyvern",
+    "Warworn Owlbear",
+    "Feral Dragon",
+    "Muscipula Rex",
+    "Doom Bringer",
+    "Reptilian Ripper",
+    "Ancient Megashark",
+    "Clawed Nightmare",
+    "Dragon Wasp",
+    "Goreteledont",
+    "Lumbeering Demon",
+    "Possessed Plush",
+    "Reef Ripper",
+    "Saffyre Phoenix",
+    "Scavenger Griffin",
+    "Venemous Gemini",
+    "Voltclaw Lion",
+    "Wandering Behemoth",
+    "Wicked Sea Serpent",
+    "Chiting Scourge",
+    "Razor Tongue"
+    ]
