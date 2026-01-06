@@ -1,4 +1,5 @@
 from enum import Enum
+from config import *
 class cardEffect(Enum):
     NoEffect        = 0
     #Heroes
@@ -660,4 +661,46 @@ Banners = {
 
 #Main Deck
 mainDeck = [1,2,3,4,5]
-monsterDeck = [1,2,3,4,5]
+monsterDeck = [
+    "Abyss Queen",
+    "Anuran Cauldron",
+    "Arctic Aries",
+    "Bloodwing",
+    "Corrupted Sabretooth",
+    "Crowned Serpent",
+    "Dark Dragon King",
+    "Dracos",
+    "Malamammoth",
+    "Mega Slime",
+    "Orthus",
+    "Rex Major",
+    "Terratuga",
+    "Titan Wyvern",
+    "Warworn Owlbear"
+    ]
+wadDeck = ["Feral Dragon","Muscipula Rex"]
+banDeck = ["Doom Bringer","Reptilian Ripper"]
+moeDeck = [
+    "Ancient Megashark",
+    "Clawed Nightmare",
+    "Dragon Wasp",
+    "Goreteledont",
+    "Lumbeering Demon",
+    "Possessed Plush",
+    "Reef Ripper",
+    "Saffyre Phoenix",
+    "Scavenger Griffin",
+    "Venemous Gemini",
+    "Voltclaw Lion",
+    "Wandering Behemoth",
+    "Wicked Sea Serpent",
+    ]
+baqDeck = ["Chiting Scourge","Razor Tongue"]
+if WarriorsAndDruids:
+    monsterDeck.append(wadDeck)
+if BerserkersAndNecromancers:
+    monsterDeck.append(banDeck)
+if MonsterExpansion:
+    monsterDeck.append(moeDeck)
+if BannerQuest:
+    monsterDeck.append(baqDeck)
