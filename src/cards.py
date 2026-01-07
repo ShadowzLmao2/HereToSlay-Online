@@ -1201,7 +1201,7 @@ Action = {
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, +@ to all of your rolls for the rest of your turn."
     },
-    #KSEx Items
+    #KSE Items
     "Mysterious Feather" : {
         "Effect" : cardEffect.MysteriousFeather,
         "Card Type"   : cardType.Item,
@@ -1254,7 +1254,7 @@ Action = {
         "Card Type"   : cardType.Item,
         "Description" : "Rolling to use the equipped Hero card's effect costs 2 action points."
     },
-    #KSEx Curses
+    #KSE Curses
     "Mask of Misfortune" : {
         "Curse" : True,
         "Effect" : cardEffect.MaskOfMisfortune,
