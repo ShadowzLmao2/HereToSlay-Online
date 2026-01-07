@@ -14,11 +14,13 @@ class heroEffect(Enum):
     GnawingDread      = 9
     RagingManticore   = 10
     FearlessFlame     = 11
-    IllusiveTrickster = 12
-    VeiledRaider      = 13
-    BrutalBow         = 14
-    MysticalMaestro   = 15
-    UnstableUnicorn   = 16
+    VeiledRaider      = 12
+    BrutalBow         = 13
+    MysticalMaestro   = 14
+    FiercePanguardian = 15
+    IllusiveTrickster = 16
+    RhythmicArcher    = 17
+    UnstableUnicorn   = 18
 
 class cardEffect(Enum):
     NoEffect = 0
@@ -288,8 +290,8 @@ class MoExAtkReq(Enum):
 #Party Leaders
 Leaders = {
     "None" : {
-        "Description" : "Temporary placeholder for src/active_player.py"
-    },
+        "Description" : "None"
+        },
     "Charismatic Song" : {
         "Class" : heroType.Bard,
         "Effect" : heroEffect.CharismaticSong,
@@ -395,16 +397,37 @@ Leaders = {
         "Class" : heroType.NoClass,
         "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
-        #"DLC" : originalGame.KSE,
+        #"DLC" : originalGame.IE,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
+    "Fierce Panguardian" : {
+        "Class" : heroType.Fighter,
+        "Secondary Class" : heroType.Guardian,
+        "Effect" : heroEffect.FiercePanguardian,
+        "Activatable" : False,
+        #"DLC" : originalGame.KSE,
+        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of their turn."
+    },
+    "Illusive Trickster" : {
+        "Class" : heroType.Thief,
+        "Secondary Class" : heroType.Wizard,
+        "Effect" : heroEffect.IllusiveTrickster,
+        "Activatable" : True,
+        #"DLC" : originalGame.KSE,
+        "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
+    },
+    "Rhythmic Archer" : {
+        "Class" : heroType.Ranger,
+        "Secondary Class" : heroType.Bard,
+        "Effect" : heroEffect.RhythmicArcher,
+        "Activatable" : False,
+        #"DLC" : originalGame.KSE,
+        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
+    }
     
 }
 #Monsters
 Monsters = {
-    "None" : {
-        "Description" : "Temporary placeholder for src/active_player.py"
-    },
     "Abyss Queen" : {
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
@@ -795,13 +818,10 @@ Monsters = {
         #"DLC"         : originalGame.BanQ,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
-    },
+    }
 }
-#Action
-Action = {
-    "None" : {
-        "Description" : "Temporary placeholder for src/active_player.py"
-    },
+Cards = {
+    #Action
     "Challenge" : {
         "Effect" : cardEffect.Challenge,
         "Quantity"    : 14,
@@ -1273,13 +1293,11 @@ Action = {
         "Effect" : cardEffect.NoEffect,
         "Card Type"   : cardType.Item,
         "Description" : "Unknown"
-    }
-}
+    },
 #Heroes
-Heroes = {
     "None" : {
         "Description" : "Temporary placeholder for src/active_player.py"
-    }
+    },
 }
 #Banners
 Banners = {
@@ -1608,6 +1626,7 @@ monsterDeck = [
     ]
 wadMonsterDeck = ["Feral Dragon","Muscipula Rex"]
 banMonsterDeck = ["Doom Bringer","Reptilian Ripper"]
+dsMonsterDeck = ["Calamity Mongrel"]
 moeDeck = [
     "Ancient Megashark",
     "Clawed Nightmare",
@@ -1630,6 +1649,9 @@ if WarriorsAndDruids:
 if BerserkersAndNecromancers:
     monsterDeck.append(banMonsterDeck)
     mainDeck.append(banDeck)
+if DragonSorcerers:
+    monsterDeck.append(dsMonsterDeck)
+    mainDeck.append(dsDeck)
 if MonsterExpansion:
     monsterDeck.append(moeDeck)
 if HereToSleigh:
@@ -1637,7 +1659,8 @@ if HereToSleigh:
 if BannerQuest:
     monsterDeck.append(baqMonsterDeck)
     mainDeck.append(baqDeck)
-
+p1Deck = []
+p2Deck = []
 rankedMonsterDeck = [
     "Abyss Queen",
     "Anuran Cauldron",
@@ -1672,5 +1695,6 @@ rankedMonsterDeck = [
     "Wandering Behemoth",
     "Wicked Sea Serpent",
     "Chiting Scourge",
-    "Razor Tongue"
+    "Razor Tongue",
+    "Calamity Mongrel"
     ]

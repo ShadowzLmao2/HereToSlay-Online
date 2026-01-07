@@ -1,5 +1,5 @@
 # HereToSlay-Online
-An online port of Here to Slay by UnstableGames. Go to https://unstablegames.com/collections/here-to-slay to purchase the original game. This port aims to include customizable decks per person with a ranked gamemode and the standard game with all DLC selectable. It also includes all DLC and Kickstarter cards.
+An online port of Here to Slay by UnstableGames. Go to https://unstablegames.com/collections/here-to-slay to purchase the original game. This port aims to include customizable decks per person with a ranked gamemode and the standard game with all Expansions selectable. It also includes all Expansions and Kickstarter cards. 1v1 and 2v2 ranked modes will be made available. FFA and 2v2 quickplays will also be made.
 Note that the Banner Quest Expansion will not be added to this project until late June 2026, which is when I will obtain the cards in real life, or if they are added to the Here to Slay wiki then I will add them sooner.
 Chances of each roll
 2  : 1/36 | 2.78%

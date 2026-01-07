@@ -6,12 +6,12 @@ activatePlayer = 1
 maxPlayers = 6
 discardPile = []
 playerHand = {
-    0 : [],
     1 : [],
     2 : [],
     3 : [],
     4 : [],
-    5 : []
+    5 : [],
+    6 : []
 }
 playerParties = {
     1 : {
