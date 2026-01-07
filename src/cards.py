@@ -1523,6 +1523,33 @@ baqDeck = [
     "Synergy Boost",
     "Synergy Boost",
 ]
+kseDeck = [
+    "Hamlet",
+    "Bearserker",
+    "Complex Illusion",
+    "Enchantler",
+    "Hoodwink",
+    "Purring Bandit",
+    "Nimble Gray",
+    "Mimi",
+    "Mysterious Feather",
+    "Mask of Misfortune",
+    "+1/-4 KSE Modifier",
+    "+2/-3 KSE Modifier",
+    "+3/-2 KSE Modifier",
+    "+4/-1 KSE Modifier",
+    "Captivating Spell",
+    "Bard Challenge",
+    "Fighter Challenge",
+    "Guardian Challenge",
+    "Ranger Challenge",
+    "Thief Challenge",
+    "Wizard Challenge"
+]
+limitedCardsDeck = [
+    "Howl of the Dead",
+    "Reigning King"
+]
 htsDeck = [
     "Gift Bearer",
     "Santa Claws",
