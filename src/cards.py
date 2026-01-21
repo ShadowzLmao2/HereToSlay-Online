@@ -818,6 +818,9 @@ Monsters = {
         #"DLC"         : originalGame.BanQ,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
+    },
+    "None" : {
+        "Description" : "NaN"
     }
 }
 Cards = {
