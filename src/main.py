@@ -14,7 +14,8 @@ def startGame():
         #drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1)
         #drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2)
         global maxPlayers, HereToSleigh
-        maxPlayers = 2, HereToSleigh = False
+        maxPlayers = 2
+        HereToSleigh = False
     else:        
         shuffleDeck(mainDeck)
         shuffleDeck(monsterDeck)

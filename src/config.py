@@ -12,7 +12,8 @@ if MonsterExpansion == False:
     ExtraEnemyMonsterSlot = False
 #Ranked
 ranked = False
-maxRankedCards = 60, minRankedCards = 40
+maxRankedCards = 60
+minRankedCards = 40
 class languages(Enum):
     English = 0 #Full Support
     Italian = 1 #Base Game and WaD
