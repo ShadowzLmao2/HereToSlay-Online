@@ -37,3 +37,24 @@ Chances of each roll
 4- : 6/36 | 16.67%
 3- : 3/36 | 8.33%
 2- : 1/36 | 2.78%
+
+Todo: 
+- All Hero cards
+- All banner cards and rules
+- Tutorial
+- GUI
+- Internet
+- Images
+
+Ranked Rules:
+- 2 Players
+- Each player gets a unique deck
+- Max 7 Heroes in a party
+    - Trading Heroes happens reglardless of how many Heroes you have in your party, stealing fails if you have 7
+- First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
+- Leader Bans: Unstable Unicorn
+- Hero Bans: Dystortivern
+- Other Card Bans:
+- Monster Bans: 
+
+Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay

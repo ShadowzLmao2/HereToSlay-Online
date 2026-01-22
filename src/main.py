@@ -3,8 +3,10 @@ from cards import *
 from active_player import *
 from tutorial import *
 import random
+#from enum import Enum
 global AP
 AP = 3
+#Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
     #pickLeaders()
     if ranked:
@@ -13,17 +15,29 @@ def startGame():
         shuffleDeck(p2Deck)
         #drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1)
         #drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2)
-        global maxPlayers, HereToSleigh
-        maxPlayers = 2
+        global playerCount, HereToSleigh
+        playerCount = 2
         HereToSleigh = False
+        #Start the first player's turn, determine who goes first
+        #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
+        firstPlayer = flipCoin()
+
     else:        
         shuffleDeck(mainDeck)
         shuffleDeck(monsterDeck)
-    #draw(4,all)
+    #draw(5,allPlayers)
+    startTurn()
     return
 def main():
     chooseAction()
     return
+
+def startTurn(player):
+    return
+def flipCoin():
+    #0 = Tails, 1 = Heads
+    coinFlip = random.int(0,1)
+    return coinFlip
 
 def shuffleDeck(deck):
     #Main
@@ -226,9 +240,9 @@ def reduceAP(APReduction):
     return
 
 def endTurn():
-    global AP, activePlayer, maxPlayers
+    global AP, activePlayer, playerCount
     AP = 3
-    if activePlayer == maxPlayers:
+    if activePlayer == playerCount:
         activePlayer = 1
     else:
         activePlayer +=1

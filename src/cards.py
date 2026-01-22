@@ -278,6 +278,7 @@ class monsterRollEffect(Enum):
     sacrifice    = 2
     discardHand  = 3 #BaN Expansion
     sacrificeTwo = 4 #BaN Expansion
+    discardTwo   = 5 #DSE
 
 class MoExAtkReq(Enum):
     noReq = 0
@@ -406,7 +407,7 @@ Leaders = {
         "Effect" : heroEffect.FiercePanguardian,
         "Activatable" : False,
         #"DLC" : originalGame.KSE,
-        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of their turn."
+        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
         "Class" : heroType.Thief,
@@ -626,7 +627,7 @@ Monsters = {
         "Win Effect"  : monsterRollEffect.slay,
         #"DLC"         : originalGame.BaN,
         "Effect"      : monsterEffect.doombringer,
-        "Description" : "Each time you SACRIFICE a card, you mamy choose a card from the discard pile, add it to your hand."
+        "Description" : "Each time you SACRIFICE a card, you may choose a card from the discard pile, add it to your hand."
     },
     "Reptilian Ripper" : {
         "Hero Req"    : 2,
@@ -818,6 +819,17 @@ Monsters = {
         #"DLC"         : originalGame.BanQ,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
+    },
+    "Calamity Mongrel" :{
+        "Hero Req"    : 2,
+        "Class Req"   : heroType.Sorcerer,
+        "Lose Roll"   : 4,
+        "Lose Effect" : monsterRollEffect.discardTwo,
+        "Win Roll"    : 8,
+        "Win Effect"  : monsterRollEffect.slay,
+        #"DLC"         : originalGame.DrSo,
+        "Effect"      : monsterEffect.razorTongue,
+        "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
     "None" : {
         "Description" : "NaN"
@@ -1309,7 +1321,7 @@ Banners = {
     }
 }
 
-#Main Deck
+#Main Deck, list of cards in the base game
 mainDeck = [
     "Dodgy Dealer",
     "Fuzzy Cheeks",
@@ -1427,7 +1439,7 @@ mainDeck = [
     "Challenge",
     "Challenge"
     ]
-dsDeck = [
+dsDeck = [ #Dragon Sorcerer Expansion card list
     "Dragalter",
     "Distortivern",
     "Extraga",
@@ -1443,7 +1455,7 @@ dsDeck = [
     "Egg of Fortune",
     "Sorcerer Challenge"
 ]
-wadDeck = [
+wadDeck = [ #Warriors and Druids Expansion card list
     "Big Buckley",
     "Buck Omens",
     "Doe Fallow",
@@ -1475,7 +1487,7 @@ wadDeck = [
     "Druid Challenge",
     "Warrior Challenge"
 ]
-banDeck = [
+banDeck = [ #Berserkers and Necromancers Expansion card list
     "Bark Hexer",
     "Beholden Retriver",
     "Bone Collector",
@@ -1507,7 +1519,7 @@ banDeck = [
     "Berserker Challenge",
     "Necromancer Challenge"
 ]
-baqBanners = [
+baqBanners = [ #Banner Quest Expansion list of banners
     "Bard Banner",
     "Berserker Banner",
     "Druid Banner",
@@ -1520,7 +1532,7 @@ baqBanners = [
     "Warrior Banner",
     "Wizard Banner"
 ]
-baqDeck = [
+baqDeck = [ #Banner Quest Expansion card list
     "Bone Bruiser",
     "Crushing Crusader",
     "Deft Paw",
@@ -1544,7 +1556,7 @@ baqDeck = [
     "Synergy Boost",
     "Synergy Boost",
 ]
-kseDeck = [
+kseDeck = [ #Kickstarter Exclusive card list
     "Hamlet",
     "Bearserker",
     "Complex Illusion",
@@ -1567,11 +1579,11 @@ kseDeck = [
     "Thief Challenge",
     "Wizard Challenge"
 ]
-limitedCardsDeck = [
+limitedCardsDeck = [ #Cards from buying the vinyl figures
     "Howl of the Dead",
     "Reigning King"
 ]
-htsDeck = [
+htsDeck = [ #Here to Sleigh Expansion card list
     "Gift Bearer",
     "Santa Claws",
     "Christmas Carol",
@@ -1593,7 +1605,7 @@ htsDeck = [
     "Good Gift Challenge",
     "Good Gift Challenge",
 ]
-htsGifts = [
+htsGifts = [ #Gifts from Here to Sleigh
     "Bag of Holding Gifts",
     "EZ Mix Potions",
     "Mythical Mystery",
@@ -1610,7 +1622,7 @@ htsGifts = [
     "Watchful Medallion",
     "White Elephant",
 ]
-monsterDeck = [
+monsterDeck = [ #Base Game list of Monsters
     "Abyss Queen",
     "Anuran Cauldron",
     "Arctic Aries",
@@ -1627,10 +1639,11 @@ monsterDeck = [
     "Titan Wyvern",
     "Warworn Owlbear"
     ]
-wadMonsterDeck = ["Feral Dragon","Muscipula Rex"]
-banMonsterDeck = ["Doom Bringer","Reptilian Ripper"]
-dsMonsterDeck = ["Calamity Mongrel"]
-moeDeck = [
+wadMonsterDeck = ["Feral Dragon","Muscipula Rex"]    #Monsters from Warriors and Druids
+banMonsterDeck = ["Doom Bringer","Reptilian Ripper"] #Monsters from Berserkers and Necromancers
+dsMonsterDeck = ["Calamity Mongrel"]                 #Monsters from Dragon Sorcerers
+baqMonsterDeck = ["Chiting Scourge","Razor Tongue"]  #Monsters from Banner Quest
+moeDeck = [ #Monster Expansion card list
     "Ancient Megashark",
     "Clawed Nightmare",
     "Dragon Wasp",
@@ -1645,7 +1658,7 @@ moeDeck = [
     "Wandering Behemoth",
     "Wicked Sea Serpent"
     ]
-baqMonsterDeck = ["Chiting Scourge","Razor Tongue"]
+#Configs add cards to the deck in use
 if WarriorsAndDruids:
     monsterDeck.append(wadMonsterDeck)
     mainDeck.append(wadDeck)
@@ -1662,11 +1675,11 @@ if HereToSleigh:
 if BannerQuest:
     monsterDeck.append(baqMonsterDeck)
     mainDeck.append(baqDeck)
-p1Deck = []
-p2Deck = []
-rankedMonsterDeck = [
+p1Deck = [] #Player 1's deck in Ranked
+p2Deck = [] #Player 2's deck in Ranked 
+rankedMonsterDeck = [ #List of all Monsters in the Ranked deck
     "Abyss Queen",
-    "Anuran Cauldron",
+    "Anuran Cauldron", #Considering Banning
     "Arctic Aries",
     "Bloodwing",
     "Corrupted Sabretooth",
@@ -1674,7 +1687,7 @@ rankedMonsterDeck = [
     "Dark Dragon King",
     "Dracos",
     "Malamammoth",
-    "Mega Slime",
+    "Mega Slime", #Considering Banning
     "Orthus",
     "Rex Major",
     "Terratuga",
@@ -1682,7 +1695,7 @@ rankedMonsterDeck = [
     "Warworn Owlbear",
     "Feral Dragon",
     "Muscipula Rex",
-    "Doom Bringer",
+    "Doom Bringer", #Considering Banning
     "Reptilian Ripper",
     "Ancient Megashark",
     "Clawed Nightmare",
@@ -1693,7 +1706,7 @@ rankedMonsterDeck = [
     "Reef Ripper",
     "Saffyre Phoenix",
     "Scavenger Griffin",
-    "Venemous Gemini",
+    #"Venemous Gemini",
     "Voltclaw Lion",
     "Wandering Behemoth",
     "Wicked Sea Serpent",

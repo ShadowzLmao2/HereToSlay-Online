@@ -1,9 +1,9 @@
 from cards import *
 from config import *
 global activePlayer
-global maxPlayers
+global playerCount
 activatePlayer = 1
-maxPlayers = 6
+playerCount = 6
 discardPile = []
 playerHand = {
     1 : [],

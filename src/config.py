@@ -20,4 +20,6 @@ class languages(Enum):
     German  = 2 #Base Game
     French  = 3 #Todo
     Spanish = 4 #To learn
+    Japanese = 5 #To finish learning
+    Korean = 6 #Hire someone
 language = 0    
