@@ -978,7 +978,7 @@ Cards = {
         "Effect" : cardEffect.SearchDiscBelowMod,
         "Negative Effect" : 4,
         "Card Type"   : cardType.Action,
-        "Description" : "Play this card after any player (including you) rolls the dice. +4 that roll. If the roll is modified below 2, choose a car d from the discard pile and add it to your hand."
+        "Description" : "Play this card after any player (including you) rolls the dice. +4 that roll. If the roll is modified below 2, choose a card from the discard pile and add it to your hand."
     },
     #Berserkers and Necromancers Modifiers
     "+2/-2 BaN Modifier" : {
@@ -1042,11 +1042,11 @@ Cards = {
         "Card Type"   : cardType.Magic,
         "Description" : "Search the discard pile for a Hero card and add it to your hand."
     },
-    "Crtical Boost" : {
+    "Critical Boost" : {
         "Effect" : cardEffect.CriticalBoost,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
-        "Description" : "DRAW 3 cards and DISACRD a card."
+        "Description" : "DRAW 3 cards and DISCARD a card."
     },
     "Destructive Spell" : {
         "Effect" : cardEffect.DestructiveSpell,
@@ -1069,7 +1069,8 @@ Cards = {
     "Forced Exchange" : {
         "Effect" : cardEffect.ForcedExchange,
         "Card Type"   : cardType.Magic,
-        "Description" : "Choose a player. STEAL a Hero card from that player's Party, then move a Hero card from your Party to that player's Party."
+        "Description" : "Choose a player. STEAL a Hero card from that player's Party, then move a Hero card from your Party to that player's Party.",
+        "Ranked Description" : "Choose a player. TRADE Heroes with that player."
     },
     "Forecful Winds" : {
         "Effect" : cardEffect.ForcefulWinds,
@@ -1091,14 +1092,15 @@ Cards = {
     "Rapid Refresh" : {
         "Effect" : cardEffect.RapidRefresh,
         "Card Type"   : cardType.Magic,
-        "Description" : "DISCARD every card in your hand (if you have any) and DRAW 4 cards."
+        "Description" : "DISCARD every card in your hand (if you have any) and DRAW 4 cards.",
+        "Ranked Description" : "DISCARD every card in your hand and DRAW 4 cards."
     },
     #Berserkers and Necromancers Magic
     "Lightning Labrys" : {
         "Effect" : cardEffect.LightningLabrys,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
-        "Description" : "DISCARD up to 3 cards. For each car d discarded, choose a player. That player must SACRIFICE a Hero card."
+        "Description" : "DISCARD up to 3 cards. For each card discarded, choose a player. That player must SACRIFICE a Hero card."
     },
     "Mass Sacrifice" : {
         "Effect" : cardEffect.MassSacrifice,
@@ -1110,7 +1112,7 @@ Cards = {
     "Egg of Fortune" : {
         "Effect" : cardEffect.EggOfFortune,
         "Card Type"   : cardType.Magic,
-        "Description" : "DISCARD a car d, then pull a card from each other player's hand."
+        "Description" : "DISCARD a card, then pull a card from each other player's hand."
     },
     #KSE Magic
     "Capitvating Spell" : {
@@ -1190,7 +1192,7 @@ Cards = {
     "Decoy Doll" : {
         "Effect" : cardEffect.DecoyDoll,
         "Card Type"   : cardType.Item,
-        "Description" : "If the equipped Hero card would be sacrificed or destroyed, move the card to the discard pile instead."
+        "Description" : "If the equipped Hero card would be sacrificed or destroyed, move this card to the discard pile instead."
     },
     "Particularly Rusty Coin" : {
         "Effect" : cardEffect.ParticularlyRustyCoin,
@@ -1224,7 +1226,7 @@ Cards = {
     "Biggest Ring Ever" : {
         "Effect" : cardEffect.BiggestRingEver,
         "Card Type"   : cardType.Item,
-        "Description" : "Each time you roll to use the equipped Hero card's effect, you may DISCARD up to 3 cawrds. For each card discarded, +2 to your roll."
+        "Description" : "Each time you roll to use the equipped Hero card's effect, you may DISCARD up to 3 cards. For each card discarded, +2 to your roll."
     },
     "Goblet of Caffeination" : {
         "Effect" : cardEffect.GobletOfCaffeination,
@@ -1234,13 +1236,13 @@ Cards = {
     "Silver Lining" : {
         "Effect" : cardEffect.SilverLining,
         "Card Type"   : cardType.Item,
-        "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, +@ to all of your rolls for the rest of your turn."
+        "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, +2 to all of your rolls for the rest of your turn."
     },
     #KSE Items
     "Mysterious Feather" : {
         "Effect" : cardEffect.MysteriousFeather,
         "Card Type"   : cardType.Item,
-        "Description" : "Each time you roll to use this Hero card's effect, you may DISCARD a card. IF you do, +# to your roll."
+        "Description" : "Each time you roll to use this Hero card's effect, you may DISCARD a card. If you do, +3 to your roll."
     },
     
     #Base Game Curses
@@ -1659,22 +1661,23 @@ moeDeck = [ #Monster Expansion card list
     "Wicked Sea Serpent"
     ]
 #Configs add cards to the deck in use
-if WarriorsAndDruids:
-    monsterDeck.append(wadMonsterDeck)
-    mainDeck.append(wadDeck)
-if BerserkersAndNecromancers:
-    monsterDeck.append(banMonsterDeck)
-    mainDeck.append(banDeck)
-if DragonSorcerers:
-    monsterDeck.append(dsMonsterDeck)
-    mainDeck.append(dsDeck)
-if MonsterExpansion:
-    monsterDeck.append(moeDeck)
-if HereToSleigh:
-    mainDeck.append(htsDeck)
-if BannerQuest:
-    monsterDeck.append(baqMonsterDeck)
-    mainDeck.append(baqDeck)
+if not ranked:
+    if WarriorsAndDruids:
+        monsterDeck.append(wadMonsterDeck)
+        mainDeck.append(wadDeck)
+    if BerserkersAndNecromancers:
+        monsterDeck.append(banMonsterDeck)
+        mainDeck.append(banDeck)
+    if DragonSorcerers:
+        monsterDeck.append(dsMonsterDeck)
+        mainDeck.append(dsDeck)
+    if MonsterExpansion:
+        monsterDeck.append(moeDeck)
+    if HereToSleigh:
+        mainDeck.append(htsDeck)
+    if BannerQuest:
+        monsterDeck.append(baqMonsterDeck)
+        mainDeck.append(baqDeck)
 p1Deck = [] #Player 1's deck in Ranked
 p2Deck = [] #Player 2's deck in Ranked 
 rankedMonsterDeck = [ #List of all Monsters in the Ranked deck

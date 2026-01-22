@@ -55,6 +55,9 @@ Ranked Rules:
 - Leader Bans: Unstable Unicorn
 - Hero Bans: Dystortivern
 - Other Card Bans:
-- Monster Bans: 
+    - All of 'Here to Sleigh'
+- Monster Bans: Venemous Gemini
+
+Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron
 
 Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay
