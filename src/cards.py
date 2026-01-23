@@ -92,71 +92,71 @@ class cardEffect(Enum):
     Discard1Modifier      = 44
     RuleCard              = 45
     #Heroes
-    BadAxe = 46
-    BearClaw = 47
-    BearyWise = 48
-    FuryKnuckle = 49
-    HeavyBear = 50
-    PanChucks = 51
-    QiBear = 52
-    ToughTeddy = 53
-    DodyDealer = 54
-    FuzzyCheeks = 55
-    GreedyCheeks = 56
-    LuckyBucky = 57
-    MellowDee = 58
-    NappingNibbles = 59 
-    Peanut = 60
-    TipsyTootie = 61
-    CalmingVoice = 62
-    GuidingLight = 63
+    BadAxe          = 46
+    BearClaw        = 47
+    BearyWise       = 48
+    FuryKnuckle     = 49
+    HeavyBear       = 50
+    PanChucks       = 51
+    QiBear          = 52
+    ToughTeddy      = 53
+    DodyDealer      = 54
+    FuzzyCheeks     = 55
+    GreedyCheeks    = 56
+    LuckyBucky      = 57
+    MellowDee       = 58
+    NappingNibbles  = 59 
+    Peanut          = 60
+    TipsyTootie     = 61
+    CalmingVoice    = 62
+    GuidingLight    = 63
     HolyCurselifter = 64
-    IronResolve = 65
-    MightyBlade = 66
-    RadiantHorn = 67
-    VibrantGlow = 68
-    WiseShield = 69
-    Bullseye = 70
-    Hook = 71
-    LookieRookie = 72
-    QuickDraw = 73
-    SeriousGrey = 74
-    SharpFox = 75
-    Wildshot = 76
-    WilyRed = 77
-    KitNapper = 78
-    Meowzio = 79
-    PlunderingPuma = 80
-    Shurikitty = 81
-    SilentShadow = 82
-    SlipperyPaws = 83
-    SliyPickings = 84
-    SmoothMimimeow = 85
-    BunBun = 86
-    Buttons = 87
-    Fluffy = 88
-    Hopper = 89
-    Snowball = 90
-    Spooky = 91
-    Whiskers = 92
-    Wiggles = 93
+    IronResolve     = 65
+    MightyBlade     = 66
+    RadiantHorn     = 67
+    VibrantGlow     = 68
+    WiseShield      = 69
+    Bullseye        = 70
+    Hook            = 71
+    LookieRookie    = 72
+    QuickDraw       = 73
+    SeriousGrey     = 74
+    SharpFox        = 75
+    Wildshot        = 76
+    WilyRed         = 77
+    KitNapper       = 78
+    Meowzio         = 79
+    PlunderingPuma  = 80
+    Shurikitty      = 81
+    SilentShadow    = 82
+    SlipperyPaws    = 83
+    SliyPickings    = 84
+    SmoothMimimeow  = 85
+    BunBun          = 86
+    Buttons         = 87
+    Fluffy          = 88
+    Hopper          = 89
+    Snowball        = 90
+    Spooky          = 91
+    Whiskers        = 92
+    Wiggles         = 93
     #Warriors and Druids
-    BigBuckley = 94
-    BuckOmens = 95
-    DoeFallow = 96
-    GlowingAntler = 97
-    Majestelk = 98
-    MagusMoose = 99
-    Maegisty = 100
-    Stagguard = 101
-    AgileDagger = 102
-    BlindingBlade = 103
-    CriticalFang = 104
-    HardenedHunter = 105
-    LootingLupo = 106
-    SilentShield = 107
+    BigBuckley      = 94
+    BuckOmens       = 95
+    DoeFallow       = 96
+    GlowingAntler   = 97
+    Majestelk       = 98
+    MagusMoose      = 99
+    Maegisty        = 100
+    Stagguard       = 101
+    AgileDagger     = 102
+    BlindingBlade   = 103
+    CriticalFang    = 104
+    HardenedHunter  = 105
+    LootingLupo     = 106
+    SilentShield    = 107
     TenaciousTimber = 108
-    WolfgangPack = 109
+    WolfgangPack    = 109
     #Berserkers and Necromancers
     Annihilator        = 110
     BrawlingSpirit     = 111
@@ -264,16 +264,6 @@ class heroType(Enum):
     Druid       = 10
     Sorcerer    = 11
 
-#class originalGame(Enum):
-#    Base = 0
-#    WaD  = 1
-#    BaN  = 2
-#    BanQ = 3
-#    DrSo = 4
-#    MoEx = 5
-#    HtSleigh = 6
-#    KSE  = 7
-
 class monsterRollEffect(Enum):
     slay         = 0
     discard      = 1
@@ -283,11 +273,11 @@ class monsterRollEffect(Enum):
     discardTwo   = 5 #DSE
 
 class MoExAtkReq(Enum):
-    noReq = 0
-    discard = 1
-    discardTwo = 2
+    noReq           = 0
+    discard         = 1
+    discardTwo      = 2
     discardSpecific = 3
-    heroClass = 4
+    heroClass       = 4
     
 #Cards
 #Party Leaders
@@ -834,7 +824,7 @@ Monsters = {
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
     "None" : {
-        "Description" : "NaN"
+        "Description" : "None"
     }
 }
 Cards = {
@@ -1682,7 +1672,7 @@ if not ranked:
         mainDeck.append(baqDeck)
 p1Deck = [] #Player 1's deck in Ranked
 p2Deck = [] #Player 2's deck in Ranked 
-rankedMonsterDeck = [ #List of all Monsters in the Ranked deck
+rankedMonsterDeck = [ #All unbanned Monsters in the Ranked deck
     "Abyss Queen",
     "Anuran Cauldron", #Considering Banning
     "Arctic Aries",
@@ -1719,3 +1709,4 @@ rankedMonsterDeck = [ #List of all Monsters in the Ranked deck
     "Razor Tongue",
     "Calamity Mongrel"
     ]
+szlDeck = [] #ShadowzLmao's Ranked Deck

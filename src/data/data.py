@@ -1,278 +1,278 @@
 from PIL import Image
 #Base Game Cards
-dodgyDealer     = Image.open("card_images/BaseGame/Cards/dodgyDealer.png")
-fuzzyCheeks     = Image.open("card_images/BaseGame/Cards/fuzzyCheeks.png")
-greedyCheeks    = Image.open("card_images/BaseGame/Cards/greedyCheeks.png")
-luckyBucky      = Image.open("card_images/BaseGame/Cards/luckyBucky.png")
-mellow          = Image.open("card_images/BaseGame/Cards/mellow.png")
-nappingNibbles  = Image.open("card_images/BaseGame/Cards/nappingNibbles.png")
-peanut          = Image.open("card_images/BaseGame/Cards/peanut.png")
-tipsyTootie     = Image.open("card_images/BaseGame/Cards/tipsyTootie.png")
-badAxe          = Image.open("card_images/BaseGame/Cards/badAxe.png")
-bearClaw        = Image.open("card_images/BaseGame/Cards/bearClaw.png")
-bearyWise       = Image.open("card_images/BaseGame/Cards/bearyWise.png")
-furyKnuckle     = Image.open("card_images/BaseGame/Cards/furyKnuckle.png")
-heavyBear       = Image.open("card_images/BaseGame/Cards/heavyBear.png")
-panChucks       = Image.open("card_images/BaseGame/Cards/panChucks.png")
-qiBear          = Image.open("card_images/BaseGame/Cards/qiBear.png")
-toughTeddy      = Image.open("card_images/BaseGame/Cards/toughTeddy.png")
-calmingVoice    = Image.open("card_images/BaseGame/Cards/calmingVoice.png")
-guidingLight    = Image.open("card_images/BaseGame/Cards/guidingLight.png")
-holyCurselifter = Image.open("card_images/BaseGame/Cards/holyCurselifter.png")
-ironResolve     = Image.open("card_images/BaseGame/Cards/ironResolve.png")
-mightyBlade     = Image.open("card_images/BaseGame/Cards/mightyBlade.png")
-radiantHorn     = Image.open("card_images/BaseGame/Cards/radiantHorn.png")
-vibrantGlow     = Image.open("card_images/BaseGame/Cards/vibrantGlow.png")
-wiseShield      = Image.open("card_images/BaseGame/Cards/wiseShield.png")
-bullseye        = Image.open("card_images/BaseGame/Cards/bullseye.png")
-hook            = Image.open("card_images/BaseGame/Cards/hook.png")
-lookieRookie    = Image.open("card_images/BaseGame/Cards/lookieRookie.png")
-quickDraw       = Image.open("card_images/BaseGame/Cards/quickDraw.png")
-seriousGrey     = Image.open("card_images/BaseGame/Cards/seriousGrey.png")
-sharpFox        = Image.open("card_images/BaseGame/Cards/sharpFox.png")
-wildshot        = Image.open("card_images/BaseGame/Cards/wildshot.png")
-wilyRed         = Image.open("card_images/BaseGame/Cards/wilyRed.png")
-kitNapper       = Image.open("card_images/BaseGame/Cards/kitNapper.png")
-meowzio         = Image.open("card_images/BaseGame/Cards/meowzio.png")
-plunderingPuma  = Image.open("card_images/BaseGame/Cards/plunderingPuma.png")
-shurikitty      = Image.open("card_images/BaseGame/Cards/shurkitty.png")
-silentShadow    = Image.open("card_images/BaseGame/Cards/silentShadow.png")
-slipperyPaws    = Image.open("card_images/BaseGame/Cards/slipperyPaws.png")
-slyPickings     = Image.open("card_images/BaseGame/Cards/slyPickings.png")
-smoothMimimeow  = Image.open("card_images/BaseGame/Cards/smoothMimimeow.png")
-bunBun          = Image.open("card_images/BaseGame/Cards/bunBun.png")
-buttons         = Image.open("card_images/BaseGame/Cards/buttons.png")
-fluffy          = Image.open("card_images/BaseGame/Cards/fluffy.png")
-hopper          = Image.open("card_images/BaseGame/Cards/hopper.png")
-snowball        = Image.open("card_images/BaseGame/Cards/snowball.png")
-spooky          = Image.open("card_images/BaseGame/Cards/spooky.png")
-whiskers        = Image.open("card_images/BaseGame/Cards/whiskers.png")
-wiggles         = Image.open("card_images/BaseGame/Cards/wiggles.png")
-bardMask        = Image.open("card_images/BaseGame/Cards/bardMask.png")
-decoyDoll       = Image.open("card_images/BaseGame/Cards/decoyDoll.png")
-fighterMask     = Image.open("card_images/BaseGame/Cards/fighterMask.png")
-guardianMask    = Image.open("card_images/BaseGame/Cards/guardianMask.png")
+dodgyDealer           = Image.open("card_images/BaseGame/Cards/dodgyDealer.png")
+fuzzyCheeks           = Image.open("card_images/BaseGame/Cards/fuzzyCheeks.png")
+greedyCheeks          = Image.open("card_images/BaseGame/Cards/greedyCheeks.png")
+luckyBucky            = Image.open("card_images/BaseGame/Cards/luckyBucky.png")
+mellow                = Image.open("card_images/BaseGame/Cards/mellow.png")
+nappingNibbles        = Image.open("card_images/BaseGame/Cards/nappingNibbles.png")
+peanut                = Image.open("card_images/BaseGame/Cards/peanut.png")
+tipsyTootie           = Image.open("card_images/BaseGame/Cards/tipsyTootie.png")
+badAxe                = Image.open("card_images/BaseGame/Cards/badAxe.png")
+bearClaw              = Image.open("card_images/BaseGame/Cards/bearClaw.png")
+bearyWise             = Image.open("card_images/BaseGame/Cards/bearyWise.png")
+furyKnuckle           = Image.open("card_images/BaseGame/Cards/furyKnuckle.png")
+heavyBear             = Image.open("card_images/BaseGame/Cards/heavyBear.png")
+panChucks             = Image.open("card_images/BaseGame/Cards/panChucks.png")
+qiBear                = Image.open("card_images/BaseGame/Cards/qiBear.png")
+toughTeddy            = Image.open("card_images/BaseGame/Cards/toughTeddy.png")
+calmingVoice          = Image.open("card_images/BaseGame/Cards/calmingVoice.png")
+guidingLight          = Image.open("card_images/BaseGame/Cards/guidingLight.png")
+holyCurselifter       = Image.open("card_images/BaseGame/Cards/holyCurselifter.png")
+ironResolve           = Image.open("card_images/BaseGame/Cards/ironResolve.png")
+mightyBlade           = Image.open("card_images/BaseGame/Cards/mightyBlade.png")
+radiantHorn           = Image.open("card_images/BaseGame/Cards/radiantHorn.png")
+vibrantGlow           = Image.open("card_images/BaseGame/Cards/vibrantGlow.png")
+wiseShield            = Image.open("card_images/BaseGame/Cards/wiseShield.png")
+bullseye              = Image.open("card_images/BaseGame/Cards/bullseye.png")
+hook                  = Image.open("card_images/BaseGame/Cards/hook.png")
+lookieRookie          = Image.open("card_images/BaseGame/Cards/lookieRookie.png")
+quickDraw             = Image.open("card_images/BaseGame/Cards/quickDraw.png")
+seriousGrey           = Image.open("card_images/BaseGame/Cards/seriousGrey.png")
+sharpFox              = Image.open("card_images/BaseGame/Cards/sharpFox.png")
+wildshot              = Image.open("card_images/BaseGame/Cards/wildshot.png")
+wilyRed               = Image.open("card_images/BaseGame/Cards/wilyRed.png")
+kitNapper             = Image.open("card_images/BaseGame/Cards/kitNapper.png")
+meowzio               = Image.open("card_images/BaseGame/Cards/meowzio.png")
+plunderingPuma        = Image.open("card_images/BaseGame/Cards/plunderingPuma.png")
+shurikitty            = Image.open("card_images/BaseGame/Cards/shurkitty.png")
+silentShadow          = Image.open("card_images/BaseGame/Cards/silentShadow.png")
+slipperyPaws          = Image.open("card_images/BaseGame/Cards/slipperyPaws.png")
+slyPickings           = Image.open("card_images/BaseGame/Cards/slyPickings.png")
+smoothMimimeow        = Image.open("card_images/BaseGame/Cards/smoothMimimeow.png")
+bunBun                = Image.open("card_images/BaseGame/Cards/bunBun.png")
+buttons               = Image.open("card_images/BaseGame/Cards/buttons.png")
+fluffy                = Image.open("card_images/BaseGame/Cards/fluffy.png")
+hopper                = Image.open("card_images/BaseGame/Cards/hopper.png")
+snowball              = Image.open("card_images/BaseGame/Cards/snowball.png")
+spooky                = Image.open("card_images/BaseGame/Cards/spooky.png")
+whiskers              = Image.open("card_images/BaseGame/Cards/whiskers.png")
+wiggles               = Image.open("card_images/BaseGame/Cards/wiggles.png")
+bardMask              = Image.open("card_images/BaseGame/Cards/bardMask.png")
+decoyDoll             = Image.open("card_images/BaseGame/Cards/decoyDoll.png")
+fighterMask           = Image.open("card_images/BaseGame/Cards/fighterMask.png")
+guardianMask          = Image.open("card_images/BaseGame/Cards/guardianMask.png")
 particularlyRustyCoin = Image.open("card_images/BaseGame/Cards/particularlyRustyCoin.png")
-rangerMask      = Image.open("card_images/BaseGame/Cards/rangerMask.png")
-reallyBigRing   = Image.open("card_images/BaseGame/Cards/reallyBigRing.png")
-thiefMask       = Image.open("card_images/BaseGame/Cards/thiefMask.png")
-wizardMask      = Image.open("card_images/BaseGame/Cards/wizardMask.png")
-curseOfTheSnakesEyes = Image.open("card_images/BaseGame/Cards/curseOfTheSnakesEyes.png")
-sealingKey      = Image.open("card_images/BaseGame/Cards/sealingKey.png")
+rangerMask            = Image.open("card_images/BaseGame/Cards/rangerMask.png")
+reallyBigRing         = Image.open("card_images/BaseGame/Cards/reallyBigRing.png")
+thiefMask             = Image.open("card_images/BaseGame/Cards/thiefMask.png")
+wizardMask            = Image.open("card_images/BaseGame/Cards/wizardMask.png")
+curseOfTheSnakesEyes  = Image.open("card_images/BaseGame/Cards/curseOfTheSnakesEyes.png")
+sealingKey            = Image.open("card_images/BaseGame/Cards/sealingKey.png")
 suspiciouslyShinyCoin = Image.open("card_images/BaseGame/Cards/suspiciouslyShinyCoin.png")
-baseModifier13 = Image.open("card_images/BaseGame/Cards/+1-3BaseModifier.png")
-baseModifier22 = Image.open("card_images/BaseGame/Cards/+2-2BaseModifier.png")
-baseModifier33 = Image.open("card_images/BaseGame/Cards/+3-1BaseModifier.png")
-baseModifier4p = Image.open("card_images/BaseGame/Cards/+4BaseModifier.png")
-baseModifier4m = Image.open("card_images/BaseGame/Cards/-4BaseModifier.png")
-callToTheFallen = Image.open("card_images/BaseGame/Cards/callToTheFallen.png")
-criticalBoost = Image.open("card_images/BaseGame/Cards/criticalBoost.png")
-destructiveSpell = Image.open("card_images/BaseGame/Cards/destructiveSpell.png")
-enchantedSpell = Image.open("card_images/BaseGame/Cards/enchantedSpell.png")
-entanglingTrap = Image.open("card_images/BaseGame/Cards/entanglingTrap.png")
-forcedExchange = Image.open("card_images/BaseGame/Cards/forcedExchange.png")
-forcefulWinds = Image.open("card_images/BaseGame/Cards/forcefulWinds.png")
-windsOfChange = Image.open("card_images/BaseGame/Cards/windsOfChange.png")
-challenge = Image.open("card_images/BaseGame/Cards/challenge")
+baseModifier13        = Image.open("card_images/BaseGame/Cards/+1-3BaseModifier.png")
+baseModifier22        = Image.open("card_images/BaseGame/Cards/+2-2BaseModifier.png")
+baseModifier33        = Image.open("card_images/BaseGame/Cards/+3-1BaseModifier.png")
+baseModifier4p        = Image.open("card_images/BaseGame/Cards/+4BaseModifier.png")
+baseModifier4m        = Image.open("card_images/BaseGame/Cards/-4BaseModifier.png")
+callToTheFallen       = Image.open("card_images/BaseGame/Cards/callToTheFallen.png")
+criticalBoost         = Image.open("card_images/BaseGame/Cards/criticalBoost.png")
+destructiveSpell      = Image.open("card_images/BaseGame/Cards/destructiveSpell.png")
+enchantedSpell        = Image.open("card_images/BaseGame/Cards/enchantedSpell.png")
+entanglingTrap        = Image.open("card_images/BaseGame/Cards/entanglingTrap.png")
+forcedExchange        = Image.open("card_images/BaseGame/Cards/forcedExchange.png")
+forcefulWinds         = Image.open("card_images/BaseGame/Cards/forcefulWinds.png")
+windsOfChange         = Image.open("card_images/BaseGame/Cards/windsOfChange.png")
+challenge             = Image.open("card_images/BaseGame/Cards/challenge")
 #Dragon Sorcerer Expansion
 dragalter = Image.open("card_images/DragonSorcerers/Cards/dragalter.png")
-"distortivern.png"
-"extraga.png"
-"Luut.png"
-"mirroryu.png"
-"oracon.png"
-"renovern.png"
-"shamanaga.png"
-"smok.png"
-"sorcererMask.png"
-"+6DSModifier.png"
-"-6DSModifier.png"
-"eggofFortune.png"
-"sorcererChallenge"
+distortivern = Image.open("card_images/DragonSorcerers/Cards/distortivern.png")
+extraga = Image.open("card_images/DragonSorcerers/Cards/extraga.png")
+luut = Image.open("card_images/DragonSorcerers/Cards/luut.png")
+mirroryu = Image.open("card_images/DragonSorcerers/Cards/mirroryu.png")
+oracon = Image.open("card_images/DragonSorcerers/Cards/oracon.png")
+renovern = Image.open("card_images/DragonSorcerers/Cards/renovern.png")
+shamanaga = Image.open("card_images/DragonSorcerers/Cards/shamanaga.png")
+smok = Image.open("card_images/DragonSorcerers/Cards/smok.png")
+sorcererMask = Image.open("card_images/DragonSorcerers/Cards/sorcererMask.png")
+DSModifier6p = Image.open("card_images/DragonSorcerers/Cards/+6DSModifier.png")
+DSModifier6m = Image.open("card_images/DragonSorcerers/Cards/-6DSModifier.png")
+eggOfFortune = Image.open("card_images/DragonSorcerers/Cards/eggOfFortune.png")
+sorcererChallenge = Image.open("card_images/DragonSorcerers/Cards/sorcererChallenge.png")
 #Warriors and Druids Expansion
-"bigBuckley.png"
-"buckOmens.png"
-"doeFallow.png"
-"glowingAntler.png"
-"maegisty.png"
-"magusMoose.png"
-"majestelk.png"
-"stagguard.png"
-"agileDagger.png"
-"blindingBlade.png"
-"criticalFang.png"
-"hardenedHunter.png"
-"lootingLupo.png"
-"silentShield.png"
-"tenaciousTimber.png"
-"wolfgangPack.png"
-"bottomlessBad.png"
-"druidMask.png"
-"evenBiggerRing.png"
-"temporalHourglass.png"
-"warriorMask.png"
-"+1-1WaDModifier.png"
-"+2-1WaDModifier.png"
-"+4WaDModifier.png"
-"-4WaDModifier.png"
-"cursedGlove.png"
-"soulTether.png"
-"rapidRefresh.png"
-"druidChallenge.png"
-"warriorChallenge"
+bigBuckley = Image.open("card_images/WarriorsAndDruids/Cards/bigBuckley.png")
+buckOmens = Image.open("card_images/WarriorsAndDruids/Cards/buckOmens.png")
+doeFallow = Image.open("card_images/WarriorsAndDruids/Cards/doeFallow.png")
+glowingAntler = Image.open("card_images/WarriorsAndDruids/Cards/glowingAntler.png")
+maegisty = Image.open("card_images/WarriorsAndDruids/Cards/maegisty.png")
+magusMoose = Image.open("card_images/WarriorsAndDruids/Cards/magusMoose.png")
+majestelk = Image.open("card_images/WarriorsAndDruids/Cards/majestelk.png")
+stagguard = Image.open("card_images/WarriorsAndDruids/Cards/stagguard.png")
+agileDagger = Image.open("card_images/WarriorsAndDruids/Cards/agileDagger.png")
+blindingBlade = Image.open("card_images/WarriorsAndDruids/Cards/blindingBlade.png")
+criticalFang = Image.open("card_images/WarriorsAndDruids/Cards/criticalFang.png")
+hardenedHunter = Image.open("card_images/WarriorsAndDruids/Cards/hardenedHunter.png")
+lootingLupo = Image.open("card_images/WarriorsAndDruids/Cards/lootingLupo.png")
+silentShield = Image.open("card_images/WarriorsAndDruids/Cards/silentShield.png")
+tenaciousTimber = Image.open("card_images/WarriorsAndDruids/Cards/tenaciousTimber.png")
+wolfgangPack = Image.open("card_images/WarriorsAndDruids/Cards/wolfgangPack.png")
+bottomlessBag = Image.open("card_images/WarriorsAndDruids/Cards/bottomlessBag.png")
+druidMask = Image.open("card_images/WarriorsAndDruids/Cards/druidMask.png")
+evenBiggerRing = Image.open("card_images/WarriorsAndDruids/Cards/evenBiggerRing.png")
+temporalHourglass = Image.open("card_images/WarriorsAndDruids/Cards/temporalHourglass.png")
+warriorMask = Image.open("card_images/WarriorsAndDruids/Cards/warriorMask.png")
+WaDModifier11 = Image.open("card_images/WarriorsAndDruids/Cards/+1-1WaDModifier.png")
+WaDModifier21 = Image.open("card_images/WarriorsAndDruids/Cards/+2-1WaDModifier.png")
+WaDModifier4p = Image.open("card_images/WarriorsAndDruids/Cards/+4WaDModifier.png")
+WaDModifier4m = Image.open("card_images/WarriorsAndDruids/Cards/-4WaDModifier.png")
+cursedGlove = Image.open("card_images/WarriorsAndDruids/Cards/cursedGlove.png")
+soulTether = Image.open("card_images/WarriorsAndDruids/Cards/soulTether.png")
+rapidRefresh = Image.open("card_images/WarriorsAndDruids/Cards/rapidRefresh.png")
+druidChallenge = Image.open("card_images/WarriorsAndDruids/Cards/druidChallenge.png")
+warriorChallenge = Image.open("card_images/WarriorsAndDruids/Cards/warriorChallenge.png")
 #Berserkers and Necromancers Expansion
-"barkHexer.png"
-"beholdenRetriver.png"
-"boneCollector.png"
-"bostonTerror.png"
-"grimPupper.png"
-"hollowHusk.png"
-"perfectVessel.png"
-"shadowSaint.png"
-"annihilator.png"
-"brawlingSpirit.png"
-"gruesomeGladiator.png"
-"meowntain.png"
-"rabidBeast.png"
-"roaryalGuard.png"
-"unbridledFury.png"
-"berserkerMask.png"
-"biggestRingEver.png"
-"gobletofCaffeination.png"
-"necromancerMask.png"
-"silverLining.png"
-"+2-2BaNModifier.png"
-"+7BaNModifer.png"
-"dragonsBile.png"
-"soulboundGrimoire.png"
-"lightningLabrys.png"
-"massSacrifice.png"
-"berserkerChallenge.png"
-"necromancerChallenge"
+barkHexer = Image.open("card_images/BerserkersAndNecromancers/Cards/barkHexer.png")
+beholdenRetriver = Image.open("card_images/BerserkersAndNecromancers/Cards/beholdenRetriver.png")
+boneCollector = Image.open("card_images/BerserkersAndNecromancers/Cards/boneCollector.png")
+bostonTerror = Image.open("card_images/BerserkersAndNecromancers/Cards/bostonTerror.png")
+grimPupper = Image.open("card_images/BerserkersAndNecromancers/Cards/grimPupper.png")
+hollowHusk = Image.open("card_images/BerserkersAndNecromancers/Cards/hollowHusk.png")
+perfectVessel = Image.open("card_images/BerserkersAndNecromancers/Cards/perfectVessel.png")
+shadowSaint = Image.open("card_images/BerserkersAndNecromancers/Cards/shadowSaint.png")
+annihilator = Image.open("card_images/BerserkersAndNecromancers/Cards/annihilator.png")
+brawlingSpirit = Image.open("card_images/BerserkersAndNecromancers/Cards/brawlingSpirit.png")
+gruesomeGladiator = Image.open("card_images/BerserkersAndNecromancers/Cards/gruesomeGladiator.png")
+meowntain = Image.open("card_images/BerserkersAndNecromancers/Cards/meowntain.png")
+rabidBeast = Image.open("card_images/BerserkersAndNecromancers/Cards/rabidBeast.png")
+roaryalGuard = Image.open("card_images/BerserkersAndNecromancers/Cards/roaryalGuard.png")
+unbridledFury = Image.open("card_images/BerserkersAndNecromancers/Cards/unbridledFury.png")
+berserkerMask = Image.open("card_images/BerserkersAndNecromancers/Cards/berserkerMask.png")
+biggestRingEver = Image.open("card_images/BerserkersAndNecromancers/Cards/biggestRingEver.png")
+gobletofCaffeination = Image.open("card_images/BerserkersAndNecromancers/Cards/gobletofCaffeination.png")
+necromancerMask = Image.open("card_images/BerserkersAndNecromancers/Cards/necromancerMask.png")
+silverLining = Image.open("card_images/BerserkersAndNecromancers/Cards/silverLining.png")
+BaNModifier22 = Image.open("card_images/BerserkersAndNecromancers/Cards/+2-2BaNModifier.png")
+BaNModifier7p = Image.open("card_images/BerserkersAndNecromancers/Cards/+7BaNModifier.png")
+dragonsBile = Image.open("card_images/BerserkersAndNecromancers/Cards/dragonsBile.png")
+soulboundGrimoire = Image.open("card_images/BerserkersAndNecromancers/Cards/soulboundGrimoire.png")
+lightningLabrys = Image.open("card_images/BerserkersAndNecromancers/Cards/lightningLabrys.png")
+massSacrifice = Image.open("card_images/BerserkersAndNecromancers/Cards/massSacrifice.png")
+berserkerChallenge = Image.open("card_images/BerserkersAndNecromancers/Cards/berserkerChallenge.png")
+necromancerChallenge = Image.open("card_images/BerserkersAndNecromancers/Cards/necromancerChallenge.png")
 #Banner Quest Expansion
-"boneBruiser.png"
-"crushingCrusader.png"
-"deftPaw.png"
-"graveHowl.png"
-"loopyLyricist.png"
-"mysticalMelody.png"
-"shadowStriker.png"
-"thornBlade.png"
-"ursineProtector.png"
-"wildHooves.png"
-"prismMask.png"
-"chaosMask.png"
-"morphMask.png"
-"relicAmp.png"
-"synergyBoost"
+boneBruiser = Image.open("card_images/BannerQuest/Cards/boneBruiser.png")
+crushingCrusader = Image.open("card_images/BannerQuest/Cards/crushingCrusader.png")
+deftPaw = Image.open("card_images/BannerQuest/Cards/deftPaw.png")
+graveHowl = Image.open("card_images/BannerQuest/Cards/graveHowl.png")
+loopyLyricist = Image.open("card_images/BannerQuest/Cards/loopyLyricist.png")
+mysticalMelody = Image.open("card_images/BannerQuest/Cards/mysticalMelody.png")
+shadowStriker = Image.open("card_images/BannerQuest/Cards/shadowStriker.png")
+thornBlade = Image.open("card_images/BannerQuest/Cards/thornBlade.png")
+ursineProtector = Image.open("card_images/BannerQuest/Cards/ursineProtector.png")
+wildHooves = Image.open("card_images/BannerQuest/Cards/wildHooves.png")
+prismMask = Image.open("card_images/BannerQuest/Cards/prismMask.png")
+chaosMask = Image.open("card_images/BannerQuest/Cards/chaosMask.png")
+morphMask = Image.open("card_images/BannerQuest/Cards/morphMask.png")
+relicAmp = Image.open("card_images/BannerQuest/Cards/relicAmp.png")
+synergyBoost = Image.open("card_images/BannerQuest/Cards/synergyBoost.png")
 #KSE
-"hamlet.png"
-"bearserker.png"
-"complexIllusion.png"
-"enchantler.png"
-"hoodwink.png"
-"purringBandit.png"
-"nimbleGray.png"
-"mimi.png"
-"mysteriousFeather.png"
-"maskofMisfortune.png"
-"+1-4KSEModifier.png"
-"+2-3KSEModifier.png"
-"+3-2KSEModifier.png"
-"+4-1KSEModifier.png"
-"captivatingSpell.png"
-"bardChallenge.png"
-"fighterChallenge.png"
-"guardianChallenge.png"
-"rangerChallenge.png"
-"thiefChallenge.png"
-"wizardChallenge"
+hamlet = Image.open("card_images/KSE/Cards/hamlet.png")
+bearserker = Image.open("card_images/KSE/Cards/bearserker.png")
+complexIllusion = Image.open("card_images/KSE/Cards/complexIllusion.png")
+enchantler = Image.open("card_images/KSE/Cards/enchantler.png")
+hoodwink = Image.open("card_images/KSE/Cards/hoodwink.png")
+purringBandit = Image.open("card_images/KSE/Cards/purringBandit.png")
+nimbleGray = Image.open("card_images/KSE/Cards/nimbleGray.png")
+mimi = Image.open("card_images/KSE/Cards/mimi.png")
+mysteriousFeather = Image.open("card_images/KSE/Cards/mysteriousFeather.png")
+maskofMisfortune = Image.open("card_images/KSE/Cards/maskofMisfortune.png")
+KSEModifier14 = Image.open("card_images/KSE/Cards/+1-4KSEModifier.png")
+KSEModifier23 = Image.open("card_images/KSE/Cards/+2-3KSEModifier.png")
+KSEModifier32 = Image.open("card_images/KSE/Cards/+3-2KSEModifier.png")
+KSEModifier41 = Image.open("card_images/KSE/Cards/+4-1KSEModifier.png")
+captivatingSpell = Image.open("card_images/KSE/Cards/captivatingSpell.png")
+bardChallenge = Image.open("card_images/KSE/Cards/bardChallenge.png")
+fighterChallenge = Image.open("card_images/KSE/Cards/fighterChallenge.png")
+guardianChallenge = Image.open("card_images/KSE/Cards/guardianChallenge.png")
+rangerChallenge = Image.open("card_images/KSE/Cards/rangerChallenge.png")
+thiefChallenge = Image.open("card_images/KSE/Cards/thiefChallenge.png")
+wizardChallenge = Image.open("card_images/KSE/Cards/wizardChallenge.png")
 #VinylExclusives
-"howloftheDead.png"
-"reigningKing"
+howloftheDead = Image.open("card_images/KSE/VinylExlusives/howloftheDead.png")
+reigningKing = Image.open("card_images/KSE/VinylExlusives/reigningKing.png")
 #Banners
-"bardBanner.png"
-"berserkerBanner.png"
-"druidBanner.png"
-"fighterbanner.png"
-"guardianBanner.png"
-"huntersTrophyBanner.png"
-"necromancerBanner.png"
-"rangerBanner.png"
-"thiefBanner.png"
-"warriorBanner.png"
-"wizardBanner"
+bardBanner = Image.open("card_images/BannerQuest/Banners/bardBanner.png")
+berserkerBanner = Image.open("card_images/BannerQuest/Banners/berserkerBanner.png")
+druidBanner = Image.open("card_images/BannerQuest/Banners/druidBanner.png")
+fighterBanner = Image.open("card_images/BannerQuest/Banners/fighterBanner.png")
+guardianBanner = Image.open("card_images/BannerQuest/Banners/guardianBanner.png")
+huntersTrophyBanner = Image.open("card_images/BannerQuest/Banners/huntersTrophyBanner.png")
+necromancerBanner = Image.open("card_images/BannerQuest/Banners/necromancerBanner.png")
+rangerBanner = Image.open("card_images/BannerQuest/Banners/rangerBanner.png")
+thiefBanner = Image.open("card_images/BannerQuest/Banners/thiefBanner.png")
+warriorBanner = Image.open("card_images/BannerQuest/Banners/warriorBanner.png")
+wizardBanner = Image.open("card_images/BannerQuest/Banners/wizardBanner.png")
 #HeretoSleigh
-"giftBearer.png"
-"santaClaws.png"
-"christmasCarol.png"
-"lilDrummerBard.png"
-"shinyNose.png"
-"snowSlinger.png"
-"prancer.png"
-"shootingStar.png"
-"fireplaceFugitive.png"
-"giftBagBandit.png"
-"evergreen.png"
-"hollyJolly.png"
-"freshlySharpenedSkates.png"
-"milkandCookies.png"
-"garbgeGiftChallenge.png"
-"goodGiftChallenge"
+giftBearer = Image.open("card_images/HeretoSleigh/Cards/giftBearer.png")
+santaClaws = Image.open("card_images/HeretoSleigh/Cards/santaClaws.png")
+christmasCarol = Image.open("card_images/HeretoSleigh/Cards/christmasCarol.png")
+lilDrummerBard = Image.open("card_images/HeretoSleigh/Cards/lilDrummerBard.png")
+shinyNose = Image.open("card_images/HeretoSleigh/Cards/shinyNose.png")
+snowSlinger = Image.open("card_images/HeretoSleigh/Cards/snowSlinger.png")
+prancer = Image.open("card_images/HeretoSleigh/Cards/prancer.png")
+shootingStar = Image.open("card_images/HeretoSleigh/Cards/shootingStar.png")
+fireplaceFugitive = Image.open("card_images/HeretoSleigh/Cards/fireplaceFugitive.png")
+giftBagBandit = Image.open("card_images/HeretoSleigh/Cards/giftBagBandit.png")
+evergreen = Image.open("card_images/HeretoSleigh/Cards/evergreen.png")
+hollyJolly = Image.open("card_images/HeretoSleigh/Cards/hollyJolly.png")
+freshlySharpenedSkates = Image.open("card_images/HeretoSleigh/Cards/freshlySharpenedSkates.png")
+milkandCookies = Image.open("card_images/HeretoSleigh/Cards/milkandCookies.png")
+garbgeGiftChallenge = Image.open("card_images/HeretoSleigh/Cards/garbgeGiftChallenge.png")
+goodGiftChallenge = Image.open("card_images/HeretoSleigh/Cards/goodGiftChallenge.png")
 #Gifts
-"bagofHoldingGifts.png"
-"EZMixPotions.png"
-"mythicalMystery.png"
-"rudolphsNose.png"
-"snowsofTime.png"
-"theGiftofDestruction.png"
-"warmSocks.png"
-"endlessUnwrapping.png"
-"gagGift.png"
-"lumpofCoal.png"
-"mintConditionMittens.png"
-"potluckSurprise.png"
-"reallyItchySweater.png"
-"watchfulMedallion.png"
-"whiteElephant"
+bagofHoldingGifts = Image.open("card_images/HeretoSleigh/Gifts/bagofHoldingGifts.png")
+EZMixPotions = Image.open("card_images/HeretoSleigh/Gifts/EZMixPotions.png")
+mythicalMystery = Image.open("card_images/HeretoSleigh/Gifts/mythicalMystery.png")
+rudolphsNose = Image.open("card_images/HeretoSleigh/Gifts/rudolphsNose.png")
+snowsofTime = Image.open("card_images/HeretoSleigh/Gifts/snowsofTime.png")
+theGiftofDestruction = Image.open("card_images/HeretoSleigh/Gifts/theGiftofDestruction.png")
+warmSocks = Image.open("card_images/HeretoSleigh/Gifts/warmSocks.png")
+endlessUnwrapping = Image.open("card_images/HeretoSleigh/Gifts/endlessUnwrapping.png")
+gagGift = Image.open("card_images/HeretoSleigh/Gifts/gagGift.png")
+lumpofCoal = Image.open("card_images/HeretoSleigh/Gifts/lumpofCoal.png")
+mintConditionMittens = Image.open("card_images/HeretoSleigh/Gifts/mintConditionMittens.png")
+potluckSurprise = Image.open("card_images/HeretoSleigh/Gifts/potluckSurprise.png")
+reallyItchySweater = Image.open("card_images/HeretoSleigh/Gifts/reallyItchySweater.png")
+watchfulMedallion = Image.open("card_images/HeretoSleigh/Gifts/watchfulMedallion.png")
+whiteElephant = Image.open("card_images/HeretoSleigh/Gifts/whiteElephant.png")
 #Base Game Monsters
-"abyssQueen.png"
-"anuranCauldron.png"
-"arcticAries.png"
-"bloodwing.png"
-"corruptedSabretooth.png"
-"crownedSerpent.png"
-"darkDragonKing.png"
-"dracos.png"
-"malamammoth.png"
-"megaSlime.png"
-"orthus.png"
-"rexMajor.png"
-"terratuga.png"
-"titanWyvern.png"
-"warwornOwlbear"
+abyssQueen = Image.open("card_images/BaseGame/Monsters/abyssQueen.png")
+anuranCauldron = Image.open("card_images/BaseGame/Monsters/anuranCauldron.png")
+arcticAries = Image.open("card_images/BaseGame/Monsters/arcticAries.png")
+bloodwing = Image.open("card_images/BaseGame/Monsters/bloodwing.png")
+corruptedSabretooth = Image.open("card_images/BaseGame/Monsters/corruptedSabretooth.png")
+crownedSerpent = Image.open("card_images/BaseGame/Monsters/crownedSerpent.png")
+darkDragonKing = Image.open("card_images/BaseGame/Monsters/darkDragonKing.png")
+dracos = Image.open("card_images/BaseGame/Monsters/dracos.png")
+malamammoth = Image.open("card_images/BaseGame/Monsters/malamammoth.png")
+megaSlime = Image.open("card_images/BaseGame/Monsters/megaSlime.png")
+orthus = Image.open("card_images/BaseGame/Monsters/orthus.png")
+rexMajor = Image.open("card_images/BaseGame/Monsters/rexMajor.png")
+terratuga = Image.open("card_images/BaseGame/Monsters/terratuga.png")
+titanWyvern = Image.open("card_images/BaseGame/Monsters/titanWyvern.png")
+warwornOwlbear = Image.open("card_images/BaseGame/Monsters/warwornOwlbear.png")
 #Warriors and Druids Monsters
-"feralDragon.png"
-"muscipulaRex"
+feralDragon = Image.open("card_images/WarriorsAndDruids/Monsters/feralDragon.png")
+muscipulaRex = Image.open("card_images/WarriorsAndDruids/Monsters/muscipulaRex.png")
 #Berserkers and Necromancers Monsters
-"doomBringer.png"
-"reptilianRipper"
+doomBringer = Image.open("card_images/BerserkersAndNecromancers/Monsters/doomBringer.png")
+reptilianRipper = Image.open("card_images/BerserkersAndNecromancers/Monsters/reptilianRipper.png")
 #Dragon Sorcerer Monsters
-"calamityMongrel"
+calamityMongrel = Image.open("card_images/DragonSorcerer/Monsters/calamityMongrel.png")
 #Banner Quest Monsters
-"chitingScourge.png"
-"razorTongue"
+chitingScourge = Image.open("card_images/BannerQuest/Monsters/chitingScourge.png")
+razorTongue = Image.open("card_images/BannerQuest/Monsters/razorTongue.png")
 #Monster Expansion
-"ancientMegashark.png"
-"clawedNightmare.png"
-"dragonWasp.png"
-"goreteledont.png"
-"lumbeeringDemon.png"
-"possessedPlush.png"
-"reefRipper.png"
-"saffyrePhoenix.png"
-"scavengerGriffin.png"
-"venemousGemini.png"
-"voltclawLion.png"
-"wanderingBehemoth.png"
-"wickedSeaSerpent"
+ancientMegashark = Image.open("card_images/MonsterExpansion/ancientMegashark.png")
+clawedNightmare = Image.open("card_images/MonsterExpansion/clawedNightmare.png")
+dragonWasp = Image.open("card_images/MonsterExpansion/dragonWasp.png")
+goreteledont = Image.open("card_images/MonsterExpansion/goreteledont.png")
+lumberingDemon = Image.open("card_images/MonsterExpansion/lumberingDemon.png")
+possessedPlush = Image.open("card_images/MonsterExpansion/possessedPlush.png")
+reefRipper = Image.open("card_images/MonsterExpansion/reefRipper.png")
+saffyrePhoenix = Image.open("card_images/MonsterExpansion/saffyrePhoenix.png")
+scavengerGriffin = Image.open("card_images/MonsterExpansion/scavengerGriffin.png")
+venemousGemini = Image.open("card_images/MonsterExpansion/venemousGemini.png")
+voltclawLion = Image.open("card_images/MonsterExpansion/voltclawLion.png")
+wanderingBehemoth = Image.open("card_images/MonsterExpansion/wanderingBehemoth.png")
+wickedSeaSerpent = Image.open("card_images/MonsterExpansion/wickedSeaSerpent.png")
