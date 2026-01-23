@@ -44,7 +44,7 @@ Todo:
 - Tutorial
 - GUI
 - Internet
-- Images
+- ~~Images~~
 
 Ranked Rules:
 - 2 Players

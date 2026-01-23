@@ -2,7 +2,7 @@ from config import *
 from cards import *
 from active_player import *
 from tutorial import *
-import random
+import random as rand
 #from enum import Enum
 global AP
 AP = 3
@@ -36,13 +36,13 @@ def startTurn(player):
     return
 def flipCoin():
     #0 = Tails, 1 = Heads
-    coinFlip = random.int(0,1)
+    coinFlip = rand.int(0,1)
     return coinFlip
 
 def shuffleDeck(deck):
     #Main
     for i in range(len(deck)-1,0,-1):
-        r = random.randint(0,i)
+        r = rand.randint(0,i)
         deck[i], deck[r] = deck[r], deck[i]
     #print(deck)
     return
