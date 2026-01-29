@@ -34,10 +34,13 @@ def main():
 
 def startTurn(player):
     return
+
 def flipCoin():
     #0 = Tails, 1 = Heads
     coinFlip = rand.int(0,1)
     return coinFlip
+def rollDice():
+    return rand.int(1,6)+rand.int(1,6)
 
 def shuffleDeck(deck):
     #Main
@@ -196,10 +199,33 @@ def drawCard(player):
     return
 
 def attack():
-    if AP > 0:
+    if AP > 1:
         reduceAP(2)
     else:
         print("Not enough AP")
+        return
+    monster = selectMonster()
+    heroReq = checkAtkRequirements(monster)
+    if rollDice() >= Monsters[monster]:
+        effect = Monsters[monster["Win Effect"]]
+    else:
+        effect = Monsters[monster["Lose Effect"]]
+    if effect == monsterRollEffect.slay:
+        if monstersSlain[activePlayer] < 3:
+            playerParties[activePlayer["Monster"[monstersSlain[activePlayer]]]] = Monsters[monster]
+            monstersSlain[activePlayer]  += 1
+            activeMonster[monster] = monsterDeck.pop()
+        else:
+            endGame()
+    return
+def endGame():
+    return
+def selectMonster():
+    return 0
+
+def checkAtkRequirements(monster):
+    activeMonster[monster]
+    heroReq = 0
     return
 
 def discardHand():
@@ -227,7 +253,7 @@ def discardSpecfic(type):
     return
 
 def selectFromHand(type):
-    index = 0 #Todo
+    index = 0 #TODO
     return index
 
 def discardSelected(cardIndex):

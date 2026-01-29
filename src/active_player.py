@@ -2,6 +2,8 @@ from cards import *
 from config import *
 global activePlayer
 global playerCount
+monstersSlain = [0,0,0,0,0,0]
+activeMonster = [0,0,0]
 activatePlayer = 1
 playerCount = 6
 discardPile = []
@@ -41,8 +43,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -82,8 +82,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -123,8 +121,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -164,8 +160,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -205,8 +199,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -246,8 +238,6 @@ playerParties = {
             "2 Active" : False,
             3: Monsters["None"],
             "3 Active" : False,
-            4: Monsters["None"],
-            "4 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
