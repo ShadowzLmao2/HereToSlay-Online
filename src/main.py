@@ -7,27 +7,35 @@ import random as rand
 global AP
 AP = 3
 #Separate from the GUI, handles the main game once you enter a game with another player
-def startGame():
-    #pickLeaders()
-    if ranked:
-        shuffleDeck(rankedMonsterDeck)
-        shuffleDeck(p1Deck)
-        shuffleDeck(p2Deck)
-        #drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1)
-        #drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2)
-        global playerCount, HereToSleigh
-        playerCount = 2
-        HereToSleigh = False
-        #Start the first player's turn, determine who goes first
-        #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
-        firstPlayer = flipCoin()
+# def startGame():
+#     #pickLeaders()
+#     if ranked:
+#         shuffleDeck(rankedMonsterDeck)
+#         shuffleDeck(p1Deck)
+#         shuffleDeck(p2Deck)
+#         #drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1)
+#         #drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2)
+#         global playerCount, HereToSleigh
+#         playerCount = 2
+#         HereToSleigh = False
+#         #Start the first player's turn, determine who goes first
+#         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
+#         firstPlayer = flipCoin()
 
-    else:        
-        shuffleDeck(mainDeck)
-        shuffleDeck(monsterDeck)
-    #draw(5,allPlayers)
+#     else:        
+#         shuffleDeck(mainDeck)
+#         shuffleDeck(monsterDeck)
+#     #draw(5,allPlayers)
+#     startTurn()
+#     return
+
+#TODO:make pickLeaders, implement pickStartingPlayer
+def startQuickGame():
+    pickLeaders()
+    shuffleDeck(mainDeck)
+    shuffleDeck(monsterDeck)
+    draw(5, allPlayers)
     startTurn()
-    return
 def main():
     chooseAction()
     return
@@ -273,3 +281,6 @@ def endTurn():
     else:
         activePlayer +=1
     return
+
+def decideStartingPlayer():
+    return 0
