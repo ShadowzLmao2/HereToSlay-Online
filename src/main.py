@@ -2,6 +2,8 @@ from config import *
 from cards import *
 from active_player import *
 from tutorial import *
+from functions import *
+from strings import *
 import random as rand
 #from enum import Enum
 global AP
@@ -27,12 +29,43 @@ def startGame():
         shuffleDeck(monsterDeck)
     #draw(5,allPlayers)
     startTurn()
+    main()
     return
+
 def main():
     chooseAction()
     return
 
 def startTurn(player):
+    leader = playerParties[activePlayer["Leader"]]
+    if (leader["Start of Turn"]):
+        leaderTypeSwitch(leader)
+    return
+
+def leaderTypeSwitch(leader):
+    confirmationBox(switchLeaderType)
+    match leader:
+        case "Brutal Bow":
+            #Fighter/Ranger
+            return
+        case "Mystical Maestro":
+            #Mage/Bard
+            return
+        case "Veiled Raider":
+            #Guardian/Thief
+            return
+        case "Unstable Unicorn":
+            #
+            return
+        case "Fierce Panguardian":
+            #Guardian/Fighter
+            return
+        case "Illusive Trickster":
+            #Wizard/Thief
+            return
+        case "Rhythmic Archer":
+            #Bard/Ranger    
+            return
     return
 
 def flipCoin():
@@ -70,16 +103,23 @@ def activateLeaderAbility(leader):
         print("No AP or no ability")
     return
 
+global leaderAbilityUsed 
+leaderAbilityUsed= False
+
 def useLeaderAbility(leader):
+    if leaderAbilityUsed:
+        return 
     match Leaders[leader["Effect"]]:
         case heroEffect.ShadowClaw:
             playerIndex = chooseToPull()
             pullCard(playerIndex, False, 0)
+            leaderAbilityUsed = True
             return
         case heroEffect.GnawingDread:
             index = searchDiscard(cardType.Any)
             reduceAP(2)
             playerHand[activePlayer].append(discardPile[index].pop())
+            leaderAbilityUsed = True
             return
         case heroEffect.IllusiveTrickster:
             if checkHand(cardType.Magic, activePlayer):
@@ -88,6 +128,7 @@ def useLeaderAbility(leader):
                 drawCard(activePlayer)
                 drawCard(activePlayer)
                 drawCard(activePlayer)
+                leaderAbilityUsed = True
             else:
                 return
             return
@@ -266,6 +307,8 @@ def reduceAP(APReduction):
     return
 
 def endTurn():
+    global leaderAbilityUsed
+    leaderAbilityUsed = False
     global AP, activePlayer, playerCount
     AP = 3
     if activePlayer == playerCount:

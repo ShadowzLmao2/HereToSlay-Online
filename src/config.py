@@ -19,7 +19,7 @@ class languages(Enum):
     Italian = 1 #Base Game and WaD
     German  = 2 #Base Game
     French  = 3 #Todo
-    Spanish = 4 #To learn
+    Spanish = 4 #Hire Someone
     Japanese = 5 #To finish learning
     Korean = 6 #Hire someone
 language = 0    
