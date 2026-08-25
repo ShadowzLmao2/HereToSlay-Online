@@ -5,7 +5,7 @@ global playerCount
 monstersSlain = [0,0,0,0,0,0]
 activeMonster = [0,0,0]
 activatePlayer = 1
-playerCount = 6
+playerCount = 4 #Max = 6
 discardPile = []
 playerHand = {
     1 : [],

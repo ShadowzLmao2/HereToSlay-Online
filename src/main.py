@@ -8,8 +8,11 @@ import random as rand
 #from enum import Enum
 global AP
 AP = 3
+activePlayer = 1
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
+    if testingPhase:
+        print("PreGame Phase initialized")
     #pickLeaders()
     if ranked:
         shuffleDeck(rankedMonsterDeck)
@@ -23,16 +26,27 @@ def startGame():
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
         firstPlayer = flipCoin()
+        drawCard(5,1)
+        drawCard(5,2)
 
     else:        
+        if testingPhase:
+            print("mainDeck")
         shuffleDeck(mainDeck)
+        if testingPhase:
+            print("monsterDeck")
         shuffleDeck(monsterDeck)
-    #draw(5,allPlayers)
-    startTurn()
+        for player in range (1,playerCount+1,1):
+            drawCard(5,player)
+    if testingPhase:
+        print("PreGame Phase finalized")
     main()
     return
 
 def main():
+    if testingPhase:
+        print("Player", activePlayer, "Turn initialized")
+    startTurn(activePlayer)
     chooseAction()
     return
 
@@ -80,12 +94,15 @@ def shuffleDeck(deck):
     for i in range(len(deck)-1,0,-1):
         r = rand.randint(0,i)
         deck[i], deck[r] = deck[r], deck[i]
-    #print(deck)
+    
+    if testingPhase:
+        print(deck)
     return
 
 def chooseAction():
     #draw() activateHeroAbility() attack() discardDraw() endTurn()
-    activateLeaderAbility(playerParties[activePlayer["Leader"]])
+    #activateLeaderAbility(playerParties[activePlayer["Leader"]])
+    endTurn()
     return
 
 def activateHeroAbility():
@@ -234,9 +251,13 @@ def draw():
         print("No AP")
     return
 
-def drawCard(player):
-    playerHand[player].append(mainDeck.pop())
-    #print(playerHand)
+def drawCard(count, player):
+    for i in range(0,count,1):
+        playerHand[player].append(mainDeck.pop())
+        if testingPhase:
+            print("Player", player, "drew a card")
+    if testingPhase:
+        print(playerHand[player])
     return
 
 def attack():
@@ -310,9 +331,13 @@ def endTurn():
     global leaderAbilityUsed
     leaderAbilityUsed = False
     global AP, activePlayer, playerCount
-    AP = 3
+    if testingPhase:
+        print("End Phase of Player ", activePlayer, " initialized")
     if activePlayer == playerCount:
         activePlayer = 1
     else:
         activePlayer +=1
+    AP = 3
     return
+
+startGame()

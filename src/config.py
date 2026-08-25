@@ -1,4 +1,6 @@
 from enum import Enum
+testingPhase = True
+
 WarriorsAndDruids  = True
 BerserkersAndNecromancers = False
 DragonSorcerers = False
