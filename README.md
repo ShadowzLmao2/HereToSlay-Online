@@ -39,12 +39,10 @@ Chances of each roll
 2- : 1/36 | 2.78%
 
 Todo: 
-- All Hero cards
 - All banner cards and rules
 - Tutorial
 - GUI
 - Internet
-- ~~Images~~
 
 Ranked Rules:
 - 2 Players
@@ -54,9 +52,9 @@ Ranked Rules:
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
 - Leader Bans: Unstable Unicorn
 - Hero Bans: Dystortivern
-- Other Card Bans:
-    - All of 'Here to Sleigh'
 - Monster Bans: Venemous Gemini
+- Other Bans:
+    - All of 'Here to Sleigh'
 
 Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron
 
