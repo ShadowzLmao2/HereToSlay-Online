@@ -41,8 +41,18 @@ Chances of each roll
 Todo: 
 - All banner cards and rules
 - Tutorial
-- GUI
+- GUI - Godot, convert everything to Godot
 - Internet
+
+Specific Ruling Clarified by Staff:
+- Leader abilities are all optional
+- Terratuga + Corrupted Sabretooth has the effect of the Hero not being destroyed and not stolen
+- Saffyre Phoenix can activate on the opponent's turn and you can use the roll effect
+- All effects in the End Phase activate in the order the player chooses
+- There is no limit to party size
+- Items can be played on other players' heroes
+- Items go with Heroes (ie. if stolen, the item is stolen too)
+- Boston Terror can be used on a player with no cards in hand
 
 Ranked Rules:
 - 2 Players
