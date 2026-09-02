@@ -52,7 +52,7 @@ Chances of each roll
 Todo: 
 - All banner cards and rules
 - Tutorial
-- GUI - Godot, convert everything to Godot
+- GUI - Pygame, make work
 - Internet
 
 Specific Ruling Clarified by Staff:
