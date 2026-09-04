@@ -8,6 +8,9 @@ window = Tk()
 window.geometry("1280x720")
 window.title("Here to Slay Online")
 
+defaultImgWidth = 200
+defaultImgHeight = 150
+
 
 def start() :
     
@@ -15,7 +18,7 @@ def start() :
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
-    img = tk.PhotoImage(file='src/data/card_images/BaseGame/Cards/badAxe.png')
+    img = resize_image('src/data/card_images/BaseGame/Cards/badAxe.png')
     playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
     rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
     settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
@@ -41,3 +44,17 @@ def start() :
     quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
 
     window.mainloop()
+
+#resize image
+def resize_image(path):
+    """Load and resize an image using Pillow."""
+    try:
+        img = Image.open(path)  # Open image using pillow
+        img = img.resize((defaultImgWidth, defaultImgHeight), Image.LANCZOS)  # High-quality resize
+        return ImageTk.PhotoImage(img) #turn pillow img into tkinter img
+    except FileNotFoundError:
+        print(f"Error: File '{path}' not found.")
+        return None
+    except Exception as e:
+        print(f"Error loading image: {e}")
+        return None
