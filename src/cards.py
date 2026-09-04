@@ -282,7 +282,7 @@ Leaders = {
     "None" : {
         "Description" : "None",
         "Start of Turn" : False,
-        },
+        }, #TODO Backslashes
     "Charismatic Song" : {
         "Image" : 'src\data\card_images\BaseGame\Leaders\charismaticSong.png',
         "Class" : heroType.Bard,
@@ -889,13 +889,6 @@ Cards = {
         "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Druid,
-        "Card Type"   : cardType.Action,
-        "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
-    },
-    "Warrior Challenge" : {
-        "Image" : '',
-        "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Warrior,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
