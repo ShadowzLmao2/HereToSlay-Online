@@ -818,7 +818,8 @@ Monsters = {
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
     },
-    "Calamity Mongrel" :{
+    "Calamity Mongrel" : {
+        "Image" : '',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Sorcerer,
         "Lose Roll"   : 4,
