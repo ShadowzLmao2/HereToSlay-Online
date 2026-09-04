@@ -30,6 +30,8 @@ def start() :
     #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
     quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
+    print(keepOnlyPNG(readFolder('src/data/card_images', 'BaseGame')))
+    
     #Main Menu
     playButton.pack(ipadx=5, ipady=5, expand=True)
     #rankedButton.pack(ipadx=5, ipady=5, expand=True)
@@ -49,7 +51,6 @@ def start() :
     quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
 
     window.mainloop()
-    readFolder()
 
 #resize image
 def resize_image(path):
@@ -66,11 +67,20 @@ def resize_image(path):
         return None
 
 #TODO: setup preloading all PhotoImage classes using this function to find each of their paths
-def readFolder(): 
+def readFolder(path, folderName): #read all the files in a folder
+    contents = []
     # Replace 'path/to/your/folder' with the actual path
-    folder_path = os.path.join('src/data/card_images/BaseGame', 'Cards')
+    folder_path = os.path.join(path, folderName)
     # Get all entries in the folder
     entries = os.listdir(folder_path)
     # Loop through entries and print their names
     for entry in entries:
-        print(entry)
+        contents.append(entry)
+    return contents
+
+def keepOnlyPNG(list): 
+    out = []
+    for item in list:
+        if(item[-4:] == '.png'):
+            out.append(item)
+    return out
