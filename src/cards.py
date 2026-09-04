@@ -1,6 +1,7 @@
 from enum import Enum
 from config import *
 from data import *
+from draw import *
 class heroEffect(Enum):
     NoEffect          = 0
     #Heroes
@@ -285,77 +286,67 @@ Leaders = {
         "Class" : heroType.Bard,
         "Effect" : heroEffect.CharismaticSong,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
         "Class" : heroType.Fighter,
         "Effect" : heroEffect.FistOfReason,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
         "Class" : heroType.Thief,
         "Effect" : heroEffect.ShadowClaw,
         "Activatable" : True,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
         "Class" : heroType.Wizard,
         "Effect" : heroEffect.CloakedSage,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
         "Class" : heroType.Ranger,
         "Effect" : heroEffect.DivineArrow,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
         "Class" : heroType.Guardian,
         "Effect" : heroEffect.ProtectingHorn,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
         "Class" : heroType.Druid,
         "Effect" : heroEffect.NobleShaman,
         "Activatable" : False,
-        #"Image" : originalGame.WaD,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
         "Class" : heroType.Warrior,
         "Effect" : heroEffect.PiercingHowl,
         "Activatable" : False,
-        #"Image" : originalGame.WaD,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
         "Class" : heroType.Necromancer,
         "Effect" : heroEffect.GnawingDread,
         "Activatable" : True,
-        #"Image" : originalGame.BaN,
+
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
         "Class" : heroType.Berserker,
         "Effect" : heroEffect.RagingManticore,
         "Activatable" : False,
-        #"Image" : originalGame.BaN,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
         "Class" : heroType.Sorcerer,
         "Effect" : heroEffect.FearlessFlame,
         "Activatable" : False,
-        #"Image" : originalGame.DrSo,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
     "Brutal Bow" : {
@@ -363,7 +354,6 @@ Leaders = {
         "Secondary Class" : heroType.Ranger,
         "Effect" : heroEffect.BrutalBow,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
     },
@@ -372,7 +362,6 @@ Leaders = {
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.MysticalMaestro,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
@@ -381,7 +370,6 @@ Leaders = {
         "Secondary Class" : heroType.Thief,
         "Effect" : heroEffect.VeiledRaider,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
@@ -389,7 +377,6 @@ Leaders = {
         "Class" : heroType.NoClass,
         "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
-        #"Image" : originalGame.IE,
         "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
@@ -398,7 +385,6 @@ Leaders = {
         "Secondary Class" : heroType.Guardian,
         "Effect" : heroEffect.FiercePanguardian,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
@@ -407,7 +393,6 @@ Leaders = {
         "Secondary Class" : heroType.Wizard,
         "Effect" : heroEffect.IllusiveTrickster,
         "Activatable" : True,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
@@ -416,7 +401,6 @@ Leaders = {
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.RhythmicArcher,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
     }
@@ -431,7 +415,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.abyssQueen,
         "Description" : "Each time another player plays a Modifier card on one of your rolls, +1 to your roll."
     },
@@ -442,7 +425,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.anuranCauldron,
         "Description" : "Each time you roll, +1 to your roll."
     },
@@ -453,7 +435,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.arcticAries,
         "Description" : "Each time you successfully roll to use a Hero card's effect, you may DRAW a card."
     },
@@ -464,7 +445,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.bloodwing,
         "Description" : "Each time another player CHALLENGES you, that player must DISCARD a card."
     },
@@ -475,7 +455,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.corruptedSabretooth,
         "Description" : "Each time you would DESTROY a Hero card, you may STEAL that Hero card instead."
     },
@@ -486,7 +465,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.crownedSerpent,
         "Description" : "Each time any player (including you) plays a Modifier card, you may DRAW a card."
     },
@@ -497,7 +475,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.darkDragonKing,
         "Description" : "Each time you roll for a Hero card's effect, +1 to your roll."
     },
@@ -508,7 +485,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.sacrifice,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.dracos,
         "Description" : "Each time a Hero card in your Party is destroyed, you may DRAW a card."
     },
@@ -519,7 +495,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.malamammoth,
         "Description" : "Each time you DRAW an Item card, you may play it immediately."
     },
@@ -530,7 +505,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.megaSlime,
         "Description" : "You may spend an extra action point on each of your turns."
     },
@@ -541,7 +515,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.orthus,
         "Description" : "Each time you DRAW a Magic card, you may play it immediately."
     },
@@ -552,7 +525,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.rexMajor,
         "Description" : "Each time you DRAW a Modifier card, you may reveal it and DRAW a second card."
     },
@@ -563,7 +535,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 11,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.terratuga,
         "Description" : "Your Hero cards cannot be destroyed."
     },
@@ -574,7 +545,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.titanWyvern,
         "Description" : "Each time you roll for a Challenge card, +1 to your roll."
     },
@@ -585,7 +555,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.warwornOwlbear,
         "Description" : "Item cards you play cannot be challenged."
     },
@@ -597,7 +566,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.WaD,
         "Effect"      : monsterEffect.feralDragon,
         "Description" : "Each time any player sacrifices a card, DRAW a card."
     },
@@ -608,7 +576,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.WaD,
         "Effect"      : monsterEffect.feralDragon,
         "Description" : "Once per turn on your turn, you may DRAW a card without spending an action point."
     },
@@ -620,7 +587,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discardHand,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaN,
         "Effect"      : monsterEffect.doombringer,
         "Description" : "Each time you SACRIFICE a card, you may choose a card from the discard pile, add it to your hand."
     },
@@ -631,7 +597,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrificeTwo,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaN,
         "Effect"      : monsterEffect.reptilianRipper,
         "Description" : "Each time you roll to ATTACK a Monster card, +2 to your roll."
     },
@@ -643,7 +608,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.ancientMegashark,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to that roll."
     },
@@ -656,7 +620,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.clawedNightmare,
         "Description" : "Each time you end your turn with no cards in your hands, you may pull 2 cards from another player's hand."
     },
@@ -668,7 +631,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.dragonWasp,
         "Description" : "Each time one of your Hero cards would be sacrificed or destroyed, you may DISACRD 2 cards instead."
     },
@@ -681,7 +643,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.goretelodont,
         "Description" : "Each time you end your turn with no cards in your hand, you may DRAW 3 cards."
     },
@@ -693,7 +654,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.lumberingDemon,
         "Description" : "Each time you would DRAW a card, you may DRAW 2 cards and DISCARD a card instead."
     },
@@ -706,7 +666,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.possessedPlush,
         "Description" : "Each time you play a Challenge card, DRAW a card."
     },
@@ -717,7 +676,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.sacrifice,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.reefRipper,
         "Description" : "Each time you unsuccessfully roll to use a Hero card's effect, you may DRAW a card."
     },
@@ -728,7 +686,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 13,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.saffyrePhoenix, #remember to add the +2 per Hero bonus
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may play a Hero card from your hand immediately."
     },
@@ -741,7 +698,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.scavengerGriffin,
         "Description" : "Each time you end your turn with no cards in your hand, you may STEAL a Hero card."
     },
@@ -752,7 +708,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.venemousGemini,
         "Description" : "Venomous Gemini counts for 2 Monsters."
     },
@@ -765,7 +720,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.voltclawLion,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
@@ -776,7 +730,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.wanderingBehemoth, #remember to add the +1 per Hero bonus
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may DRAW a card."
     },
@@ -789,7 +742,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.wickedSeaSerpent,
         "Description" : "Each time you play an Item card, DRAW a card."
     },
@@ -800,7 +752,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BanQ,
         "Effect"      : monsterEffect.chitinScourge,
         "Description" : "Each time another player rolls to ATTACK a Monster card, -1 to that roll."
     },
@@ -811,7 +762,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BanQ,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
     },
@@ -822,7 +772,6 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.discardTwo,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.DrSo,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
