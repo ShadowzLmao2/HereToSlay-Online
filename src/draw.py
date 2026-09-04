@@ -8,8 +8,8 @@ window = Tk()
 window.geometry("1280x720")
 window.title("Here to Slay Online")
 
-defaultImgWidth = 200
-defaultImgHeight = 150
+defaultImgWidth = 140
+defaultImgHeight = 200
 
 
 def start() :
