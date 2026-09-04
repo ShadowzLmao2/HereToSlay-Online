@@ -1320,7 +1320,7 @@ Cards = {
     "Bear Claw" : {
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PullCard,
-        "Pull Type" : cardType.Challenge,
+        "Pull Type" : cardType.Hero,
         "Effect Roll" : 7,
         "Card Type"   : cardType.Hero,
         "Description" : "Pull a card from another player's hand. If it is a Hero card, pull a second card from that player's hand."
@@ -1338,7 +1338,7 @@ Cards = {
         "Pull Type" : cardType.Challenge,
         "Effect Roll" : 5,
         "Card Type"   : cardType.Hero,
-        "Description" : "Pull a card from another polayer's hand. If it is a Challenge card, pull a second card from that player's hand."
+        "Description" : "Pull a card from another player's hand. If it is a Challenge card, pull a second card from that player's hand."
     },
     "Heavy Bear" : {
         "Class" : heroType.Fighter,

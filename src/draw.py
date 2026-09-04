@@ -1,4 +1,5 @@
 import os
+from buttons import *
 from main import *
 from data import *
 import tkinter as tk
