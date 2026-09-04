@@ -2,7 +2,7 @@ from enum import Enum
 from config import *
 from data import *
 class heroEffect(Enum):
-    NoEffect        = 0
+    NoEffect          = 0
     #Heroes
     CharismaticSong   = 1
     ShadowClaw        = 2
@@ -102,148 +102,147 @@ class cardEffect(Enum):
     GreedyCheeks    = 54
     LuckyBucky      = 55
     MellowDee       = 56
-    NappingNibbles  = 57 
-    TipsyTootie     = 58
-    CalmingVoice    = 59
-    HolyCurselifter = 60
-    IronResolve     = 61
-    MightyBlade     = 62
-    VibrantGlow     = 63
-    WiseShield      = 64
-    Bullseye        = 65
+    TipsyTootie     = 57
+    CalmingVoice    = 58
+    HolyCurselifter = 59
+    IronResolve     = 60
+    MightyBlade     = 61
+    VibrantGlow     = 62
+    WiseShield      = 63
+    Bullseye        = 64
     Hook            = 66
     QuickDraw       = 67
-    SeriousGrey     = 68
-    SharpFox        = 69
-    Wildshot        = 70
-    WilyRed         = 71
-    Meowzio         = 72
-    PlunderingPuma  = 73
-    Shurikitty      = 74
-    SilentShadow    = 75
-    SlipperyPaws    = 76
-    SmoothMimimeow  = 77
-    BunBun          = 78
-    Fluffy          = 79
-    Hopper          = 80
-    Snowball        = 81
-    Spooky          = 82
-    Whiskers        = 83
-    Wiggles         = 84
+    SeriousGrey     = 67
+    SharpFox        = 68
+    Wildshot        = 69
+    WilyRed         = 70
+    Meowzio         = 71
+    PlunderingPuma  = 72
+    Shurikitty      = 73
+    SilentShadow    = 74
+    SlipperyPaws    = 75
+    SmoothMimimeow  = 76
+    BunBun          = 77
+    Fluffy          = 78
+    Hopper          = 79
+    Snowball        = 80
+    Spooky          = 81
+    Whiskers        = 82
+    Wiggles         = 83
     #Warriors and Druids
-    BigBuckley      = 85
-    BuckOmens       = 86
-    DoeFallow       = 87
-    Majestelk       = 88
-    MagusMoose      = 89
-    Maegisty        = 90
-    Stagguard       = 91
-    BlindingBlade   = 92
-    CriticalFang    = 93
-    HardenedHunter  = 94
-    LootingLupo     = 95
-    SilentShield    = 96
-    TenaciousTimber = 97
-    WolfgangPack    = 98
+    BigBuckley      = 84
+    BuckOmens       = 85
+    DoeFallow       = 86
+    Majestelk       = 87
+    MagusMoose      = 88
+    Maegisty        = 89
+    Stagguard       = 90
+    BlindingBlade   = 91
+    CriticalFang    = 92
+    HardenedHunter  = 93
+    LootingLupo     = 94
+    SilentShield    = 95
+    TenaciousTimber = 96
+    WolfgangPack    = 97
     #Berserkers and Necromancers
-    Annihilator        = 99
-    BrawlingSpirit     = 100
-    GruesomeGladiator  = 101
-    Meowntain          = 102
-    RabidBeast         = 103
-    RoaryalGuard       = 104
-    ViciousWildcat     = 105
-    UnbridledFury      = 106
-    BarkHexer          = 107
-    BeholdenRetriever  = 108
-    BoneCollector      = 109
-    BostonTerror       = 110
-    GrimPupper         = 111
-    HollowHusk         = 112
-    PerfectVessel      = 113
-    ShadowSaint        = 114
+    Annihilator        = 98
+    BrawlingSpirit     = 99
+    GruesomeGladiator  = 100
+    Meowntain          = 101
+    RabidBeast         = 102
+    RoaryalGuard       = 103
+    ViciousWildcat     = 104
+    UnbridledFury      = 105
+    BarkHexer          = 106
+    BeholdenRetriever  = 107
+    BoneCollector      = 108
+    BostonTerror       = 109
+    GrimPupper         = 110
+    HollowHusk         = 111
+    PerfectVessel      = 112
+    ShadowSaint        = 113
     #Dragon Sorcerers
-    Dystortivern       = 115
-    Extraga            = 116
-    Dragalter          = 117
-    Luut               = 118
-    Renovern            = 119
-    Mirroryu           = 121
-    Smok               = 122
-    Oracon             = 123
-    Shamanaga          = 124
+    Dystortivern       = 114
+    Extraga            = 115
+    Dragalter          = 116
+    Luut               = 117
+    Renovern           = 118
+    Mirroryu           = 119
+    Smok               = 120
+    Oracon             = 121
+    Shamanaga          = 122
     #KSE
-    Bearserker          = 125
-    Hamlet             = 126
-    ComplexIllusion    = 127
-    Enchantler        = 128
-    Hoodwink           = 129
-    PurringBandit      = 130
-    NimbleGray         = 131
-    Mimi               = 132
+    Bearserker         = 123
+    Hamlet             = 124
+    ComplexIllusion    = 125
+    Enchantler         = 126
+    Hoodwink           = 127
+    PurringBandit      = 128
+    NimbleGray         = 129
+    Mimi               = 130
 
-    PullCard           = 133
-    ForceDiscard       = 134
-    Draw2              = 15
-    SearchDiscard      = 136
-    StealHero          = 137
-    PullAndPlay        = 138
-    Play2              = 139
+    PullCard           = 131
+    ForceDiscard       = 132
+    Draw2              = 133
+    SearchDiscard      = 134
+    StealHero          = 135
+    PullAndPlay        = 136
+    Play2              = 137
     
-    OneModifier = 140
+    OneModifier = 138
     
     
     
 class monsterEffect(Enum):
-    noEffect          = 0
-    abyssQueen        = 1
-    anuranCauldron    = 2
-    arcticAries       = 3
-    bloodwing         = 4
+    noEffect            = 0
+    abyssQueen          = 1
+    anuranCauldron      = 2
+    arcticAries         = 3
+    bloodwing           = 4
     corruptedSabretooth = 5
-    crownedSerpent    = 6
-    darkDragonKing    = 7
-    dracos            = 8
-    malamammoth       = 9
-    megaSlime         = 10
-    orthus            = 11
-    rexMajor          = 12
-    terratuga         = 13
-    titanWyvern       = 14
-    warwornOwlbear    = 15
+    crownedSerpent      = 6
+    darkDragonKing      = 7
+    dracos              = 8
+    malamammoth         = 9
+    megaSlime           = 10
+    orthus              = 11
+    rexMajor            = 12
+    terratuga           = 13
+    titanWyvern         = 14
+    warwornOwlbear      = 15
     #WaD
-    feralDragon       = 16
-    muscipulaRex      = 17
+    feralDragon         = 16
+    muscipulaRex        = 17
     #BaN
-    doombringer       = 18
-    reptilianRipper   = 19
+    doombringer         = 18
+    reptilianRipper     = 19
     #MoEx
-    ancientMegashark  = 20
-    clawedNightmare   = 21
-    dragonWasp        = 22
-    goretelodont      = 23
-    lumberingDemon    = 24
-    possessedPlush    = 25
-    reefRipper        = 26
-    saffyrePhoenix    = 27
-    scavengerGriffin  = 28
-    venemousGemini    = 29
-    voltclawLion      = 30
-    wanderingBehemoth = 31
-    wickedSeaSerpent  = 32
+    ancientMegashark    = 20
+    clawedNightmare     = 21
+    dragonWasp          = 22
+    goretelodont        = 23
+    lumberingDemon      = 24
+    possessedPlush      = 25
+    reefRipper          = 26
+    saffyrePhoenix      = 27
+    scavengerGriffin    = 28
+    venemousGemini      = 29
+    voltclawLion        = 30
+    wanderingBehemoth   = 31
+    wickedSeaSerpent    = 32
     #BanQ
-    chitinScourge     = 33
-    razorTongue       = 34
+    chitinScourge       = 33
+    razorTongue         = 34
     
 class cardType(Enum):
-    NoCard  = 0
-    Action  = 1
-    Magic   = 2
-    Item    = 3
-    Hero    = 4
-    Leader  = 5
-    Monster = 6
-    Any     = 7
+    NoCard    = 0
+    Action    = 1
+    Magic     = 2
+    Item      = 3
+    Hero      = 4
+    Leader    = 5
+    Monster   = 6
+    Any       = 7
     Challenge = 8 #Monster Expansion only
 
 class heroType(Enum):
@@ -1407,7 +1406,7 @@ Cards = {
     },
     "Napping Nibbles" : {
         "Class" : heroType.Bard,
-        "Effect" : cardEffect.NappingNibbles,
+        "Effect" : cardEffect.NoEffect,
         "Effect Roll" : 2,
         "Card Type"   : cardType.Hero,
         "Description" : "Do nothing."

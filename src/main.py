@@ -54,7 +54,7 @@ def main():
 def startTurn(player):
     leader = playerLeaders[activePlayer]
     if testingPhase:
-        print(leader["Start of Turn"])
+        print("Start of turn effect:", leader["Start of Turn"])
     if (leader["Start of Turn"]):
         leaderTypeSwitch(playerLeaders[activePlayer])
     return
@@ -355,7 +355,7 @@ def endTurn():
     leaderAbilityUsed = False
     global AP, activePlayer, playerCount
     if testingPhase:
-        print("End Phase of Player ", activePlayer, " initialized")
+        print("End Phase of Player", activePlayer, "initialized")
     if activePlayer == playerCount:
         activePlayer = 1
     else:
