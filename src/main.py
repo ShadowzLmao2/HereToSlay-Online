@@ -79,7 +79,7 @@ def leaderTypeSwitch(leader):
             #Guardian/Thief
             return
         case "Unstable Unicorn":
-            #
+            #Copy another Leader
             return
         case "Fierce Panguardian":
             #Guardian/Fighter
@@ -88,7 +88,7 @@ def leaderTypeSwitch(leader):
             #Wizard/Thief
             return
         case "Rhythmic Archer":
-            #Bard/Ranger    
+            #Bard/Ranger
             return
     return
 
@@ -110,16 +110,19 @@ def shuffleDeck(deck):
     return
 
 def chooseAction():
-    #draw() activateHeroAbility() attack() discardDraw() endTurn()
-    #activateLeaderAbility(playerParties[activePlayer["Leader"]])
+    #Working: endTurn()
+    #WIP: activateHeroAbility(hero)
+    #Not Working: draw() attack() discardDraw() endTurn() activateLeaderAbility(playerParties[activePlayer["Leader"]])
     endTurn()
     return
 
-def activateHeroAbility():
+def activateHeroAbility(hero):
     if AP > 0:
         reduceAP(1)
+        useHeroAbility(hero)
     else:
         print("No AP")
+    
     return
 
 def activateLeaderAbility(leader):
@@ -167,6 +170,16 @@ def useHeroAbility(hero):
             drawCard(activePlayer)
             playCard(cardType.Hero,False)
             return
+        #case cardEffect.:
+        #    return
+        #case cardEffect.:
+        #    return
+        #case cardEffect.:
+        #    return
+        #case cardEffect.:
+        #    return
+        #case cardEffect.:
+        #    return
     return
 
 def summonHero(slot,hero,player):

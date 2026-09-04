@@ -1,6 +1,6 @@
 from enum import Enum
 from config import *
-from data import card_images
+from data import *
 class heroEffect(Enum):
     NoEffect        = 0
     #Heroes
@@ -92,108 +92,105 @@ class cardEffect(Enum):
     RuleCard              = 45
     #Heroes
     BadAxe          = 46
-    BearClaw        = 47
-    BearyWise       = 48
-    FuryKnuckle     = 49
-    HeavyBear       = 50
-    PanChucks       = 51
-    QiBear          = 52
-    ToughTeddy      = 53
-    DodyDealer      = 54
-    FuzzyCheeks     = 55
-    GreedyCheeks    = 56
-    LuckyBucky      = 57
-    MellowDee       = 58
-    NappingNibbles  = 59 
-    Peanut          = 60
-    TipsyTootie     = 61
-    CalmingVoice    = 62
-    GuidingLight    = 63
-    HolyCurselifter = 64
-    IronResolve     = 65
-    MightyBlade     = 66
-    RadiantHorn     = 67
-    VibrantGlow     = 68
-    WiseShield      = 69
-    Bullseye        = 70
-    Hook            = 71
-    LookieRookie    = 72
-    QuickDraw       = 73
-    SeriousGrey     = 74
-    SharpFox        = 75
-    Wildshot        = 76
-    WilyRed         = 77
-    KitNapper       = 78
-    Meowzio         = 79
-    PlunderingPuma  = 80
-    Shurikitty      = 81
-    SilentShadow    = 82
-    SlipperyPaws    = 83
-    SliyPickings    = 84
-    SmoothMimimeow  = 85
-    BunBun          = 86
-    Buttons         = 87
-    Fluffy          = 88
-    Hopper          = 89
-    Snowball        = 90
-    Spooky          = 91
-    Whiskers        = 92
-    Wiggles         = 93
+    BearyWise       = 47
+    HeavyBear       = 48
+    PanChucks       = 49
+    QiBear          = 50
+    ToughTeddy      = 51
+    DodgyDealer     = 52
+    FuzzyCheeks     = 53
+    GreedyCheeks    = 54
+    LuckyBucky      = 55
+    MellowDee       = 56
+    NappingNibbles  = 57 
+    TipsyTootie     = 58
+    CalmingVoice    = 59
+    HolyCurselifter = 60
+    IronResolve     = 61
+    MightyBlade     = 62
+    VibrantGlow     = 63
+    WiseShield      = 64
+    Bullseye        = 65
+    Hook            = 66
+    QuickDraw       = 67
+    SeriousGrey     = 68
+    SharpFox        = 69
+    Wildshot        = 70
+    WilyRed         = 71
+    Meowzio         = 72
+    PlunderingPuma  = 73
+    Shurikitty      = 74
+    SilentShadow    = 75
+    SlipperyPaws    = 76
+    SmoothMimimeow  = 77
+    BunBun          = 78
+    Fluffy          = 79
+    Hopper          = 80
+    Snowball        = 81
+    Spooky          = 82
+    Whiskers        = 83
+    Wiggles         = 84
     #Warriors and Druids
-    BigBuckley      = 94
-    BuckOmens       = 95
-    DoeFallow       = 96
-    GlowingAntler   = 97
-    Majestelk       = 98
-    MagusMoose      = 99
-    Maegisty        = 100
-    Stagguard       = 101
-    AgileDagger     = 102
-    BlindingBlade   = 103
-    CriticalFang    = 104
-    HardenedHunter  = 105
-    LootingLupo     = 106
-    SilentShield    = 107
-    TenaciousTimber = 108
-    WolfgangPack    = 109
+    BigBuckley      = 85
+    BuckOmens       = 86
+    DoeFallow       = 87
+    Majestelk       = 88
+    MagusMoose      = 89
+    Maegisty        = 90
+    Stagguard       = 91
+    BlindingBlade   = 92
+    CriticalFang    = 93
+    HardenedHunter  = 94
+    LootingLupo     = 95
+    SilentShield    = 96
+    TenaciousTimber = 97
+    WolfgangPack    = 98
     #Berserkers and Necromancers
-    Annihilator        = 110
-    BrawlingSpirit     = 111
-    GruesomeGladioator = 112
-    Meowntain          = 113
-    RabidBeast         = 114
-    RoaryalGuard       = 115
-    ViciousWildcat     = 116
-    UnbridledFury      = 117
-    BarkHexer          = 118
-    BeholdenRetriever  = 119
-    BoneCOllector      = 120
-    BostonTerror       = 121
-    GrimPupper         = 122
-    HollowHusk         = 123
-    PerfecVessel       = 124
-    ShadowSaint        = 125
+    Annihilator        = 99
+    BrawlingSpirit     = 100
+    GruesomeGladiator  = 101
+    Meowntain          = 102
+    RabidBeast         = 103
+    RoaryalGuard       = 104
+    ViciousWildcat     = 105
+    UnbridledFury      = 106
+    BarkHexer          = 107
+    BeholdenRetriever  = 108
+    BoneCOllector      = 109
+    BostonTerror       = 110
+    GrimPupper         = 111
+    HollowHusk         = 112
+    PerfectVessel      = 113
+    ShadowSaint        = 114
     #Dragon Sorcerers
-    Distortivern       = 126
-    Extraga            = 127
-    Dragalter          = 128
-    Luut               = 129
-    Ronvern            = 130
-    Mirroryu           = 131
-    Smok               = 132
-    Oracon             = 133
-    Shamanaga          = 134
+    Distortivern       = 115
+    Extraga            = 116
+    Dragalter          = 117
+    Luut               = 118
+    Ronvern            = 119
+    Mirroryu           = 121
+    Smok               = 122
+    Oracon             = 123
+    Shamanaga          = 124
     #KSE
-    Berserker          = 135
-    Hamlet             = 136
-    ComplexIllusion    = 137
-    Enchantlter        = 138
-    Hoodwink           = 139
-    PurringBandit      = 140
-    NimbleGray         = 141
-    Mimi               = 142
+    Berserker          = 125
+    Hamlet             = 126
+    ComplexIllusion    = 127
+    Enchantlter        = 128
+    Hoodwink           = 129
+    PurringBandit      = 130
+    NimbleGray         = 131
+    Mimi               = 132
+
+    PullCard           = 133
+    ForceDiscard       = 134
+    Draw2              = 15
+    SearchDiscard      = 136
+    StealHero          = 137
+    PullAndPlay        = 138
+    Play2              = 139
     
-    OneModifier = 143
+    OneModifier = 140
     
     
     
@@ -1314,6 +1311,709 @@ Cards = {
     "None" : {
         "Description" : "Temporary placeholder for src/active_player.py"
     },
+    "Bad Axe" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.BadAxe,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY a Hero card."
+    },
+    "Bear Claw" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.PullCard,
+        "Pull Type" : cardType.Challenge,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If it is a Hero card, pull a second card from that player's hand."
+    },
+    "Beary Wise" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.BearyWise,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each other player must DISCARD a card. Choose one of the discarded cards and add it to your hand."
+    },
+    "Fury Knuckle" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.PullCard,
+        "Pull Type" : cardType.Challenge,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another polayer's hand. If it is a Challenge card, pull a second card from that player's hand."
+    },
+    "Heavy Bear" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.ForceDiscard,
+        "Discard Count" : 2,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a player. That player must DISCARD 2 cards."
+    },
+    "Pan Chucks" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.PanChucks,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 2 cards. If at least one of those cards is a Challenge card, you may reveal it, then DESTROY a Hero card."
+    },
+    "Qi Fighter" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.QiBear,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DISCARD up to 3 cards. For each card discarded, DESTROY a Hero card."
+    },
+    "Tough Teddy" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.ToughTeddy,
+        "Effect Roll" : 4,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each other player with a Fighter in their Party must DISCARD a card."
+    },
+    "Dodgy Dealer" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.DodgyDealer,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Trade hands with another player."
+    },
+    "Fuzzy Cheeks" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.FuzzyCheeks,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card and play a Hero card from your hand immediately."
+    },
+    "Greedy Cheeks" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.GreedyCheeks,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each other player must give you a card from their hand." #If they can
+    },
+    "Lucky Bucky" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.LuckyBucky,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If that card is a Hero card, you may play it immediately."
+    },
+    "Mellow Dee" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.MellowDee,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card. If that card is a Hero card, you may play it immediately."
+    },
+    "Napping Nibbles" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.NappingNibbles,
+        "Effect Roll" : 2,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Do nothing."
+    },
+    "Peanut" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.Draw2,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 2 cards."
+    },
+    "Tipsy Tootie" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.TipsyTootie,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a player. STEAL a Hero card from that player's Party and move this card to that player's Party."
+    },
+    "Calming Voice" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.CalmingVoice,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Hero cards in your Party cannot be stolen until your next turn."
+    },
+    "Guiding Light" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.SearchDiscard,
+        "Search Target" : cardType.Hero,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for a Hero card and add it to your hand."
+    },
+    "Holy Curselifter" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.HolyCurselifter,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Return a Cursed Item card equipped to a Hero card in your Party to your hand."
+    },
+    "Iron Resolve" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.IronResolve,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Cards you play cannot be challenged for the rest of your turn."
+    },
+    "Mighty Blade" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.MightyBlade,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Hero cards in your Party cannot be destroyed until your next turn."
+    },
+    "Radiant Horn" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.SearchDiscard,
+        "Search Target" : cardType.Hero,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for a Modifier card and add it to your hand"
+    },
+    "Vibrant Glow" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.VibrantGlow,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "+5 to all of your rolls until the end of your turn."
+    },
+    "Wise Shield" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.WiseShield,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "+3 to all of your rolls until the end of your turn."
+    },
+    "Bullseye" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.Bullseye,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at the top 3 cards of the deck. Add one to your hand, then return the other two to the top of the deck in any order."
+    },
+    "Hook" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.Hook,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Play an Item card from your hand immediately and DRAW a card."
+    },
+    "Lookie Rookie" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.SearchDiscard,
+        "Search Target" : cardType.Item,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for an Item card and add it to your hand."
+    },
+    "Quick Draw" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.QuickDraw,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Draw 2 cards. If at least one of those cards is an Item card, you may play one of them immediately."
+    },
+    "Serious Grey" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.SeriousGrey,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY a Hero card and DRAW a card."
+    },
+    "Sharp Fox" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.SharpFox,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at another player's hand."
+    },
+    "Wildshot" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.Wildshot,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 3 cards and DISCARD a card."
+    },
+    "Wily Red" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.WilyRed,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW cards until you have 7 cards in your hand."
+    },
+    "Kit Napper" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.KitNapper,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "STEAL a Hero card."
+    },
+    "Meowzio" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.Meowzio,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a player. STEAL a Hero card from that player's Party and pull a card from that player's hand."
+    },
+    "Plundering Puma" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.PlunderingPuma,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull 2 cards from another player's hand. That player may DRAW a card."
+    },
+    "Shurikitty" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.Shurikitty,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY a Hero card. If that Hero card had an item card equipped to it, add that item card to your hand instead of moving it to the discard pile."
+    },
+    "Silent Shadow" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.SilentShadow,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at another player's hand. Choose a card and add it to your hand."
+    },
+    "Slippery Paws" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.SlipperyPaws,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull 2 cards from another player's hand, then DISCARD one of those cards."
+    },
+    "Sly Pickings" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.PullAndPlay,
+        "Search Target" : cardType.Item,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If that card is an item card, you may play it immediately."
+    },
+    "Smooth Mimimeow" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.SmoothMimimeow,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from the hand of each other player with a Thief in their Party."
+    },
+    "Bun Bun" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.BunBun,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for a Magic card and add it to your hand."
+    },
+    "Buttons" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.PullAndPlay,
+        "Search Target" : cardType.Magic,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If it is a Magic card, you may play it immediately."
+    },
+    "Fluffy" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Fluffy,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY 2 Hero cards."
+    },
+    "Hopper" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Hopper,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a player. That player must SACRIFICE a Hero card."
+    },
+    "Snowball" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Snowball,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card. If it is a Magic card, you may play it immediately and DRAW a second card."
+    },
+    "Spooky" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Spooky,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each other player must SACRIFICE a Hero card."
+    },
+    "Whiskers" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Whiskers,
+        "Effect Roll" : 11,
+        "Card Type"   : cardType.Hero,
+        "Description" : "STEAL a Hero card and DESTROY a Hero card."
+    },
+    "Wiggles" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Wiggles,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "STEAL a Hero and roll to use its effect immediately"
+    },
+    #Warriors and Druids
+    "Big Buckley" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.BigBuckley,
+        "Effect Roll" : 8,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "ATTACK a Monster card immediately. (You must still meet its Party requirement.)"
+    },
+    "Buck Omens" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.BuckOmens,
+        "Effect Roll" : 6,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at another player's hand. Choose a Hero card from their hand (if they have one) and bring it into your Party."
+    },
+    "Doe Fallow" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.DoeFallow,
+        "Effect Roll" : 7,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE a Hero card, then DRAW cards until you have 7 cards in your hand."
+    },
+    "Glowing Antler" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.Play2,
+        "Search Target" : cardType.Magic,
+        "Effect Roll" : 7,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "You may play up to 2 Magic cards immediately."
+    },
+    "Maegisty" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.Maegisty,
+        "Effect Roll" : 7,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Until your next turn, if a Hero card in your Party would be sacrificed or destroyed, return it to your hand instead."
+    },
+    "Magus Moose" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.MagusMoose,
+        "Effect Roll" : 5,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for a Hero card and add it to your hand, then play it immediately."
+    },
+    "Majestelk" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.Majestelk,
+        "Effect Roll" : 7,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE a Hero card. +5 or -5 to each of your rolls until your next turn."
+    },
+    "Stagguard" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.Stagguard,
+        "Effect Roll" : 8,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "No other player can play Modifier cards until the end of your turn."
+    },
+    "Agile Dagger" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.Play2,
+        "Search Target" : cardType.Item,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "You may play up to 2 Item cards immediately."
+    },
+    "Blinding Blade" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.BlindingBlade,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose any player. Return all equipped Item cards in that player's Party to your hand."
+    },
+    "CriticalFang" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.CriticalFang,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "+4 to your rolls to ATTACK a Monster card until the end of your turn."
+    },
+    "Hardened Hunter" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.HardenedHunter,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card for each Monster card in each other player's Party."
+    },
+    "Looting Lupo" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.LootingLupo,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card for each Item card equipped to a Hero card in your Party."
+    },
+    "Silent Shield" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.SilentShield,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "For the rest of your turn, if you SACRIFICE or DESTROY a Hero card, you may search the discard pile for a Hero card and add it to your hand."
+    },
+    "Tenacious Timber" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.TenaciousTimber,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "For each Monster card in your Party, STEAL a Hero."
+    },
+    "Wolfgang Pack" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.WolfgangPack,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "For each other Hero card in your party, +1 to all of your rolls until the end of your turn."
+    },
+    #Berserkers and Necromancers
+    "Bark Hexer" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.BarkHexer,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DISCARD a card. Each other player must DISCARD 2 cards."
+    },
+    "Beholden Retriever" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.BeholdenRetriever,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE a Hero card. Search the discard pile for a Hero or Item card and add it to your hand, then play it immediately."
+    },
+    "Bone Collector" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.BoneCollector,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE an Item card. Search the discard pile for a Hero card and add it to your hand, then play it immediately."
+    },
+    "Boston Terror" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.BostonTerror,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a player. That player may give you a card from their hand. If they do not, you may choose 2 cards from the discard pile and add them to your hand."
+    },
+    "Grim Pupper" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.GrimPupper,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each player (including you) must SACRIFICE a card."
+    },
+    "Hollow Husk" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.HollowHusk,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at another player's hand. Choose a Magic card (if they have one) and add it to your hand. You may play it immediately."
+    },
+    "Perfect Vessel" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.PerfectVessel,
+        "Effect Roll" : 4,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE this card, then STEAL a Hero card."
+    },
+    "Shadow Saint" : {
+        "Class" : heroType.Necromancer,
+        "Effect" : cardEffect.ShadowSaint,
+        "Effect Roll" : 5,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DISCARD a Modifier card. No other player can play Modifier cards until the end of your turn."
+    },
+    "Annihilator" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.Annihilator,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for a Challenge card and add it to your hand."
+    },
+    "Brawling Spirit" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.BrawlingSpirit,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each player (including you) with more than 3 cards in their Party must SACRIFICE a card"
+    },
+    "Gruesome Gladiator" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.GruesomeGladiator,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Look at each other player's hand. Choose a card from each player's hand and add it to your hand."
+    },
+    "Meowntain" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.Meowntain,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE a card. +5 to all of your rolls until the end of your turn."
+    },
+    "Rabid Beast" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.RabidBeast,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE any number of cards, then DESTROY the same number of cards."
+    },
+    "Roaryal Guard" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.RoaryalGuard,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a Class. Return every Hero card of that Class to its respective player's hand."
+    },
+    "Vicious Wildcat" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.ViciousWildcat,
+        "Effect Roll" : 12,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SLAY any Monster card, then end your turn."
+    },
+    "Unbridled Fury" : {
+        "Class" : heroType.Berserker,
+        "Effect" : cardEffect.UnbridledFury,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY a Hero card. If that Hero card is a Berserker, you may spend an extra action point this turn."
+    },
+    "Dragalter" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Dragalter,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DISCARD a Modifier card. You may apply that Modifier card's effect to all of your rolls for the rest of this turn."
+    },
+    "Dystortivern" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Dystortivern,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Trade Party Leader cards with another player."
+    },
+    "Extraga" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Extraga,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each player (including you) must return any other Sorcerers in their Party to their hand."
+    },
+    "Luut" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Luut,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "STEAL an Item card and equip it to a Hero card in your Party."
+    },
+    "Mirroryu" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Mirroryu,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Roll to use the effect of any Hero card in your Party immediately. +3 to that roll."
+    },
+    "Oracon" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Oracon,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If it is a Modifier card, that player must SACRIFICE a Hero card."
+    },
+    "Renovern" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Renovern,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Search the discard pile for an item card and play it immediately."
+    },
+    "Shamanaga" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Shamanaga,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a Hero card from the discard pile. Bring that Hero card into your Party, roll to use its effect immediately, then SACRIFICE it."
+    },
+    "Smok" : {
+        "Class" : heroType.Sorcerer,
+        "Effect" : cardEffect.Smok,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 2 cards. If at least one of those cards is a Magic card, you may reveal it, then spend an extra action point this turn."
+    },
+    #KSE
+    "Hamlet" : {
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.Hamlet,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each player (including you) must return any other Bards in their Party to their hand."
+    },
+    "Bearserker" : {
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.Bearserker,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose any player. That player must DISCARD all cards in their hand and DRAW 3 cards."
+    },
+    "Complex Illusion" : {
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.ComplexIllusion,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 2 cards. If at least one of those cards is a Modifier card, you may reveal it, then spend an extra action point this turn."
+    },
+    "Enchantler" : {
+        "Class" : heroType.Druid,
+        "Effect" : cardEffect.Enchantler,
+        "Effect Roll" : 7,
+        "Negative Roll" : True,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DISCARD any number of cards. +2 to all of your rolls for the rest of your turn for each card discarded."
+    },
+    "Hoodwink" : {
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.Hoodwink,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Swap the item cards equipped to any 2 Hero cards."
+    },
+    "Purring Bandit" : {
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.PurringBandit,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from each player's hand with more cards in it than your hand."
+    },
+    "Nimble Gray" : {
+        "Class" : heroType.Warrior,
+        "Effect" : cardEffect.NimbleGray,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "You may ATTACK any Monster card this turn even if you do not meet its Party requirement."
+    },
+    "Mimi" : {
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Mimi,
+        "Effect Roll" : 4,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Choose a Hero card in any player's Party. Mimi's effect is that Hero card's effect (including roll cost) until the end of your turn. You may roll to use that effect immediately."
+    },
+    #Here to Sleigh
+    #Banner Quest
 }
 #Banners
 Banners = {
