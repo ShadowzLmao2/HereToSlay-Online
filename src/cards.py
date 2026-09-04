@@ -1343,7 +1343,6 @@ Cards = {
     "Heavy Bear" : {
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.ForceDiscard,
-        "Discard Count" : 2,
         "Effect Roll" : 5,
         "Card Type"   : cardType.Hero,
         "Description" : "Choose a player. That player must DISCARD 2 cards."

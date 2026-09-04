@@ -18,9 +18,8 @@ def startGame():
         shuffleDeck(rankedMonsterDeck)
         shuffleDeck(p1Deck)
         shuffleDeck(p2Deck)
-        #drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1).drawCard(player1)
-        #drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2).drawCard(player2)
-        global playerCount, HereToSleigh
+        drawCard(5,1)
+        drawCard(5,2)
         playerCount = 2
         HereToSleigh = False
         #Start the first player's turn, determine who goes first
@@ -39,7 +38,7 @@ def startGame():
         shuffleDeck(monsterDeck)
         chooseLeader()
 
-        for player in range (1,playerCount+1,1):
+        for player in range(1,playerCount+1,1):
             drawCard(5,player)
     drawMonsterCard(3)
     if testingPhase:
@@ -63,7 +62,7 @@ def startTurn(player):
     return
 
 def chooseLeader():
-    for i in range(1, playerCount+1):
+    for i in range(1, playerCount+1,1):
         if testingPhase:
             print("Player", i)
         
@@ -161,9 +160,7 @@ def useLeaderAbility(leader):
             if checkHand(cardType.Magic, activePlayer):
                 discardSpecific(cardType.Magic)
                 reduceAP(1)
-                drawCard(activePlayer)
-                drawCard(activePlayer)
-                drawCard(activePlayer)
+                drawCard(3,activePlayer)
                 leaderAbilityUsed = True
             else:
                 return
@@ -173,7 +170,7 @@ def useLeaderAbility(leader):
 def useHeroAbility(hero):
     match Cards[hero["Effect"]]:
         case cardEffect.FuzzyCheeks:
-            drawCard(activePlayer)
+            drawCard(1,activePlayer)
             playCard(cardType.Hero,False)
             return
         case cardEffect.BadAxe:
@@ -194,8 +191,48 @@ def useHeroAbility(hero):
         case cardEffect.ForceDiscard:
             discardSpecific(choosePlayer(),2)
             return
-        #case cardEffect.:
-        #    return
+        case cardEffect.HeavyBear:
+            drawCard(2,activePlayer)
+            firstDraw = playerHand[activePlayer[-2]]
+            secondDraw = playerHand[activePlayer[-1]]
+            if testingPhase:
+                print("Drew", firstDraw, "and", secondDraw)
+                #if Cards[activePlayer[firstDraw]]
+            return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+            return
     return
 
 def summonHero(slot,hero,player):
@@ -296,7 +333,7 @@ def returnCard(cardType,target):
 def equipItem():
     return
 def allPlayersDiscard(hitSelf, cardType):
-    for i in range (1,playerCount+1):
+    for i in range(1,playerCount+1):
         if hitSelf or i != activePlayer:
             discardSpecific(cardType,1)
     return
@@ -309,7 +346,7 @@ def protectionStatus(player):
 def draw():
     if AP > 0:
         reduceAP(1)
-        drawCard(activePlayer)
+        drawCard(1,activePlayer)
     else:
         print("No AP")
     return
@@ -375,11 +412,7 @@ def discardDraw():
         print("Not enough AP")
         return
     discardHand()
-    drawCard(activePlayer)
-    drawCard(activePlayer)
-    drawCard(activePlayer)
-    drawCard(activePlayer)
-    drawCard(activePlayer)
+    drawCard(5,activePlayer)
     return
 
 def discardSpecific(type,count,target):
