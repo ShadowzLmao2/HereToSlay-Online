@@ -279,68 +279,67 @@ class MoExAtkReq(Enum):
 #Party Leaders
 Leaders = {
     "None" : {
-        "Image" : '',
         "Description" : "None",
         "Start of Turn" : False,
         },
     "Charismatic Song" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\charismaticSong.png',
         "Class" : heroType.Bard,
         "Effect" : heroEffect.CharismaticSong,
         "Activatable" : False,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\fistOfReason.png',
         "Class" : heroType.Fighter,
         "Effect" : heroEffect.FistOfReason,
         "Activatable" : False,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\shadowClaw.png',
         "Class" : heroType.Thief,
         "Effect" : heroEffect.ShadowClaw,
         "Activatable" : True,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\cloakedSage.png',
         "Class" : heroType.Wizard,
         "Effect" : heroEffect.CloakedSage,
         "Activatable" : False,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\divineArrow.png',
         "Class" : heroType.Ranger,
         "Effect" : heroEffect.DivineArrow,
         "Activatable" : False,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Leaders\protectingHorn.png',
         "Class" : heroType.Guardian,
         "Effect" : heroEffect.ProtectingHorn,
         "Activatable" : False,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Leaders\nobleShaman.png',
         "Class" : heroType.Druid,
         "Effect" : heroEffect.NobleShaman,
         "Activatable" : False,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Leaders\piercingHowl.png',
         "Class" : heroType.Warrior,
         "Effect" : heroEffect.PiercingHowl,
         "Activatable" : False,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BerserkersAndNecromancers\Leaders\gnawingDread.png',
         "Class" : heroType.Necromancer,
         "Effect" : heroEffect.GnawingDread,
         "Activatable" : True,
@@ -348,21 +347,21 @@ Leaders = {
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BerserkersAndNecromancers\Leaders\ragingManticore.png',
         "Class" : heroType.Berserker,
         "Effect" : heroEffect.RagingManticore,
         "Activatable" : False,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\DragonSorcerers\Leaders\fearlessFlame.png',
         "Class" : heroType.Sorcerer,
         "Effect" : heroEffect.FearlessFlame,
         "Activatable" : False,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
     "Brutal Bow" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\Leaders\brutalBow.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Ranger,
         "Effect" : heroEffect.BrutalBow,
@@ -371,7 +370,7 @@ Leaders = {
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\Leaders\mysticalMaestro.png',
         "Class" : heroType.Wizard,
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.MysticalMaestro,
@@ -380,7 +379,7 @@ Leaders = {
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\Leaders\veiledRaider.png',
         "Class" : heroType.Guardian,
         "Secondary Class" : heroType.Thief,
         "Effect" : heroEffect.VeiledRaider,
@@ -389,7 +388,7 @@ Leaders = {
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\Leaders\unstableUnicorn.png',
         "Class" : heroType.NoClass,
         "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
@@ -397,7 +396,7 @@ Leaders = {
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
     "Fierce Panguardian" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\fiercePanguardian.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Guardian,
         "Effect" : heroEffect.FiercePanguardian,
@@ -406,7 +405,7 @@ Leaders = {
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\illusiveTrickster.png',
         "Class" : heroType.Thief,
         "Secondary Class" : heroType.Wizard,
         "Effect" : heroEffect.IllusiveTrickster,
@@ -415,7 +414,7 @@ Leaders = {
         "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
     "Rhythmic Archer" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\rhythmicArcher.png',
         "Class" : heroType.Ranger,
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.RhythmicArcher,
@@ -428,7 +427,7 @@ Leaders = {
 #Monsters
 Monsters = {
     "Abyss Queen" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\abyssQueen.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
@@ -439,7 +438,7 @@ Monsters = {
         "Description" : "Each time another player plays a Modifier card on one of your rolls, +1 to your roll."
     },
     "Anuran Cauldron" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\anuranCauldron.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -450,7 +449,7 @@ Monsters = {
         "Description" : "Each time you roll, +1 to your roll."
     },
     "Arctic Aries" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\arcticAries.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -461,7 +460,7 @@ Monsters = {
         "Description" : "Each time you successfully roll to use a Hero card's effect, you may DRAW a card."
     },
     "Bloodwing" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\bloodwing.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -472,7 +471,7 @@ Monsters = {
         "Description" : "Each time another player CHALLENGES you, that player must DISCARD a card."
     },
     "Corrupted Sabreetooth" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\corruptedSabretooth.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -483,7 +482,7 @@ Monsters = {
         "Description" : "Each time you would DESTROY a Hero card, you may STEAL that Hero card instead."
     },
     "Crowned Serpent" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\crownedSerpent.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
@@ -494,7 +493,7 @@ Monsters = {
         "Description" : "Each time any player (including you) plays a Modifier card, you may DRAW a card."
     },
     "Dark Dragon King" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\darkDragonKing.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Bard,
         "Lose Roll"   : 4,
@@ -505,7 +504,7 @@ Monsters = {
         "Description" : "Each time you roll for a Hero card's effect, +1 to your roll."
     },
     "Dracos" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\dracos.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
@@ -516,7 +515,7 @@ Monsters = {
         "Description" : "Each time a Hero card in your Party is destroyed, you may DRAW a card."
     },
     "Malamammoth" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\malamammoth.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Ranger,
         "Lose Roll"   : 4,
@@ -527,7 +526,7 @@ Monsters = {
         "Description" : "Each time you DRAW an Item card, you may play it immediately."
     },
     "Mega Slime" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\megaSlime.png',
         "Hero Req"    : 4,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
@@ -538,7 +537,7 @@ Monsters = {
         "Description" : "You may spend an extra action point on each of your turns."
     },
     "Orthus" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\orthus.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Wizard,
         "Lose Roll"   : 4,
@@ -549,7 +548,7 @@ Monsters = {
         "Description" : "Each time you DRAW a Magic card, you may play it immediately."
     },
     "Rex Major" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\rexMajor.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Guardian,
         "Lose Roll"   : 4,
@@ -560,7 +559,7 @@ Monsters = {
         "Description" : "Each time you DRAW a Modifier card, you may reveal it and DRAW a second card."
     },
     "Terratuga" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\terratuga.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
@@ -571,7 +570,7 @@ Monsters = {
         "Description" : "Your Hero cards cannot be destroyed."
     },
     "Titan Wyvern" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\titanWyvern.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Fighter,
         "Lose Roll"   : 4,
@@ -582,7 +581,7 @@ Monsters = {
         "Description" : "Each time you roll for a Challenge card, +1 to your roll."
     },
     "Warworn Owlbear" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\BaseGame\Monsters\warwornOwlbear.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Thief,
         "Lose Roll"   : 4,
@@ -594,7 +593,7 @@ Monsters = {
     },
     #Warriors and Druids Monsters
     "Feral Dragon" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Monsters\feralDragon.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -605,7 +604,7 @@ Monsters = {
         "Description" : "Each time any player sacrifices a card, DRAW a card."
     },
     "Muscipula Rex" : {
-        "Image" : '',
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Monsters\muscipulaRex.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
@@ -617,7 +616,7 @@ Monsters = {
     },
     #Berserkers and Necromancers Monsters
     "Doombringer" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/BerserkersAndNecromancers/Monsters/doombringer.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Necromancer,
         "Lose Roll"   : 4,
@@ -628,7 +627,7 @@ Monsters = {
         "Description" : "Each time you SACRIFICE a card, you may choose a card from the discard pile, add it to your hand."
     },
     "Reptilian Ripper" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/BerserkersAndNecromancers/Monsters/reptilianRipper.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Berserker,
         "Lose Roll"   : 6,
@@ -639,7 +638,7 @@ Monsters = {
         "Description" : "Each time you roll to ATTACK a Monster card, +2 to your roll."
     },
     "Ancient Megashark" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/ancientMegashark.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discard,
         "Class Req"   : heroType.NoClass,
@@ -651,7 +650,7 @@ Monsters = {
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to that roll."
     },
     "Clawed Nightmare" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/clawedNightmare.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Bard,
@@ -664,7 +663,7 @@ Monsters = {
         "Description" : "Each time you end your turn with no cards in your hands, you may pull 2 cards from another player's hand."
     },
     "Dragon Wasp" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/dragonWasp.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardTwo,
         "Class Req"   : heroType.NoClass,
@@ -676,7 +675,7 @@ Monsters = {
         "Description" : "Each time one of your Hero cards would be sacrificed or destroyed, you may DISACRD 2 cards instead."
     },
     "Goretelodont" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/goretelodont.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Guardian,
@@ -689,7 +688,7 @@ Monsters = {
         "Description" : "Each time you end your turn with no cards in your hand, you may DRAW 3 cards."
     },
     "Lumbering Demon" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/lumberingDemon.png',
         "Hero Req"    : 2,
         "MoEx AtkReq" : MoExAtkReq.noReq,
         "Class Req"   : heroType.NoClass,
@@ -701,7 +700,7 @@ Monsters = {
         "Description" : "Each time you would DRAW a card, you may DRAW 2 cards and DISCARD a card instead."
     },
     "Possessed Plush" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/possessedPlush.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Challenge,
@@ -714,7 +713,7 @@ Monsters = {
         "Description" : "Each time you play a Challenge card, DRAW a card."
     },
     "Reef Ripper" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/reefRipper.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -725,7 +724,7 @@ Monsters = {
         "Description" : "Each time you unsuccessfully roll to use a Hero card's effect, you may DRAW a card."
     },
     "Saffyre Phoenix" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/saffyrePhoenix.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 8,
@@ -736,7 +735,7 @@ Monsters = {
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may play a Hero card from your hand immediately."
     },
     "Scavenger Griffin" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/scavengerGriffin.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Fighter,
@@ -749,7 +748,7 @@ Monsters = {
         "Description" : "Each time you end your turn with no cards in your hand, you may STEAL a Hero card."
     },
     "Venomous Gemini" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/venomousGemini.png',
         "Hero Req"    : 5,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -760,7 +759,7 @@ Monsters = {
         "Description" : "Venomous Gemini counts for 2 Monsters."
     },
     "Voltclaw Lion" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/voltclawLion.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Magic,
@@ -773,7 +772,7 @@ Monsters = {
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Wandering Behemoth" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/wanderingBehemoth.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -784,7 +783,7 @@ Monsters = {
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may DRAW a card."
     },
     "Wicked Sea Serpent" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/MonsterExpansion/wickedSeaSerpent.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Item,
@@ -796,6 +795,7 @@ Monsters = {
         "Effect"      : monsterEffect.wickedSeaSerpent,
         "Description" : "Each time you play an Item card, DRAW a card."
     },
+    #banner quest monsters
     "Chitin Scourge" : {
         "Image" : '',
         "Hero Req"    : 3,
@@ -830,56 +830,55 @@ Monsters = {
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
     "None" : {
-        "Image" : '',
         "Description" : "None"
     }
 }
 Cards = {
     #Action
     "Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/BaseGame/Cards/challenge.png',
         "Effect" : cardEffect.Challenge,
         "Quantity"    : 14,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card."
     },
     "Fighter Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/fighterChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Fighter,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Bard Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/bardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Bard,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Guardian Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/guardianChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Guardian,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Ranger Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/rangerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Ranger,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Thief Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/thiefChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Thief,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Wizard Challenge" : {
-        "Image" : '',
+        "Image" : 'src/data/card_images/KSE/Cards/wizardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
         "Card Type"   : cardType.Action,
