@@ -1,5 +1,8 @@
-from data import card_images
+from card_images import *
 from strings import *
+from config import *
+from cards import *
+from functions import *
 #print(switchLeaderType)
 from main import *
 startGame()

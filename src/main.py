@@ -20,6 +20,7 @@ def startGame():
         shuffleDeck(p2Deck)
         drawCard(5,1)
         drawCard(5,2)
+        global playerCount
         playerCount = 2
         HereToSleigh = False
         #Start the first player's turn, determine who goes first
@@ -37,7 +38,6 @@ def startGame():
             print("monsterDeck")
         shuffleDeck(monsterDeck)
         chooseLeader()
-
         for player in range(1,playerCount+1,1):
             drawCard(5,player)
     drawMonsterCard(3)
@@ -209,9 +209,13 @@ def useHeroAbility(hero):
                     destroy(target, player)
             return
         case cardEffect.QiBear:
-            
+            #discard up to 3, pop hero for each
             return
-        case cardEffect.:
+        case cardEffect.ToughTeddy:
+            #Every player owning a fighter discards
+            for i in range(1,playerCount,1):
+                if i != activePlayer: #TODO check for a fighter
+                    discardSpecific(cardType.Any,1,i)
             return
         # case cardEffect.:
         #     return

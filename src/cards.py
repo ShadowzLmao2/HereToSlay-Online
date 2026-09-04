@@ -420,8 +420,7 @@ Leaders = {
         #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
-    }
-    
+    },
 }
 #Monsters
 Monsters = {
@@ -2223,7 +2222,7 @@ baqBanners = [ #Banner Quest Expansion list of banners
     "Bard Banner",
     "Berserker Banner",
     "Druid Banner",
-    "Fighter banner",
+    "Fighter Banner",
     "Guardian Banner",
     "Hunter's Trophy Banner",
     "Necromancer Banner",
@@ -2342,7 +2341,7 @@ monsterDeck = [ #Base Game list of Monsters
 wadMonsterDeck = ["Feral Dragon","Muscipula Rex"]    #Monsters from Warriors and Druids
 banMonsterDeck = ["Doom Bringer","Reptilian Ripper"] #Monsters from Berserkers and Necromancers
 dsMonsterDeck = ["Calamity Mongrel"]                 #Monsters from Dragon Sorcerers
-baqMonsterDeck = ["Chiting Scourge","Razor Tongue"]  #Monsters from Banner Quest
+baqMonsterDeck = ["Chitin Scourge","Razor Tongue"]  #Monsters from Banner Quest
 moeDeck = [ #Monster Expansion card list
     "Ancient Megashark",
     "Clawed Nightmare",
@@ -2411,7 +2410,7 @@ rankedMonsterDeck = [ #All unbanned Monsters in the Ranked deck
     "Voltclaw Lion",
     "Wandering Behemoth",
     "Wicked Sea Serpent",
-    "Chiting Scourge",
+    "Chitin Scourge",
     "Razor Tongue",
     "Calamity Mongrel"
     ]

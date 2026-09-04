@@ -1,7 +1,7 @@
 import os
 from buttons import *
 from main import *
-from data import *
+from card_images import *
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
