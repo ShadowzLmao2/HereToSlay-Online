@@ -197,41 +197,42 @@ def useHeroAbility(hero):
             secondDraw = playerHand[activePlayer[-1]]
             if testingPhase:
                 print("Drew", firstDraw, "and", secondDraw)
-                #if Cards[activePlayer[firstDraw]]
+                if Cards[activePlayer[firstDraw["Effect"]]] == cardEffect.Challenge or Cards[activePlayer[secondDraw["Effect"]]] == cardEffect.Challenge:
+                    
             return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
+            return
+        case cardEffect.:
             return
     return
 
