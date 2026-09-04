@@ -1,3 +1,4 @@
+import os
 from main import *
 from data import *
 import tkinter as tk
@@ -10,6 +11,10 @@ window.title("Here to Slay Online")
 
 defaultImgWidth = 140
 defaultImgHeight = 200
+
+#0 = main menu
+#1 = game screen
+currentScene = 0
 
 
 def start() :
@@ -58,3 +63,12 @@ def resize_image(path):
     except Exception as e:
         print(f"Error loading image: {e}")
         return None
+
+#TODO: setup preloading all PhotoImage classes using this function to find each of their paths
+"""# Replace 'path/to/your/folder' with the actual path
+folder_path = os.path.join('path/to/your/folder', 'your_folder_name')
+# Get all entries in the folder
+entries = os.listdir(folder_path)
+# Loop through entries and print their names
+for entry in entries:
+print(entry)"""
