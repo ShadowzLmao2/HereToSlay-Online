@@ -1,21 +1,26 @@
 from main import *
+from data import *
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from PIL import Image, ImageTk  # Import PIL for PNG support
 window = Tk()
 window.geometry("1280x720")
 window.title("Here to Slay Online")
 
 
 def start() :
+    
     #TODO: make these buttons do smth, all currently just quit the program
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
+    img = tk.PhotoImage(file='src/data/card_images/BaseGame/Cards/badAxe.png')
     playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
     rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
     settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
-    quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
+    #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
+    quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
     #Main Menu
     playButton.pack(ipadx=5, ipady=5, expand=True)
