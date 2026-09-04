@@ -80,7 +80,7 @@ class cardEffect(Enum):
         #Dragon Sorcerers
     EggOfFortune          = 35
         #KSE
-    CapitvatingSpell      = 36   
+    CaptivatingSpell      = 36   
     #Other Action Cards
     ClassChallenge        = 37
     Draw2Modifier         = 38
@@ -886,49 +886,42 @@ Cards = {
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Druid Challenge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Druid,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Warrior Challenge" : {
-        "Image" : '',
-        "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Warrior,
-        "Card Type"   : cardType.Action,
-        "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
-    },
-    "Warrior Challenge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Warrior,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Berserker Challenge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Berserker,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Necromancer Challenge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Necromancer,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Sorcerer Challenge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "+4 Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/+4-0BaseModifier.png',
         "Effect" : cardEffect.OneModifier,
         "Positive Effect" : 4,
         "Quantity" : 4,
@@ -936,7 +929,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +4 to that roll."
     },
     "+3/-1 Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/+3-1BaseModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 3,
         "Negative Effect" : 1,
@@ -945,7 +938,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -1 to that roll."
     },
     "+2/-2 Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/+2-2BaseModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 2,
@@ -954,7 +947,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll."
     },
     "+1/-3 Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/+1-3BaseModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 3,
@@ -963,13 +956,14 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -3 to that roll."
     },
     "-4 Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/+0-4BaseModifier.png',
         "Effect" : cardEffect.OneModifier,
         "Negative Effect" : 4,
         "Quantity" : 4,
         "Card Type"   : cardType.Action,
         "Description" : "Play this card after any player (including you) rolls the dice. -4 to that roll."
     },
+    #TODO: sshadowz forgot these images bc hes dumb
     #Warriors and Druids Modifiers
     "+1/-1 WaD Modifier" : {
         "Image" : '',
@@ -1003,7 +997,7 @@ Cards = {
     },
     #Berserkers and Necromancers Modifiers
     "+2/-2 BaN Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/+2-2BaNModifier.png',
         "Effect" : cardEffect.AtkBonusModifier,
         "Positive Effect" : 2,
         "Negative Effect" : 2,
@@ -1011,7 +1005,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll. If you are attacking a Monster card, +4 to that roll instead."
     },
     "+7 BaN Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/+7BaNModifier.png',
         "Effect" : cardEffect.DiscardHandModifier,
         "Positive Effect" : 7,
         "Card Type"   : cardType.Action,
@@ -1019,14 +1013,14 @@ Cards = {
     },
     #Dragon Sorcerers Modifiers
     "+6 DS Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/+6DSModifier.png',
         "Effect" : cardEffect.Discard1Modifier,
         "Positive Effect" : 6,
         "Card Type"   : cardType.Action,
         "Description" : "Play this card after any player (including you) rolls the dice and DISCARD a card. +6 to that roll."
     },
     "-6 DS Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/-6DSModifier.png',
         "Effect" : cardEffect.Discard1Modifier,
         "Negative Effect" : 6,
         "Card Type"   : cardType.Action,
@@ -1034,7 +1028,7 @@ Cards = {
     },
     #KSE Modifiers
     "+1/-4 KSE Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/+1-4KSEModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 4,
@@ -1042,7 +1036,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -4 to that roll."
     },
     "+2/-3 KSE Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/+2-3KSEModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 3,
@@ -1050,7 +1044,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -3 to that roll."
     },
     "+3/-2 KSE Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/+3-2KSEModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 3,
         "Negative Effect" : 2,
@@ -1058,7 +1052,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -2 to that roll."
     },
     "+4/-1 KSE Modifier" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/+4-1KSEModifier.png',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 4,
         "Negative Effect" : 1,
@@ -1067,59 +1061,60 @@ Cards = {
     },
 #Magic
     "Call to the Fallen" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/callToTheFallen.png',
         "Effect" : cardEffect.CallToTheFallen,
         "Card Type"   : cardType.Magic,
         "Description" : "Search the discard pile for a Hero card and add it to your hand."
     },
     "Critical Boost" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/criticalBoost.png',
         "Effect" : cardEffect.CriticalBoost,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DRAW 3 cards and DISCARD a card."
     },
     "Destructive Spell" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/destructiveSpell.png',
         "Effect" : cardEffect.DestructiveSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD a card, then DESTROY a Hero card."
     },
     "Enchanted Spell" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/enchantedSpell.png',
         "Effect" : cardEffect.EnchantedSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "+2 to all of your rolls until the end of your turn."
     },
     "Entangling Trap" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/entanglingTrap.png',
         "Effect" : cardEffect.EnchantedSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD 2 cards, then STEAL a Hero card."
     },
     "Forced Exchange" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/forcedExchange.png',
         "Effect" : cardEffect.ForcedExchange,
         "Card Type"   : cardType.Magic,
         "Description" : "Choose a player. STEAL a Hero card from that player's Party, then move a Hero card from your Party to that player's Party.",
         "Ranked Description" : "Choose a player. TRADE Heroes with that player."
     },
     "Forecful Winds" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/forcefulWinds.png',
         "Effect" : cardEffect.ForcefulWinds,
         "Card Type"   : cardType.Magic,
         "Description" : "Return every equipped Item card to its respective player's hand."
     },
     "Winds of Change" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/windsOfChange.png',
         "Effect" : cardEffect.WindsOfChange,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "Return an Item card equipped to any player's Hero card to that player's hand, then DRAW a card."
     },
+    #TODO magic
     #Warriors and Druids Magic
     "Beast Call" : {
         "Image" : '',
@@ -1136,14 +1131,14 @@ Cards = {
     },
     #Berserkers and Necromancers Magic
     "Lightning Labrys" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/lightningLabrys.png',
         "Effect" : cardEffect.LightningLabrys,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD up to 3 cards. For each card discarded, choose a player. That player must SACRIFICE a Hero card."
     },
     "Mass Sacrifice" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/massSacrifice.png',
         "Effect" : cardEffect.MassSacrifice,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
@@ -1151,92 +1146,92 @@ Cards = {
     },
     #Dragon Sorcerers Magic
     "Egg of Fortune" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/eggOfFortune.png',
         "Effect" : cardEffect.EggOfFortune,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD a card, then pull a card from each other player's hand."
     },
     #KSE Magic
-    "Capitvating Spell" : {
-        "Image" : '',
-        "Effect" : cardEffect.CapitvatingSpell,
+    "Captivating Spell" : {
+        "Image" : 'src/card_images/KSE/Cards/captivatingSpell.png',
+        "Effect" : cardEffect.CaptivatingSpell,
         "Card Type"   : cardType.Magic,
         "Description" : "+3 to all of your rolls until the end of your turn"
     },
 #Items
     #Masks
     "Bard Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/bardMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Bard instead of its original class."
     },
     "Fighter Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/fighterMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Fighter instead of its original class."
     },
     "Guardian Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/guardianMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Guardian instead of its original class."
     },
     "Ranger Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/rangerMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Ranger instead of its original class."
     },
     "Thief Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/thiefMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Thief instead of its original class."
     },
     "Wizard Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/wizardMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Wizard instead of its original class."
     },
     "Druid Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Druid instead of its original class."
     },
     "Warrior Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Warrior instead of its original class."
     },
     "Berserker Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Berserker instead of its original class."
     },
     "Necromancer Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Necromancer instead of its original class."
     },
     "Sorcerer Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererMask.png',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
@@ -1244,20 +1239,20 @@ Cards = {
     },
     #Base Game Items
     "Decoy Doll" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/decoyDoll.png',
         "Effect" : cardEffect.DecoyDoll,
         "Card Type"   : cardType.Item,
         "Description" : "If the equipped Hero card would be sacrificed or destroyed, move this card to the discard pile instead."
     },
     "Particularly Rusty Coin" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/particularlyRustyCoin.png',
         "Effect" : cardEffect.ParticularlyRustyCoin,
         "Quantity"    : 2,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, DRAW a card."
     },
     "Really Big Ring" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/reallyBigRing.png',
         "Effect" : cardEffect.ReallyBigRing,
         "Quantity"    : 2,
         "Card Type"   : cardType.Item,
@@ -1265,45 +1260,45 @@ Cards = {
     },
     #Warriors and Druids Items
     "Bottomless Bag" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/bottomlessBag.png',
         "Effect" : cardEffect.BottomlessBag,
         "Card Type"   : cardType.Item,
         "Description" : "You may roll to use the equipped Hero card's effect more than once per turn, at a cost of one action point for each roll to use."
     },
     "Even Bigger Ring" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/evenBiggerRing.png',
         "Effect" : cardEffect.EvenBiggerRing,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use the equipped Hero card's effect, +4 to your roll."
     },
     "Temporal Hourglass" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/temporalHourglass.png',
         "Effect" : cardEffect.TemporalHourglass,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, you may spend an extra action point this turn."
     },
     #Berserkers and Necromancers Items
     "Biggest Ring Ever" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/biggestRingEver.png',
         "Effect" : cardEffect.BiggestRingEver,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use the equipped Hero card's effect, you may DISCARD up to 3 cards. For each card discarded, +2 to your roll."
     },
     "Goblet of Caffeination" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/gobletOfCaffeination.png',
         "Effect" : cardEffect.GobletOfCaffeination,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, you may SACRIFICE this card, then roll to use that effect again immediately."
     },
     "Silver Lining" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/silverLining.png',
         "Effect" : cardEffect.SilverLining,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, +2 to all of your rolls for the rest of your turn."
     },
     #KSE Items
     "Mysterious Feather" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/mysteriousFeather.png',
         "Effect" : cardEffect.MysteriousFeather,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use this Hero card's effect, you may DISCARD a card. If you do, +3 to your roll."
@@ -1311,7 +1306,7 @@ Cards = {
     
     #Base Game Curses
     "Curse of the Snake's Eyes" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/curseOfTheSnakesEyes.png',
         "Curse" : True,
         "Effect" : cardEffect.CurseOfTheSnakesEyes,
         "Quantity"    : 2,
@@ -1319,14 +1314,14 @@ Cards = {
         "Description" : "Each time you roll to use the equipped Hero card's effect, -2 to your roll."
     },
     "Sealing Key" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/sealingKey.png',
         "Curse" : True,
         "Card Type"   : cardType.Item,
         "Effect" : cardEffect.SealingKey,
         "Description" : "You cannot use the equipped Hero card's effect."
     },
     "Suspiciously Shiny Coin" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/suspiciouslyShinyCoin.png',
         "Curse" : True,
         "Effect" : cardEffect.SuspiciouslyShinyCoin,
         "Card Type"   : cardType.Item,
@@ -1334,14 +1329,14 @@ Cards = {
     },
     #Warriors and Druids Curses
     "Cursed Glove" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/cursedGlove.png',
         "Curse" : True,
         "Effect" : cardEffect.CursedGlove,
         "Card Type"   : cardType.Item,
         "Description" : "If another Hero card in your Party is stolen, move the equipped Hero card to the Party of the player who stole it as well."
     },
     "Soul Tether" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/soulTether.png',
         "Curse" : True,
         "Effect" : cardEffect.SoulTether,
         "Card Type"   : cardType.Item,
@@ -1349,14 +1344,14 @@ Cards = {
     },
     #Berserkers and Necromancers Curses
     "Dragon's Bile" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/dragonsBile.png',
         "Curse" : True,
         "Effect" : cardEffect.DragonsBile,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, SACRIFICE a Hero card."
     },
     "Soulbound Grimoire" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/soulboundGrimoire.png',
         "Curse" : True,
         "Effect" : cardEffect.SoulboundGrimoire,
         "Card Type"   : cardType.Item,
@@ -1364,7 +1359,7 @@ Cards = {
     },
     #KSE Curses
     "Mask of Misfortune" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/maskOfMisfortune.png',
         "Curse" : True,
         "Effect" : cardEffect.MaskOfMisfortune,
         "Card Type"   : cardType.Item,
