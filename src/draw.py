@@ -10,7 +10,7 @@ window.title("Here to Slay Online")
 #Declare all buttons in the opening screen
 #The layout is as follows:
 #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
-playButton = tk.Button(window, text='Play', command=startGame(), width=40, height=2)
+playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
 rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
 settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
 quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
