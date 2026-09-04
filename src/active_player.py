@@ -15,6 +15,7 @@ playerHand = {
     5 : [],
     6 : []
 }
+monsterField = [0,0,0]
 playerLeaders = {
     1 : Leaders["None"],
     2 : Leaders["None"],

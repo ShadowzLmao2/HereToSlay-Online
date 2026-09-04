@@ -37,8 +37,10 @@ def startGame():
             print("monsterDeck")
         shuffleDeck(monsterDeck)
         chooseLeader()
+
         for player in range (1,playerCount+1,1):
             drawCard(5,player)
+    drawMonsterCard(3)
     if testingPhase:
         print("PreGame Phase finalized")
     main()
@@ -110,9 +112,9 @@ def shuffleDeck(deck):
     return
 
 def chooseAction():
-    #Working: endTurn()
+    #Working: endTurn() draw() discardDraw()
     #WIP: activateHeroAbility(hero)
-    #Not Working: draw() attack() discardDraw() endTurn() activateLeaderAbility(playerParties[activePlayer["Leader"]])
+    #Not Working: attack() activateLeaderAbility(playerParties[activePlayer["Leader"]])
     endTurn()
     return
 
@@ -281,6 +283,16 @@ def drawCard(count, player):
             print("Player", player, "drew a card")
     if testingPhase:
         print(playerHand[player])
+    return
+
+def drawMonsterCard(count):
+    for i in range(2,2-count,-1):
+        monsterField[i] = monsterDeck[-1]
+        monsterDeck.pop()
+        if testingPhase:
+            print("Monster Card was drawn")
+    if testingPhase:
+        print(monsterField)
     return
 
 def attack():
