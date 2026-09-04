@@ -9,6 +9,7 @@ HereToSleigh = False
 MonsterExpansion = False
 KSEandLimited = False
 maxHeroes = 5 + WarriorsAndDruids + BerserkersAndNecromancers
+autoUnicornIn1v1 = True
 ExtraEnemyMonsterSlot = False
 if MonsterExpansion == False:
     ExtraEnemyMonsterSlot = False

@@ -72,11 +72,11 @@ Ranked Rules:
     - Trading Heroes happens reglardless of how many Heroes you have in your party, stealing fails if you have 7
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
 - Leader Bans: Unstable Unicorn
-- Hero Bans: Dystortivern
+- Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror
 - Monster Bans: Venemous Gemini
 - Other Bans:
     - All of 'Here to Sleigh'
 
-Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron
+Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron, Lucky Bucky, Vicious Wildcat
 
 Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay
