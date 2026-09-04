@@ -191,48 +191,57 @@ def useHeroAbility(hero):
         case cardEffect.ForceDiscard:
             discardSpecific(choosePlayer(),2)
             return
-        case cardEffect.HeavyBear:
+        case cardEffect.PanChucks:
             drawCard(2,activePlayer)
             firstDraw = playerHand[activePlayer[-2]]
             secondDraw = playerHand[activePlayer[-1]]
             if testingPhase:
                 print("Drew", firstDraw, "and", secondDraw)
-                if Cards[activePlayer[firstDraw["Effect"]]] == cardEffect.Challenge or Cards[activePlayer[secondDraw["Effect"]]] == cardEffect.Challenge:
-                    
+                if Cards[activePlayer[firstDraw["Effect"]]] == cardEffect.Challenge:
+                    revealCard(-2)
+                    player = choosePlayer()
+                    target = chooseHero()
+                    destroy(target, player)
+                if Cards[activePlayer[secondDraw["Effect"]]] == cardEffect.Challenge:
+                    revealCard(-1)
+                    player = choosePlayer()
+                    target = chooseHero()
+                    destroy(target, player)
+            return
+        case cardEffect.QiBear:
+            
             return
         case cardEffect.:
             return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
-            return
-        case cardEffect.:
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
+        #     return
+        # case cardEffect.:
             return
     return
 
@@ -285,6 +294,9 @@ def playCard(cardType,optional):
         whichCard(True,cardType)
         placeCard()
         removeFromHand()
+    return
+
+def revealCard(index):
     return
 
 def whichCard(matchType,typeToMatch):

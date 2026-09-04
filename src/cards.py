@@ -1,6 +1,6 @@
 from enum import Enum
 from config import *
-from data import *
+#from data import *
 class heroEffect(Enum):
     NoEffect          = 0
     #Heroes
@@ -276,6 +276,7 @@ class MoExAtkReq(Enum):
     
 #Cards
 #Party Leaders
+
 Leaders = {
     "None" : {
         "Description" : "None",
@@ -285,7 +286,7 @@ Leaders = {
         "Class" : heroType.Bard,
         "Effect" : heroEffect.CharismaticSong,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
+        #"Image" : 'src/card_images/BaseGame/Leaders/charismaticSong.png',
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
@@ -1354,7 +1355,7 @@ Cards = {
         "Card Type"   : cardType.Hero,
         "Description" : "DRAW 2 cards. If at least one of those cards is a Challenge card, you may reveal it, then DESTROY a Hero card."
     },
-    "Qi Fighter" : {
+    "Qi Bear" : {
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.QiBear,
         "Effect Roll" : 10,
