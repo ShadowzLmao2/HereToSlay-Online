@@ -350,4 +350,4 @@ def endTurn():
     AP = 3
     return
 
-startGame()
+#startGame()
