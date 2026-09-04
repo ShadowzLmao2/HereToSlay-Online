@@ -1,6 +1,7 @@
 from enum import Enum
 from config import *
-#from data import *
+from draw import *
+from data import *
 class heroEffect(Enum):
     NoEffect          = 0
     #Heroes
@@ -283,141 +284,143 @@ Leaders = {
         "Start of Turn" : False,
         },
     "Charismatic Song" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\charismaticSong.png',
         "Class" : heroType.Bard,
         "Effect" : heroEffect.CharismaticSong,
         "Activatable" : False,
-        #"Image" : 'src/card_images/BaseGame/Leaders/charismaticSong.png',
+        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\fistOfReason.png',
         "Class" : heroType.Fighter,
         "Effect" : heroEffect.FistOfReason,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\shadowClaw.png',
         "Class" : heroType.Thief,
         "Effect" : heroEffect.ShadowClaw,
         "Activatable" : True,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\cloakedSage.png',
         "Class" : heroType.Wizard,
         "Effect" : heroEffect.CloakedSage,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\divineArrow.png',
         "Class" : heroType.Ranger,
         "Effect" : heroEffect.DivineArrow,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
+        "Image" : 'src\data\card_images\BaseGame\Leaders\protectingHorn.png',
         "Class" : heroType.Guardian,
         "Effect" : heroEffect.ProtectingHorn,
         "Activatable" : False,
-        #"Image" : originalGame.BaseGame,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Leaders\nobleShaman.png',
         "Class" : heroType.Druid,
         "Effect" : heroEffect.NobleShaman,
         "Activatable" : False,
-        #"Image" : originalGame.WaD,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Leaders\piercingHowl.png',
         "Class" : heroType.Warrior,
         "Effect" : heroEffect.PiercingHowl,
         "Activatable" : False,
-        #"Image" : originalGame.WaD,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
+        "Image" : 'src\data\card_images\BerserkersAndNecromancers\Leaders\gnawingDread.png',
         "Class" : heroType.Necromancer,
         "Effect" : heroEffect.GnawingDread,
         "Activatable" : True,
-        #"Image" : originalGame.BaN,
+
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
+        "Image" : 'src\data\card_images\BerserkersAndNecromancers\Leaders\ragingManticore.png',
         "Class" : heroType.Berserker,
         "Effect" : heroEffect.RagingManticore,
         "Activatable" : False,
-        #"Image" : originalGame.BaN,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
+        "Image" : 'src\data\card_images\DragonSorcerers\Leaders\fearlessFlame.png',
         "Class" : heroType.Sorcerer,
         "Effect" : heroEffect.FearlessFlame,
         "Activatable" : False,
-        #"Image" : originalGame.DrSo,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
     "Brutal Bow" : {
+        "Image" : 'src\data\card_images\KSE\Leaders\brutalBow.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Ranger,
         "Effect" : heroEffect.BrutalBow,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
+        "Image" : 'src\data\card_images\KSE\Leaders\mysticalMaestro.png',
         "Class" : heroType.Wizard,
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.MysticalMaestro,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
+        "Image" : 'src\data\card_images\KSE\Leaders\veiledRaider.png',
         "Class" : heroType.Guardian,
         "Secondary Class" : heroType.Thief,
         "Effect" : heroEffect.VeiledRaider,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
+        "Image" : 'src\data\card_images\KSE\Leaders\unstableUnicorn.png',
         "Class" : heroType.NoClass,
         "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
-        #"Image" : originalGame.IE,
         "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
     "Fierce Panguardian" : {
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\fiercePanguardian.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Guardian,
         "Effect" : heroEffect.FiercePanguardian,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\illusiveTrickster.png',
         "Class" : heroType.Thief,
         "Secondary Class" : heroType.Wizard,
         "Effect" : heroEffect.IllusiveTrickster,
         "Activatable" : True,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
     "Rhythmic Archer" : {
+        "Image" : 'src\data\card_images\KSE\IndividualExclusives\rhythmicArcher.png',
         "Class" : heroType.Ranger,
         "Secondary Class" : heroType.Bard,
         "Effect" : heroEffect.RhythmicArcher,
         "Activatable" : False,
-        #"Image" : originalGame.KSE,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
     },
@@ -425,217 +428,218 @@ Leaders = {
 #Monsters
 Monsters = {
     "Abyss Queen" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\abyssQueen.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.abyssQueen,
         "Description" : "Each time another player plays a Modifier card on one of your rolls, +1 to your roll."
     },
     "Anuran Cauldron" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\anuranCauldron.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.anuranCauldron,
         "Description" : "Each time you roll, +1 to your roll."
     },
     "Arctic Aries" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\arcticAries.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.arcticAries,
         "Description" : "Each time you successfully roll to use a Hero card's effect, you may DRAW a card."
     },
     "Bloodwing" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\bloodwing.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.bloodwing,
         "Description" : "Each time another player CHALLENGES you, that player must DISCARD a card."
     },
     "Corrupted Sabreetooth" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\corruptedSabretooth.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.corruptedSabretooth,
         "Description" : "Each time you would DESTROY a Hero card, you may STEAL that Hero card instead."
     },
     "Crowned Serpent" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\crownedSerpent.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.crownedSerpent,
         "Description" : "Each time any player (including you) plays a Modifier card, you may DRAW a card."
     },
     "Dark Dragon King" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\darkDragonKing.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Bard,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.darkDragonKing,
         "Description" : "Each time you roll for a Hero card's effect, +1 to your roll."
     },
     "Dracos" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\dracos.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.sacrifice,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.dracos,
         "Description" : "Each time a Hero card in your Party is destroyed, you may DRAW a card."
     },
     "Malamammoth" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\malamammoth.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Ranger,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.malamammoth,
         "Description" : "Each time you DRAW an Item card, you may play it immediately."
     },
     "Mega Slime" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\megaSlime.png',
         "Hero Req"    : 4,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.megaSlime,
         "Description" : "You may spend an extra action point on each of your turns."
     },
     "Orthus" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\orthus.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Wizard,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.orthus,
         "Description" : "Each time you DRAW a Magic card, you may play it immediately."
     },
     "Rex Major" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\rexMajor.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Guardian,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.rexMajor,
         "Description" : "Each time you DRAW a Modifier card, you may reveal it and DRAW a second card."
     },
     "Terratuga" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\terratuga.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 11,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.terratuga,
         "Description" : "Your Hero cards cannot be destroyed."
     },
     "Titan Wyvern" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\titanWyvern.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Fighter,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.titanWyvern,
         "Description" : "Each time you roll for a Challenge card, +1 to your roll."
     },
     "Warworn Owlbear" : {
+        "Image" : 'src\data\card_images\BaseGame\Monsters\warwornOwlbear.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Thief,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaseGame,
         "Effect"      : monsterEffect.warwornOwlbear,
         "Description" : "Item cards you play cannot be challenged."
     },
     #Warriors and Druids Monsters
     "Feral Dragon" : {
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Monsters\feralDragon.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.WaD,
         "Effect"      : monsterEffect.feralDragon,
         "Description" : "Each time any player sacrifices a card, DRAW a card."
     },
     "Muscipula Rex" : {
+        "Image" : 'src\data\card_images\WarriorsAndDruids\Monsters\muscipulaRex.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.WaD,
         "Effect"      : monsterEffect.feralDragon,
         "Description" : "Once per turn on your turn, you may DRAW a card without spending an action point."
     },
     #Berserkers and Necromancers Monsters
     "Doombringer" : {
+        "Image" : 'src/data/card_images/BerserkersAndNecromancers/Monsters/doombringer.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Necromancer,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discardHand,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaN,
         "Effect"      : monsterEffect.doombringer,
         "Description" : "Each time you SACRIFICE a card, you may choose a card from the discard pile, add it to your hand."
     },
     "Reptilian Ripper" : {
+        "Image" : 'src/data/card_images/BerserkersAndNecromancers/Monsters/reptilianRipper.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Berserker,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrificeTwo,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BaN,
         "Effect"      : monsterEffect.reptilianRipper,
         "Description" : "Each time you roll to ATTACK a Monster card, +2 to your roll."
     },
     "Ancient Megashark" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/ancientMegashark.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discard,
         "Class Req"   : heroType.NoClass,
@@ -643,11 +647,11 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.ancientMegashark,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to that roll."
     },
     "Clawed Nightmare" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/clawedNightmare.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Bard,
@@ -656,11 +660,11 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.clawedNightmare,
         "Description" : "Each time you end your turn with no cards in your hands, you may pull 2 cards from another player's hand."
     },
     "Dragon Wasp" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/dragonWasp.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardTwo,
         "Class Req"   : heroType.NoClass,
@@ -668,11 +672,11 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.dragonWasp,
         "Description" : "Each time one of your Hero cards would be sacrificed or destroyed, you may DISACRD 2 cards instead."
     },
     "Goretelodont" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/goretelodont.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Guardian,
@@ -681,11 +685,11 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.goretelodont,
         "Description" : "Each time you end your turn with no cards in your hand, you may DRAW 3 cards."
     },
     "Lumbering Demon" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/lumberingDemon.png',
         "Hero Req"    : 2,
         "MoEx AtkReq" : MoExAtkReq.noReq,
         "Class Req"   : heroType.NoClass,
@@ -693,11 +697,11 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.lumberingDemon,
         "Description" : "Each time you would DRAW a card, you may DRAW 2 cards and DISCARD a card instead."
     },
     "Possessed Plush" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/possessedPlush.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Challenge,
@@ -706,33 +710,33 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.possessedPlush,
         "Description" : "Each time you play a Challenge card, DRAW a card."
     },
     "Reef Ripper" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/reefRipper.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.sacrifice,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.reefRipper,
         "Description" : "Each time you unsuccessfully roll to use a Hero card's effect, you may DRAW a card."
     },
     "Saffyre Phoenix" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/saffyrePhoenix.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 8,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 13,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.saffyrePhoenix, #remember to add the +2 per Hero bonus
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may play a Hero card from your hand immediately."
     },
     "Scavenger Griffin" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/scavengerGriffin.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
         "Class Req"   : heroType.Fighter,
@@ -741,22 +745,22 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.scavengerGriffin,
         "Description" : "Each time you end your turn with no cards in your hand, you may STEAL a Hero card."
     },
     "Venomous Gemini" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/venomousGemini.png',
         "Hero Req"    : 5,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.venemousGemini,
         "Description" : "Venomous Gemini counts for 2 Monsters."
     },
     "Voltclaw Lion" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/voltclawLion.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Magic,
@@ -765,22 +769,22 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.voltclawLion,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Wandering Behemoth" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/wanderingBehemoth.png',
         "Hero Req"    : 1,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.wanderingBehemoth, #remember to add the +1 per Hero bonus
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may DRAW a card."
     },
     "Wicked Sea Serpent" : {
+        "Image" : 'src/data/card_images/MonsterExpansion/wickedSeaSerpent.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Item,
@@ -789,40 +793,40 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.MoEx,
         "Effect"      : monsterEffect.wickedSeaSerpent,
         "Description" : "Each time you play an Item card, DRAW a card."
     },
+    #banner quest monsters
     "Chitin Scourge" : {
+        "Image" : '',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BanQ,
         "Effect"      : monsterEffect.chitinScourge,
         "Description" : "Each time another player rolls to ATTACK a Monster card, -1 to that roll."
     },
     "Razor Tongue" : {
+        "Image" : '',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 9,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.BanQ,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
     },
-    "Calamity Mongrel" :{
+    "Calamity Mongrel" : {
+        "Image" : '',
         "Hero Req"    : 2,
         "Class Req"   : heroType.Sorcerer,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discardTwo,
         "Win Roll"    : 8,
         "Win Effect"  : monsterRollEffect.slay,
-        #"Image"         : originalGame.DrSo,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
@@ -833,84 +837,98 @@ Monsters = {
 Cards = {
     #Action
     "Challenge" : {
+        "Image" : 'src/data/card_images/BaseGame/Cards/challenge.png',
         "Effect" : cardEffect.Challenge,
         "Quantity"    : 14,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card."
     },
     "Fighter Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/fighterChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Fighter,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Bard Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/bardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Bard,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Guardian Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/guardianChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Guardian,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Ranger Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/rangerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Ranger,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Thief Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/thiefChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Thief,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Wizard Challenge" : {
+        "Image" : 'src/data/card_images/KSE/Cards/wizardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Druid Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Druid,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Warrior Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Warrior,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Warrior Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Warrior,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Berserker Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Berserker,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Necromancer Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Necromancer,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Sorcerer Challenge" : {
+        "Image" : '',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "+4 Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.OneModifier,
         "Positive Effect" : 4,
         "Quantity" : 4,
@@ -918,6 +936,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +4 to that roll."
     },
     "+3/-1 Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 3,
         "Negative Effect" : 1,
@@ -926,6 +945,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -1 to that roll."
     },
     "+2/-2 Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 2,
@@ -934,6 +954,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll."
     },
     "+1/-3 Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 3,
@@ -942,6 +963,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -3 to that roll."
     },
     "-4 Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.OneModifier,
         "Negative Effect" : 4,
         "Quantity" : 4,
@@ -950,6 +972,7 @@ Cards = {
     },
     #Warriors and Druids Modifiers
     "+1/-1 WaD Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Draw2Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 1,
@@ -957,6 +980,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -1 to that roll. DRAW 2 cards."
     },
     "+2/-1 WaD Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Draw1Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 1,
@@ -964,12 +988,14 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -1 to that roll. DRAW a card."
     },
     "+4 WaD Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.DrawIfAboveModifier,
         "Positive Effect" : 4,
         "Card Type"   : cardType.Action,
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -1 to that roll. If the roll is modified above 12, DRAW a card."
     },
     "-4 WaD Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.SearchDiscBelowMod,
         "Negative Effect" : 4,
         "Card Type"   : cardType.Action,
@@ -977,6 +1003,7 @@ Cards = {
     },
     #Berserkers and Necromancers Modifiers
     "+2/-2 BaN Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.AtkBonusModifier,
         "Positive Effect" : 2,
         "Negative Effect" : 2,
@@ -984,6 +1011,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll. If you are attacking a Monster card, +4 to that roll instead."
     },
     "+7 BaN Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.DiscardHandModifier,
         "Positive Effect" : 7,
         "Card Type"   : cardType.Action,
@@ -991,12 +1019,14 @@ Cards = {
     },
     #Dragon Sorcerers Modifiers
     "+6 DS Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Discard1Modifier,
         "Positive Effect" : 6,
         "Card Type"   : cardType.Action,
         "Description" : "Play this card after any player (including you) rolls the dice and DISCARD a card. +6 to that roll."
     },
     "-6 DS Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Discard1Modifier,
         "Negative Effect" : 6,
         "Card Type"   : cardType.Action,
@@ -1004,6 +1034,7 @@ Cards = {
     },
     #KSE Modifiers
     "+1/-4 KSE Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 4,
@@ -1011,6 +1042,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -4 to that roll."
     },
     "+2/-3 KSE Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 3,
@@ -1018,6 +1050,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -3 to that roll."
     },
     "+3/-2 KSE Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 3,
         "Negative Effect" : 2,
@@ -1025,6 +1058,7 @@ Cards = {
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -2 to that roll."
     },
     "+4/-1 KSE Modifier" : {
+        "Image" : '',
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 4,
         "Negative Effect" : 1,
@@ -1033,46 +1067,54 @@ Cards = {
     },
 #Magic
     "Call to the Fallen" : {
+        "Image" : '',
         "Effect" : cardEffect.CallToTheFallen,
         "Card Type"   : cardType.Magic,
         "Description" : "Search the discard pile for a Hero card and add it to your hand."
     },
     "Critical Boost" : {
+        "Image" : '',
         "Effect" : cardEffect.CriticalBoost,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DRAW 3 cards and DISCARD a card."
     },
     "Destructive Spell" : {
+        "Image" : '',
         "Effect" : cardEffect.DestructiveSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD a card, then DESTROY a Hero card."
     },
     "Enchanted Spell" : {
+        "Image" : '',
         "Effect" : cardEffect.EnchantedSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "+2 to all of your rolls until the end of your turn."
     },
     "Entangling Trap" : {
+        "Image" : '',
         "Effect" : cardEffect.EnchantedSpell,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD 2 cards, then STEAL a Hero card."
     },
     "Forced Exchange" : {
+        "Image" : '',
         "Effect" : cardEffect.ForcedExchange,
         "Card Type"   : cardType.Magic,
         "Description" : "Choose a player. STEAL a Hero card from that player's Party, then move a Hero card from your Party to that player's Party.",
         "Ranked Description" : "Choose a player. TRADE Heroes with that player."
     },
     "Forecful Winds" : {
+        "Image" : '',
         "Effect" : cardEffect.ForcefulWinds,
         "Card Type"   : cardType.Magic,
         "Description" : "Return every equipped Item card to its respective player's hand."
     },
     "Winds of Change" : {
+        "Image" : '',
         "Effect" : cardEffect.WindsOfChange,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
@@ -1080,11 +1122,13 @@ Cards = {
     },
     #Warriors and Druids Magic
     "Beast Call" : {
+        "Image" : '',
         "Effect" : cardEffect.BeastCall,
         "Card Type"   : cardType.Magic,
         "Description" : "Move all face-up Monster cards to the bottom of the Monster deck and flip the top 3 cards from the Monster deck face up. You may spend an extra action point this turn."
     },
     "Rapid Refresh" : {
+        "Image" : '',
         "Effect" : cardEffect.RapidRefresh,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD every card in your hand (if you have any) and DRAW 4 cards.",
@@ -1092,12 +1136,14 @@ Cards = {
     },
     #Berserkers and Necromancers Magic
     "Lightning Labrys" : {
+        "Image" : '',
         "Effect" : cardEffect.LightningLabrys,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD up to 3 cards. For each card discarded, choose a player. That player must SACRIFICE a Hero card."
     },
     "Mass Sacrifice" : {
+        "Image" : '',
         "Effect" : cardEffect.MassSacrifice,
         "Quantity"    : 2,
         "Card Type"   : cardType.Magic,
@@ -1105,12 +1151,14 @@ Cards = {
     },
     #Dragon Sorcerers Magic
     "Egg of Fortune" : {
+        "Image" : '',
         "Effect" : cardEffect.EggOfFortune,
         "Card Type"   : cardType.Magic,
         "Description" : "DISCARD a card, then pull a card from each other player's hand."
     },
     #KSE Magic
     "Capitvating Spell" : {
+        "Image" : '',
         "Effect" : cardEffect.CapitvatingSpell,
         "Card Type"   : cardType.Magic,
         "Description" : "+3 to all of your rolls until the end of your turn"
@@ -1118,66 +1166,77 @@ Cards = {
 #Items
     #Masks
     "Bard Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Bard instead of its original class."
     },
     "Fighter Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Fighter instead of its original class."
     },
     "Guardian Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Guardian instead of its original class."
     },
     "Ranger Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Ranger instead of its original class."
     },
     "Thief Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Thief instead of its original class."
     },
     "Wizard Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Wizard instead of its original class."
     },
     "Druid Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Druid instead of its original class."
     },
     "Warrior Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Warrior instead of its original class."
     },
     "Berserker Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Berserker instead of its original class."
     },
     "Necromancer Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
         "Description" : "The equipped Hero card is considered a Necromancer instead of its original class."
     },
     "Sorcerer Mask" : {
+        "Image" : '',
         "Mask" : True,
         "Effect" : cardEffect.Mask,
         "Card Type"   : cardType.Item,
@@ -1185,17 +1244,20 @@ Cards = {
     },
     #Base Game Items
     "Decoy Doll" : {
+        "Image" : '',
         "Effect" : cardEffect.DecoyDoll,
         "Card Type"   : cardType.Item,
         "Description" : "If the equipped Hero card would be sacrificed or destroyed, move this card to the discard pile instead."
     },
     "Particularly Rusty Coin" : {
+        "Image" : '',
         "Effect" : cardEffect.ParticularlyRustyCoin,
         "Quantity"    : 2,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, DRAW a card."
     },
     "Really Big Ring" : {
+        "Image" : '',
         "Effect" : cardEffect.ReallyBigRing,
         "Quantity"    : 2,
         "Card Type"   : cardType.Item,
@@ -1203,38 +1265,45 @@ Cards = {
     },
     #Warriors and Druids Items
     "Bottomless Bag" : {
+        "Image" : '',
         "Effect" : cardEffect.BottomlessBag,
         "Card Type"   : cardType.Item,
         "Description" : "You may roll to use the equipped Hero card's effect more than once per turn, at a cost of one action point for each roll to use."
     },
     "Even Bigger Ring" : {
+        "Image" : '',
         "Effect" : cardEffect.EvenBiggerRing,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use the equipped Hero card's effect, +4 to your roll."
     },
     "Temporal Hourglass" : {
+        "Image" : '',
         "Effect" : cardEffect.TemporalHourglass,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, you may spend an extra action point this turn."
     },
     #Berserkers and Necromancers Items
     "Biggest Ring Ever" : {
+        "Image" : '',
         "Effect" : cardEffect.BiggestRingEver,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use the equipped Hero card's effect, you may DISCARD up to 3 cards. For each card discarded, +2 to your roll."
     },
     "Goblet of Caffeination" : {
+        "Image" : '',
         "Effect" : cardEffect.GobletOfCaffeination,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, you may SACRIFICE this card, then roll to use that effect again immediately."
     },
     "Silver Lining" : {
+        "Image" : '',
         "Effect" : cardEffect.SilverLining,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, +2 to all of your rolls for the rest of your turn."
     },
     #KSE Items
     "Mysterious Feather" : {
+        "Image" : '',
         "Effect" : cardEffect.MysteriousFeather,
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use this Hero card's effect, you may DISCARD a card. If you do, +3 to your roll."
@@ -1242,6 +1311,7 @@ Cards = {
     
     #Base Game Curses
     "Curse of the Snake's Eyes" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.CurseOfTheSnakesEyes,
         "Quantity"    : 2,
@@ -1249,12 +1319,14 @@ Cards = {
         "Description" : "Each time you roll to use the equipped Hero card's effect, -2 to your roll."
     },
     "Sealing Key" : {
+        "Image" : '',
         "Curse" : True,
         "Card Type"   : cardType.Item,
         "Effect" : cardEffect.SealingKey,
         "Description" : "You cannot use the equipped Hero card's effect."
     },
     "Suspiciously Shiny Coin" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.SuspiciouslyShinyCoin,
         "Card Type"   : cardType.Item,
@@ -1262,12 +1334,14 @@ Cards = {
     },
     #Warriors and Druids Curses
     "Cursed Glove" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.CursedGlove,
         "Card Type"   : cardType.Item,
         "Description" : "If another Hero card in your Party is stolen, move the equipped Hero card to the Party of the player who stole it as well."
     },
     "Soul Tether" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.SoulTether,
         "Card Type"   : cardType.Item,
@@ -1275,12 +1349,14 @@ Cards = {
     },
     #Berserkers and Necromancers Curses
     "Dragon's Bile" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.DragonsBile,
         "Card Type"   : cardType.Item,
         "Description" : "If you unsuccessfully roll to use the equipped Hero card's effect, SACRIFICE a Hero card."
     },
     "Soulbound Grimoire" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.SoulboundGrimoire,
         "Card Type"   : cardType.Item,
@@ -1288,6 +1364,7 @@ Cards = {
     },
     #KSE Curses
     "Mask of Misfortune" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.MaskOfMisfortune,
         "Card Type"   : cardType.Item,
@@ -1295,12 +1372,14 @@ Cards = {
     },
     #Banner Quest Curses
     "Chaos Mask" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.NoEffect,
         "Card Type"   : cardType.Item,
         "Description" : "Unknown"
     },
     "Morph Mask" : {
+        "Image" : '',
         "Curse" : True,
         "Effect" : cardEffect.NoEffect,
         "Card Type"   : cardType.Item,
@@ -1308,9 +1387,11 @@ Cards = {
     },
 #Heroes
     "None" : {
+        "Image" : '',
         "Description" : "Temporary placeholder for src/active_player.py"
     },
     "Bad Axe" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.BadAxe,
         "Effect Roll" : 8,
@@ -1318,6 +1399,7 @@ Cards = {
         "Description" : "DESTROY a Hero card."
     },
     "Bear Claw" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Hero,
@@ -1326,6 +1408,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Hero card, pull a second card from that player's hand."
     },
     "Beary Wise" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.BearyWise,
         "Effect Roll" : 7,
@@ -1333,6 +1416,7 @@ Cards = {
         "Description" : "Each other player must DISCARD a card. Choose one of the discarded cards and add it to your hand."
     },
     "Fury Knuckle" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Challenge,
@@ -1341,6 +1425,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Challenge card, pull a second card from that player's hand."
     },
     "Heavy Bear" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.ForceDiscard,
         "Effect Roll" : 5,
@@ -1348,13 +1433,14 @@ Cards = {
         "Description" : "Choose a player. That player must DISCARD 2 cards."
     },
     "Pan Chucks" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PanChucks,
         "Effect Roll" : 8,
         "Card Type"   : cardType.Hero,
         "Description" : "DRAW 2 cards. If at least one of those cards is a Challenge card, you may reveal it, then DESTROY a Hero card."
     },
-    "Qi Bear" : {
+    "Qi Fighter" : {
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.QiBear,
         "Effect Roll" : 10,
@@ -1362,6 +1448,7 @@ Cards = {
         "Description" : "DISCARD up to 3 cards. For each card discarded, DESTROY a Hero card."
     },
     "Tough Teddy" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.ToughTeddy,
         "Effect Roll" : 4,
@@ -1369,6 +1456,7 @@ Cards = {
         "Description" : "Each other player with a Fighter in their Party must DISCARD a card."
     },
     "Dodgy Dealer" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.DodgyDealer,
         "Effect Roll" : 9,
@@ -1376,6 +1464,7 @@ Cards = {
         "Description" : "Trade hands with another player."
     },
     "Fuzzy Cheeks" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.FuzzyCheeks,
         "Effect Roll" : 8,
@@ -1383,6 +1472,7 @@ Cards = {
         "Description" : "DRAW a card and play a Hero card from your hand immediately."
     },
     "Greedy Cheeks" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.GreedyCheeks,
         "Effect Roll" : 8,
@@ -1390,6 +1480,7 @@ Cards = {
         "Description" : "Each other player must give you a card from their hand." #If they can
     },
     "Lucky Bucky" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.LuckyBucky,
         "Effect Roll" : 7,
@@ -1397,6 +1488,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If that card is a Hero card, you may play it immediately."
     },
     "Mellow Dee" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.MellowDee,
         "Effect Roll" : 7,
@@ -1404,6 +1496,7 @@ Cards = {
         "Description" : "DRAW a card. If that card is a Hero card, you may play it immediately."
     },
     "Napping Nibbles" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.NoEffect,
         "Effect Roll" : 2,
@@ -1411,6 +1504,7 @@ Cards = {
         "Description" : "Do nothing."
     },
     "Peanut" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.Draw2,
         "Effect Roll" : 7,
@@ -1418,6 +1512,7 @@ Cards = {
         "Description" : "DRAW 2 cards."
     },
     "Tipsy Tootie" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.TipsyTootie,
         "Effect Roll" : 6,
@@ -1425,6 +1520,7 @@ Cards = {
         "Description" : "Choose a player. STEAL a Hero card from that player's Party and move this card to that player's Party."
     },
     "Calming Voice" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.CalmingVoice,
         "Effect Roll" : 9,
@@ -1432,6 +1528,7 @@ Cards = {
         "Description" : "Hero cards in your Party cannot be stolen until your next turn."
     },
     "Guiding Light" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
@@ -1440,6 +1537,7 @@ Cards = {
         "Description" : "Search the discard pile for a Hero card and add it to your hand."
     },
     "Holy Curselifter" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.HolyCurselifter,
         "Effect Roll" : 5,
@@ -1447,6 +1545,7 @@ Cards = {
         "Description" : "Return a Cursed Item card equipped to a Hero card in your Party to your hand."
     },
     "Iron Resolve" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.IronResolve,
         "Effect Roll" : 8,
@@ -1454,6 +1553,7 @@ Cards = {
         "Description" : "Cards you play cannot be challenged for the rest of your turn."
     },
     "Mighty Blade" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.MightyBlade,
         "Effect Roll" : 8,
@@ -1461,6 +1561,7 @@ Cards = {
         "Description" : "Hero cards in your Party cannot be destroyed until your next turn."
     },
     "Radiant Horn" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
@@ -1469,6 +1570,7 @@ Cards = {
         "Description" : "Search the discard pile for a Modifier card and add it to your hand"
     },
     "Vibrant Glow" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.VibrantGlow,
         "Effect Roll" : 9,
@@ -1476,6 +1578,7 @@ Cards = {
         "Description" : "+5 to all of your rolls until the end of your turn."
     },
     "Wise Shield" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.WiseShield,
         "Effect Roll" : 6,
@@ -1483,6 +1586,7 @@ Cards = {
         "Description" : "+3 to all of your rolls until the end of your turn."
     },
     "Bullseye" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Bullseye,
         "Effect Roll" : 7,
@@ -1490,6 +1594,7 @@ Cards = {
         "Description" : "Look at the top 3 cards of the deck. Add one to your hand, then return the other two to the top of the deck in any order."
     },
     "Hook" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Hook,
         "Effect Roll" : 6,
@@ -1497,6 +1602,7 @@ Cards = {
         "Description" : "Play an Item card from your hand immediately and DRAW a card."
     },
     "Lookie Rookie" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Item,
@@ -1505,6 +1611,7 @@ Cards = {
         "Description" : "Search the discard pile for an Item card and add it to your hand."
     },
     "Quick Draw" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.QuickDraw,
         "Effect Roll" : 8,
@@ -1512,6 +1619,7 @@ Cards = {
         "Description" : "Draw 2 cards. If at least one of those cards is an Item card, you may play one of them immediately."
     },
     "Serious Grey" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SeriousGrey,
         "Effect Roll" : 9,
@@ -1519,6 +1627,7 @@ Cards = {
         "Description" : "DESTROY a Hero card and DRAW a card."
     },
     "Sharp Fox" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SharpFox,
         "Effect Roll" : 5,
@@ -1526,6 +1635,7 @@ Cards = {
         "Description" : "Look at another player's hand."
     },
     "Wildshot" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Wildshot,
         "Effect Roll" : 8,
@@ -1533,6 +1643,7 @@ Cards = {
         "Description" : "DRAW 3 cards and DISCARD a card."
     },
     "Wily Red" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.WilyRed,
         "Effect Roll" : 10,
@@ -1540,6 +1651,7 @@ Cards = {
         "Description" : "DRAW cards until you have 7 cards in your hand."
     },
     "Kit Napper" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.StealHero,
         "Effect Roll" : 9,
@@ -1547,6 +1659,7 @@ Cards = {
         "Description" : "STEAL a Hero card."
     },
     "Meowzio" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.Meowzio,
         "Effect Roll" : 10,
@@ -1554,6 +1667,7 @@ Cards = {
         "Description" : "Choose a player. STEAL a Hero card from that player's Party and pull a card from that player's hand."
     },
     "Plundering Puma" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PlunderingPuma,
         "Effect Roll" : 6,
@@ -1561,6 +1675,7 @@ Cards = {
         "Description" : "Pull 2 cards from another player's hand. That player may DRAW a card."
     },
     "Shurikitty" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.Shurikitty,
         "Effect Roll" : 9,
@@ -1568,6 +1683,7 @@ Cards = {
         "Description" : "DESTROY a Hero card. If that Hero card had an item card equipped to it, add that item card to your hand instead of moving it to the discard pile."
     },
     "Silent Shadow" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SilentShadow,
         "Effect Roll" : 8,
@@ -1575,6 +1691,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a card and add it to your hand."
     },
     "Slippery Paws" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SlipperyPaws,
         "Effect Roll" : 6,
@@ -1582,6 +1699,7 @@ Cards = {
         "Description" : "Pull 2 cards from another player's hand, then DISCARD one of those cards."
     },
     "Sly Pickings" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Item,
@@ -1590,6 +1708,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If that card is an item card, you may play it immediately."
     },
     "Smooth Mimimeow" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SmoothMimimeow,
         "Effect Roll" : 7,
@@ -1597,6 +1716,7 @@ Cards = {
         "Description" : "Pull a card from the hand of each other player with a Thief in their Party."
     },
     "Bun Bun" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.BunBun,
         "Effect Roll" : 5,
@@ -1604,6 +1724,7 @@ Cards = {
         "Description" : "Search the discard pile for a Magic card and add it to your hand."
     },
     "Buttons" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Magic,
@@ -1612,6 +1733,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Magic card, you may play it immediately."
     },
     "Fluffy" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Fluffy,
         "Effect Roll" : 10,
@@ -1619,6 +1741,7 @@ Cards = {
         "Description" : "DESTROY 2 Hero cards."
     },
     "Hopper" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Hopper,
         "Effect Roll" : 7,
@@ -1626,6 +1749,7 @@ Cards = {
         "Description" : "Choose a player. That player must SACRIFICE a Hero card."
     },
     "Snowball" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Snowball,
         "Effect Roll" : 6,
@@ -1633,6 +1757,7 @@ Cards = {
         "Description" : "DRAW a card. If it is a Magic card, you may play it immediately and DRAW a second card."
     },
     "Spooky" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Spooky,
         "Effect Roll" : 10,
@@ -1640,6 +1765,7 @@ Cards = {
         "Description" : "Each other player must SACRIFICE a Hero card."
     },
     "Whiskers" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Whiskers,
         "Effect Roll" : 11,
@@ -1647,6 +1773,7 @@ Cards = {
         "Description" : "STEAL a Hero card and DESTROY a Hero card."
     },
     "Wiggles" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Wiggles,
         "Effect Roll" : 10,
@@ -1655,6 +1782,7 @@ Cards = {
     },
     #Warriors and Druids
     "Big Buckley" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BigBuckley,
         "Effect Roll" : 8,
@@ -1663,6 +1791,7 @@ Cards = {
         "Description" : "ATTACK a Monster card immediately. (You must still meet its Party requirement.)"
     },
     "Buck Omens" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BuckOmens,
         "Effect Roll" : 6,
@@ -1671,6 +1800,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Hero card from their hand (if they have one) and bring it into your Party."
     },
     "Doe Fallow" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.DoeFallow,
         "Effect Roll" : 7,
@@ -1679,6 +1809,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card, then DRAW cards until you have 7 cards in your hand."
     },
     "Glowing Antler" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Magic,
@@ -1688,6 +1819,7 @@ Cards = {
         "Description" : "You may play up to 2 Magic cards immediately."
     },
     "Maegisty" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Maegisty,
         "Effect Roll" : 7,
@@ -1696,6 +1828,7 @@ Cards = {
         "Description" : "Until your next turn, if a Hero card in your Party would be sacrificed or destroyed, return it to your hand instead."
     },
     "Magus Moose" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.MagusMoose,
         "Effect Roll" : 5,
@@ -1704,6 +1837,7 @@ Cards = {
         "Description" : "Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Majestelk" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Majestelk,
         "Effect Roll" : 7,
@@ -1712,6 +1846,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. +5 or -5 to each of your rolls until your next turn."
     },
     "Stagguard" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Stagguard,
         "Effect Roll" : 8,
@@ -1720,6 +1855,7 @@ Cards = {
         "Description" : "No other player can play Modifier cards until the end of your turn."
     },
     "Agile Dagger" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Item,
@@ -1728,6 +1864,7 @@ Cards = {
         "Description" : "You may play up to 2 Item cards immediately."
     },
     "Blinding Blade" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.BlindingBlade,
         "Effect Roll" : 8,
@@ -1735,6 +1872,7 @@ Cards = {
         "Description" : "Choose any player. Return all equipped Item cards in that player's Party to your hand."
     },
     "CriticalFang" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.CriticalFang,
         "Effect Roll" : 6,
@@ -1742,6 +1880,7 @@ Cards = {
         "Description" : "+4 to your rolls to ATTACK a Monster card until the end of your turn."
     },
     "Hardened Hunter" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.HardenedHunter,
         "Effect Roll" : 9,
@@ -1749,6 +1888,7 @@ Cards = {
         "Description" : "DRAW a card for each Monster card in each other player's Party."
     },
     "Looting Lupo" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.LootingLupo,
         "Effect Roll" : 5,
@@ -1756,6 +1896,7 @@ Cards = {
         "Description" : "DRAW a card for each Item card equipped to a Hero card in your Party."
     },
     "Silent Shield" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.SilentShield,
         "Effect Roll" : 6,
@@ -1763,6 +1904,7 @@ Cards = {
         "Description" : "For the rest of your turn, if you SACRIFICE or DESTROY a Hero card, you may search the discard pile for a Hero card and add it to your hand."
     },
     "Tenacious Timber" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.TenaciousTimber,
         "Effect Roll" : 8,
@@ -1770,6 +1912,7 @@ Cards = {
         "Description" : "For each Monster card in your Party, STEAL a Hero."
     },
     "Wolfgang Pack" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.WolfgangPack,
         "Effect Roll" : 5,
@@ -1778,6 +1921,7 @@ Cards = {
     },
     #Berserkers and Necromancers
     "Bark Hexer" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BarkHexer,
         "Effect Roll" : 7,
@@ -1785,6 +1929,7 @@ Cards = {
         "Description" : "DISCARD a card. Each other player must DISCARD 2 cards."
     },
     "Beholden Retriever" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BeholdenRetriever,
         "Effect Roll" : 5,
@@ -1792,6 +1937,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. Search the discard pile for a Hero or Item card and add it to your hand, then play it immediately."
     },
     "Bone Collector" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BoneCollector,
         "Effect Roll" : 7,
@@ -1799,6 +1945,7 @@ Cards = {
         "Description" : "SACRIFICE an Item card. Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Boston Terror" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BostonTerror,
         "Effect Roll" : 7,
@@ -1806,6 +1953,7 @@ Cards = {
         "Description" : "Choose a player. That player may give you a card from their hand. If they do not, you may choose 2 cards from the discard pile and add them to your hand."
     },
     "Grim Pupper" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.GrimPupper,
         "Effect Roll" : 8,
@@ -1813,6 +1961,7 @@ Cards = {
         "Description" : "Each player (including you) must SACRIFICE a card."
     },
     "Hollow Husk" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.HollowHusk,
         "Effect Roll" : 6,
@@ -1820,6 +1969,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Magic card (if they have one) and add it to your hand. You may play it immediately."
     },
     "Perfect Vessel" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.PerfectVessel,
         "Effect Roll" : 4,
@@ -1827,6 +1977,7 @@ Cards = {
         "Description" : "SACRIFICE this card, then STEAL a Hero card."
     },
     "Shadow Saint" : {
+        "Image" : '',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.ShadowSaint,
         "Effect Roll" : 5,
@@ -1834,6 +1985,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. No other player can play Modifier cards until the end of your turn."
     },
     "Annihilator" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Annihilator,
         "Effect Roll" : 6,
@@ -1841,6 +1993,7 @@ Cards = {
         "Description" : "Search the discard pile for a Challenge card and add it to your hand."
     },
     "Brawling Spirit" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.BrawlingSpirit,
         "Effect Roll" : 9,
@@ -1848,6 +2001,7 @@ Cards = {
         "Description" : "Each player (including you) with more than 3 cards in their Party must SACRIFICE a card"
     },
     "Gruesome Gladiator" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.GruesomeGladiator,
         "Effect Roll" : 10,
@@ -1855,6 +2009,7 @@ Cards = {
         "Description" : "Look at each other player's hand. Choose a card from each player's hand and add it to your hand."
     },
     "Meowntain" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Meowntain,
         "Effect Roll" : 6,
@@ -1862,6 +2017,7 @@ Cards = {
         "Description" : "SACRIFICE a card. +5 to all of your rolls until the end of your turn."
     },
     "Rabid Beast" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RabidBeast,
         "Effect Roll" : 6,
@@ -1869,6 +2025,7 @@ Cards = {
         "Description" : "SACRIFICE any number of cards, then DESTROY the same number of cards."
     },
     "Roaryal Guard" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RoaryalGuard,
         "Effect Roll" : 9,
@@ -1876,6 +2033,7 @@ Cards = {
         "Description" : "Choose a Class. Return every Hero card of that Class to its respective player's hand."
     },
     "Vicious Wildcat" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.ViciousWildcat,
         "Effect Roll" : 12,
@@ -1883,6 +2041,7 @@ Cards = {
         "Description" : "SLAY any Monster card, then end your turn."
     },
     "Unbridled Fury" : {
+        "Image" : '',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.UnbridledFury,
         "Effect Roll" : 8,
@@ -1890,6 +2049,7 @@ Cards = {
         "Description" : "DESTROY a Hero card. If that Hero card is a Berserker, you may spend an extra action point this turn."
     },
     "Dragalter" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dragalter,
         "Effect Roll" : 7,
@@ -1897,6 +2057,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. You may apply that Modifier card's effect to all of your rolls for the rest of this turn."
     },
     "Dystortivern" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dystortivern,
         "Effect Roll" : 10,
@@ -1904,6 +2065,7 @@ Cards = {
         "Description" : "Trade Party Leader cards with another player."
     },
     "Extraga" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Extraga,
         "Effect Roll" : 7,
@@ -1911,6 +2073,7 @@ Cards = {
         "Description" : "Each player (including you) must return any other Sorcerers in their Party to their hand."
     },
     "Luut" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Luut,
         "Effect Roll" : 7,
@@ -1918,6 +2081,7 @@ Cards = {
         "Description" : "STEAL an Item card and equip it to a Hero card in your Party."
     },
     "Mirroryu" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Mirroryu,
         "Effect Roll" : 7,
@@ -1925,6 +2089,7 @@ Cards = {
         "Description" : "Roll to use the effect of any Hero card in your Party immediately. +3 to that roll."
     },
     "Oracon" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Oracon,
         "Effect Roll" : 7,
@@ -1932,6 +2097,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Modifier card, that player must SACRIFICE a Hero card."
     },
     "Renovern" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Renovern,
         "Effect Roll" : 8,
@@ -1939,6 +2105,7 @@ Cards = {
         "Description" : "Search the discard pile for an item card and play it immediately."
     },
     "Shamanaga" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Shamanaga,
         "Effect Roll" : 7,
@@ -1946,6 +2113,7 @@ Cards = {
         "Description" : "Choose a Hero card from the discard pile. Bring that Hero card into your Party, roll to use its effect immediately, then SACRIFICE it."
     },
     "Smok" : {
+        "Image" : '',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Smok,
         "Effect Roll" : 8,
@@ -1954,6 +2122,7 @@ Cards = {
     },
     #KSE
     "Hamlet" : {
+        "Image" : '',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.Hamlet,
         "Effect Roll" : 7,
@@ -1961,6 +2130,7 @@ Cards = {
         "Description" : "Each player (including you) must return any other Bards in their Party to their hand."
     },
     "Bearserker" : {
+        "Image" : '',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.Bearserker,
         "Effect Roll" : 6,
@@ -1968,6 +2138,7 @@ Cards = {
         "Description" : "Choose any player. That player must DISCARD all cards in their hand and DRAW 3 cards."
     },
     "Complex Illusion" : {
+        "Image" : '',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.ComplexIllusion,
         "Effect Roll" : 8,
@@ -1975,6 +2146,7 @@ Cards = {
         "Description" : "DRAW 2 cards. If at least one of those cards is a Modifier card, you may reveal it, then spend an extra action point this turn."
     },
     "Enchantler" : {
+        "Image" : '',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Enchantler,
         "Effect Roll" : 7,
@@ -1983,6 +2155,7 @@ Cards = {
         "Description" : "DISCARD any number of cards. +2 to all of your rolls for the rest of your turn for each card discarded."
     },
     "Hoodwink" : {
+        "Image" : '',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Hoodwink,
         "Effect Roll" : 8,
@@ -1990,6 +2163,7 @@ Cards = {
         "Description" : "Swap the item cards equipped to any 2 Hero cards."
     },
     "Purring Bandit" : {
+        "Image" : '',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PurringBandit,
         "Effect Roll" : 7,
@@ -1997,6 +2171,7 @@ Cards = {
         "Description" : "Pull a card from each player's hand with more cards in it than your hand."
     },
     "Nimble Gray" : {
+        "Image" : '',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.NimbleGray,
         "Effect Roll" : 9,
@@ -2004,6 +2179,7 @@ Cards = {
         "Description" : "You may ATTACK any Monster card this turn even if you do not meet its Party requirement."
     },
     "Mimi" : {
+        "Image" : '',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Mimi,
         "Effect Roll" : 4,
