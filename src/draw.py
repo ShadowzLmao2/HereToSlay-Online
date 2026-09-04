@@ -35,6 +35,7 @@ def start() :
     quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
     imagePaths = readFolder('src/data', 'card_images')
+    setupImages(imagePaths)
 
     print(imagePaths)
     print(pngCount)
@@ -100,3 +101,9 @@ def keepOnlyPNG(list, currentPath, currentFolder):
             #if the value isnt a png, it must be a folder, so get all images from that as well
             out.extend(readFolder((currentPath + '/' + currentFolder),item))
     return out
+
+def setupImages(paths):
+    images = []
+    for path in paths:
+        images.append(resize_image(path))
+    return images
