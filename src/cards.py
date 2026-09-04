@@ -156,27 +156,27 @@ class cardEffect(Enum):
     UnbridledFury      = 106
     BarkHexer          = 107
     BeholdenRetriever  = 108
-    BoneCOllector      = 109
+    BoneCollector      = 109
     BostonTerror       = 110
     GrimPupper         = 111
     HollowHusk         = 112
     PerfectVessel      = 113
     ShadowSaint        = 114
     #Dragon Sorcerers
-    Distortivern       = 115
+    Dystortivern       = 115
     Extraga            = 116
     Dragalter          = 117
     Luut               = 118
-    Ronvern            = 119
+    Renovern            = 119
     Mirroryu           = 121
     Smok               = 122
     Oracon             = 123
     Shamanaga          = 124
     #KSE
-    Berserker          = 125
+    Bearserker          = 125
     Hamlet             = 126
     ComplexIllusion    = 127
-    Enchantlter        = 128
+    Enchantler        = 128
     Hoodwink           = 129
     PurringBandit      = 130
     NimbleGray         = 131
@@ -1543,7 +1543,7 @@ Cards = {
     },
     "Kit Napper" : {
         "Class" : heroType.Thief,
-        "Effect" : cardEffect.KitNapper,
+        "Effect" : cardEffect.StealHero,
         "Effect Roll" : 9,
         "Card Type"   : cardType.Hero,
         "Description" : "STEAL a Hero card."
