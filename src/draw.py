@@ -49,6 +49,7 @@ def start() :
     quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
 
     window.mainloop()
+    readFolder()
 
 #resize image
 def resize_image(path):
@@ -65,10 +66,11 @@ def resize_image(path):
         return None
 
 #TODO: setup preloading all PhotoImage classes using this function to find each of their paths
-"""# Replace 'path/to/your/folder' with the actual path
-folder_path = os.path.join('path/to/your/folder', 'your_folder_name')
-# Get all entries in the folder
-entries = os.listdir(folder_path)
-# Loop through entries and print their names
-for entry in entries:
-print(entry)"""
+def readFolder(): 
+    # Replace 'path/to/your/folder' with the actual path
+    folder_path = os.path.join('src/data/card_images/BaseGame', 'Cards')
+    # Get all entries in the folder
+    entries = os.listdir(folder_path)
+    # Loop through entries and print their names
+    for entry in entries:
+        print(entry)
