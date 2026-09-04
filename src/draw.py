@@ -11,10 +11,13 @@ window.title("Here to Slay Online")
 
 defaultImgWidth = 140
 defaultImgHeight = 200
+imagePaths = []
 
 #0 = main menu
 #1 = game screen
 currentScene = 0
+
+pngCount = 0
 
 
 def start() :
@@ -30,8 +33,11 @@ def start() :
     #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
     quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
-    print(keepOnlyPNG(readFolder('src/data/card_images', 'BaseGame')))
-    
+    imagePaths = readFolder('src/data', 'card_images')
+
+    print(imagePaths)
+    print(pngCount)
+
     #Main Menu
     playButton.pack(ipadx=5, ipady=5, expand=True)
     #rankedButton.pack(ipadx=5, ipady=5, expand=True)
@@ -69,18 +75,27 @@ def resize_image(path):
 #TODO: setup preloading all PhotoImage classes using this function to find each of their paths
 def readFolder(path, folderName): #read all the files in a folder
     contents = []
+    out = []
     # Replace 'path/to/your/folder' with the actual path
     folder_path = os.path.join(path, folderName)
     # Get all entries in the folder
     entries = os.listdir(folder_path)
     # Loop through entries and print their names
     for entry in entries:
-        contents.append(entry)
-    return contents
+        contents.append(entry.strip())
+        print(entry)
+        #get rid of all values that arent a png
+    out = keepOnlyPNG(contents, path, folderName)
+    return out
 
-def keepOnlyPNG(list): 
+def keepOnlyPNG(list, currentPath, currentFolder): 
     out = []
+    global pngCount
     for item in list:
-        if(item[-4:] == '.png'):
-            out.append(item)
+        if(item[-4:] == '.png'): #if the file is a png add it to the list
+            out.append(currentPath + '/' + item)
+            pngCount += 1 #test variable
+        else:
+            #if the value isnt a png, it must be a folder, so get all images from that as well
+            out.extend(readFolder((currentPath + '/' + currentFolder),item))
     return out
