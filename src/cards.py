@@ -282,7 +282,7 @@ Leaders = {
     "None" : {
         "Description" : "None",
         "Start of Turn" : False,
-        },
+        }, #TODO Backslashes
     "Charismatic Song" : {
         "Image" : 'src\data\card_images\BaseGame\Leaders\charismaticSong.png',
         "Class" : heroType.Bard,
