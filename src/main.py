@@ -36,6 +36,7 @@ def startGame():
         if testingPhase:
             print("monsterDeck")
         shuffleDeck(monsterDeck)
+        chooseLeader()
         for player in range (1,playerCount+1,1):
             drawCard(5,player)
     if testingPhase:
@@ -51,11 +52,20 @@ def main():
     return
 
 def startTurn(player):
-    leader = playerParties[activePlayer["Leader"]]
+    leader = playerLeaders[activePlayer]
+    if testingPhase:
+        print(leader["Start of Turn"])
     if (leader["Start of Turn"]):
-        leaderTypeSwitch(leader)
+        leaderTypeSwitch(playerLeaders[activePlayer])
     return
 
+def chooseLeader():
+    for i in range(1, playerCount+1):
+        if testingPhase:
+            print("Player", i)
+        
+    return
+    
 def leaderTypeSwitch(leader):
     confirmationBox(switchLeaderType)
     match leader:

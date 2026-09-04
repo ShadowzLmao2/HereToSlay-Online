@@ -15,27 +15,34 @@ playerHand = {
     5 : [],
     6 : []
 }
+playerLeaders = {
+    1 : Leaders["None"],
+    2 : Leaders["None"],
+    3 : Leaders["None"],
+    4 : Leaders["None"],
+    5 : Leaders["None"],
+    6 : Leaders["None"],
+}
 playerParties = {
     1 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,
@@ -58,23 +65,22 @@ playerParties = {
     2 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,
@@ -97,23 +103,22 @@ playerParties = {
     3 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,
@@ -136,23 +141,22 @@ playerParties = {
     4 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,
@@ -175,23 +179,22 @@ playerParties = {
     5 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,
@@ -214,23 +217,22 @@ playerParties = {
     6 : {
         #Front Row
         "Hero" : {
-            1: Leaders["None"],
+            1: Cards["None"],
             "1 Active" : False,
-            2: Leaders["None"],
+            2: Cards["None"],
             "2 Active" : False,
-            3: Leaders["None"],
+            3: Cards["None"],
             "3 Active" : False,
-            4: Leaders["None"],
+            4: Cards["None"],
             "4 Active" : False,
-            5: Leaders["None"],
+            5: Cards["None"],
             "5 Active" : False,
-            6: Leaders["None"],
+            6: Cards["None"],
             "6 Active" : False,
-            7: Leaders["None"],
+            7: Cards["None"],
             "7 Active" : False,
             },
         #Back Row
-        "Leader"  : Leaders["None"],
         "Monster" : {
             1: Monsters["None"],
             "1 Active" : False,

@@ -1,7 +1,6 @@
 from enum import Enum
 from config import *
 from data import card_images
-from PIL import Image
 class heroEffect(Enum):
     NoEffect        = 0
     #Heroes
@@ -283,7 +282,8 @@ class MoExAtkReq(Enum):
 #Party Leaders
 Leaders = {
     "None" : {
-        "Description" : "None"
+        "Description" : "None",
+        "Start of Turn" : False,
         },
     "Charismatic Song" : {
         "Class" : heroType.Bard,
@@ -368,6 +368,7 @@ Leaders = {
         "Effect" : heroEffect.BrutalBow,
         "Activatable" : False,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
@@ -376,6 +377,7 @@ Leaders = {
         "Effect" : heroEffect.MysticalMaestro,
         "Activatable" : False,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
@@ -384,6 +386,7 @@ Leaders = {
         "Effect" : heroEffect.VeiledRaider,
         "Activatable" : False,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
@@ -391,6 +394,7 @@ Leaders = {
         "Effect" : heroEffect.UnstableUnicorn,
         "Activatable" : False,
         #"Image" : originalGame.IE,
+        "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
     "Fierce Panguardian" : {
@@ -399,6 +403,7 @@ Leaders = {
         "Effect" : heroEffect.FiercePanguardian,
         "Activatable" : False,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
@@ -407,6 +412,7 @@ Leaders = {
         "Effect" : heroEffect.IllusiveTrickster,
         "Activatable" : True,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
     "Rhythmic Archer" : {
@@ -415,6 +421,7 @@ Leaders = {
         "Effect" : heroEffect.RhythmicArcher,
         "Activatable" : False,
         #"Image" : originalGame.KSE,
+        "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
     }
     
