@@ -1373,7 +1373,7 @@ Cards = {
         "Description" : "Unknown"
     },
     "Morph Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BannerQuest/Cards/morphMask.png',
         "Curse" : True,
         "Effect" : cardEffect.NoEffect,
         "Card Type"   : cardType.Item,
@@ -1385,7 +1385,7 @@ Cards = {
         "Description" : "Temporary placeholder for src/active_player.py"
     },
     "Bad Axe" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/badAxe.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.BadAxe,
         "Effect Roll" : 8,
@@ -1393,7 +1393,7 @@ Cards = {
         "Description" : "DESTROY a Hero card."
     },
     "Bear Claw" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/bearClaw.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Hero,
@@ -1402,7 +1402,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Hero card, pull a second card from that player's hand."
     },
     "Beary Wise" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/bearyWise.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.BearyWise,
         "Effect Roll" : 7,
@@ -1410,7 +1410,7 @@ Cards = {
         "Description" : "Each other player must DISCARD a card. Choose one of the discarded cards and add it to your hand."
     },
     "Fury Knuckle" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/furyKnuckle.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Challenge,
@@ -1419,7 +1419,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Challenge card, pull a second card from that player's hand."
     },
     "Heavy Bear" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/heavyBear.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.ForceDiscard,
         "Effect Roll" : 5,
@@ -1427,14 +1427,15 @@ Cards = {
         "Description" : "Choose a player. That player must DISCARD 2 cards."
     },
     "Pan Chucks" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/panChucks.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.PanChucks,
         "Effect Roll" : 8,
         "Card Type"   : cardType.Hero,
         "Description" : "DRAW 2 cards. If at least one of those cards is a Challenge card, you may reveal it, then DESTROY a Hero card."
     },
-    "Qi Fighter" : {
+    "Qi Bear" : {
+        "Image" : 'src/card_images/BaseGame/Cards/qiBear.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.QiBear,
         "Effect Roll" : 10,
@@ -1442,7 +1443,7 @@ Cards = {
         "Description" : "DISCARD up to 3 cards. For each card discarded, DESTROY a Hero card."
     },
     "Tough Teddy" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/toughTeddy.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.ToughTeddy,
         "Effect Roll" : 4,
@@ -1450,7 +1451,7 @@ Cards = {
         "Description" : "Each other player with a Fighter in their Party must DISCARD a card."
     },
     "Dodgy Dealer" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/dodgyDealer.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.DodgyDealer,
         "Effect Roll" : 9,
@@ -1458,7 +1459,7 @@ Cards = {
         "Description" : "Trade hands with another player."
     },
     "Fuzzy Cheeks" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/fuzzyCheeks.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.FuzzyCheeks,
         "Effect Roll" : 8,
@@ -1466,7 +1467,7 @@ Cards = {
         "Description" : "DRAW a card and play a Hero card from your hand immediately."
     },
     "Greedy Cheeks" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/greedyCheeks.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.GreedyCheeks,
         "Effect Roll" : 8,
@@ -1474,7 +1475,7 @@ Cards = {
         "Description" : "Each other player must give you a card from their hand." #If they can
     },
     "Lucky Bucky" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/luckyBucky.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.LuckyBucky,
         "Effect Roll" : 7,
@@ -1482,7 +1483,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If that card is a Hero card, you may play it immediately."
     },
     "Mellow Dee" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/mellowDee.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.MellowDee,
         "Effect Roll" : 7,
@@ -1490,7 +1491,7 @@ Cards = {
         "Description" : "DRAW a card. If that card is a Hero card, you may play it immediately."
     },
     "Napping Nibbles" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/nappingNibbles.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.NoEffect,
         "Effect Roll" : 2,
@@ -1498,7 +1499,7 @@ Cards = {
         "Description" : "Do nothing."
     },
     "Peanut" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/peanut.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.Draw2,
         "Effect Roll" : 7,
@@ -1506,7 +1507,7 @@ Cards = {
         "Description" : "DRAW 2 cards."
     },
     "Tipsy Tootie" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/tipsyTootie.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.TipsyTootie,
         "Effect Roll" : 6,
@@ -1514,7 +1515,7 @@ Cards = {
         "Description" : "Choose a player. STEAL a Hero card from that player's Party and move this card to that player's Party."
     },
     "Calming Voice" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/calmingVoice.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.CalmingVoice,
         "Effect Roll" : 9,
@@ -1522,7 +1523,7 @@ Cards = {
         "Description" : "Hero cards in your Party cannot be stolen until your next turn."
     },
     "Guiding Light" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/guidingLight.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
@@ -1531,7 +1532,7 @@ Cards = {
         "Description" : "Search the discard pile for a Hero card and add it to your hand."
     },
     "Holy Curselifter" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/holyCurselifter.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.HolyCurselifter,
         "Effect Roll" : 5,
@@ -1539,7 +1540,7 @@ Cards = {
         "Description" : "Return a Cursed Item card equipped to a Hero card in your Party to your hand."
     },
     "Iron Resolve" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/ironResolve.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.IronResolve,
         "Effect Roll" : 8,
@@ -1547,7 +1548,7 @@ Cards = {
         "Description" : "Cards you play cannot be challenged for the rest of your turn."
     },
     "Mighty Blade" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/mightyBlade.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.MightyBlade,
         "Effect Roll" : 8,
@@ -1555,7 +1556,7 @@ Cards = {
         "Description" : "Hero cards in your Party cannot be destroyed until your next turn."
     },
     "Radiant Horn" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/radiantHorn.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
@@ -1564,7 +1565,7 @@ Cards = {
         "Description" : "Search the discard pile for a Modifier card and add it to your hand"
     },
     "Vibrant Glow" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/vibrantGlow.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.VibrantGlow,
         "Effect Roll" : 9,
@@ -1572,7 +1573,7 @@ Cards = {
         "Description" : "+5 to all of your rolls until the end of your turn."
     },
     "Wise Shield" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/wiseShield.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.WiseShield,
         "Effect Roll" : 6,
@@ -1580,7 +1581,7 @@ Cards = {
         "Description" : "+3 to all of your rolls until the end of your turn."
     },
     "Bullseye" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/bullseye.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Bullseye,
         "Effect Roll" : 7,
@@ -1588,7 +1589,7 @@ Cards = {
         "Description" : "Look at the top 3 cards of the deck. Add one to your hand, then return the other two to the top of the deck in any order."
     },
     "Hook" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/hook.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Hook,
         "Effect Roll" : 6,
@@ -1596,7 +1597,7 @@ Cards = {
         "Description" : "Play an Item card from your hand immediately and DRAW a card."
     },
     "Lookie Rookie" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/lookieRookie.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Item,
@@ -1605,7 +1606,7 @@ Cards = {
         "Description" : "Search the discard pile for an Item card and add it to your hand."
     },
     "Quick Draw" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/quickDraw.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.QuickDraw,
         "Effect Roll" : 8,
@@ -1613,7 +1614,7 @@ Cards = {
         "Description" : "Draw 2 cards. If at least one of those cards is an Item card, you may play one of them immediately."
     },
     "Serious Grey" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/seriousGrey.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SeriousGrey,
         "Effect Roll" : 9,
@@ -1621,7 +1622,7 @@ Cards = {
         "Description" : "DESTROY a Hero card and DRAW a card."
     },
     "Sharp Fox" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/sharpFox.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.SharpFox,
         "Effect Roll" : 5,
@@ -1629,7 +1630,7 @@ Cards = {
         "Description" : "Look at another player's hand."
     },
     "Wildshot" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/wildshot.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Wildshot,
         "Effect Roll" : 8,
@@ -1637,7 +1638,7 @@ Cards = {
         "Description" : "DRAW 3 cards and DISCARD a card."
     },
     "Wily Red" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/wilyRed.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.WilyRed,
         "Effect Roll" : 10,
@@ -1645,7 +1646,7 @@ Cards = {
         "Description" : "DRAW cards until you have 7 cards in your hand."
     },
     "Kit Napper" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/kitNapper.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.StealHero,
         "Effect Roll" : 9,
@@ -1653,7 +1654,7 @@ Cards = {
         "Description" : "STEAL a Hero card."
     },
     "Meowzio" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/meowzio.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.Meowzio,
         "Effect Roll" : 10,
@@ -1661,7 +1662,7 @@ Cards = {
         "Description" : "Choose a player. STEAL a Hero card from that player's Party and pull a card from that player's hand."
     },
     "Plundering Puma" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/plunderingPuma.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PlunderingPuma,
         "Effect Roll" : 6,
@@ -1669,7 +1670,7 @@ Cards = {
         "Description" : "Pull 2 cards from another player's hand. That player may DRAW a card."
     },
     "Shurikitty" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/shurikitty.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.Shurikitty,
         "Effect Roll" : 9,
@@ -1677,7 +1678,7 @@ Cards = {
         "Description" : "DESTROY a Hero card. If that Hero card had an item card equipped to it, add that item card to your hand instead of moving it to the discard pile."
     },
     "Silent Shadow" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/silentShadow.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SilentShadow,
         "Effect Roll" : 8,
@@ -1685,7 +1686,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a card and add it to your hand."
     },
     "Slippery Paws" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/slipperyPaws.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SlipperyPaws,
         "Effect Roll" : 6,
@@ -1693,7 +1694,7 @@ Cards = {
         "Description" : "Pull 2 cards from another player's hand, then DISCARD one of those cards."
     },
     "Sly Pickings" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/slyPickings.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Item,
@@ -1702,7 +1703,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If that card is an item card, you may play it immediately."
     },
     "Smooth Mimimeow" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/smoothMimimeow.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.SmoothMimimeow,
         "Effect Roll" : 7,
@@ -1710,7 +1711,7 @@ Cards = {
         "Description" : "Pull a card from the hand of each other player with a Thief in their Party."
     },
     "Bun Bun" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/bunBun.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.BunBun,
         "Effect Roll" : 5,
@@ -1718,7 +1719,7 @@ Cards = {
         "Description" : "Search the discard pile for a Magic card and add it to your hand."
     },
     "Buttons" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/buttons.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Magic,
@@ -1727,7 +1728,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Magic card, you may play it immediately."
     },
     "Fluffy" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/fluffy.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Fluffy,
         "Effect Roll" : 10,
@@ -1735,7 +1736,7 @@ Cards = {
         "Description" : "DESTROY 2 Hero cards."
     },
     "Hopper" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/hopper.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Hopper,
         "Effect Roll" : 7,
@@ -1743,7 +1744,7 @@ Cards = {
         "Description" : "Choose a player. That player must SACRIFICE a Hero card."
     },
     "Snowball" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/snowball.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Snowball,
         "Effect Roll" : 6,
@@ -1751,7 +1752,7 @@ Cards = {
         "Description" : "DRAW a card. If it is a Magic card, you may play it immediately and DRAW a second card."
     },
     "Spooky" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/spooky.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Spooky,
         "Effect Roll" : 10,
@@ -1759,7 +1760,7 @@ Cards = {
         "Description" : "Each other player must SACRIFICE a Hero card."
     },
     "Whiskers" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/whiskers.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Whiskers,
         "Effect Roll" : 11,
@@ -1767,7 +1768,7 @@ Cards = {
         "Description" : "STEAL a Hero card and DESTROY a Hero card."
     },
     "Wiggles" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BaseGame/Cards/wiggles.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Wiggles,
         "Effect Roll" : 10,
