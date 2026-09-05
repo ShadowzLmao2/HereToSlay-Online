@@ -1,7 +1,7 @@
 from cards import *
 from config import *
-global activePlayer
-global playerCount
+from card_images import *
+from main import *
 monstersSlain = [0,0,0,0,0,0]
 activeMonster = [0,0,0]
 activatePlayer = 1
@@ -22,7 +22,7 @@ playerLeaders = {
     3 : Leaders["None"],
     4 : Leaders["None"],
     5 : Leaders["None"],
-    6 : Leaders["None"],
+    6 : Leaders["None"]
 }
 playerParties = {
     1 : {
