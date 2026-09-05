@@ -1366,7 +1366,7 @@ Cards = {
     },
     #Banner Quest Curses
     "Chaos Mask" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BannerQuest/Cards/chaosMask.png',
         "Curse" : True,
         "Effect" : cardEffect.NoEffect,
         "Card Type"   : cardType.Item,
