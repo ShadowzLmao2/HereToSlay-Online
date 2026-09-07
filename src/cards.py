@@ -2312,7 +2312,7 @@ mainDeck = [
     ]
 dsDeck = [ #Dragon Sorcerer Expansion card list
     "Dragalter",
-    "Distortivern",
+    "Dystortivern",
     "Extraga",
     "Luut",
     "Mirroryu",
