@@ -1916,7 +1916,7 @@ Cards = {
     },
     #Berserkers and Necromancers
     "Bark Hexer" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/barkHexer.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BarkHexer,
         "Effect Roll" : 7,
@@ -1924,7 +1924,7 @@ Cards = {
         "Description" : "DISCARD a card. Each other player must DISCARD 2 cards."
     },
     "Beholden Retriever" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/beholdenRetriever.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BeholdenRetriever,
         "Effect Roll" : 5,
@@ -1932,7 +1932,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. Search the discard pile for a Hero or Item card and add it to your hand, then play it immediately."
     },
     "Bone Collector" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/boneCollector.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BoneCollector,
         "Effect Roll" : 7,
@@ -1940,7 +1940,7 @@ Cards = {
         "Description" : "SACRIFICE an Item card. Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Boston Terror" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/bostonTerror.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BostonTerror,
         "Effect Roll" : 7,
@@ -1948,7 +1948,7 @@ Cards = {
         "Description" : "Choose a player. That player may give you a card from their hand. If they do not, you may choose 2 cards from the discard pile and add them to your hand."
     },
     "Grim Pupper" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/grimPupper.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.GrimPupper,
         "Effect Roll" : 8,
@@ -1956,7 +1956,7 @@ Cards = {
         "Description" : "Each player (including you) must SACRIFICE a card."
     },
     "Hollow Husk" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/hollowHusk.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.HollowHusk,
         "Effect Roll" : 6,
@@ -1964,7 +1964,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Magic card (if they have one) and add it to your hand. You may play it immediately."
     },
     "Perfect Vessel" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/perfectVessel.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.PerfectVessel,
         "Effect Roll" : 4,
@@ -1972,7 +1972,7 @@ Cards = {
         "Description" : "SACRIFICE this card, then STEAL a Hero card."
     },
     "Shadow Saint" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/shadowSaint.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.ShadowSaint,
         "Effect Roll" : 5,
@@ -1980,7 +1980,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. No other player can play Modifier cards until the end of your turn."
     },
     "Annihilator" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/annihilator.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Annihilator,
         "Effect Roll" : 6,
@@ -1988,7 +1988,7 @@ Cards = {
         "Description" : "Search the discard pile for a Challenge card and add it to your hand."
     },
     "Brawling Spirit" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/brawlingSpirit.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.BrawlingSpirit,
         "Effect Roll" : 9,
@@ -1996,7 +1996,7 @@ Cards = {
         "Description" : "Each player (including you) with more than 3 cards in their Party must SACRIFICE a card"
     },
     "Gruesome Gladiator" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/gruesomeGladiator.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.GruesomeGladiator,
         "Effect Roll" : 10,
@@ -2004,7 +2004,7 @@ Cards = {
         "Description" : "Look at each other player's hand. Choose a card from each player's hand and add it to your hand."
     },
     "Meowntain" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/meowntain.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Meowntain,
         "Effect Roll" : 6,
@@ -2012,7 +2012,7 @@ Cards = {
         "Description" : "SACRIFICE a card. +5 to all of your rolls until the end of your turn."
     },
     "Rabid Beast" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/rabidBeast.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RabidBeast,
         "Effect Roll" : 6,
@@ -2020,7 +2020,7 @@ Cards = {
         "Description" : "SACRIFICE any number of cards, then DESTROY the same number of cards."
     },
     "Roaryal Guard" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/roaryalGuard.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RoaryalGuard,
         "Effect Roll" : 9,
@@ -2028,7 +2028,7 @@ Cards = {
         "Description" : "Choose a Class. Return every Hero card of that Class to its respective player's hand."
     },
     "Vicious Wildcat" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/viciousWildcat.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.ViciousWildcat,
         "Effect Roll" : 12,
@@ -2036,13 +2036,14 @@ Cards = {
         "Description" : "SLAY any Monster card, then end your turn."
     },
     "Unbridled Fury" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/unbridledFury.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.UnbridledFury,
         "Effect Roll" : 8,
         "Card Type"   : cardType.Hero,
         "Description" : "DESTROY a Hero card. If that Hero card is a Berserker, you may spend an extra action point this turn."
     },
+    #Dragon Sorcerers
     "Dragalter" : {
         "Image" : '',
         "Class" : heroType.Sorcerer,
