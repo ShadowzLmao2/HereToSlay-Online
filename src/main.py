@@ -169,10 +169,6 @@ def useLeaderAbility(leader):
 
 def useHeroAbility(hero):
     match Cards[hero["Effect"]]:
-        case cardEffect.FuzzyCheeks:
-            drawCard(1,activePlayer)
-            playCard(cardType.Hero,False)
-            return
         case cardEffect.BadAxe:
             player = choosePlayer()
             target = chooseHero()
@@ -217,36 +213,192 @@ def useHeroAbility(hero):
                 if i != activePlayer: #TODO check for a fighter
                     discardSpecific(cardType.Any,1,i)
             return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
-        #     return
-        # case cardEffect.:
+        case cardEffect.DodgyDealer:
             return
+        case cardEffect.FuzzyCheeks:
+            drawCard(1,activePlayer)
+            playCard(cardType.Hero,False)
+            return
+        case cardEffect.GreedyCheeks:
+            return
+        case cardEffect.LuckyBucky:
+            return
+        case cardEffect.MellowDee:
+            return
+        case cardEffect.TipsyTootie:
+            return
+        case cardEffect.CalmingVoice:
+            return
+        case cardEffect.HolyCurselifter:
+            return
+        case cardEffect.IronResolve:
+            return
+        case cardEffect.MightyBlade:
+            return
+        case cardEffect.VibrantGlow:
+            return
+        case cardEffect.WiseShield:
+            return
+        case cardEffect.Bullseye:
+            return
+        case cardEffect.Hook:
+            return
+        case cardEffect.QuickDraw:
+            return
+        case cardEffect.SeriousGrey:
+            return
+        case cardEffect.SharpFox:
+            return
+        case cardEffect.Wildshot:
+            return
+        case cardEffect.WilyRed:
+            return
+        case cardEffect.Meowzio:
+            return
+        case cardEffect.PlunderingPuma:
+            return
+        case cardEffect.Shurikitty:
+            return
+        case cardEffect.SilentShadow:
+            return
+        case cardEffect.SlipperyPaws:
+            return
+        case cardEffect.SmoothMimimeow:
+            return
+        case cardEffect.BunBun:
+            return
+        case cardEffect.Fluffy:
+            return
+        case cardEffect.Hopper:
+            return
+        case cardEffect.Snowball:
+            return
+        case cardEffect.Spooky:
+            return
+        case cardEffect.Whiskers:
+            return
+        case cardEffect.Wiggles:
+            return
+        case cardEffect.BigBuckley:
+            return
+        case cardEffect.BuckOmens:
+            return
+        case cardEffect.DoeFallow:
+            return
+        case cardEffect.Majestelk:
+            return
+        case cardEffect.MagusMoose:
+            return
+        case cardEffect.Maegisty:
+            return
+        case cardEffect.Stagguard:
+            return
+        case cardEffect.BlindingBlade:
+            return
+        case cardEffect.CriticalFang:
+            return
+        case cardEffect.HardenedHunter:
+            return
+        case cardEffect.LootingLupo:
+            return
+        case cardEffect.SilentShield:
+            return
+        case cardEffect.TenaciousTimber:
+            return
+        case cardEffect.WolfgangPack:
+            return
+        case cardEffect.Annihilator:
+            return
+        case cardEffect.BrawlingSpirit:
+            return
+        case cardEffect.GruesomeGladiator:
+            return
+        case cardEffect.Meowntain:
+            return
+        case cardEffect.RabidBeast:
+            return
+        case cardEffect.RoaryalGuard:
+            return
+        case cardEffect.ViciousWildcat:
+            return
+        case cardEffect.UnbridledFury:
+            return
+        case cardEffect.BarkHexer:
+            return
+        case cardEffect.BeholdenRetriever:
+            return
+        case cardEffect.BoneCollector:
+            return
+        case cardEffect.BostonTerror:
+            return
+        case cardEffect.GrimPupper:
+            return
+        case cardEffect.HollowHusk:
+            return
+        case cardEffect.PerfectVessel:
+            return
+        case cardEffect.ShadowSaint:
+            return
+        case cardEffect.Dystortivern:
+            return
+        case cardEffect.Extraga:
+            return
+        case cardEffect.Dragalter:
+            return
+        case cardEffect.Luut:
+            return
+        case cardEffect.Renovern:
+            return
+        case cardEffect.Mirroryu:
+            return
+        case cardEffect.Smok:
+            return
+        case cardEffect.Oracon:
+            return
+        case cardEffect.Shamanaga:
+            return
+        case cardEffect.Bearserker:
+            return
+        case cardEffect.Hamlet:
+            return
+        case cardEffect.ComplexIllusion:
+            return
+        case cardEffect.Enchantler:
+            return
+        case cardEffect.Hoodwink:
+            return
+        case cardEffect.PurringBandit:
+            return
+        case cardEffect.NimbleGray:
+            return
+        case cardEffect.Mimi:
+            return
+        case cardEffect.Draw2: #Peanut
+            drawCard(2,activePlayer)
+            return
+        case cardEffect.SearchDiscard:
+            searchDiscard(Cards[hero["Search Target"]])
+            return
+        case cardEffect.StealHero:
+            stealHero()
+            return
+        case cardEffect.PullAndPlay:
+            pullCard(choosePlayer(),True,Cards[hero["Search Target"]])
+            return
+        case cardEffect.Play2:
+            playCards(activePlayer,2,False,Cards[hero["Search Target"]])
+            return
+    return
+
+def playCards(target,count,pickAll,type):
+    for i in range(0,count,1):
+        match(type):
+            case cardType.Hero:
+                return
+            case cardType.Magic:
+                return
+            case cardType.Item:
+                return
     return
 
 def summonHero(slot,hero,player):
@@ -284,7 +436,7 @@ def hasCardEffect(effect):
     return
 def pullCard(target,req,reqType): 
     #target is who is stolen from, req is true/false for if there is a requirement, reqType is what card type you need to pull or else you dont pull
-    return
+    return #return the type
 def searchDiscard(cardType):
     return
 def playCard(cardType,optional):
@@ -335,7 +487,7 @@ def sacrifice(target):
     return
 def choosePlayer():
     return
-def steal():
+def stealHero():
     return
 def checkHeroItem():
     return

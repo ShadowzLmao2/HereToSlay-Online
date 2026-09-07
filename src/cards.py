@@ -2043,6 +2043,7 @@ Cards = {
         "Card Type"   : cardType.Hero,
         "Description" : "DESTROY a Hero card. If that Hero card is a Berserker, you may spend an extra action point this turn."
     },
+    #Dragon Sorcerers
     "Dragalter" : {
         "Image" : '',
         "Class" : heroType.Sorcerer,
@@ -2311,7 +2312,7 @@ mainDeck = [
     ]
 dsDeck = [ #Dragon Sorcerer Expansion card list
     "Dragalter",
-    "Distortivern",
+    "Dystortivern",
     "Extraga",
     "Luut",
     "Mirroryu",
