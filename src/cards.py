@@ -2118,7 +2118,7 @@ Cards = {
     },
     #KSE
     "Hamlet" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/hamlet.png',
         "Class" : heroType.Bard,
         "Effect" : cardEffect.Hamlet,
         "Effect Roll" : 7,
@@ -2126,7 +2126,7 @@ Cards = {
         "Description" : "Each player (including you) must return any other Bards in their Party to their hand."
     },
     "Bearserker" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/bearserker.png',
         "Class" : heroType.Fighter,
         "Effect" : cardEffect.Bearserker,
         "Effect Roll" : 6,
@@ -2134,7 +2134,7 @@ Cards = {
         "Description" : "Choose any player. That player must DISCARD all cards in their hand and DRAW 3 cards."
     },
     "Complex Illusion" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/complexIllusion.png',
         "Class" : heroType.Guardian,
         "Effect" : cardEffect.ComplexIllusion,
         "Effect Roll" : 8,
@@ -2142,7 +2142,7 @@ Cards = {
         "Description" : "DRAW 2 cards. If at least one of those cards is a Modifier card, you may reveal it, then spend an extra action point this turn."
     },
     "Enchantler" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/enchantler.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Enchantler,
         "Effect Roll" : 7,
@@ -2151,7 +2151,7 @@ Cards = {
         "Description" : "DISCARD any number of cards. +2 to all of your rolls for the rest of your turn for each card discarded."
     },
     "Hoodwink" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/hoodwink.png',
         "Class" : heroType.Ranger,
         "Effect" : cardEffect.Hoodwink,
         "Effect Roll" : 8,
@@ -2159,7 +2159,7 @@ Cards = {
         "Description" : "Swap the item cards equipped to any 2 Hero cards."
     },
     "Purring Bandit" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/purringBandit.png',
         "Class" : heroType.Thief,
         "Effect" : cardEffect.PurringBandit,
         "Effect Roll" : 7,
@@ -2167,7 +2167,7 @@ Cards = {
         "Description" : "Pull a card from each player's hand with more cards in it than your hand."
     },
     "Nimble Gray" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/nimbleGray.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.NimbleGray,
         "Effect Roll" : 9,
@@ -2175,7 +2175,7 @@ Cards = {
         "Description" : "You may ATTACK any Monster card this turn even if you do not meet its Party requirement."
     },
     "Mimi" : {
-        "Image" : '',
+        "Image" : 'src/card_images/KSE/Cards/mimi.png',
         "Class" : heroType.Wizard,
         "Effect" : cardEffect.Mimi,
         "Effect Roll" : 4,
