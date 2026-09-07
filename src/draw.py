@@ -1,5 +1,6 @@
 import os
 from buttons import *
+from cards import *
 from main import *
 from card_images import *
 import tkinter as tk
@@ -12,7 +13,6 @@ window.title("Here to Slay Online")
 
 defaultImgWidth = 140
 defaultImgHeight = 200
-imagePaths = []
 
 #0 = main menu
 #1 = game screen
@@ -22,23 +22,22 @@ pngCount = 0
 
 
 def start() :
-    
+
+    #imageNames = readFolder('src', 'card_images')
+    #imagePaths = setupImages(imageNames)
     #TODO: make these buttons do smth, all currently just quit the program
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
-    img = resize_image('src/data/card_images/BaseGame/Cards/badAxe.png')
+    img = resize_image('src/card_images/BaseGame/Cards/badAxe.png')
     playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
     rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
     settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
     #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
     quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
-    imagePaths = readFolder('src/data', 'card_images')
-    setupImages(imagePaths)
-
-    print(imagePaths)
-    print(pngCount)
+    name = "Charismatic Song"
+    print(getLeaderImagePath(name))
 
     #Main Menu
     playButton.pack(ipadx=5, ipady=5, expand=True)
@@ -74,8 +73,7 @@ def resize_image(path):
         print(f"Error loading image: {e}")
         return None
 
-#TODO: setup preloading all PhotoImage classes using this function to find each of their paths
-def readFolder(path, folderName): #read all the files in a folder
+'''def readFolder(path, folderName): #read all the files in a folder
     contents = []
     out = []
     # Replace 'path/to/your/folder' with the actual path
@@ -106,4 +104,9 @@ def setupImages(paths):
     images = []
     for path in paths:
         images.append(resize_image(path))
-    return images
+    return images'''
+
+#DO NOT DELETE, it doesnt work outside of a function
+def getLeaderImagePath(leader):
+    sub = Leaders[leader]
+    return sub.get("Image")
