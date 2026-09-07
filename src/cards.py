@@ -1777,7 +1777,7 @@ Cards = {
     },
     #Warriors and Druids
     "Big Buckley" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/bigBuckley.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BigBuckley,
         "Effect Roll" : 8,
@@ -1786,7 +1786,7 @@ Cards = {
         "Description" : "ATTACK a Monster card immediately. (You must still meet its Party requirement.)"
     },
     "Buck Omens" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/buckOmens.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BuckOmens,
         "Effect Roll" : 6,
@@ -1795,7 +1795,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Hero card from their hand (if they have one) and bring it into your Party."
     },
     "Doe Fallow" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/doeFallow.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.DoeFallow,
         "Effect Roll" : 7,
@@ -1804,7 +1804,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card, then DRAW cards until you have 7 cards in your hand."
     },
     "Glowing Antler" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/glowingAntler.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Magic,
@@ -1814,7 +1814,7 @@ Cards = {
         "Description" : "You may play up to 2 Magic cards immediately."
     },
     "Maegisty" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/maegisty.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Maegisty,
         "Effect Roll" : 7,
@@ -1823,7 +1823,7 @@ Cards = {
         "Description" : "Until your next turn, if a Hero card in your Party would be sacrificed or destroyed, return it to your hand instead."
     },
     "Magus Moose" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/magusMoose.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.MagusMoose,
         "Effect Roll" : 5,
@@ -1832,7 +1832,7 @@ Cards = {
         "Description" : "Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Majestelk" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/majestelk.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Majestelk,
         "Effect Roll" : 7,
@@ -1841,7 +1841,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. +5 or -5 to each of your rolls until your next turn."
     },
     "Stagguard" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/stagguard.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Stagguard,
         "Effect Roll" : 8,
@@ -1850,7 +1850,7 @@ Cards = {
         "Description" : "No other player can play Modifier cards until the end of your turn."
     },
     "Agile Dagger" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/agileDagger.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Item,
@@ -1859,15 +1859,15 @@ Cards = {
         "Description" : "You may play up to 2 Item cards immediately."
     },
     "Blinding Blade" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/blindingBlade.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.BlindingBlade,
         "Effect Roll" : 8,
         "Card Type"   : cardType.Hero,
         "Description" : "Choose any player. Return all equipped Item cards in that player's Party to your hand."
     },
-    "CriticalFang" : {
-        "Image" : '',
+    "Critical Fang" : {
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/criticalFang.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.CriticalFang,
         "Effect Roll" : 6,
@@ -1875,7 +1875,7 @@ Cards = {
         "Description" : "+4 to your rolls to ATTACK a Monster card until the end of your turn."
     },
     "Hardened Hunter" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/hardenedHunter.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.HardenedHunter,
         "Effect Roll" : 9,
@@ -1883,7 +1883,7 @@ Cards = {
         "Description" : "DRAW a card for each Monster card in each other player's Party."
     },
     "Looting Lupo" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/lootingLupo.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.LootingLupo,
         "Effect Roll" : 5,
@@ -1891,7 +1891,7 @@ Cards = {
         "Description" : "DRAW a card for each Item card equipped to a Hero card in your Party."
     },
     "Silent Shield" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/silentShield.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.SilentShield,
         "Effect Roll" : 6,
@@ -1899,7 +1899,7 @@ Cards = {
         "Description" : "For the rest of your turn, if you SACRIFICE or DESTROY a Hero card, you may search the discard pile for a Hero card and add it to your hand."
     },
     "Tenacious Timber" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/tenaciousTimber.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.TenaciousTimber,
         "Effect Roll" : 8,
@@ -1907,7 +1907,7 @@ Cards = {
         "Description" : "For each Monster card in your Party, STEAL a Hero."
     },
     "Wolfgang Pack" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/wolfgangPack.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.WolfgangPack,
         "Effect Roll" : 5,
@@ -1916,7 +1916,7 @@ Cards = {
     },
     #Berserkers and Necromancers
     "Bark Hexer" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/barkHexer.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BarkHexer,
         "Effect Roll" : 7,
@@ -1924,7 +1924,7 @@ Cards = {
         "Description" : "DISCARD a card. Each other player must DISCARD 2 cards."
     },
     "Beholden Retriever" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/beholdenRetriever.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BeholdenRetriever,
         "Effect Roll" : 5,
@@ -1932,7 +1932,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. Search the discard pile for a Hero or Item card and add it to your hand, then play it immediately."
     },
     "Bone Collector" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/boneCollector.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BoneCollector,
         "Effect Roll" : 7,
@@ -1940,7 +1940,7 @@ Cards = {
         "Description" : "SACRIFICE an Item card. Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Boston Terror" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/bostonTerror.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.BostonTerror,
         "Effect Roll" : 7,
@@ -1948,7 +1948,7 @@ Cards = {
         "Description" : "Choose a player. That player may give you a card from their hand. If they do not, you may choose 2 cards from the discard pile and add them to your hand."
     },
     "Grim Pupper" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/grimPupper.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.GrimPupper,
         "Effect Roll" : 8,
@@ -1956,7 +1956,7 @@ Cards = {
         "Description" : "Each player (including you) must SACRIFICE a card."
     },
     "Hollow Husk" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/hollowHusk.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.HollowHusk,
         "Effect Roll" : 6,
@@ -1964,7 +1964,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Magic card (if they have one) and add it to your hand. You may play it immediately."
     },
     "Perfect Vessel" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/perfectVessel.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.PerfectVessel,
         "Effect Roll" : 4,
@@ -1972,7 +1972,7 @@ Cards = {
         "Description" : "SACRIFICE this card, then STEAL a Hero card."
     },
     "Shadow Saint" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/shadowSaint.png',
         "Class" : heroType.Necromancer,
         "Effect" : cardEffect.ShadowSaint,
         "Effect Roll" : 5,
@@ -1980,7 +1980,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. No other player can play Modifier cards until the end of your turn."
     },
     "Annihilator" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/annihilator.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Annihilator,
         "Effect Roll" : 6,
@@ -1988,7 +1988,7 @@ Cards = {
         "Description" : "Search the discard pile for a Challenge card and add it to your hand."
     },
     "Brawling Spirit" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/brawlingSpirit.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.BrawlingSpirit,
         "Effect Roll" : 9,
@@ -1996,7 +1996,7 @@ Cards = {
         "Description" : "Each player (including you) with more than 3 cards in their Party must SACRIFICE a card"
     },
     "Gruesome Gladiator" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/gruesomeGladiator.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.GruesomeGladiator,
         "Effect Roll" : 10,
@@ -2004,7 +2004,7 @@ Cards = {
         "Description" : "Look at each other player's hand. Choose a card from each player's hand and add it to your hand."
     },
     "Meowntain" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/meowntain.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.Meowntain,
         "Effect Roll" : 6,
@@ -2012,7 +2012,7 @@ Cards = {
         "Description" : "SACRIFICE a card. +5 to all of your rolls until the end of your turn."
     },
     "Rabid Beast" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/rabidBeast.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RabidBeast,
         "Effect Roll" : 6,
@@ -2020,7 +2020,7 @@ Cards = {
         "Description" : "SACRIFICE any number of cards, then DESTROY the same number of cards."
     },
     "Roaryal Guard" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/roaryalGuard.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.RoaryalGuard,
         "Effect Roll" : 9,
@@ -2028,7 +2028,7 @@ Cards = {
         "Description" : "Choose a Class. Return every Hero card of that Class to its respective player's hand."
     },
     "Vicious Wildcat" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/viciousWildcat.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.ViciousWildcat,
         "Effect Roll" : 12,
@@ -2036,7 +2036,7 @@ Cards = {
         "Description" : "SLAY any Monster card, then end your turn."
     },
     "Unbridled Fury" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/unbridledFury.png',
         "Class" : heroType.Berserker,
         "Effect" : cardEffect.UnbridledFury,
         "Effect Roll" : 8,
@@ -2045,7 +2045,7 @@ Cards = {
     },
     #Dragon Sorcerers
     "Dragalter" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/dragalter.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dragalter,
         "Effect Roll" : 7,
@@ -2053,7 +2053,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. You may apply that Modifier card's effect to all of your rolls for the rest of this turn."
     },
     "Dystortivern" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/dystortivern.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dystortivern,
         "Effect Roll" : 10,
@@ -2061,7 +2061,7 @@ Cards = {
         "Description" : "Trade Party Leader cards with another player."
     },
     "Extraga" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/extraga.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Extraga,
         "Effect Roll" : 7,
@@ -2069,7 +2069,7 @@ Cards = {
         "Description" : "Each player (including you) must return any other Sorcerers in their Party to their hand."
     },
     "Luut" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/luut.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Luut,
         "Effect Roll" : 7,
@@ -2077,7 +2077,7 @@ Cards = {
         "Description" : "STEAL an Item card and equip it to a Hero card in your Party."
     },
     "Mirroryu" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/mirroryu.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Mirroryu,
         "Effect Roll" : 7,
@@ -2085,7 +2085,7 @@ Cards = {
         "Description" : "Roll to use the effect of any Hero card in your Party immediately. +3 to that roll."
     },
     "Oracon" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/oracon.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Oracon,
         "Effect Roll" : 7,
@@ -2093,7 +2093,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Modifier card, that player must SACRIFICE a Hero card."
     },
     "Renovern" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/renovern.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Renovern,
         "Effect Roll" : 8,
@@ -2101,7 +2101,7 @@ Cards = {
         "Description" : "Search the discard pile for an item card and play it immediately."
     },
     "Shamanaga" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/shamanaga.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Shamanaga,
         "Effect Roll" : 7,
@@ -2109,7 +2109,7 @@ Cards = {
         "Description" : "Choose a Hero card from the discard pile. Bring that Hero card into your Party, roll to use its effect immediately, then SACRIFICE it."
     },
     "Smok" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/smok.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Smok,
         "Effect Roll" : 8,
