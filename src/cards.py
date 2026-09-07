@@ -2045,7 +2045,7 @@ Cards = {
     },
     #Dragon Sorcerers
     "Dragalter" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/dragalter.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dragalter,
         "Effect Roll" : 7,
@@ -2053,7 +2053,7 @@ Cards = {
         "Description" : "DISCARD a Modifier card. You may apply that Modifier card's effect to all of your rolls for the rest of this turn."
     },
     "Dystortivern" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/dystortivern.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Dystortivern,
         "Effect Roll" : 10,
@@ -2061,7 +2061,7 @@ Cards = {
         "Description" : "Trade Party Leader cards with another player."
     },
     "Extraga" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/extraga.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Extraga,
         "Effect Roll" : 7,
@@ -2069,7 +2069,7 @@ Cards = {
         "Description" : "Each player (including you) must return any other Sorcerers in their Party to their hand."
     },
     "Luut" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/luut.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Luut,
         "Effect Roll" : 7,
@@ -2077,7 +2077,7 @@ Cards = {
         "Description" : "STEAL an Item card and equip it to a Hero card in your Party."
     },
     "Mirroryu" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/mirroryu.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Mirroryu,
         "Effect Roll" : 7,
@@ -2085,7 +2085,7 @@ Cards = {
         "Description" : "Roll to use the effect of any Hero card in your Party immediately. +3 to that roll."
     },
     "Oracon" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/oracon.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Oracon,
         "Effect Roll" : 7,
@@ -2093,7 +2093,7 @@ Cards = {
         "Description" : "Pull a card from another player's hand. If it is a Modifier card, that player must SACRIFICE a Hero card."
     },
     "Renovern" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/renovern.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Renovern,
         "Effect Roll" : 8,
@@ -2101,7 +2101,7 @@ Cards = {
         "Description" : "Search the discard pile for an item card and play it immediately."
     },
     "Shamanaga" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/shamanaga.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Shamanaga,
         "Effect Roll" : 7,
@@ -2109,7 +2109,7 @@ Cards = {
         "Description" : "Choose a Hero card from the discard pile. Bring that Hero card into your Party, roll to use its effect immediately, then SACRIFICE it."
     },
     "Smok" : {
-        "Image" : '',
+        "Image" : 'src/card_images/DragonSorcerers/Cards/smok.png',
         "Class" : heroType.Sorcerer,
         "Effect" : cardEffect.Smok,
         "Effect Roll" : 8,
