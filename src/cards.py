@@ -1777,7 +1777,7 @@ Cards = {
     },
     #Warriors and Druids
     "Big Buckley" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/bigBuckley.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BigBuckley,
         "Effect Roll" : 8,
@@ -1786,7 +1786,7 @@ Cards = {
         "Description" : "ATTACK a Monster card immediately. (You must still meet its Party requirement.)"
     },
     "Buck Omens" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/buckOmens.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.BuckOmens,
         "Effect Roll" : 6,
@@ -1795,7 +1795,7 @@ Cards = {
         "Description" : "Look at another player's hand. Choose a Hero card from their hand (if they have one) and bring it into your Party."
     },
     "Doe Fallow" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/doeFallow.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.DoeFallow,
         "Effect Roll" : 7,
@@ -1804,7 +1804,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card, then DRAW cards until you have 7 cards in your hand."
     },
     "Glowing Antler" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/glowingAntler.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Magic,
@@ -1814,7 +1814,7 @@ Cards = {
         "Description" : "You may play up to 2 Magic cards immediately."
     },
     "Maegisty" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/maegisty.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Maegisty,
         "Effect Roll" : 7,
@@ -1823,7 +1823,7 @@ Cards = {
         "Description" : "Until your next turn, if a Hero card in your Party would be sacrificed or destroyed, return it to your hand instead."
     },
     "Magus Moose" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/magusMoose.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.MagusMoose,
         "Effect Roll" : 5,
@@ -1832,7 +1832,7 @@ Cards = {
         "Description" : "Search the discard pile for a Hero card and add it to your hand, then play it immediately."
     },
     "Majestelk" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/majestelk.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Majestelk,
         "Effect Roll" : 7,
@@ -1841,7 +1841,7 @@ Cards = {
         "Description" : "SACRIFICE a Hero card. +5 or -5 to each of your rolls until your next turn."
     },
     "Stagguard" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/stagguard.png',
         "Class" : heroType.Druid,
         "Effect" : cardEffect.Stagguard,
         "Effect Roll" : 8,
@@ -1850,7 +1850,7 @@ Cards = {
         "Description" : "No other player can play Modifier cards until the end of your turn."
     },
     "Agile Dagger" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/agileDagger.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Item,
@@ -1859,15 +1859,15 @@ Cards = {
         "Description" : "You may play up to 2 Item cards immediately."
     },
     "Blinding Blade" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/blindingBlade.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.BlindingBlade,
         "Effect Roll" : 8,
         "Card Type"   : cardType.Hero,
         "Description" : "Choose any player. Return all equipped Item cards in that player's Party to your hand."
     },
-    "CriticalFang" : {
-        "Image" : '',
+    "Critical Fang" : {
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/criticalFang.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.CriticalFang,
         "Effect Roll" : 6,
@@ -1875,7 +1875,7 @@ Cards = {
         "Description" : "+4 to your rolls to ATTACK a Monster card until the end of your turn."
     },
     "Hardened Hunter" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/hardenedHunter.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.HardenedHunter,
         "Effect Roll" : 9,
@@ -1883,7 +1883,7 @@ Cards = {
         "Description" : "DRAW a card for each Monster card in each other player's Party."
     },
     "Looting Lupo" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/lootingLupo.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.LootingLupo,
         "Effect Roll" : 5,
@@ -1891,7 +1891,7 @@ Cards = {
         "Description" : "DRAW a card for each Item card equipped to a Hero card in your Party."
     },
     "Silent Shield" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/silentShield.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.SilentShield,
         "Effect Roll" : 6,
@@ -1899,7 +1899,7 @@ Cards = {
         "Description" : "For the rest of your turn, if you SACRIFICE or DESTROY a Hero card, you may search the discard pile for a Hero card and add it to your hand."
     },
     "Tenacious Timber" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/tenaciousTimber.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.TenaciousTimber,
         "Effect Roll" : 8,
@@ -1907,7 +1907,7 @@ Cards = {
         "Description" : "For each Monster card in your Party, STEAL a Hero."
     },
     "Wolfgang Pack" : {
-        "Image" : '',
+        "Image" : 'src/card_images/WarriorsAndDruids/Cards/wolfgangPack.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.WolfgangPack,
         "Effect Roll" : 5,
