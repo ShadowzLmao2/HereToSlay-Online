@@ -46,6 +46,7 @@ def start() :
     leaderNames = populateLeaderNames()
     monsterNames = populateMonsterNames()
     cardNames = populateCardNames()
+    print(str(cardTotal) + "cards in total(262 expected)")
 
     buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
     buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
@@ -174,7 +175,7 @@ def populateLeaderNames():
         out.append(name)
         num += 1
         cardTotal += 1
-    print(num + " leader cards (19 expected)")
+    print(str(num) + " leader cards (19 expected)")
     return out
 
 def populateMonsterNames():
@@ -185,7 +186,7 @@ def populateMonsterNames():
         out.append(name)
         num += 1
         cardTotal += 1
-    print(num + " monster cards (36 expected)")
+    print(str(num) + " monster cards (36 expected)")
     return out
 
 def populateCardNames():
@@ -196,5 +197,5 @@ def populateCardNames():
         out.append(name)
         num += 1
         cardTotal += 1
-    print(num + " cards (172 expected)")
+    print(str(num) + " cards (207 expected)")
     return out
