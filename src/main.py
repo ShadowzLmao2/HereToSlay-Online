@@ -619,3 +619,11 @@ def endTurn():
     return
 
 #startGame()
+
+#Stores the x and y values of a button, as when a button is hidden it looses said values
+class position :
+    x = 0
+    y = 0
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y

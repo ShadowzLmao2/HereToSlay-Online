@@ -1,5 +1,6 @@
 import os
 from buttons import *
+from cards import *
 from main import *
 from card_images import *
 import tkinter as tk
@@ -12,51 +13,77 @@ window.title("Here to Slay Online")
 
 defaultImgWidth = 140
 defaultImgHeight = 200
-imagePaths = []
+
+cardTotal = 0
 
 #0 = main menu
 #1 = game screen
 currentScene = 0
 
+buttons = []
+
 pngCount = 0
+
+#Stores the positions of buttons NOT on screen
+buttonPositions = []
+
+#cardnames
+leaderNames = []
+monsterNames = []
+cardNames = []
 
 
 def start() :
-    
+
+    #imageNames = readFolder('src', 'card_images')
+    #imagePaths = setupImages(imageNames)
     #TODO: make these buttons do smth, all currently just quit the program
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
-    img = resize_image('src/data/card_images/BaseGame/Cards/badAxe.png')
-    playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
-    rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
-    settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
-    #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
-    quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
+    img = resize_image('src/card_images/BaseGame/Cards/badAxe.png')
 
-    imagePaths = readFolder('src/data', 'card_images')
-    setupImages(imagePaths)
+    leaderNames = populateLeaderNames()
+    monsterNames = populateMonsterNames()
+    cardNames = populateCardNames()
+    print(str(cardTotal) + "cards in total(262 expected)")
 
-    print(imagePaths)
-    print(pngCount)
+    buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
+    buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
+    buttons.append(tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
+    buttons.append(tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height(), name='quitButton'))
+    #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
+
+    buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
+    print(buttons[4])
+
+    name = "Charismatic Song"
+    print(getImagePath(Leaders, name))
+    buttons[3].config(image=img, bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
-    playButton.pack(ipadx=5, ipady=5, expand=True)
-    #rankedButton.pack(ipadx=5, ipady=5, expand=True)
-    settingsButton.pack(ipadx=5, ipady=5, expand=True)
-    quitButton.pack(ipadx=5, ipady=5, expand=True)
+    buttons[0].pack(ipadx=5, ipady=5, expand=True)
+    #buttons[1].pack(ipadx=5, ipady=5, expand=True)
+    buttons[2].pack(ipadx=5, ipady=5, expand=True)
+    buttons[3].pack(ipadx=5, ipady=5, expand=True)
 
-    playButton.place(relx=.5,rely=.5,anchor="center")
-    playButton.place(x=playButton.winfo_rootx(),y=playButton.winfo_y()-240)
+    buttons[0].place(relx=.5,rely=.5,anchor="center")
+    buttons[0].place(x=buttons[0].winfo_rootx(),y=buttons[0].winfo_y()-240)
 
-    rankedButton.place(relx=.5,rely=.5,anchor="center")
-    rankedButton.place(x=rankedButton.winfo_rootx(),y=rankedButton.winfo_y()-160)
+    buttons[1].place(relx=.5,rely=.5,anchor="center")
+    buttons[1].place(x=buttons[1].winfo_rootx(),y=buttons[1].winfo_y()-160)
 
-    settingsButton.place(relx=.5,rely=.5,anchor="center")
-    settingsButton.place(x=settingsButton.winfo_rootx(),y=settingsButton.winfo_y()-80)
+    buttons[2].place(relx=.5,rely=.5,anchor="center")
+    buttons[2].place(x=buttons[2].winfo_rootx(),y=buttons[2].winfo_y()-80)
 
-    quitButton.place(relx=.5,rely=.5,anchor="center")
-    quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
+    buttons[3].place(relx=.5,rely=.5,anchor="center")
+    buttons[3].place(x=buttons[3].winfo_rootx(),y=buttons[3].winfo_y())
+
+    #Causes the button to hide itself
+    #I believe it looses its x and y values, so TODO: store button x and y vals seperately
+    #Note: if you use place, place_forget, if you use pack, pack_forget, etc
+    #buttons[3].place_forget()
+    hide(buttons[2])
 
     window.mainloop()
 
@@ -74,8 +101,7 @@ def resize_image(path):
         print(f"Error loading image: {e}")
         return None
 
-#TODO: setup preloading all PhotoImage classes using this function to find each of their paths
-def readFolder(path, folderName): #read all the files in a folder
+'''def readFolder(path, folderName): #read all the files in a folder
     contents = []
     out = []
     # Replace 'path/to/your/folder' with the actual path
@@ -106,4 +132,70 @@ def setupImages(paths):
     images = []
     for path in paths:
         images.append(resize_image(path))
-    return images
+    return images'''
+
+#DO NOT DELETE, it doesnt work outside of a function
+def getImagePath(dict, leader):
+    sub = dict[leader]
+    return sub.get("Image")
+
+#hide button
+def hide(button):
+    button.place_forget()
+    button.grid_forget()
+    button.pack_forget()
+
+#get the button's position, return as a position object
+def getPos(button):
+    out = position(button.winfo_rootx(), button.winfo_rooty())
+    return out
+
+
+#button possition class so when the list is checked the button name will be stored to avoid duplicates
+#pass in position object, as well as a button object, position is stored, button has its text stored
+class buttonPos:
+    pos = position(0,0)
+    buttonTxt = ""
+    def __init__(self, pos, button):
+        self.pos = pos
+        buttonTxt = button['text']
+
+#Switch screens
+#store positions of buttons currently on screen
+'''def screenSwitch(screen):
+    match screen:
+        case 0:
+            '''
+
+def populateLeaderNames():
+    global cardTotal
+    out = []
+    num = 0
+    for name in Leaders:
+        out.append(name)
+        num += 1
+        cardTotal += 1
+    print(str(num) + " leader cards (19 expected)")
+    return out
+
+def populateMonsterNames():
+    global cardTotal
+    out = []
+    num = 0
+    for name in Monsters:
+        out.append(name)
+        num += 1
+        cardTotal += 1
+    print(str(num) + " monster cards (36 expected)")
+    return out
+
+def populateCardNames():
+    global cardTotal
+    out = []
+    num = 0
+    for name in Cards:
+        out.append(name)
+        num += 1
+        cardTotal += 1
+    print(str(num) + " cards (207 expected)")
+    return out
