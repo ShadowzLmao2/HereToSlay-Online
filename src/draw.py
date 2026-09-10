@@ -57,6 +57,11 @@ def start() :
     quitButton.place(relx=.5,rely=.5,anchor="center")
     quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
 
+    #Causes the button to hide itself
+    #I believe it looses its x and y values, so TODO: store button x and y vals seperately
+    #Note: if you use place, place_forget, if you use pack, pack_forget, etc
+    rankedButton.place_forget()
+
     window.mainloop()
 
 #resize image
@@ -110,3 +115,6 @@ def setupImages(paths):
 def getLeaderImagePath(leader):
     sub = Leaders[leader]
     return sub.get("Image")
+
+
+#Switch to
