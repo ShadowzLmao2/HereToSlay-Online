@@ -25,6 +25,9 @@ pngCount = 0
 #Stores the positions of buttons NOT on screen
 buttonPositions = []
 
+#cardnames
+leaderNames = []
+
 
 def start() :
 
@@ -35,46 +38,46 @@ def start() :
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
     img = resize_image('src/card_images/BaseGame/Cards/badAxe.png')
-    playButton = tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2)
-    rankedButton = tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2)
-    settingsButton = tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2)
-    #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
-    quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
-    buttons.append(playButton)
-    buttons.append(rankedButton)
-    buttons.append(settingsButton)
-    buttons.append(quitButton)
+    leaderNames = populateLeaderNames()
+    printLeaderImages(leaderNames)
+
+    buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
+    buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
+    buttons.append(tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
+    buttons.append(tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height(), name='quitButton'))
+    #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
 
     buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
     print(buttons[4])
 
     name = "Charismatic Song"
     print(getLeaderImagePath(name))
+    buttons[3].config(image=img, bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
     buttons[0].pack(ipadx=5, ipady=5, expand=True)
-    #rankedButton.pack(ipadx=5, ipady=5, expand=True)
-    settingsButton.pack(ipadx=5, ipady=5, expand=True)
-    quitButton.pack(ipadx=5, ipady=5, expand=True)
+    #buttons[1].pack(ipadx=5, ipady=5, expand=True)
+    buttons[2].pack(ipadx=5, ipady=5, expand=True)
+    buttons[3].pack(ipadx=5, ipady=5, expand=True)
 
     buttons[0].place(relx=.5,rely=.5,anchor="center")
-    buttons[0].place(x=playButton.winfo_rootx(),y=playButton.winfo_y()-240)
+    buttons[0].place(x=buttons[0].winfo_rootx(),y=buttons[0].winfo_y()-240)
 
     buttons[1].place(relx=.5,rely=.5,anchor="center")
-    buttons[1].place(x=rankedButton.winfo_rootx(),y=rankedButton.winfo_y()-160)
+    buttons[1].place(x=buttons[1].winfo_rootx(),y=buttons[1].winfo_y()-160)
 
     buttons[2].place(relx=.5,rely=.5,anchor="center")
-    buttons[2].place(x=settingsButton.winfo_rootx(),y=settingsButton.winfo_y()-80)
+    buttons[2].place(x=buttons[2].winfo_rootx(),y=buttons[2].winfo_y()-80)
 
     buttons[3].place(relx=.5,rely=.5,anchor="center")
-    buttons[3].place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
+    buttons[3].place(x=buttons[3].winfo_rootx(),y=buttons[3].winfo_y())
 
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
     #Note: if you use place, place_forget, if you use pack, pack_forget, etc
-    #rankedButton.place_forget()
-    hide(rankedButton)
+    #buttons[3].place_forget()
+    hide(buttons[2])
 
     window.mainloop()
 
@@ -136,8 +139,6 @@ def hide(button):
     button.grid_forget()
     button.pack_forget()
 
-
-
 #get the button's position, return as a position object
 def getPos(button):
     out = position(button.winfo_rootx(), button.winfo_rooty())
@@ -159,3 +160,14 @@ class buttonPos:
     match screen:
         case 0:
             '''
+
+def populateLeaderNames():
+    out = []
+    for name in Leaders:
+        out.append(name)
+    print(out)
+    return out
+
+def printLeaderImages(names):
+    for name in names:
+        print(getLeaderImagePath(name))
