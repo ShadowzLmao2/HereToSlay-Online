@@ -20,6 +20,7 @@ currentScene = 0
 
 pngCount = 0
 
+#Stores the positions of buttons NOT on screen
 buttonPositions = []
 
 
@@ -62,10 +63,8 @@ def start() :
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
     #Note: if you use place, place_forget, if you use pack, pack_forget, etc
-    print(getPos(rankedButton))
-    rankedButton.place_forget()
-    print(getPos(rankedButton))
-    window.update()
+    #rankedButton.place_forget()
+    hide(rankedButton)
 
     window.mainloop()
 
@@ -122,17 +121,25 @@ def getLeaderImagePath(leader):
     return sub.get("Image")
 
 #hide button
-def hideBPlace(button):
+def hide(button):
     button.place_forget()
-
-def hideBPack(button):
+    button.grid_forget()
     button.pack_forget()
 
-def hideBGrid(button):
-    button.grid_forget()
+
 
 #get the button's position, return as a position object
 def getPos(button):
     out = position(button.winfo_rootx(), button.winfo_rooty())
     return out
+
+
+#button possition class so when the list is checked the button name will be stored to avoid duplicates
+#pass in position object, as well as a button object, position is stored, button has its text stored
+class buttonPos:
+    pos = position(0,0)
+    buttonTxt = ""
+    def __init__(self, pos, button):
+        self.pos = pos
+        buttonTxt = button['text']
 #Switch to
