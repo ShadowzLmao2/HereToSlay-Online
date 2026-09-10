@@ -188,8 +188,25 @@ class cardEffect(Enum):
     StealHero          = 135
     PullAndPlay        = 136
     Play2              = 137
+    OneModifier        = 138
+
+    GiftBearer         = 139
+    SantaClaws         = 140
+    ChristmasCarol     = 141
+    LilDrummerBard     = 142
+    ShinyNose          = 143
+    SnowSlinger        = 144
+    Prancer            = 145
+    ShootingStar       = 146
+    FireplaceFugitive  = 147
+    GiftBagBandit      = 148
+    Evergreen          = 149
+    HollyJolly         = 150
+
+    FreshlySharpenedSkates = 151
+    MilkAndCookies     = 152
+    Gift               = 153
     
-    OneModifier = 138
     
     
     
@@ -244,6 +261,7 @@ class cardType(Enum):
     Monster   = 6
     Any       = 7
     Challenge = 8 #Monster Expansion only
+    Gift      = 9 #Here to Sleigh only
 
 class heroType(Enum):
     NoClass     = 0
@@ -838,7 +856,6 @@ Cards = {
     "Challenge" : {
         "Image" : 'src/data/card_images/BaseGame/Cards/challenge.png',
         "Effect" : cardEffect.Challenge,
-        "Quantity"    : 14,
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card."
     },
@@ -919,6 +936,18 @@ Cards = {
         "Card Type"   : cardType.Action,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
+    "Garbage Gift Challenge" : {
+        "Image" : '',
+        "Effect" : cardEffect.Challenge,
+        "Card Type"   : cardType.Action,
+        "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +1 to your roll for each Garbage Gift card in your Stockpile."
+    },
+    "Good Gift Challenge" : {
+        "Image" : '',
+        "Effect" : cardEffect.Challenge,
+        "Card Type"   : cardType.Action,
+        "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
+    },
     "+4 Modifier" : {
         "Image" : 'src/card_images/BaseGame/Cards/+4-0BaseModifier.png',
         "Effect" : cardEffect.OneModifier,
@@ -962,7 +991,6 @@ Cards = {
         "Card Type"   : cardType.Action,
         "Description" : "Play this card after any player (including you) rolls the dice. -4 to that roll."
     },
-    #TODO: sshadowz forgot these images bc hes dumb
     #Warriors and Druids Modifiers
     "+1/-1 WaD Modifier" : {
         "Image" : '',
@@ -1113,7 +1141,6 @@ Cards = {
         "Card Type"   : cardType.Magic,
         "Description" : "Return an Item card equipped to any player's Hero card to that player's hand, then DRAW a card."
     },
-    #TODO magic
     #Warriors and Druids Magic
     "Beast Call" : {
         "Image" : '',
@@ -1302,6 +1329,19 @@ Cards = {
         "Card Type"   : cardType.Item,
         "Description" : "Each time you roll to use this Hero card's effect, you may DISCARD a card. If you do, +3 to your roll."
     },
+    #HereToSleigh Items
+    "Freshly Sharpened Skates" : {
+        "Image" : '',
+        "Effect" : cardEffect.FreshlySharpenedSkates,
+        "Card Type"   : cardType.Item,
+        "Description" : "If you successfully roll to use the equipped Hero card's effect, you may EXCHANGE a Gift card."
+    },
+    "Milk and Cookies" : {
+        "Image" : '',
+        "Effect" : cardEffect.MilkAndCookies,
+        "Card Type"   : cardType.Item,
+        "Description" : "If you successfully roll to use the equipped Hero card's effect, you may EXCHANGE a Gift card."
+    },
     
     #Base Game Curses
     "Curse of the Snake's Eyes" : {
@@ -1379,6 +1419,120 @@ Cards = {
         "Card Type"   : cardType.Item,
         "Description" : "Unknown"
     },
+    #Gifts
+    "Bag of Holding Gifts" : {
+        "Image" : '',
+        "Effect" : cardEffect.BagOfHoldingGifts,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "When this card enters your Stockpile, DRAW 2 cards."
+    },
+    "EZ Mix Potions" : {
+        "Image" : '',
+        "Effect" : cardEffect.EZMixPotions,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "On your first roll on each of your turns, +1 to your roll for each Gift card in your Stockpile."
+    },
+    "Mythical Mystery" : {
+        "Image" : '',
+        "Effect" : cardEffect.MythicalMystery,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "When this card enters your Stockpile, each other player must return a Hero card in their Party to their hand."
+    },
+    "Rudolph's Nose" : {
+        "Image" : '',
+        "Effect" : cardEffect.RudolphsNose,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "When this card enters your Stockpile, you may play a Hero or Item card from your hand immediately."
+    },
+    "Snows of Time" : {
+        "Image" : '',
+        "Effect" : cardEffect.SnowsofTime,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "When this card enters your Stockpile, look at the top 3 cards of the deck. Add one to your hand, then return the other two to the top of the deck in any order"
+    },
+    "The Gift of Destruction" : {
+        "Image" : '',
+        "Effect" : cardEffect.TheGiftofDestruction,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : "When this card enters your Stockpile, each other player must DISCARD a card."
+    },
+    "Warm Socks" : {
+        "Image" : '',
+        "Effect" : cardEffect.WarmSocks,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Good",
+        "Description" : ""
+    },
+    # "" : {
+    #     "Image" : '',
+    #     "Effect" : cardEffect.,
+    #     "Card Type"   : cardType.Item,
+    #     "Gift Type" : "Good",
+    #     "Description" : ""
+    # },
+    "Endless Unwrapping" : {
+        "Image" : '',
+        "Effect" : cardEffect.EndlessUnwrapping,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "When this card enters your Stockpile, each other player may DRAW a card."
+    },
+    "Gag Gift" : {
+        "Image" : '',
+        "Effect" : cardEffect.GagGift,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "When this card enters your Stockpile, SACRIFICE a card."
+    },
+    "Lump of Coal" : {
+        "Image" : '',
+        "Effect" : cardEffect.LumpofCoal,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : ""
+    },
+    "MintConditionMittens" : {
+        "Image" : '',
+        "Effect" : cardEffect.MintConditionMittens,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "Each time your roll to use a Hero card's effect, -1 to your roll."
+    },
+    "Potluck Surprise" : {
+        "Image" : '',
+        "Effect" : cardEffect.PotluckSurprise,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "When this card enters your Stockpile, DISCARD a card."
+    },
+    "Really Itchy Sweater" : {
+        "Image" : '',
+        "Effect" : cardEffect.ReallyItchySweater,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "If this Gift card is in your Stockpile, you must have 4 Good Gift cards in your Stockpile instead of 3 to win the game."
+    },
+    "Watchful Medallion" : {
+        "Image" : '',
+        "Effect" : cardEffect.WatchfulMedallion,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "Each time you roll 11 or more (including Modifier cards) on your turn, SACRIFICE a card."
+    },
+    "White Elephant" : {
+        "Image" : '',
+        "Effect" : cardEffect.WhiteElephant,
+        "Card Type"   : cardType.Item,
+        "Gift Type" : "Bad",
+        "Description" : "This Gift card cannot be exchanged."
+    },
+    
 #Heroes
     "None" : {
         "Image" : '',
@@ -2183,6 +2337,103 @@ Cards = {
         "Description" : "Choose a Hero card in any player's Party. Mimi's effect is that Hero card's effect (including roll cost) until the end of your turn. You may roll to use that effect immediately."
     },
     #Here to Sleigh
+    "Gift Bearer" : {
+        "Image" : '',
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.GiftBearer,
+        "Effect Roll" : 7,
+        "Card Type"   : cardType.Hero,
+        "Description" : "REGIFT a Gift card."
+    },
+    "Santa Claws" : {
+        "Image" : '',
+        "Class" : heroType.Fighter,
+        "Effect" : cardEffect.SantaClaws,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW 2 cards. If at least one of those cards is a Challenge card, you may reveal it, then add the top card from the Gift deck to your Stockpile."
+    },
+    "Christmas Carol" : {
+        "Image" : '',
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.ChristmasCarol,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "+1 to all your rolls for each Gift card in your Stockpile until the end of your turn."
+    },
+    "Lil' Drummer Bard" : {
+        "Image" : '',
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.LilDrummerBard,
+        "Effect Roll" : 8,
+        "Card Type"   : cardType.Hero,
+        "Description" : "EXCHANGE a Gift card."
+    },
+    "Shiny Nose" : {
+        "Image" : '',
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.ShinyNose,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll for each Gift card in your Stockpile until the end of your turn."
+    },
+    "Snow Slinger" : {
+        "Image" : '',
+        "Class" : heroType.Guardian,
+        "Effect" : cardEffect.SnowSlinger,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card and spend an extra action point this turn."
+    },
+    "Prancer" : {
+        "Image" : '',
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.Prancer,
+        "Effect Roll" : 11,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DESTROY a Hero card, then add the top card from the Gift deck to your Stockpile."
+    },
+    "Shooting Star" : {
+        "Image" : '',
+        "Class" : heroType.Ranger,
+        "Effect" : cardEffect.ShootingStar,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "DRAW a card. If that card is a Hero card, you may reveal it, then add the top card from the Gift deck to your Stockpile."
+    },
+    "Fireplace Fugitive" : {
+        "Image" : '',
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.FireplaceFugitive,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "Pull a card from another player's hand. If that card is a Hero card, you may reveal it, then add the top card from the Gift deck to your Stockpile."
+    },
+    "Gift Bag Bandit" : {
+        "Image" : '',
+        "Class" : heroType.Thief,
+        "Effect" : cardEffect.GiftBagBandit,
+        "Effect Roll" : 9,
+        "Card Type"   : cardType.Hero,
+        "Description" : "REGIFT or EXCHANGE a Gift card."
+    },
+    "Evergreen" : {
+        "Image" : '',
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.Evergreen,
+        "Effect Roll" : 10,
+        "Card Type"   : cardType.Hero,
+        "Description" : "REGIFT a Gift card, then DESTROY a Hero card."
+    },
+    "Holly Jolly" : {
+        "Image" : '',
+        "Class" : heroType.Wizard,
+        "Effect" : cardEffect.HollyJolly,
+        "Effect Roll" : 6,
+        "Card Type"   : cardType.Hero,
+        "Description" : "SACRIFICE a Hero card, then EXCHANGE a Gift card."
+    },
+    
     #Banner Quest
 }
 #Banners

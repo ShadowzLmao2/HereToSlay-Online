@@ -222,6 +222,7 @@ def useHeroAbility(hero):
         case cardEffect.GreedyCheeks:
             return
         case cardEffect.LuckyBucky:
+            
             return
         case cardEffect.MellowDee:
             return
