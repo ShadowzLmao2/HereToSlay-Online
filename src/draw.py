@@ -14,6 +14,8 @@ window.title("Here to Slay Online")
 defaultImgWidth = 140
 defaultImgHeight = 200
 
+cardTotal = 0
+
 #0 = main menu
 #1 = game screen
 currentScene = 0
@@ -27,6 +29,8 @@ buttonPositions = []
 
 #cardnames
 leaderNames = []
+monsterNames = []
+cardNames = []
 
 
 def start() :
@@ -40,7 +44,8 @@ def start() :
     img = resize_image('src/card_images/BaseGame/Cards/badAxe.png')
 
     leaderNames = populateLeaderNames()
-    printLeaderImages(leaderNames)
+    monsterNames = populateMonsterNames()
+    cardNames = populateCardNames()
 
     buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
     buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
@@ -52,7 +57,7 @@ def start() :
     print(buttons[4])
 
     name = "Charismatic Song"
-    print(getLeaderImagePath(name))
+    print(getImagePath(Leaders, name))
     buttons[3].config(image=img, bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
@@ -129,8 +134,8 @@ def setupImages(paths):
     return images'''
 
 #DO NOT DELETE, it doesnt work outside of a function
-def getLeaderImagePath(leader):
-    sub = Leaders[leader]
+def getImagePath(dict, leader):
+    sub = dict[leader]
     return sub.get("Image")
 
 #hide button
@@ -162,12 +167,34 @@ class buttonPos:
             '''
 
 def populateLeaderNames():
+    global cardTotal
     out = []
+    num = 0
     for name in Leaders:
         out.append(name)
-    print(out)
+        num += 1
+        cardTotal += 1
+    print(num + " leader cards (19 expected)")
     return out
 
-def printLeaderImages(names):
-    for name in names:
-        print(getLeaderImagePath(name))
+def populateMonsterNames():
+    global cardTotal
+    out = []
+    num = 0
+    for name in Monsters:
+        out.append(name)
+        num += 1
+        cardTotal += 1
+    print(num + " monster cards (36 expected)")
+    return out
+
+def populateCardNames():
+    global cardTotal
+    out = []
+    num = 0
+    for name in Cards:
+        out.append(name)
+        num += 1
+        cardTotal += 1
+    print(num + " cards (172 expected)")
+    return out
