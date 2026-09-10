@@ -18,6 +18,8 @@ defaultImgHeight = 200
 #1 = game screen
 currentScene = 0
 
+buttons = []
+
 pngCount = 0
 
 #Stores the positions of buttons NOT on screen
@@ -39,26 +41,34 @@ def start() :
     #quitButton = tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2)
     quitButton = tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height())
 
+    buttons.append(playButton)
+    buttons.append(rankedButton)
+    buttons.append(settingsButton)
+    buttons.append(quitButton)
+
+    buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
+    print(buttons[4])
+
     name = "Charismatic Song"
     print(getLeaderImagePath(name))
 
     #Main Menu
-    playButton.pack(ipadx=5, ipady=5, expand=True)
+    buttons[0].pack(ipadx=5, ipady=5, expand=True)
     #rankedButton.pack(ipadx=5, ipady=5, expand=True)
     settingsButton.pack(ipadx=5, ipady=5, expand=True)
     quitButton.pack(ipadx=5, ipady=5, expand=True)
 
-    playButton.place(relx=.5,rely=.5,anchor="center")
-    playButton.place(x=playButton.winfo_rootx(),y=playButton.winfo_y()-240)
+    buttons[0].place(relx=.5,rely=.5,anchor="center")
+    buttons[0].place(x=playButton.winfo_rootx(),y=playButton.winfo_y()-240)
 
-    rankedButton.place(relx=.5,rely=.5,anchor="center")
-    rankedButton.place(x=rankedButton.winfo_rootx(),y=rankedButton.winfo_y()-160)
+    buttons[1].place(relx=.5,rely=.5,anchor="center")
+    buttons[1].place(x=rankedButton.winfo_rootx(),y=rankedButton.winfo_y()-160)
 
-    settingsButton.place(relx=.5,rely=.5,anchor="center")
-    settingsButton.place(x=settingsButton.winfo_rootx(),y=settingsButton.winfo_y()-80)
+    buttons[2].place(relx=.5,rely=.5,anchor="center")
+    buttons[2].place(x=settingsButton.winfo_rootx(),y=settingsButton.winfo_y()-80)
 
-    quitButton.place(relx=.5,rely=.5,anchor="center")
-    quitButton.place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
+    buttons[3].place(relx=.5,rely=.5,anchor="center")
+    buttons[3].place(x=quitButton.winfo_rootx(),y=quitButton.winfo_y())
 
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
@@ -142,4 +152,10 @@ class buttonPos:
     def __init__(self, pos, button):
         self.pos = pos
         buttonTxt = button['text']
-#Switch to
+
+#Switch screens
+#store positions of buttons currently on screen
+'''def screenSwitch(screen):
+    match screen:
+        case 0:
+            '''
