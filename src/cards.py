@@ -206,6 +206,22 @@ class cardEffect(Enum):
     FreshlySharpenedSkates = 151
     MilkAndCookies     = 152
     Gift               = 153
+    #gifts
+    BagOfHoldingGifts  = 154
+    EZMixPotions       = 155
+    MythicalMystery    = 156
+    RudolphsNose       = 157
+    SnowsofTime        = 158
+    TheGiftofDestruction = 159
+    WarmSocks          = 160
+    EndlessUnwrapping  = 161
+    GagGift            = 162
+    LumpofCoal         = 163
+    MintConditionMittens = 164
+    PotluckSurprise     = 165
+    ReallyItchySweater = 166
+    WatchfulMedallion  = 167
+    WhiteElephant      = 168
     
     
     
