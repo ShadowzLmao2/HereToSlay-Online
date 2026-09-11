@@ -36,7 +36,14 @@ cardNames = []
 
 firstImage = 0
 
+leaderImages = []
+monsterImages = []
 cardImages = []
+
+#offset of arrays of images, as pyimage #s are decided in order of declaration
+leadersSize = 1
+monstersSize = 1
+cardsSize = 1
 
 def start() :
 
@@ -48,7 +55,9 @@ def start() :
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
     
     leaderNames = populateLeaderNames()
+    leaderImages = populateLeaderImages(leaderNames)
     monsterNames = populateMonsterNames()
+    monsterImages = populateMonsterImages(monsterNames)
     cardNames = populateCardNames()
     cardImages = populateCardImages(cardNames)
     print(str(cardTotal) + " cards in total(262 expected)")
@@ -63,6 +72,9 @@ def start() :
     #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
 
     print(str(buttons[3].cget('image')).removeprefix('pyimage'))
+    print(cardImages[int(str(buttons[3].cget('image')).removeprefix('pyimage')) - cardsSize])
+    print(cardImages[70])
+    print(cardImages[71])
 
     buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
     print(buttons[4])
@@ -215,4 +227,23 @@ def populateCardImages(names):
     for name in names:
         out.append(resize_image(getImagePath(Cards, name))) 
     out = [x for x in out if x is not None]
+    global cardsSize
+    cardsSize += len(out)
+    return out
+
+def populateLeaderImages(names):
+    out = []
+    for name in names:
+        out.append(resize_image(getImagePath(Leaders, name))) 
+    out = [x for x in out if x is not None]
+    return out
+
+def populateMonsterImages(names):
+    out = []
+    for name in names:
+        out.append(resize_image(getImagePath(Monsters, name))) 
+    out = [x for x in out if x is not None]
+    global monstersSize
+    monstersSize += len(out)
+    monstersSize += (cardsSize - 1)
     return out
