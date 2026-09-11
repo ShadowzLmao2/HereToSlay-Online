@@ -62,7 +62,7 @@ def start() :
     buttons.append(tk.Button(window, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
     #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
 
-    print(str(buttons[3].cget('image')))
+    print(str(buttons[3].cget('image')).removeprefix('pyimage'))
 
     buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
     print(buttons[4])
