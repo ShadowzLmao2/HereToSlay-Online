@@ -21,6 +21,8 @@ cardTotal = 0
 currentScene = 0
 
 buttons = []
+#array that is synced up with one above, where every button's current image (if applicable) is stored using the same index as the button
+currentImage = []
 
 pngCount = 0
 
@@ -32,6 +34,9 @@ leaderNames = []
 monsterNames = []
 cardNames = []
 
+firstImage = 0
+
+cardImages = []
 
 def start() :
 
@@ -41,25 +46,30 @@ def start() :
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
-    img = resize_image('src/card_images/BaseGame/Cards/badAxe.png')
-
+    
     leaderNames = populateLeaderNames()
     monsterNames = populateMonsterNames()
     cardNames = populateCardNames()
+    cardImages = populateCardImages(cardNames)
     print(str(cardTotal) + " cards in total(262 expected)")
+    for card in cardImages:
+        if card != None:
+            firstImage = cardImages.index(card)
 
     buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
     buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
     buttons.append(tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
-    buttons.append(tk.Button(window, image=img, command=lambda: window.quit(), width=img.width(), height=img.height(), name='quitButton'))
+    buttons.append(tk.Button(window, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
     #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
+
+    print(str(buttons[3].cget('image')))
 
     buttons.append(tk.Button(window, text='test', command=lambda: window.quit(), width=40, height=2, name='b4'))
     print(buttons[4])
 
     name = "Charismatic Song"
     print(getImagePath(Leaders, name))
-    buttons[3].config(image=img, bd=0, relief='flat', highlightthickness=0)
+    #buttons[3].config(image=cardImages[0], bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
     buttons[0].pack(ipadx=5, ipady=5, expand=True)
@@ -135,8 +145,8 @@ def setupImages(paths):
     return images'''
 
 #DO NOT DELETE, it doesnt work outside of a function
-def getImagePath(dict, leader):
-    sub = dict[leader]
+def getImagePath(dict, card):
+    sub = dict[card]
     return sub.get("Image")
 
 #hide button
@@ -198,4 +208,11 @@ def populateCardNames():
         num += 1
         cardTotal += 1
     print(str(num) + " cards (207 expected)")
+    return out
+
+def populateCardImages(names):
+    out = []
+    for name in names:
+        out.append(resize_image(getImagePath(Cards, name))) 
+    out = [x for x in out if x is not None]
     return out
