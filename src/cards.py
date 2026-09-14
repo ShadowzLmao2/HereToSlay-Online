@@ -831,7 +831,7 @@ Monsters = {
     },
     #banner quest monsters
     "Chitin Scourge" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BannerQuest/Monsters/chitinScourge.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 6,
@@ -842,7 +842,7 @@ Monsters = {
         "Description" : "Each time another player rolls to ATTACK a Monster card, -1 to that roll."
     },
     "Razor Tongue" : {
-        "Image" : '',
+        "Image" : 'src/card_images/BannerQuest/Monsters/razorTongue.png',
         "Hero Req"    : 2,
         "Class Req"   : heroType.NoClass,
         "Lose Roll"   : 5,
@@ -852,6 +852,7 @@ Monsters = {
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
     },
+    #Dragon Sorcerers
     "Calamity Mongrel" : {
         "Image" : '',
         "Hero Req"    : 2,
@@ -864,6 +865,7 @@ Monsters = {
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
     },
     "None" : {
+        "Image": '',
         "Description" : "None"
     }
 }

@@ -56,10 +56,13 @@ def start() :
     
     leaderNames = populateLeaderNames()
     leaderImages = populateLeaderImages(leaderNames)
+    print("leader start" + str(leaderImages[0]))
     monsterNames = populateMonsterNames()
     monsterImages = populateMonsterImages(monsterNames)
+    print("monster start" + str(monsterImages[0]))
     cardNames = populateCardNames()
     cardImages = populateCardImages(cardNames)
+    print("card start" + str(cardImages[0]))
     print(str(cardTotal) + " cards in total(262 expected)")
     for card in cardImages:
         if card != None:
