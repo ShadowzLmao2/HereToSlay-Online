@@ -8,14 +8,7 @@ import random as rand
 #from enum import Enum
 global AP
 AP = 3
-def activePlayerGenerator():
-    if ranked:
-        yield 1
-        yield 2
-    else:
-        for i in range(1,playerCount+1):
-            yield i
-activePlayer = activePlayerGenerator()
+activePlayer = 1
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
     if testingPhase:
