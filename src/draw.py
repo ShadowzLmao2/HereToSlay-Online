@@ -68,8 +68,10 @@ def start() :
         if card != None:
             firstImage = cardImages.index(card)
 
+    compareCards(Leaders, Monsters, Cards)
+
     buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
-    buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
+    buttons.append(tk.Button(window, text='Ranked', command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
     buttons.append(tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
     buttons.append(tk.Button(window, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
     #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
@@ -250,3 +252,97 @@ def populateMonsterImages(names):
     monstersSize += len(out)
     monstersSize += (cardsSize - 1)
     return out
+
+def compareCards(leaders, monsters, cards):
+    cardsMissing = 0
+
+    for entry in leaderNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+    for entry in monsterNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+
+    for entry in cardNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+    print("doneChecking")
+    print(str(cardsMissing) + " cards missing")
+
+
+def valueInDict(input, value):
+    for entry in input:
+        if input == value:
+            return True
+        else:
+            continue
+    return False
