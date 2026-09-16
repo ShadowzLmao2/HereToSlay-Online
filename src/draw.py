@@ -7,12 +7,16 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk  # Import PIL for PNG support
+from buttonsData import *
 window = Tk()
 window.geometry("1280x720")
 window.title("Here to Slay Online")
 
 defaultImgWidth = 140
 defaultImgHeight = 200
+
+yCenter = 1280/2
+xCenter = 720/2
 
 cardTotal = 0
 
@@ -53,26 +57,61 @@ def start() :
     #Declare all buttons in the opening screen
     #The layout is as follows:
     #buttonName = tk.Button(window, text='what button says', command=functionButtonExecutes, width=widthInLetters)
+
+    window.bind("<Configure>", on_resize)
     
     leaderNames = populateLeaderNames()
     leaderImages = populateLeaderImages(leaderNames)
+    print("leader start" + str(leaderImages[0]))
     monsterNames = populateMonsterNames()
     monsterImages = populateMonsterImages(monsterNames)
+    print("monster start" + str(monsterImages[0]))
     cardNames = populateCardNames()
     cardImages = populateCardImages(cardNames)
+    print("card start" + str(cardImages[0]))
     print(str(cardTotal) + " cards in total(262 expected)")
     for card in cardImages:
         if card != None:
             firstImage = cardImages.index(card)
 
-    buttons.append(tk.Button(window, text='Play', command=lambda: startGame(), width=40, height=2, name='playButton'))
-    buttons.append(tk.Button(window, text='Ranked', command=lambda: window.quit(), width=40, height=2, name='rankedButton'))
-    buttons.append(tk.Button(window, text='Settings', command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
-    buttons.append(tk.Button(window, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
-    #buttons.append(tk.Button(window, text='Quit', command=lambda: window.quit(), width=40, height=2, name='buttons[3]))
+    compareCards(Leaders, Monsters, Cards)
 
-    print(str(buttons[3].cget('image')).removeprefix('pyimage'))
-    print(cardImages[int(str(buttons[3].cget('image')).removeprefix('pyimage')) - cardsSize])
+    #Create a frame to hold the scrollbar
+    mainFrame = Frame(window)
+    mainFrame.pack(fill=BOTH, expand=1)
+
+    #Canvas is put into frame, this is what scrolls when the scrollbar is interacted with
+    canvas = Canvas(mainFrame)
+    canvas.pack(side=LEFT, fill=BOTH, expand=1)
+
+    #create the scrollbar
+    scrollbar = ttk.Scrollbar(mainFrame, orient=VERTICAL, command=canvas.yview)
+    scrollbar.pack(side=RIGHT, fill=Y)
+
+    #Configure the scrollbar to scroll the canvas
+    canvas.configure(yscrollcommand=scrollbar.set)
+    canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+
+    #Create secondary frame inside canvas
+    secondFrame = Frame(canvas)
+
+    #Add second frame to a new window in canvas
+    canvas.create_window((0,0), window=secondFrame, anchor="nw")
+
+    #Because a button cannot have an attribute added after it is declared, declare both an img and a text and have them both blank, then call buttonSetup to assign
+    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: startGame(), width=40, height=2, name='playButton'))
+    setupButton(buttons[0], removeStart(buttons[0]))
+    #test(buttons[0])
+    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
+    setupButton(buttons[1], removeStart(buttons[1]))
+    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
+    setupButton(buttons[2], removeStart(buttons[2]))
+    #buttons.append(tk.Button(secondFrame, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
+    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: window.quit(), width=40, height=2, name='quitButton'))
+    setupButton(buttons[3], removeStart(buttons[3]))
+
+    #print(str(buttons[3].cget('image')).removeprefix('pyimage'))
+    #print(cardImages[int(str(buttons[3].cget('image')).removeprefix('pyimage')) - cardsSize])
     print(cardImages[70])
     print(cardImages[71])
 
@@ -84,28 +123,24 @@ def start() :
     #buttons[3].config(image=cardImages[0], bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
-    buttons[0].pack(ipadx=5, ipady=5, expand=True)
+    '''buttons[0].pack(ipadx=5, ipady=5, expand=True)
     #buttons[1].pack(ipadx=5, ipady=5, expand=True)
     buttons[2].pack(ipadx=5, ipady=5, expand=True)
-    buttons[3].pack(ipadx=5, ipady=5, expand=True)
+    buttons[3].pack(ipadx=5, ipady=5, expand=True)'''
 
-    buttons[0].place(relx=.5,rely=.5,anchor="center")
-    buttons[0].place(x=buttons[0].winfo_rootx(),y=buttons[0].winfo_y()-240)
+    #Unless this runs, the window width is not updated
+    window.update_idletasks()
 
-    buttons[1].place(relx=.5,rely=.5,anchor="center")
-    buttons[1].place(x=buttons[1].winfo_rootx(),y=buttons[1].winfo_y()-160)
-
-    buttons[2].place(relx=.5,rely=.5,anchor="center")
-    buttons[2].place(x=buttons[2].winfo_rootx(),y=buttons[2].winfo_y()-80)
-
-    buttons[3].place(relx=.5,rely=.5,anchor="center")
-    buttons[3].place(x=buttons[3].winfo_rootx(),y=buttons[3].winfo_y())
+    buttons[0].grid(row=1, column=0,ipadx=5, ipady=5)
+    buttons[1].grid(row=3, column=0,ipadx=5, ipady=5)
+    buttons[2].grid(row=5, column=0,ipadx=5, ipady=5)
+    buttons[3].grid(row=7, column=0,ipadx=5, ipady=5)
 
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
     #Note: if you use place, place_forget, if you use pack, pack_forget, etc
     #buttons[3].place_forget()
-    hide(buttons[2])
+    #hide(buttons[2])
 
     window.mainloop()
 
@@ -118,7 +153,7 @@ def resize_image(path):
         return ImageTk.PhotoImage(img) #turn pillow img into tkinter img
     except FileNotFoundError:
         print(f"Error: File '{path}' not found.")
-        return None
+        return 'src/card_images/default.png'
     except Exception as e:
         print(f"Error loading image: {e}")
         return None
@@ -247,3 +282,145 @@ def populateMonsterImages(names):
     monstersSize += len(out)
     monstersSize += (cardsSize - 1)
     return out
+
+def compareCards(leaders, monsters, cards):
+    cardsMissing = 0
+
+    for entry in leaderNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+    for entry in monsterNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+
+    for entry in cardNames:
+        if valueInDict(mainDeck, entry) != True:
+            continue
+        elif valueInDict(dsDeck, entry) != True:
+            continue
+        elif valueInDict(wadDeck, entry) != True:
+            continue
+        elif valueInDict(banDeck, entry) != True:
+            continue
+        elif valueInDict(baqBanners, entry) != True:
+            continue
+        elif valueInDict(baqDeck, entry) != True:
+            continue
+        elif valueInDict(kseDeck, entry) != True:
+            continue
+        elif valueInDict(limitedCardsDeck, entry) != True:
+            continue
+        elif valueInDict(htsDeck, entry) != True:
+            continue
+        elif valueInDict(htsGifts, entry) != True:
+            continue
+        elif valueInDict(monsterDeck, entry) != True:
+            continue
+        else:
+            print(entry + " is missing from the list")
+            cardsMissing += 1
+    print("doneChecking")
+    print(str(cardsMissing) + " cards missing")
+
+
+def valueInDict(input, value):
+    for entry in input:
+        if input == value:
+            return True
+        else:
+            continue
+    return False
+
+
+
+def on_resize(event):
+    global yCenter
+    global xCenter
+    # CRITICAL: Check if the event was triggered by the root window itself, 
+    # and not by one of its child widgets.
+    if event.widget == window:
+        print(f"Window resized! New width: {event.width}, New height: {event.height}")
+        yCenter = event.height/2
+        xCenter = event.width/2
+
+def isCentered(dict):
+    if dict["centered"]:
+        return True
+    else:
+        return False
+
+#Search StaticButtons dict for button name, and find the type, then assign the text or image
+def setupButton(button, whatButton):
+    global StaticButtons
+    global cardImages
+    buttonType = ""
+    #Loop until the name is found.
+    for key, value in StaticButtons.items():
+        print("Started Checking StaticButtons")
+        print("Value is "  + str(value))
+        if str(key) == whatButton:
+            if value["type"] == "image":
+                print("This is an image button")
+                button.config(img = value["value"])
+            elif value["type"] == "text":
+                print("This is a text button")
+                button.config(text = value["value"])
+
+def test(button):
+    button.config(text='test')
+
+#Concat string starting from left until the last known value of the stop
+def removeUntilVal(value, stop):
+    out = value[(value.rfind(stop) + 1):]
+    print("final is " + out)
+    return out
+#The full name of a button in tkinter is all of the frames and windows, then the button name, so this isolates and returns the button name
+def removeStart(button):
+    name = str(button)
+    return removeUntilVal(name, '.')
