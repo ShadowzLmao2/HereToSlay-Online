@@ -1,3 +1,6 @@
+from draw import *
+from main import *
+
 #Dictionary containing all of the button data for buttons that are not intended to move
 StaticButtons = {
     #"ButtonName": {
@@ -15,6 +18,7 @@ StaticButtons = {
         "y": 0,
         "type": 'text',
         "value": 'Start',
+        "method": startGame,
         "centered": True,
     },
     "rankedButton": {
@@ -23,6 +27,7 @@ StaticButtons = {
         "y": 0,
         "type": "text",
         "value": "Ranked",
+        "method": startGame,
         "centered": True,
     },
     "settingsButton": {
@@ -31,6 +36,7 @@ StaticButtons = {
         "y": 0,
         "type": "text",
         "value": "Settings",
+        "method": startGame,
         "centered": True,
     },
     "quitButton": {
@@ -39,6 +45,7 @@ StaticButtons = {
         "y": 0,
         "type": "text",
         "value": "Quit",
+        "method": startGame,
         "centered": True,
     },
 }
