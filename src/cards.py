@@ -341,7 +341,7 @@ class bannerType(Enum):
 
 Leaders = {
     "None" : {
-        "Image" : 'src/card_images/default.png',
+        "Image" : 'src/card_images/baseGame/Cards/noImage.png',
         "Description" : "None",
         "Start of Turn" : False,
         },

@@ -417,7 +417,7 @@ def setupButton(button, whatButton):
             button.config(command=value["method"])
             if value["type"] == "image":
                 print("This is an image button")
-                button.config(image=leaderImages[value["value"]], width=leaderImages[value["value"]].width(), height=leaderImages[value["value"]].height())
+                button.config(image=leaderImages[value["value"]], width=(leaderImages[value["value"]].width()), height=leaderImages[value["value"]].height())
                 print(value["value"])
             elif value["type"] == "text":
                 print("This is a text button")
