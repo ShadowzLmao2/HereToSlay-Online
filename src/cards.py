@@ -327,7 +327,7 @@ class MoExAtkReq(Enum):
 
 Leaders = {
     "None" : {
-        "Image" : 'src/card_images/BaseGame/Cards/noimage.png',
+        "Image" : 'src/card_images/default.png',
         "Description" : "None",
         "Start of Turn" : False,
         },

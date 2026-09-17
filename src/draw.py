@@ -1,4 +1,5 @@
 import os
+import sys
 from buttons import *
 from cards import *
 from main import *
@@ -45,8 +46,8 @@ monsterImages = []
 cardImages = []
 
 #offset of arrays of images, as pyimage #s are decided in order of declaration
-leadersSize = 1
-monstersSize = 1
+leadersSize = 19
+monstersSize = 36
 cardsSize = 1
 
 def start() :
@@ -99,15 +100,14 @@ def start() :
     canvas.create_window((0,0), window=secondFrame, anchor="nw")
 
     #Because a button cannot have an attribute added after it is declared, declare both an img and a text and have them both blank, then call buttonSetup to assign
-    buttons.append(tk.Button(secondFrame, text='', img=None, command=StaticButtons.get('playButton')["method"], width=40, height=2, name='playButton'))
-    setupButton(buttons[0], removeStart(buttons[0]))
+    buttons.append(tk.Button(secondFrame, text='', image=None, command=doNothing, width=40, height=2, name='playButton'))
     #test(buttons[0])
-    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
+    buttons.append(tk.Button(secondFrame, text='', image=None, command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
     setupButton(buttons[1], removeStart(buttons[1]))
-    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
+    buttons.append(tk.Button(secondFrame, text='', image=None, command=lambda: window.quit(), width=40, height=2, name='settingsButton'))
     setupButton(buttons[2], removeStart(buttons[2]))
     #buttons.append(tk.Button(secondFrame, image=cardImages[len(cardImages) - 1], command=lambda: window.quit(), width=cardImages[len(cardImages) - 1].width(), height=cardImages[len(cardImages) - 1].height(), name='quitButton'))
-    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: window.quit(), width=40, height=2, name='quitButton'))
+    buttons.append(tk.Button(secondFrame, text='', image=None, command=lambda: window.quit(), width=40, height=2, name='quitButton'))
     setupButton(buttons[3], removeStart(buttons[3]))
 
     #print(str(buttons[3].cget('image')).removeprefix('pyimage'))
@@ -123,10 +123,12 @@ def start() :
     #buttons[3].config(image=cardImages[0], bd=0, relief='flat', highlightthickness=0)
 
     #Main Menu
-    '''buttons[0].pack(ipadx=5, ipady=5, expand=True)
+    #buttons[0].pack(ipadx=5, ipady=5, expand=True)
     #buttons[1].pack(ipadx=5, ipady=5, expand=True)
-    buttons[2].pack(ipadx=5, ipady=5, expand=True)
-    buttons[3].pack(ipadx=5, ipady=5, expand=True)'''
+    #buttons[2].pack(ipadx=5, ipady=5, expand=True)
+    #buttons[3].pack(ipadx=5, ipady=5, expand=True)
+
+    setupButton(buttons[0], removeStart(buttons[0]))
 
     #Unless this runs, the window width is not updated
     window.update_idletasks()
@@ -399,15 +401,24 @@ def isCentered(dict):
 def setupButton(button, whatButton):
     global StaticButtons
     global cardImages
+    global leaderImages
+    global cardNames
+    if len(leaderImages) == 0:
+        leaderNames = populateLeaderNames()
+        leaderImages = populateLeaderImages(leaderNames)
     buttonType = ""
     #Loop until the name is found.
     for key, value in StaticButtons.items():
+        #Debugging
         print("Started Checking StaticButtons")
+        #Check what value
         print("Value is "  + str(value))
         if str(key) == whatButton:
+            button.config(command=value["method"])
             if value["type"] == "image":
                 print("This is an image button")
-                button.config(img = value["value"])
+                button.config(image=leaderImages[value["value"]], width=leaderImages[value["value"]].width(), height=leaderImages[value["value"]].height())
+                print(value["value"])
             elif value["type"] == "text":
                 print("This is a text button")
                 button.config(text = value["value"])
@@ -426,4 +437,4 @@ def removeStart(button):
     return removeUntilVal(name, '.')
 
 def quitWindow():
-    window.quit()
+    sys.exit()
