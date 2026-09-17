@@ -2486,84 +2486,84 @@ Cards = {
 #Banners
 Banners = {
     "None" : {
-        "Description" : "Temporary placeholder for src/active_player.py"
+        "Description" : "placeholder"
     },
     "Bard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/bardBanner.png',
         "Effect": bannerType.Bard,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Bard, 
-        "Descripion": "Once per turn on your turn, you may DISCARD a card, then roll to use the effect of any Hero card in your Party immediately."
+        "Description": "Once per turn on your turn, you may DISCARD a card, then roll to use the effect of any Hero card in your Party immediately."
     },
     "Berserker Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/BerserkerBanner.png',
         "Effect": bannerType.Berserker,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Berserker, 
-        "Descripion": "Once per turn on your turn, you may DISCARD 3 cards, then ATTACK a Monster card immediately. (You must still meet the Party requirements listed on that Monster card to attack it.)"
+        "Description": "Once per turn on your turn, you may DISCARD 3 cards, then ATTACK a Monster card immediately. (You must still meet the Party requirements listed on that Monster card to attack it.)"
     },
     "Druid Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/DruidBanner.png',
         "Effect": bannerType.Druid,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Druid, 
-        "Descripion": "Once per turn on your turn, you my DISCARD 2 cards, then DRAW 2 cards."
+        "Description": "Once per turn on your turn, you my DISCARD 2 cards, then DRAW 2 cards."
     },
     "Fighter Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/FighterBanner.png',
         "Effect": bannerType.Fighter,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Fighter, 
-        "Descripion": "Once per turn on your turn, you may DISCARD 2 cards, then DESTROY a Hero card."
+        "Description": "Once per turn on your turn, you may DISCARD 2 cards, then DESTROY a Hero card."
     },
     "Guardian Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/GuardianBanner.png',
         "Effect": bannerType.Guardian,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Guardian, 
-        "Descripion": "Once per turn on your turn, you may DISCARD a card, then search the discard pile for a Modifier card and add it to your hand."
+        "Description": "Once per turn on your turn, you may DISCARD a card, then search the discard pile for a Modifier card and add it to your hand."
     },
     "Hunter's Trophy Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/HuntersTrophyBanner.png',
         "Effect": bannerType.Hunter,
         "Requirement Amount": 1,
         "Requirement Type": 12, #There is no heroType.Hunter, so I am using 12 since it works the same
-        "Descripion": "Once per turn on your turn, +1 to your roll when you roll to ATTACK a Monster card."
+        "Description": "Once per turn on your turn, +1 to your roll when you roll to ATTACK a Monster card."
     },
     "Necromancer Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/NecromancerBanner.png',
         "Effect": bannerType.Necromancer,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Necromancer, 
-        "Descripion": "Once per turn on your turn, you may DISCARD 2 cards, then search the discard pile for a Hero card and add it to your hand. Play it immediately."
+        "Description": "Once per turn on your turn, you may DISCARD 2 cards, then search the discard pile for a Hero card and add it to your hand. Play it immediately."
     },
     "Ranger Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/RangerBanner.png',
         "Effect": bannerType.Ranger,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Ranger, 
-        "Descripion": "Once per turn on your turn, you may DRAW a card."
+        "Description": "Once per turn on your turn, you may DRAW a card."
     },
     "Thief Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/ThiefBanner.png',
         "Effect": bannerType.Thief,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Thief, 
-        "Descripion": "Once per turn on your turn, you may DISCARD 3 cards, then STEAL a Hero card."
+        "Description": "Once per turn on your turn, you may DISCARD 3 cards, then STEAL a Hero card."
     },
     "Warrior Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WarriorBanner.png',
         "Effect": bannerType.Warrior,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Warrior, 
-        "Descripion": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
+        "Description": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
     },
     "Wizard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WizardBanner.png',
         "Effect": bannerType.Wizard,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Wizard, 
-        "Descripion": "Once per turn on your turn, you may DISCARD a card, then play a Magic card immediately."
+        "Description": "Once per turn on your turn, you may DISCARD a card, then play a Magic card immediately."
     },
 }
 
