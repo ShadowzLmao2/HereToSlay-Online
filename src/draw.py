@@ -16,8 +16,8 @@ window.title("Here to Slay Online")
 defaultImgWidth = 140
 defaultImgHeight = 200
 
-yCenter = 1280/2
-xCenter = 720/2
+yCenter = 720/2
+xCenter = 1280/2
 
 cardTotal = 0
 
@@ -133,10 +133,12 @@ def start() :
     #Unless this runs, the window width is not updated
     window.update_idletasks()
 
-    buttons[0].grid(row=1, column=0,ipadx=5, ipady=5)
-    buttons[1].grid(row=3, column=0,ipadx=5, ipady=5)
-    buttons[2].grid(row=5, column=0,ipadx=5, ipady=5)
-    buttons[3].grid(row=7, column=0,ipadx=5, ipady=5)
+    #secondFrame.grid_columnconfigure(0, weight=1)
+
+    buttons[0].grid(row=1, column=1,ipadx=5, ipady=5, padx=xCenter-160)
+    buttons[1].grid(row=3, column=1,ipadx=5, ipady=5)
+    buttons[2].grid(row=5, column=1,ipadx=5, ipady=5)
+    buttons[3].grid(row=7, column=1,ipadx=5, ipady=5)
 
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
