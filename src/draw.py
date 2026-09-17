@@ -99,7 +99,7 @@ def start() :
     canvas.create_window((0,0), window=secondFrame, anchor="nw")
 
     #Because a button cannot have an attribute added after it is declared, declare both an img and a text and have them both blank, then call buttonSetup to assign
-    buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: startGame(), width=40, height=2, name='playButton'))
+    buttons.append(tk.Button(secondFrame, text='', img=None, command=StaticButtons.get('playButton')["method"], width=40, height=2, name='playButton'))
     setupButton(buttons[0], removeStart(buttons[0]))
     #test(buttons[0])
     buttons.append(tk.Button(secondFrame, text='', img=None, command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
@@ -424,3 +424,6 @@ def removeUntilVal(value, stop):
 def removeStart(button):
     name = str(button)
     return removeUntilVal(name, '.')
+
+def quitWindow():
+    window.quit()
