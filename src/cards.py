@@ -204,37 +204,37 @@ class cardEffect(Enum):
     HollyJolly         = 150
 
     FreshlySharpenedSkates = 151
-    MilkAndCookies     = 152
-    Gift               = 153
-    #gifts
-    BagOfHoldingGifts  = 154
-    EZMixPotions       = 155
-    MythicalMystery    = 156
-    RudolphsNose       = 157
-    SnowsofTime        = 158
+    MilkAndCookies       = 152
+    Gift                 = 153
+    #Gifts
+    BagOfHoldingGifts    = 154
+    EZMixPotions         = 155
+    MythicalMystery      = 156
+    RudolphsNose         = 157
+    SnowsofTime          = 158
     TheGiftofDestruction = 159
-    WarmSocks          = 160
-    EndlessUnwrapping  = 161
-    GagGift            = 162
-    LumpofCoal         = 163
+    WarmSocks            = 160
+    EndlessUnwrapping    = 161
+    GagGift              = 162
+    LumpofCoal           = 163
     MintConditionMittens = 164
-    PotluckSurprise     = 165
-    ReallyItchySweater = 166
-    WatchfulMedallion  = 167
-    WhiteElephant      = 168
+    PotluckSurprise      = 165
+    ReallyItchySweater   = 166
+    WatchfulMedallion    = 167
+    WhiteElephant        = 168
 
-    #BannerQuest:
-    BardBanner         = 169
-    BerserkerBanner    = 170
-    DruidBanner        = 171
-    FighterBanner      = 172
-    GuardianBanner     = 173
-    HuntersTrophyBanner      = 174
-    NecromancerBanner  = 175
-    RangerBanner       = 176
-    ThiefBanner        = 177
-    WarriorBanner      = 178
-    WizardBanner       = 179
+    # #BannerQuest:
+    # BardBanner          = 169
+    # BerserkerBanner     = 170
+    # DruidBanner         = 171
+    # FighterBanner       = 172
+    # GuardianBanner      = 173
+    # HuntersTrophyBanner = 174
+    # NecromancerBanner   = 175
+    # RangerBanner        = 176
+    # ThiefBanner         = 177
+    # WarriorBanner       = 178
+    # WizardBanner        = 179
     
     
     
@@ -291,7 +291,7 @@ class cardType(Enum):
     Any       = 7
     Challenge = 8 #Monster Expansion only
     Gift      = 9 #Here to Sleigh only
-    Banner    = 10 #BannerQuest Only
+    #Banner    = 10#Banner Quest Only
 
 class heroType(Enum):
     NoClass     = 0
@@ -306,6 +306,7 @@ class heroType(Enum):
     Warrior     = 9
     Druid       = 10
     Sorcerer    = 11
+    #12 is used for the Hunter Banner
 
 class monsterRollEffect(Enum):
     slay         = 0
@@ -321,6 +322,19 @@ class MoExAtkReq(Enum):
     discardTwo      = 2
     discardSpecific = 3
     heroClass       = 4
+
+class bannerType(Enum):
+    Bard = 0
+    Berserker = 1
+    Druid = 2
+    Fighter = 3
+    Guardian = 4
+    Hunter = 5
+    Necromancer = 6
+    Ranger = 7
+    Thief = 8
+    Warrior = 9
+    Wizard = 10
     
 #Cards
 #Party Leaders
@@ -843,7 +857,7 @@ Monsters = {
         "Effect"      : monsterEffect.wickedSeaSerpent,
         "Description" : "Each time you play an Item card, DRAW a card."
     },
-    #banner quest monsters
+    #Banner Quest Monsters
     "Chitin Scourge" : {
         "Image" : 'src/card_images/BannerQuest/Monsters/chitinScourge.png',
         "Hero Req"    : 3,
@@ -866,7 +880,7 @@ Monsters = {
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time another player discards any number of cards, DRAW a card."
     },
-    #Dragon Sorcerers
+    #Dragon Sorcerers Monsters
     "Calamity Mongrel" : {
         "Image" : 'src/card_images/DragonSorcerers/Monsters/calamityMongrel.png',
         "Hero Req"    : 2,
@@ -2474,77 +2488,82 @@ Banners = {
     "None" : {
         "Description" : "Temporary placeholder for src/active_player.py"
     },
-    '''"Example": {
-        "Image": '',
-        "Effect": cardEffect.BannerName,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
-    },'''
     "Bard Banner": {
-        "Image": '',
-        "Effect": cardEffect.BardBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/bardBanner.png',
+        "Effect": bannerType.Bard,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Bard, 
+        "Descripion": "Once per turn on your turn, you may DISCARD a card, then roll to use the effect of any Hero card in your Party immediately."
     },
     "Berserker Banner": {
-        "Image": '',
-        "Effect": cardEffect.BerserkerBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/BerserkerBanner.png',
+        "Effect": bannerType.Berserker,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Berserker, 
+        "Descripion": "Once per turn on your turn, you may DISCARD 3 cards, then ATTACK a Monster card immediately. (You must still meet the Party requirements listed on that Monster card to attack it.)"
     },
     "Druid Banner": {
-        "Image": '',
-        "Effect": cardEffect.DruidBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/DruidBanner.png',
+        "Effect": bannerType.Druid,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Druid, 
+        "Descripion": "Once per turn on your turn, you my DISCARD 2 cards, then DRAW 2 cards."
     },
     "Fighter Banner": {
-        "Image": '',
-        "Effect": cardEffect.FighterBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/FighterBanner.png',
+        "Effect": bannerType.Fighter,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Fighter, 
+        "Descripion": "Once per turn on your turn, you may DISCARD 2 cards, then DESTROY a Hero card."
     },
     "Guardian Banner": {
-        "Image": '',
-        "Effect": cardEffect.GuardianBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/GuardianBanner.png',
+        "Effect": bannerType.Guardian,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Guardian, 
+        "Descripion": "Once per turn on your turn, you may DISCARD a card, then search the discard pile for a Modifier card and add it to your hand."
     },
-    "Hunters Trophy Banner": {
-        "Image": '',
-        "Effect": cardEffect.HuntersTrophyBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+    "Hunter's Trophy Banner": {
+        "Image": 'src/card_images/BannerQuest/Banners/HuntersTrophyBanner.png',
+        "Effect": bannerType.Hunter,
+        "Requirement Amount": 1,
+        "Requirement Type": 12, #There is no heroType.Hunter, so I am using 12 since it works the same
+        "Descripion": "Once per turn on your turn, +1 to your roll when you roll to ATTACK a Monster card."
     },
     "Necromancer Banner": {
-        "Image": '',
-        "Effect": cardEffect.NecromancerBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/NecromancerBanner.png',
+        "Effect": bannerType.Necromancer,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Necromancer, 
+        "Descripion": "Once per turn on your turn, you may DISCARD 2 cards, then search the discard pile for a Hero card and add it to your hand. Play it immediately."
     },
     "Ranger Banner": {
-        "Image": '',
-        "Effect": cardEffect.RangerBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/RangerBanner.png',
+        "Effect": bannerType.Ranger,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Ranger, 
+        "Descripion": "Once per turn on your turn, you may DRAW a card."
     },
     "Thief Banner": {
-        "Image": '',
-        "Effect": cardEffect.ThiefBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/ThiefBanner.png',
+        "Effect": bannerType.Thief,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Thief, 
+        "Descripion": "Once per turn on your turn, you may DISCARD 3 cards, then STEAL a Hero card."
     },
     "Warrior Banner": {
-        "Image": '',
-        "Effect": cardEffect.WarriorBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/WarriorBanner.png',
+        "Effect": bannerType.Warrior,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Warrior, 
+        "Descripion": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
     },
     "Wizard Banner": {
-        "Image": '',
-        "Effect": cardEffect.WizardBanner,
-        "Card Type": cardType.Banner,
-        "Descripion": "none"
+        "Image": 'src/card_images/BannerQuest/Banners/WizardBanner.png',
+        "Effect": bannerType.Wizard,
+        "Requirement Amount": 3,
+        "Requirement Type": heroType.Wizard, 
+        "Descripion": "Once per turn on your turn, you may DISCARD a card, then play a Magic card immediately."
     },
 }
 

@@ -27,7 +27,7 @@ Chances of each roll
 - 10 : 3/36 | 8.33%
 - 11 : 2/36 | 5.56%
 - 12 : 1/36 | 2.78%
--           | 
+-           
 - 2+ : 36/36| 100%
 - 3+ : 35/36| 97.22%
 - 4+ : 33/36| 91.67%
@@ -39,7 +39,7 @@ Chances of each roll
 - 10+: 6/36 | 16.67%
 - 11+: 3/36 | 8.33%
 - 12+: 1/36 | 2.78%
--            | 
+-            
 - 12-: 36/36| 100%
 - 11-: 35/36| 97.22%
 - 10-: 33/36| 91.67%
@@ -53,10 +53,10 @@ Chances of each roll
 - 2- : 1/36 | 2.78%
 
 Todo: 
-- All banner cards and rules
+- Rules
 - Tutorial
-- GUI - Pygame, make work
-- Internet
+- GUI - tkinter
+- Internet Connection
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional
