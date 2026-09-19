@@ -9,8 +9,12 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk  # Import PIL for PNG support
 from buttonsData import *
+
+windowWidth = 1280
+windowHeight = 720
+
 window = Tk()
-window.geometry("1280x720")
+window.geometry(str(windowWidth)+"x"+str(windowHeight))
 window.title("Here to Slay Online")
 
 defaultImgWidth = 140
@@ -134,11 +138,12 @@ def start() :
     window.update_idletasks()
 
     #secondFrame.grid_columnconfigure(0, weight=1)
+    secondFrame.grid_rowconfigure(1, weight=1)
 
-    buttons[0].grid(row=1, column=1,ipadx=5, ipady=5, padx=xCenter-160)
-    buttons[1].grid(row=3, column=1,ipadx=5, ipady=5)
-    buttons[2].grid(row=5, column=1,ipadx=5, ipady=5)
-    buttons[3].grid(row=7, column=1,ipadx=5, ipady=5)
+    buttons[0].grid(row=1, column=0,ipadx=5, ipady=5, padx=(xCenter-(windowWidth/10), 0), pady=(100,25))
+    buttons[1].grid(row=3, column=0,ipadx=5, ipady=5, padx=(xCenter-(windowWidth/10), 0), pady=(25,25))
+    buttons[2].grid(row=5, column=0,ipadx=5, ipady=5, padx=(xCenter-(windowWidth/10), 0), pady=(25,25))
+    buttons[3].grid(row=7, column=0,ipadx=5, ipady=5, padx=(xCenter-(windowWidth/10), 0), pady=(25,100))
 
     #Causes the button to hide itself
     #I believe it looses its x and y values, so TODO: store button x and y vals seperately
@@ -384,14 +389,22 @@ def valueInDict(input, value):
 
 
 def on_resize(event):
+    global windowWidth
+    global windowHeight
     global yCenter
     global xCenter
     # CRITICAL: Check if the event was triggered by the root window itself, 
     # and not by one of its child widgets.
+    windowWidth = event.width
+    windowHeight = event.height
     if event.widget == window:
         print(f"Window resized! New width: {event.width}, New height: {event.height}")
         yCenter = event.height/2
         xCenter = event.width/2
+        #buttons[0].config(padx=xCenter-int((windowWidth/10)), pady=(100,25))
+        #buttons[1].config(padx=int((xCenter-(windowWidth/10), 0)), pady=(100,25))
+        #buttons[2].config(padx=int((xCenter-(windowWidth/10), 0)), pady=(100,25))
+        #buttons[3].config(padx=int((xCenter-(windowWidth/10), 0)), pady=(100,25))
 
 def isCentered(dict):
     if dict["centered"]:
@@ -440,3 +453,4 @@ def removeStart(button):
 
 def quitWindow():
     sys.exit()
+#TODO: Start making classes for each frame, maybe in frames.py file? create method to switch between frames
