@@ -9,10 +9,12 @@ import random as rand
 global AP
 AP = 3
 activePlayer = 1
+turnCount = 1
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
     if testingPhase:
-        print("PreGame Phase initialized")
+        print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
+        print("PreGame Phase started\n")
     #pickLeaders()
     if ranked:
         shuffleDeck(rankedMonsterDeck)
@@ -32,42 +34,47 @@ def startGame():
 
     else:        
         if testingPhase:
-            print("mainDeck")
+            print("Main Deck:")
         shuffleDeck(mainDeck)
         if testingPhase:
-            print("monsterDeck")
+            print("\nMonster Deck:")
         shuffleDeck(monsterDeck)
         chooseLeader()
         for player in range(1,playerCount+1,1):
             drawCard(5,player)
     drawMonsterCard(3)
     if testingPhase:
-        print("PreGame Phase finalized")
+        print("PreGame Phase finished")
+        print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
     main()
     return
 
+#Runs every round after startGame has been activated once and ends with endTurn()
 def main():
     if testingPhase:
-        print("Player", activePlayer, "Turn initialized")
-    startTurn(activePlayer)
-    chooseAction()
+        print("Player", activePlayer, "turn started")
+    startTurn(activePlayer) 
+    chooseAction() #Basically waits for input
     return
 
+#All the "Standby Phase" Stuff
 def startTurn(player):
-    leader = playerLeaders[activePlayer]
+    leader = playerLeaders[activePlayer] #temp variable
     if testingPhase:
-        print("Start of turn effect:", leader["Start of Turn"])
-    if (leader["Start of Turn"]):
+        print("Turn Number:", turnCount)
+        if turnCount > 1:
+            print("Start of turn effect:", leader["Start of Turn"])
+    if (leader["Start of Turn"] and turnCount != 1): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch(playerLeaders[activePlayer])
     return
 
-def chooseLeader():
+def chooseLeader(): #Pick your leader at the start of the game. Only used in casual
     for i in range(1, playerCount+1,1):
         if testingPhase:
-            print("Player", i)
-        
+            print("Player", i, playerLeaders[i])
     return
-    
+
+#For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
 def leaderTypeSwitch(leader):
     confirmationBox(switchLeaderType)
     match leader:
@@ -146,17 +153,17 @@ def useLeaderAbility(leader):
     if leaderAbilityUsed:
         return 
     match Leaders[leader["Effect"]]:
-        case heroEffect.ShadowClaw:
+        case leaderEffect.ShadowClaw:
             pullCard(choosePlayer(), False, 0)
             leaderAbilityUsed = True
             return
-        case heroEffect.GnawingDread:
+        case leaderEffect.GnawingDread:
             index = searchDiscard(cardType.Any)
             reduceAP(2)
             playerHand[activePlayer].append(discardPile[index].pop())
             leaderAbilityUsed = True
             return
-        case heroEffect.IllusiveTrickster:
+        case leaderEffect.IllusiveTrickster:
             if checkHand(cardType.Magic, activePlayer):
                 discardSpecific(cardType.Magic)
                 reduceAP(1)
@@ -524,9 +531,8 @@ def draw():
 def drawCard(count, player):
     for i in range(0,count,1):
         playerHand[player].append(mainDeck.pop())
-        if testingPhase:
-            print("Player", player, "drew a card")
     if testingPhase:
+        print("Player", player, "drew", count, "card(s)")
         print(playerHand[player])
     return
 
@@ -534,9 +540,8 @@ def drawMonsterCard(count):
     for i in range(2,2-count,-1):
         monsterField[i] = monsterDeck[-1]
         monsterDeck.pop()
-        if testingPhase:
-            print("Monster Card was drawn")
     if testingPhase:
+        print(count, "Monster Card(s) was/were drawn")
         print(monsterField)
     return
 
@@ -608,14 +613,15 @@ def reduceAP(APReduction):
 def endTurn():
     global leaderAbilityUsed
     leaderAbilityUsed = False
-    global AP, activePlayer, playerCount
+    global AP, activePlayer, playerCount, turnCount
     if testingPhase:
-        print("End Phase of Player", activePlayer, "initialized")
+        print("End Phase of Player", activePlayer, "started")
     if activePlayer == playerCount:
         activePlayer = 1
     else:
         activePlayer +=1
     AP = 3
+    turnCount +=1
     return
 
 #startGame()

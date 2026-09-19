@@ -1,7 +1,8 @@
 from enum import Enum
 from config import *
 from card_images import *
-class heroEffect(Enum):
+#The Leader effects when activated - will probably remove the non-activateable ones
+class leaderEffect(Enum):
     NoEffect          = 0
     #Heroes
     CharismaticSong   = 1
@@ -23,6 +24,7 @@ class heroEffect(Enum):
     RhythmicArcher    = 17
     UnstableUnicorn   = 18
 
+#The effect of Items/Spells/Monsters when played/used
 class cardEffect(Enum):
     NoEffect = 0
     #Action
@@ -238,7 +240,7 @@ class cardEffect(Enum):
     
     
     
-    
+#The effect of the monsters once you slay them
 class monsterEffect(Enum):
     noEffect            = 0
     abyssQueen          = 1
@@ -279,7 +281,8 @@ class monsterEffect(Enum):
     #BanQ
     chitinScourge       = 33
     razorTongue         = 34
-    
+
+#The type of the card - helps with determining where to put in after use
 class cardType(Enum):
     NoCard    = 0
     Action    = 1
@@ -293,6 +296,8 @@ class cardType(Enum):
     Gift      = 9 #Here to Sleigh only
     #Banner    = 10#Banner Quest Only
 
+#The class of the Hero - used for attacking monsters, winning the game off of having 5 different types,
+#and some other card specific interactions
 class heroType(Enum):
     NoClass     = 0
     Thief       = 1
@@ -308,6 +313,7 @@ class heroType(Enum):
     Sorcerer    = 11
     #12 is used for the Hunter Banner
 
+#The switch/case for what happens when you win or lose the roll to attack
 class monsterRollEffect(Enum):
     slay         = 0
     discard      = 1
@@ -316,6 +322,8 @@ class monsterRollEffect(Enum):
     sacrificeTwo = 4 #BaN Expansion
     discardTwo   = 5 #DSE
 
+#Monster Expansion attack requirements - since Monster Expansion has extra requirements to attack
+#some of the monsters, a separate enum was included for it
 class MoExAtkReq(Enum):
     noReq           = 0
     discard         = 1
@@ -323,6 +331,7 @@ class MoExAtkReq(Enum):
     discardSpecific = 3
     heroClass       = 4
 
+#Used for switch/case and basically all of the effects related to banners 
 class bannerType(Enum):
     Bard = 0
     Berserker = 1
@@ -341,70 +350,74 @@ class bannerType(Enum):
 
 Leaders = {
     "None" : {
-        "Image" : 'src/card_images/baseGame/Cards/noImage.png',
-        "Description" : "None",
-        "Start of Turn" : False,
+        "Image" : '', #The directory for the image
+        "Class" : 0, #The type of the Leader
+        "Secondary Class" : 0, #The type is switches to if it can
+        "Effect" : 0, #The effect when activated
+        "Activatable" : 0, #If you can activate its effect by clicking on it
+        "Start of Turn" : 0, #If it can change its Class at the start of the turn (or is the Unicorn)
+        "Description" : "", #The leader's effect
         },
     "Charismatic Song" : {
         "Image" : 'src/card_images/BaseGame/Leaders/charismaticSong.png',
         "Class" : heroType.Bard,
-        "Effect" : heroEffect.CharismaticSong,
+        "Effect" : leaderEffect.CharismaticSong,
         "Activatable" : False,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
         "Image" : 'src/card_images/BaseGame/Leaders/fistOfReason.png',
         "Class" : heroType.Fighter,
-        "Effect" : heroEffect.FistOfReason,
+        "Effect" : leaderEffect.FistOfReason,
         "Activatable" : False,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
         "Image" : 'src/card_images/BaseGame/Leaders/shadowClaw.png',
         "Class" : heroType.Thief,
-        "Effect" : heroEffect.ShadowClaw,
+        "Effect" : leaderEffect.ShadowClaw,
         "Activatable" : True,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
         "Image" : 'src/card_images/BaseGame/Leaders/cloakedSage.png',
         "Class" : heroType.Wizard,
-        "Effect" : heroEffect.CloakedSage,
+        "Effect" : leaderEffect.CloakedSage,
         "Activatable" : False,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
         "Image" : 'src/card_images/BaseGame/Leaders/divineArrow.png',
         "Class" : heroType.Ranger,
-        "Effect" : heroEffect.DivineArrow,
+        "Effect" : leaderEffect.DivineArrow,
         "Activatable" : False,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
         "Image" : 'src/card_images/BaseGame/Leaders/protectingHorn.png',
         "Class" : heroType.Guardian,
-        "Effect" : heroEffect.ProtectingHorn,
+        "Effect" : leaderEffect.ProtectingHorn,
         "Activatable" : False,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/nobleShaman.png',
         "Class" : heroType.Druid,
-        "Effect" : heroEffect.NobleShaman,
+        "Effect" : leaderEffect.NobleShaman,
         "Activatable" : False,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/piercingHowl.png',
         "Class" : heroType.Warrior,
-        "Effect" : heroEffect.PiercingHowl,
+        "Effect" : leaderEffect.PiercingHowl,
         "Activatable" : False,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/gnawingDread.png',
         "Class" : heroType.Necromancer,
-        "Effect" : heroEffect.GnawingDread,
+        "Effect" : leaderEffect.GnawingDread,
         "Activatable" : True,
 
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
@@ -412,14 +425,14 @@ Leaders = {
     "Raging Manticore" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/ragingManticore.png',
         "Class" : heroType.Berserker,
-        "Effect" : heroEffect.RagingManticore,
+        "Effect" : leaderEffect.RagingManticore,
         "Activatable" : False,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
         "Image" : 'src/card_images/DragonSorcerers/Leaders/fearlessFlame.png',
         "Class" : heroType.Sorcerer,
-        "Effect" : heroEffect.FearlessFlame,
+        "Effect" : leaderEffect.FearlessFlame,
         "Activatable" : False,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
@@ -427,7 +440,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/brutalBow.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Ranger,
-        "Effect" : heroEffect.BrutalBow,
+        "Effect" : leaderEffect.BrutalBow,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
@@ -436,7 +449,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/mysticalMaestro.png',
         "Class" : heroType.Wizard,
         "Secondary Class" : heroType.Bard,
-        "Effect" : heroEffect.MysticalMaestro,
+        "Effect" : leaderEffect.MysticalMaestro,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
@@ -445,7 +458,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/veiledRaider.png',
         "Class" : heroType.Guardian,
         "Secondary Class" : heroType.Thief,
-        "Effect" : heroEffect.VeiledRaider,
+        "Effect" : leaderEffect.VeiledRaider,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
@@ -453,7 +466,7 @@ Leaders = {
     "Unstable Unicorn" : {
         "Image" : 'src/card_images/KSE/Leaders/unstableUnicorn.png',
         "Class" : heroType.NoClass,
-        "Effect" : heroEffect.UnstableUnicorn,
+        "Effect" : leaderEffect.UnstableUnicorn,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
@@ -462,7 +475,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/fiercePanguardian.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Guardian,
-        "Effect" : heroEffect.FiercePanguardian,
+        "Effect" : leaderEffect.FiercePanguardian,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
@@ -471,7 +484,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/illusiveTrickster.png',
         "Class" : heroType.Thief,
         "Secondary Class" : heroType.Wizard,
-        "Effect" : heroEffect.IllusiveTrickster,
+        "Effect" : leaderEffect.IllusiveTrickster,
         "Activatable" : True,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
@@ -480,7 +493,7 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/rhythmicArcher.png',
         "Class" : heroType.Ranger,
         "Secondary Class" : heroType.Bard,
-        "Effect" : heroEffect.RhythmicArcher,
+        "Effect" : leaderEffect.RhythmicArcher,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
@@ -488,6 +501,18 @@ Leaders = {
 }
 #Monsters
 Monsters = {
+    "None" : {
+        "Image": '', #Directory to the image
+        "Hero Req"    : 0, #Number of Heroes required to attack the monster
+        "Class Req"   : heroType.NoClass, #Type of Hero required to attack the monster
+        "Lose Roll"   : 1, #The number you need to roll or below to get the Lose effect
+        "Lose Effect" : monsterRollEffect.slay, #What happens when you roll or below the Lose roll
+        "Win Roll"    : 1, #The number you need to roll or above to get the Win effect
+        "Win Effect"  : monsterRollEffect.slay, #What happens when you roll or above the Win roll
+        "Effect"      : monsterEffect.noEffect, #The monster's effect - Probably will change a lot of them to
+                                                #noEffect because it will probably be the activateable only
+        "Description" : "None" #Its effect on the card
+    },
     "Abyss Queen" : {
         "Image" : 'src/card_images/BaseGame/Monsters/abyssQueen.png',
         "Hero Req"    : 2,
@@ -891,10 +916,6 @@ Monsters = {
         "Win Effect"  : monsterRollEffect.slay,
         "Effect"      : monsterEffect.razorTongue,
         "Description" : "Each time you DRAW a Challenge card, you may DISCARD it and DRAW 2 cards."
-    },
-    "None" : {
-        "Image": '',
-        "Description" : "None"
     }
 }
 Cards = {

@@ -57,6 +57,9 @@ Todo:
 - Tutorial
 - GUI - tkinter
 - Internet Connection
+- Fix images (higher res) for:
+    - BQ Cards/Monsters and all of Here to Sleigh
+- Test Buttons: Make the game work, importantly right now we need to make sure the class switching at the start of the turn works
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional

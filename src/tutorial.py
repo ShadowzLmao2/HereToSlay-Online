@@ -2,7 +2,7 @@
 ""
 ""
 ""
-"Ranked Specific Rules"
+"Ranked Specific Rules:"
 ""
 ""
 ""
