@@ -5,14 +5,13 @@ from cards import *
 from functions import *
 from main import *
 #ranked = True
-playerCount = 2
+playerCount = 6
 
 
 
 def testLeaderTypeSwap():
 
-    startGame()
-    print("Ranked Status:", ranked)
+    leaderTypeSwitch("Brutal Bow")
     return
 
 
@@ -21,10 +20,10 @@ def testGame():
     startGame()
     return
 '''  Game Order
-Pre Game Phase     - "PreGame Phase initialized"
+PreGame Phase      - "PreGame Phase initialized"
 Deck Shuffle Phase - the deck name is printed and then the deck
-Draw Phase         - Player # is printed, and then their hand
-
+Draw Phase         - Player # is printed, and then their hand, monster cards drawn are printed
+Player Turn Phase  - Player # is printed and their turn is started. Currently, the turn ends right away
 '''
 
 
@@ -32,5 +31,10 @@ Draw Phase         - Player # is printed, and then their hand
 
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
 
-testLeaderTypeSwap()
+#testLeaderTypeSwap()
+playerLeaders[1] = "Brutal Bow"
+summon(1,"Sharp Fox",1)
+#print(playerParties[1["Hero"[1]]])
+#print(playerLeaders[1])
+#print(Leaders[(playerLeaders[1])])
 #testGame()

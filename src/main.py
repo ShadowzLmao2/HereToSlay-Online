@@ -10,6 +10,7 @@ global AP
 AP = 3
 activePlayer = 1
 turnCount = 1
+playerCount = 4
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
     if testingPhase:
@@ -60,23 +61,27 @@ def main():
 #All the "Standby Phase" Stuff
 def startTurn(player):
     leader = playerLeaders[activePlayer] #temp variable
+    typeSwitch = Leaders[leader]["Start of Turn"]
     if testingPhase:
         print("Turn Number:", turnCount)
         if turnCount > 1:
             print("Start of turn effect:", leader["Start of Turn"])
-    if (leader["Start of Turn"] and turnCount != 1): #Only for the KickStarter leaders and Individual Exclusive leaders
+    if (Leaders[leader]["Start of Turn"] and turnCount != 1): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch(playerLeaders[activePlayer])
     return
 
 def chooseLeader(): #Pick your leader at the start of the game. Only used in casual
+    global playerCount
     for i in range(1, playerCount+1,1):
         if testingPhase:
-            print("Player", i, playerLeaders[i])
+            print("Player", i)
+            print(playerLeaders[i])
     return
 
 #For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
 def leaderTypeSwitch(leader):
-    confirmationBox(switchLeaderType)
+    if input(switchLeaderType) == "n":
+        return
     match leader:
         case "Brutal Bow":
             #Fighter/Ranger
@@ -99,6 +104,8 @@ def leaderTypeSwitch(leader):
         case "Rhythmic Archer":
             #Bard/Ranger
             return
+    if testingPhase():
+        print(leader)
     return
 
 def flipCoin():
@@ -121,14 +128,14 @@ def shuffleDeck(deck):
 def chooseAction():
     #Working: endTurn() draw() discardDraw()
     #WIP: activateHeroAbility(hero)
-    #Not Working: attack() activateLeaderAbility(playerParties[activePlayer["Leader"]])
+    #Not Working: attack() activateLeaderAbility(playerParties[activePlayer]["Leader"])
     endTurn()
     return
 
 def activateHeroAbility(hero):
     if AP > 0:
         reduceAP(1)
-        if rollDice() >= Cards[hero["Effect Roll"]]:
+        if rollDice() >= Cards[hero]["Effect Roll"]:
             useHeroAbility(hero)
         else:
             if testingPhase:
@@ -139,7 +146,7 @@ def activateHeroAbility(hero):
     return
 
 def activateLeaderAbility(leader):
-    if AP > 0 and Leaders[leader["Activatable"]]:
+    if AP > 0 and Leaders[leader]["Activatable"]:
         reduceAP(1)
         useLeaderAbility(leader)
     else:
@@ -152,7 +159,7 @@ leaderAbilityUsed= False
 def useLeaderAbility(leader):
     if leaderAbilityUsed:
         return 
-    match Leaders[leader["Effect"]]:
+    match Leaders[leader]["Effect"]:
         case leaderEffect.ShadowClaw:
             pullCard(choosePlayer(), False, 0)
             leaderAbilityUsed = True
@@ -175,7 +182,7 @@ def useLeaderAbility(leader):
     return
 
 def useHeroAbility(hero):
-    match Cards[hero["Effect"]]:
+    match Cards[hero]["Effect"]:
         case cardEffect.BadAxe:
             player = choosePlayer()
             target = chooseHero()
@@ -184,7 +191,7 @@ def useHeroAbility(hero):
         case cardEffect.PullCard:
             target = choosePlayer()
             pulledCard = pullCard(target,False,0)
-            if Cards[pulledCard["Class"]] == Cards[hero["Pull Type"]]:
+            if Cards[pulledCard]["Class"] == Cards[hero]["Pull Type"]:
                 pullCard(target,False,0)
             return
         case cardEffect.BearyWise:
@@ -196,16 +203,16 @@ def useHeroAbility(hero):
             return
         case cardEffect.PanChucks:
             drawCard(2,activePlayer)
-            firstDraw = playerHand[activePlayer[-2]]
-            secondDraw = playerHand[activePlayer[-1]]
+            firstDraw = playerHand[activePlayer][-2]
+            secondDraw = playerHand[activePlayer][-1]
             if testingPhase:
                 print("Drew", firstDraw, "and", secondDraw)
-                if Cards[activePlayer[firstDraw["Effect"]]] == cardEffect.Challenge:
+                if Cards[activePlayer][firstDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-2)
                     player = choosePlayer()
                     target = chooseHero()
                     destroy(target, player)
-                if Cards[activePlayer[secondDraw["Effect"]]] == cardEffect.Challenge:
+                if Cards[activePlayer][secondDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-1)
                     player = choosePlayer()
                     target = chooseHero()
@@ -385,16 +392,16 @@ def useHeroAbility(hero):
             drawCard(2,activePlayer)
             return
         case cardEffect.SearchDiscard:
-            searchDiscard(Cards[hero["Search Target"]])
+            searchDiscard(Cards[hero]["Search Target"])
             return
         case cardEffect.StealHero:
             stealHero()
             return
         case cardEffect.PullAndPlay:
-            pullCard(choosePlayer(),True,Cards[hero["Search Target"]])
+            pullCard(choosePlayer(),True,Cards[hero]["Search Target"])
             return
         case cardEffect.Play2:
-            playCards(activePlayer,2,False,Cards[hero["Search Target"]])
+            playCards(activePlayer,2,False,Cards[hero]["Search Target"])
             return
     return
 
@@ -411,19 +418,21 @@ def playCards(target,count,pickAll,type):
 
 def summonHero(slot,hero,player):
     global AP
-    if AP > 0 and checkHeroSlot(slot,player):
+    if AP > 0 and checkHeroSlot(slot,player,"None"):
         reduceAP(1)
         challenge()
         summon(slot,hero,player)
     return
 
 def summon(slot,hero,player):
-    playerParties[player["Hero"[slot]]] = Cards[hero]
+
+    playerParties[player]["Hero"][slot] = hero
     return
-def checkHeroSlot(slot,player):
-    if playerParties[player["Hero"[slot]]] == Cards["None"]:
-        return False
-    return True
+
+def checkHeroSlot(slot,player,key):
+    if playerParties[player]["Hero"][slot] == key:
+        return True
+    return False
 def askPlayer():
     return
 def choosePlayer():
@@ -473,7 +482,7 @@ def placeCard():
 
 def checkHand(cardType, player):
     for card in playerHand[player]:
-        if Cards[(playerHand[player[card]])["Card Type"]] == cardType:
+        if Cards[(playerHand[player][card])]["Card Type"] == cardType:
             return True
     return False
 
@@ -488,7 +497,7 @@ def mill(numMilled):
     return
 def destroy(target,player):
     discardPile.append(target)
-    playerParties[player["Hero"[target]]] = "None"
+    playerParties[player]["Hero"][target] = "None"
     #TODO effects that happen after destroyed 
     return
 def sacrifice(target):
@@ -554,12 +563,12 @@ def attack():
     monster = selectMonster()
     heroReq = checkAtkRequirements(monster)
     if rollDice() >= Monsters[monster]:
-        effect = Monsters[monster["Win Effect"]]
+        effect = Monsters[monster]["Win Effect"]
     else:
-        effect = Monsters[monster["Lose Effect"]]
+        effect = Monsters[monster]["Lose Effect"]
     if effect == monsterRollEffect.slay:
         if monstersSlain[activePlayer] < 3:
-            playerParties[activePlayer["Monster"[monstersSlain[activePlayer]]]] = Monsters[monster]
+            playerParties[activePlayer]["Monster"][monstersSlain][activePlayer] = Monsters[monster]
             monstersSlain[activePlayer]  += 1
             activeMonster[monster] = monsterDeck.pop()
         else:
@@ -601,7 +610,7 @@ def selectFromHand(type,target):
     return index
 
 def discardSelected(cardIndex,target):
-    discardPile.append(playerHand[target[cardIndex]].pop())
+    discardPile.append(playerHand[target][cardIndex].pop())
     return
 
 def reduceAP(APReduction):
@@ -624,12 +633,13 @@ def endTurn():
     turnCount +=1
     return
 
-#startGame()
-
-#Stores the x and y values of a button, as when a button is hidden it looses said values
-class position :
+#Stores the x and y values of a button, as when a button is hidden it loses said values
+class position:
     x = 0
     y = 0
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+#Make sure this is at the end
+#startGame()

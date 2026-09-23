@@ -345,7 +345,6 @@ class bannerType(Enum):
     Warrior = 9
     Wizard = 10
     
-#Cards
 #Party Leaders
 
 Leaders = {
@@ -419,7 +418,6 @@ Leaders = {
         "Class" : heroType.Necromancer,
         "Effect" : leaderEffect.GnawingDread,
         "Activatable" : True,
-
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
@@ -443,7 +441,7 @@ Leaders = {
         "Effect" : leaderEffect.BrutalBow,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.\nEach time you DESTROY a Hero card, DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.Each time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
         "Image" : 'src/card_images/KSE/Leaders/mysticalMaestro.png',
@@ -452,7 +450,7 @@ Leaders = {
         "Effect" : leaderEffect.MysticalMaestro,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.\nEach time you roll 4 or less (including Modifier cards), you may DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.Each time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
         "Image" : 'src/card_images/KSE/Leaders/veiledRaider.png',
@@ -461,7 +459,7 @@ Leaders = {
         "Effect" : leaderEffect.VeiledRaider,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.\nEach time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
+        "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.Each time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
         "Image" : 'src/card_images/KSE/Leaders/unstableUnicorn.png',
@@ -478,7 +476,7 @@ Leaders = {
         "Effect" : leaderEffect.FiercePanguardian,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.\nEach time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
+        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.Each time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/illusiveTrickster.png',
@@ -487,7 +485,7 @@ Leaders = {
         "Effect" : leaderEffect.IllusiveTrickster,
         "Activatable" : True,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.\nOnce per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
+        "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.Once per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
     "Rhythmic Archer" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/rhythmicArcher.png',
@@ -496,7 +494,7 @@ Leaders = {
         "Effect" : leaderEffect.RhythmicArcher,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.\nEach time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.Each time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
     }
 }
 #Monsters
