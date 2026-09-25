@@ -2,7 +2,7 @@ from enum import Enum
 testingPhase = True
 
 WarriorsAndDruids  = True
-BerserkersAndNecromancers = False
+BerserkersAndNecromancers = True
 DragonSorcerers = False
 BannerQuest = False
 HereToSleigh = False
@@ -12,11 +12,13 @@ maxHeroes = 5 + WarriorsAndDruids + BerserkersAndNecromancers
 autoUnicornIn1v1 = True
 ExtraEnemyMonsterSlot = False
 if MonsterExpansion == False:
-    ExtraEnemyMonsterSlot = False
+    ExtraEnemyMonsterSlot = True
 #Ranked
 ranked = False
 maxRankedCards = 60
 minRankedCards = 40
+
+#Currently useless. I have yet to import the images and text for other supported languages
 class languages(Enum):
     English = 0 #Full Support
     Italian = 1 #Base Game and WaD

@@ -30,8 +30,6 @@ def startGame():
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
         global activePlayer
         activePlayer = flipCoin()+1
-        drawCard(5,1)
-        drawCard(5,2)
 
     else:        
         if testingPhase:
@@ -53,59 +51,88 @@ def startGame():
 #Runs every round after startGame has been activated once and ends with endTurn()
 def main():
     if testingPhase:
-        print("Player", activePlayer, "turn started")
+        print(f"Player {activePlayer} turn started")
     startTurn(activePlayer) 
     chooseAction() #Basically waits for input
     return
 
 #All the "Standby Phase" Stuff
 def startTurn(player):
-    leader = playerLeaders[activePlayer] #temp variable
-    typeSwitch = Leaders[leader]["Start of Turn"]
     if testingPhase:
         print("Turn Number:", turnCount)
         if turnCount > 1:
-            print("Start of turn effect:", leader["Start of Turn"])
-    if (Leaders[leader]["Start of Turn"] and turnCount != 1): #Only for the KickStarter leaders and Individual Exclusive leaders
+            print(f"Start of turn effect: {playerLeaders[activePlayer]["Start of Turn"]}")
+    if (Leaders[playerLeaders[activePlayer]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch(playerLeaders[activePlayer])
+        if testingPhase:
+            print(f"{playerLeaders[activePlayer]}: {playerLeaderCurrentType[activePlayer]}")
     return
 
 def chooseLeader(): #Pick your leader at the start of the game. Only used in casual
+    if testingPhase:
+        print("     Leader Section:\n")
     global playerCount
     for i in range(1, playerCount+1,1):
+        playerLeaderCurrentType[i] = Leaders[(playerLeaders[i])]["Class"]
         if testingPhase:
-            print("Player", i)
-            print(playerLeaders[i])
+            print(f"Player {i}: {playerLeaders[i]}, Class: {playerLeaderCurrentType[i]}")
     return
 
 #For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
 def leaderTypeSwitch(leader):
-    if input(switchLeaderType) == "n":
-        return
-    match leader:
-        case "Brutal Bow":
-            #Fighter/Ranger
-            return
-        case "Mystical Maestro":
-            #Mage/Bard
-            return
-        case "Veiled Raider":
-            #Guardian/Thief
-            return
-        case "Unstable Unicorn":
-            #Copy another Leader
-            return
-        case "Fierce Panguardian":
-            #Guardian/Fighter
-            return
-        case "Illusive Trickster":
-            #Wizard/Thief
-            return
-        case "Rhythmic Archer":
-            #Bard/Ranger
-            return
-    if testingPhase():
-        print(leader)
+    if input(f"{switchLeaderType}\n") == "y":
+        leaderType = playerLeaderCurrentType[activePlayer]
+        match leader:
+            case "Brutal Bow":
+                #Fighter/Ranger
+                if leaderType == heroType.Fighter:
+                    playerLeaderCurrentType[activePlayer] = heroType.Ranger
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Fighter
+                return
+            case "Mystical Maestro":
+                #Wizard/Bard
+                if leaderType == heroType.Wizard:
+                    playerLeaderCurrentType[activePlayer] = heroType.Bard
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Wizard
+                return
+            case "Veiled Raider":
+                #Guardian/Thief
+                if leaderType == heroType.Guardian:
+                    playerLeaderCurrentType[activePlayer] = heroType.Thief
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Guardian
+                return
+            case "Unstable Unicorn":
+                #Copy another Leader
+                # if ranked:
+                #     if activePlayer == 1:
+
+                #     else:
+
+                return
+            case "Fierce Panguardian":
+                #Guardian/Fighter
+                if leaderType == heroType.Guardian:
+                    playerLeaderCurrentType[activePlayer] = heroType.Fighter
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Guardian
+                return
+            case "Illusive Trickster":
+                #Wizard/Thief
+                if leaderType == heroType.Wizard:
+                    playerLeaderCurrentType[activePlayer] = heroType.Thief
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Wizard
+                return
+            case "Rhythmic Archer":
+                #Bard/Ranger
+                if leaderType == heroType.Bard:
+                    playerLeaderCurrentType[activePlayer] = heroType.Ranger
+                else:
+                    playerLeaderCurrentType[activePlayer] = heroType.Bard
+                return
     return
 
 def flipCoin():
@@ -541,7 +568,7 @@ def drawCard(count, player):
     for i in range(0,count,1):
         playerHand[player].append(mainDeck.pop())
     if testingPhase:
-        print("Player", player, "drew", count, "card(s)")
+        print(f"Player {player} drew {count} card(s)")
         print(playerHand[player])
     return
 
@@ -550,7 +577,7 @@ def drawMonsterCard(count):
         monsterField[i] = monsterDeck[-1]
         monsterDeck.pop()
     if testingPhase:
-        print(count, "Monster Card(s) was/were drawn")
+        print(f"{count} Monster Card(s) were/was drawn")
         print(monsterField)
     return
 
@@ -624,7 +651,7 @@ def endTurn():
     leaderAbilityUsed = False
     global AP, activePlayer, playerCount, turnCount
     if testingPhase:
-        print("End Phase of Player", activePlayer, "started")
+        print(f"Player {activePlayer} End Phase started")
     if activePlayer == playerCount:
         activePlayer = 1
     else:

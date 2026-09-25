@@ -362,6 +362,7 @@ Leaders = {
         "Class" : heroType.Bard,
         "Effect" : leaderEffect.CharismaticSong,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
@@ -369,6 +370,7 @@ Leaders = {
         "Class" : heroType.Fighter,
         "Effect" : leaderEffect.FistOfReason,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
@@ -376,6 +378,7 @@ Leaders = {
         "Class" : heroType.Thief,
         "Effect" : leaderEffect.ShadowClaw,
         "Activatable" : True,
+        "Start of Turn" : False,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
@@ -383,6 +386,7 @@ Leaders = {
         "Class" : heroType.Wizard,
         "Effect" : leaderEffect.CloakedSage,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
@@ -390,6 +394,7 @@ Leaders = {
         "Class" : heroType.Ranger,
         "Effect" : leaderEffect.DivineArrow,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
@@ -397,6 +402,7 @@ Leaders = {
         "Class" : heroType.Guardian,
         "Effect" : leaderEffect.ProtectingHorn,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
@@ -404,6 +410,7 @@ Leaders = {
         "Class" : heroType.Druid,
         "Effect" : leaderEffect.NobleShaman,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
@@ -411,6 +418,7 @@ Leaders = {
         "Class" : heroType.Warrior,
         "Effect" : leaderEffect.PiercingHowl,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
@@ -418,6 +426,7 @@ Leaders = {
         "Class" : heroType.Necromancer,
         "Effect" : leaderEffect.GnawingDread,
         "Activatable" : True,
+        "Start of Turn" : False,
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
@@ -425,6 +434,7 @@ Leaders = {
         "Class" : heroType.Berserker,
         "Effect" : leaderEffect.RagingManticore,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
@@ -432,6 +442,7 @@ Leaders = {
         "Class" : heroType.Sorcerer,
         "Effect" : leaderEffect.FearlessFlame,
         "Activatable" : False,
+        "Start of Turn" : False,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
     "Brutal Bow" : {
