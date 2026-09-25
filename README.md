@@ -7,9 +7,8 @@ Make sure you have Python and pip downloaded. Run the commands
 - Then, run
 `cd /mnt/c/Users/[user]/[whatever folder it's in]`
 `py get-pip.py`
-`pip install pygame-ce`
 
-To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python draw.py`)
+To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)
 
 
 
