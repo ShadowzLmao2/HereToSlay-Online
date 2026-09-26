@@ -1,4 +1,4 @@
-from enum import Enum
+from enum import Enum #From enuxio?
 from config import *
 from card_images import *
 #The Leader effects when activated - will probably remove the non-activateable ones
@@ -379,6 +379,7 @@ Leaders = {
         "Effect" : leaderEffect.ShadowClaw,
         "Activatable" : True,
         "Start of Turn" : False,
+        "AP Cost" : 1,
         "Description" : "Once per turn on your turn, you may spend an action point to pull a card from another player's hand."
     },
     "Cloaked Sage" : {
@@ -427,6 +428,7 @@ Leaders = {
         "Effect" : leaderEffect.GnawingDread,
         "Activatable" : True,
         "Start of Turn" : False,
+        "AP Cost" : 2,
         "Description" : "Once per turn on your turn, you may spend 2 action points to search the discard pile for a card and add it to your hand."
     },
     "Raging Manticore" : {
@@ -496,7 +498,8 @@ Leaders = {
         "Effect" : leaderEffect.IllusiveTrickster,
         "Activatable" : True,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief.Once per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
+        "AP Cost" : 0,
+        "Description" : "At the beginning of your turn, you may switch The Illusive Trickster's class between Wizard and Thief. Once per turn on your turn, you may DISCARD a Magic card, then DRAW 3 cards."
     },
     "Rhythmic Archer" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/rhythmicArcher.png',

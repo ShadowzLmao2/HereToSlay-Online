@@ -7,12 +7,12 @@ activatePlayer = 1
 playerCount = 4 #Max = 6
 discardPile = []
 playerHand = {
-    1 : [],
-    2 : [],
-    3 : [],
-    4 : [],
-    5 : [],
-    6 : []
+    1 : {},
+    2 : {},
+    3 : {},
+    4 : {},
+    5 : {},
+    6 : {}
 }
 monsterField = [0,0,0]
 playerLeaderCurrentType = {
@@ -30,6 +30,14 @@ playerLeaders = {
     4 : "None",
     5 : "None",
     6 : "None"
+}
+unstableUnicornTarget = {
+    1 : 1,
+    2 : 2,
+    3 : 3,
+    4 : 4,
+    5 : 5,
+    6 : 6
 }
 playerParties = {
     1 : {

@@ -1,16 +1,14 @@
 # HereToSlay-Online
 How to install on your system and how to make it work:
 Make sure you have Python and pip downloaded. Run the commands
-`python --version`
-`pip --version`
+```python --version```
+```pip --version```
 - and if both return a version number, then you are good. If not, install Python from the official website and go to https://pip.pypa.io/en/stable/installation/, find this link and right click and click save linked content as and save it as a file. https://bootstrap.pypa.io/get-pip.py
 - Then, run
-`cd /mnt/c/Users/[user]/[whatever folder it's in]`
-`py get-pip.py`
+```cd /mnt/c/Users/[user]/[whatever folder it's in]```
+```py get-pip.py```
 
 To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)
-
-
 
 An online port of Here to Slay by UnstableGames. Go to https://unstablegames.com/collections/here-to-slay to purchase the original game. This port aims to include customizable decks per person with a ranked gamemode and the standard game with all Expansions selectable. It also includes all Expansions and Kickstarter cards. 1v1 and 2v2 ranked modes will be made available. FFA and 2v2 quickplays will also be made.
 Note that the Banner Quest Expansion will not be added to this project until late June 2026, which is when I will obtain the cards in real life, or if they are added to the Here to Slay wiki then I will add them sooner.
@@ -54,11 +52,11 @@ Chances of each roll
 Todo: 
 - Rules
 - Tutorial
-- GUI - tkinter
+- GUI - tkinter: stuff
 - Internet Connection
 - Fix images (higher res) for:
-    - BQ Cards/Monsters and all of Here to Sleigh
-- Test Buttons: Make the game work and create a debug mode
+    - BQ Cards/Monsters, all of Here to Sleigh
+- Test Buttons: Create a debug mode
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional

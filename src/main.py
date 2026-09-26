@@ -11,6 +11,7 @@ AP = 3
 activePlayer = 1
 turnCount = 1
 playerCount = 4
+
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame():
     if testingPhase:
@@ -30,7 +31,6 @@ def startGame():
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
         global activePlayer
         activePlayer = flipCoin()+1
-
     else:        
         if testingPhase:
             print("Main Deck:")
@@ -106,11 +106,13 @@ def leaderTypeSwitch(leader):
                 return
             case "Unstable Unicorn":
                 #Copy another Leader
-                # if ranked:
-                #     if activePlayer == 1:
-
-                #     else:
-
+                if ranked:
+                    if activePlayer == 1:
+                        unstableUnicornTarget[activePlayer] = 2
+                    else:
+                        unstableUnicornTarget[activePlayer] = 1
+                else:
+                    unstableUnicornTarget[activePlayer] = choosePlayer(0)
                 return
             case "Fierce Panguardian":
                 #Guardian/Fighter
@@ -153,9 +155,9 @@ def shuffleDeck(deck):
     return
 
 def chooseAction():
-    #Working: endTurn() draw() discardDraw()
-    #WIP: activateHeroAbility(hero)
-    #Not Working: attack() activateLeaderAbility(playerParties[activePlayer]["Leader"])
+    #Working: endTurn() draw() discardDraw() 
+    #WIP: activateHeroAbility(hero) activateLeaderAbility(leader)
+    #Not Working: attack() 
     endTurn()
     return
 
@@ -172,23 +174,35 @@ def activateHeroAbility(hero):
     
     return
 
+#Used for useLeaderAbility
+leaderAbilityUsed= False
+
 def activateLeaderAbility(leader):
-    if AP > 0 and Leaders[leader]["Activatable"]:
+    #Sets the Unicorn's ability to whatever it copied at the start of the turn
+    if playerLeaders[activePlayer] == "Unstable Unicorn":
+        leader = playerLeaders[(unstableUnicornTarget[activePlayer])]
+
+    #Checks if it can be activated, if not return
+    if AP >= Leaders[leader]["AP Cost"] and Leaders[leader]["Activatable"] and not leaderAbilityUsed:
+        #Cost
         reduceAP(1)
         useLeaderAbility(leader)
     else:
         print("No AP or no ability")
     return
 
-global leaderAbilityUsed 
-leaderAbilityUsed= False
-
 def useLeaderAbility(leader):
-    if leaderAbilityUsed:
-        return 
+    global leaderAbilityUsed
     match Leaders[leader]["Effect"]:
         case leaderEffect.ShadowClaw:
-            pullCard(choosePlayer(), False, 0)
+            if ranked and ((activePlayer == 1 and not playerHand[2]) or (activePlayer == 2 and not playerHand[1])):
+                return #No target
+            elif ranked and activePlayer == 1: target = 2
+            elif ranked and activePlayer == 2: target = 1
+            else:
+                target = choosePlayer(1)
+            #Need to get a target in the hand. will do rand for now
+            pullCard(target, False, 0)
             leaderAbilityUsed = True
             return
         case leaderEffect.GnawingDread:
@@ -200,23 +214,20 @@ def useLeaderAbility(leader):
         case leaderEffect.IllusiveTrickster:
             if checkHand(cardType.Magic, activePlayer):
                 discardSpecific(cardType.Magic)
-                reduceAP(1)
                 drawCard(3,activePlayer)
                 leaderAbilityUsed = True
-            else:
-                return
             return
     return
 
 def useHeroAbility(hero):
     match Cards[hero]["Effect"]:
         case cardEffect.BadAxe:
-            player = choosePlayer()
+            player = choosePlayer(0)
             target = chooseHero()
             destroy(target, player)
             return
         case cardEffect.PullCard:
-            target = choosePlayer()
+            target = choosePlayer(0)
             pulledCard = pullCard(target,False,0)
             if Cards[pulledCard]["Class"] == Cards[hero]["Pull Type"]:
                 pullCard(target,False,0)
@@ -226,7 +237,7 @@ def useHeroAbility(hero):
             #TODO player picks a card from the discarded
             return
         case cardEffect.ForceDiscard:
-            discardSpecific(choosePlayer(),2)
+            discardSpecific(choosePlayer(0),2)
             return
         case cardEffect.PanChucks:
             drawCard(2,activePlayer)
@@ -236,12 +247,12 @@ def useHeroAbility(hero):
                 print("Drew", firstDraw, "and", secondDraw)
                 if Cards[activePlayer][firstDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-2)
-                    player = choosePlayer()
+                    player = choosePlayer(0)
                     target = chooseHero()
                     destroy(target, player)
                 if Cards[activePlayer][secondDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-1)
-                    player = choosePlayer()
+                    player = choosePlayer(0)
                     target = chooseHero()
                     destroy(target, player)
             return
@@ -425,7 +436,7 @@ def useHeroAbility(hero):
             stealHero()
             return
         case cardEffect.PullAndPlay:
-            pullCard(choosePlayer(),True,Cards[hero]["Search Target"])
+            pullCard(choosePlayer(0),True,Cards[hero]["Search Target"])
             return
         case cardEffect.Play2:
             playCards(activePlayer,2,False,Cards[hero]["Search Target"])
@@ -460,29 +471,41 @@ def checkHeroSlot(slot,player,key):
     if playerParties[player]["Hero"][slot] == key:
         return True
     return False
-def askPlayer():
+
+def askPlayer() -> bool:
     return
-def choosePlayer():
+
+def choosePlayer(req) -> int:
     if ranked:
         if activePlayer == 1:
             return 0
         else:
             return 1
     else:
+        if testingPhase: return 2
         #TODO
-        return
-    return
+        #Req = 1, has card in hand
+        return input()
+    
 def chooseHero(player):
     return
+
 def challenge():
     return hasCardEffect(cardEffect.Challenge)
+
 def hasCardEffect(effect):
     return
-def pullCard(target,req,reqType): 
+
+def pullCard(target,req,reqType) -> int:
     #target is who is stolen from, req is true/false for if there is a requirement, reqType is what card type you need to pull or else you dont pull
+    pullIndex = int(rand(range(0,len(playerHand[target]))))
+    
+    playerHand[activePlayer].append()
     return #return the type
+
 def searchDiscard(cardType):
     return
+
 def playCard(cardType,optional):
     if checkHand(cardType, activePlayer):
         if optional:
@@ -504,6 +527,7 @@ def whichCard(matchType,typeToMatch):
 
 def removeFromHand():
     return
+
 def placeCard():
     return
 
@@ -515,36 +539,47 @@ def checkHand(cardType, player):
 
 def checkField():
     return
+
 def handSize():
     return
+
 def viewHand(player):
     return
+
 def mill(numMilled):
     #mainDeck
     return
+
 def destroy(target,player):
     discardPile.append(target)
     playerParties[player]["Hero"][target] = "None"
     #TODO effects that happen after destroyed 
     return
+
 def sacrifice(target):
     return
-def choosePlayer():
-    return
+
 def stealHero():
     return
+
 def checkHeroItem():
     return
+
 def giveCard():
     return
+
 def tradeHands():
     return
+
 def checkDrawn():
     return
+
 def returnCard(cardType,target):
     return
+
 def equipItem():
     return
+
 def allPlayersDiscard(hitSelf, cardType):
     for i in range(1,playerCount+1):
         if hitSelf or i != activePlayer:
@@ -553,6 +588,7 @@ def allPlayersDiscard(hitSelf, cardType):
 
 def doNothing():
     return
+
 def protectionStatus(player):
     return
 
@@ -601,8 +637,10 @@ def attack():
         else:
             endGame()
     return
+
 def endGame():
     return
+
 def selectMonster():
     return 0
 
@@ -633,7 +671,7 @@ def discardSpecific(type,count,target):
     return
 
 def selectFromHand(type,target):
-    index = 0 #TODO
+    index = int(input()) #TODO
     return index
 
 def discardSelected(cardIndex,target):
