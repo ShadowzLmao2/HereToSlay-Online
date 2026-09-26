@@ -24,6 +24,69 @@ class leaderEffect(Enum):
     RhythmicArcher    = 17
     UnstableUnicorn   = 18
 
+#The type of the card - helps with determining where to put in after use
+class cardType(Enum):
+    NoCard    = 0
+    Action    = 1
+    Magic     = 2
+    Item      = 3
+    Hero      = 4
+    Leader    = 5
+    Monster   = 6
+    Any       = 7
+    Challenge = 8 #Monster Expansion only
+    Gift      = 9 #Here to Sleigh only
+    #Banner    = 10#Banner Quest Only
+
+#The class of the Hero - used for attacking monsters, winning the game off of having 5 different types,
+#and some other card specific interactions
+class heroType(Enum):
+    NoClass     = 0
+    Thief       = 1
+    Guardian    = 2
+    Ranger      = 3
+    Fighter     = 4
+    Bard        = 5
+    Wizard      = 6
+    Berserker   = 7
+    Necromancer = 8
+    Warrior     = 9
+    Druid       = 10
+    Sorcerer    = 11
+    #12 is used for the Hunter Banner
+
+#The switch/case for what happens when you win or lose the roll to attack
+class monsterRollEffect(Enum):
+    slay         = 0
+    discard      = 1
+    sacrifice    = 2
+    discardHand  = 3 #BaN Expansion
+    sacrificeTwo = 4 #BaN Expansion
+    discardTwo   = 5 #DSE
+
+#Monster Expansion attack requirements - since Monster Expansion has extra requirements to attack
+#some of the monsters, a separate enum was included for it
+class MoExAtkReq(Enum):
+    noReq           = 0
+    discard         = 1
+    discardTwo      = 2
+    discardSpecific = 3
+    heroClass       = 4
+
+#Used for switch/case and basically all of the effects related to banners 
+class bannerType(Enum):
+    Bard = 0
+    Berserker = 1
+    Druid = 2
+    Fighter = 3
+    Guardian = 4
+    Hunter = 5
+    Necromancer = 6
+    Ranger = 7
+    Thief = 8
+    Warrior = 9
+    Wizard = 10
+
 #The effect of Items/Spells/Monsters when played/used
 class cardEffect(Enum):
     NoEffect = 0
@@ -237,9 +300,7 @@ class cardEffect(Enum):
     # ThiefBanner         = 177
     # WarriorBanner       = 178
     # WizardBanner        = 179
-    
-    
-    
+     
 #The effect of the monsters once you slay them
 class monsterEffect(Enum):
     noEffect            = 0
@@ -282,68 +343,6 @@ class monsterEffect(Enum):
     chitinScourge       = 33
     razorTongue         = 34
 
-#The type of the card - helps with determining where to put in after use
-class cardType(Enum):
-    NoCard    = 0
-    Action    = 1
-    Magic     = 2
-    Item      = 3
-    Hero      = 4
-    Leader    = 5
-    Monster   = 6
-    Any       = 7
-    Challenge = 8 #Monster Expansion only
-    Gift      = 9 #Here to Sleigh only
-    #Banner    = 10#Banner Quest Only
-
-#The class of the Hero - used for attacking monsters, winning the game off of having 5 different types,
-#and some other card specific interactions
-class heroType(Enum):
-    NoClass     = 0
-    Thief       = 1
-    Guardian    = 2
-    Ranger      = 3
-    Fighter     = 4
-    Bard        = 5
-    Wizard      = 6
-    Berserker   = 7
-    Necromancer = 8
-    Warrior     = 9
-    Druid       = 10
-    Sorcerer    = 11
-    #12 is used for the Hunter Banner
-
-#The switch/case for what happens when you win or lose the roll to attack
-class monsterRollEffect(Enum):
-    slay         = 0
-    discard      = 1
-    sacrifice    = 2
-    discardHand  = 3 #BaN Expansion
-    sacrificeTwo = 4 #BaN Expansion
-    discardTwo   = 5 #DSE
-
-#Monster Expansion attack requirements - since Monster Expansion has extra requirements to attack
-#some of the monsters, a separate enum was included for it
-class MoExAtkReq(Enum):
-    noReq           = 0
-    discard         = 1
-    discardTwo      = 2
-    discardSpecific = 3
-    heroClass       = 4
-
-#Used for switch/case and basically all of the effects related to banners 
-class bannerType(Enum):
-    Bard = 0
-    Berserker = 1
-    Druid = 2
-    Fighter = 3
-    Guardian = 4
-    Hunter = 5
-    Necromancer = 6
-    Ranger = 7
-    Thief = 8
-    Warrior = 9
-    Wizard = 10
     
 #Party Leaders
 
@@ -454,7 +453,7 @@ Leaders = {
         "Effect" : leaderEffect.BrutalBow,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger.Each time you DESTROY a Hero card, DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger. Each time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
         "Image" : 'src/card_images/KSE/Leaders/mysticalMaestro.png',
@@ -463,7 +462,7 @@ Leaders = {
         "Effect" : leaderEffect.MysticalMaestro,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard.Each time you roll 4 or less (including Modifier cards), you may DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard. Each time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
         "Image" : 'src/card_images/KSE/Leaders/veiledRaider.png',
@@ -472,7 +471,7 @@ Leaders = {
         "Effect" : leaderEffect.VeiledRaider,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief.Each time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
+        "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief. Each time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
         "Image" : 'src/card_images/KSE/Leaders/unstableUnicorn.png',
@@ -489,7 +488,7 @@ Leaders = {
         "Effect" : leaderEffect.FiercePanguardian,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter.Each time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
+        "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter. Each time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/illusiveTrickster.png',
@@ -508,7 +507,7 @@ Leaders = {
         "Effect" : leaderEffect.RhythmicArcher,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger.Each time any player (including you) unsuccessfully rolls ot ATTACK a Monster card, you may DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger. Each time any player (including you) unsuccessfully rolls to ATTACK a Monster card, you may DRAW a card."
     }
 }
 #Monsters

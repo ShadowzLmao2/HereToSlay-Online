@@ -6,14 +6,15 @@ activeMonster = [0,0,0]
 activatePlayer = 1
 playerCount = 4 #Max = 6
 discardPile = []
-playerHand = {
-    1 : {},
-    2 : {},
-    3 : {},
-    4 : {},
-    5 : {},
-    6 : {}
-}
+playerHand = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+]
+
 monsterField = [0,0,0]
 playerLeaderCurrentType = {
     1 : heroType.NoClass,

@@ -13,7 +13,7 @@ turnCount = 1
 playerCount = 4
 
 #Separate from the GUI, handles the main game once you enter a game with another player
-def startGame():
+def startGame() -> None:
     if testingPhase:
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
@@ -34,7 +34,7 @@ def startGame():
     else:        
         if testingPhase:
             print("Main Deck:")
-        shuffleDeck(mainDeck)
+        shuffleDeck()
         if testingPhase:
             print("\nMonster Deck:")
         shuffleDeck(monsterDeck)
@@ -49,26 +49,26 @@ def startGame():
     return
 
 #Runs every round after startGame has been activated once and ends with endTurn()
-def main():
+def main() -> None:
     if testingPhase:
         print(f"Player {activePlayer} turn started")
-    startTurn(activePlayer) 
+    startTurn() 
     chooseAction() #Basically waits for input
     return
 
 #All the "Standby Phase" Stuff
-def startTurn(player):
+def startTurn(player=activePlayer) -> None:
     if testingPhase:
         print("Turn Number:", turnCount)
         if turnCount > 1:
             print(f"Start of turn effect: {playerLeaders[activePlayer]["Start of Turn"]}")
     if (Leaders[playerLeaders[activePlayer]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
-        leaderTypeSwitch(playerLeaders[activePlayer])
+        leaderTypeSwitch()
         if testingPhase:
             print(f"{playerLeaders[activePlayer]}: {playerLeaderCurrentType[activePlayer]}")
     return
 
-def chooseLeader(): #Pick your leader at the start of the game. Only used in casual
+def chooseLeader() -> None: #Pick your leader at the start of the game. Only used in casual
     if testingPhase:
         print("     Leader Section:\n")
     global playerCount
@@ -79,7 +79,7 @@ def chooseLeader(): #Pick your leader at the start of the game. Only used in cas
     return
 
 #For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
-def leaderTypeSwitch(leader):
+def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
     if input(f"{switchLeaderType}\n") == "y":
         leaderType = playerLeaderCurrentType[activePlayer]
         match leader:
@@ -112,7 +112,7 @@ def leaderTypeSwitch(leader):
                     else:
                         unstableUnicornTarget[activePlayer] = 1
                 else:
-                    unstableUnicornTarget[activePlayer] = choosePlayer(0)
+                    unstableUnicornTarget[activePlayer] = choosePlayer()
                 return
             case "Fierce Panguardian":
                 #Guardian/Fighter
@@ -137,15 +137,15 @@ def leaderTypeSwitch(leader):
                 return
     return
 
-def flipCoin():
+def flipCoin() -> int:
     #0 = Tails, 1 = Heads
     coinFlip = rand.int(0,1)
     return coinFlip
-def rollDice():
+
+def rollDice() -> int:
     return rand.int(1,6)+rand.int(1,6)
 
-def shuffleDeck(deck):
-    #Main
+def shuffleDeck(deck=mainDeck) -> None:
     for i in range(len(deck)-1,0,-1):
         r = rand.randint(0,i)
         deck[i], deck[r] = deck[r], deck[i]
@@ -154,80 +154,79 @@ def shuffleDeck(deck):
         print(deck)
     return
 
-def chooseAction():
+def chooseAction() -> None:
     #Working: endTurn() draw() discardDraw() 
     #WIP: activateHeroAbility(hero) activateLeaderAbility(leader)
     #Not Working: attack() 
     endTurn()
     return
 
-def activateHeroAbility(hero):
+def activateHeroAbility(hero) -> None:
     if AP > 0:
-        reduceAP(1)
-        if rollDice() >= Cards[hero]["Effect Roll"]:
+        reduceAP()
+        diceRoll = rollDice()
+        #TODO Unstable Unicorn Stuff
+        if playerLeaders[activePlayer] == "Charismatic Song":
+            diceRoll +=1
+        if  diceRoll >= Cards[hero]["Effect Roll"]:
             useHeroAbility(hero)
         else:
             if testingPhase:
                 print("Failed the roll")
     else:
         print("No AP")
-    
     return
 
 #Used for useLeaderAbility
 leaderAbilityUsed= False
 
-def activateLeaderAbility(leader):
+def activateLeaderAbility(leader=playerLeaders[activePlayer]) -> None:
+    global leaderAbilityUsed
     #Sets the Unicorn's ability to whatever it copied at the start of the turn
-    if playerLeaders[activePlayer] == "Unstable Unicorn":
+    if leader == "Unstable Unicorn":
         leader = playerLeaders[(unstableUnicornTarget[activePlayer])]
 
-    #Checks if it can be activated, if not return
-    if AP >= Leaders[leader]["AP Cost"] and Leaders[leader]["Activatable"] and not leaderAbilityUsed:
-        #Cost
-        reduceAP(1)
-        useLeaderAbility(leader)
+    #Checks if it can be activated, pulls index of target leader so UU works
+    if AP < Leaders[leader]["AP Cost"] or not Leaders[leader]["Activatable"] or leaderAbilityUsed:
+        print("No AP or unable to use ability")
+        return
     else:
-        print("No AP or no ability")
-    return
-
-def useLeaderAbility(leader):
-    global leaderAbilityUsed
-    match Leaders[leader]["Effect"]:
-        case leaderEffect.ShadowClaw:
-            if ranked and ((activePlayer == 1 and not playerHand[2]) or (activePlayer == 2 and not playerHand[1])):
-                return #No target
-            elif ranked and activePlayer == 1: target = 2
-            elif ranked and activePlayer == 2: target = 1
-            else:
-                target = choosePlayer(1)
-            #Need to get a target in the hand. will do rand for now
-            pullCard(target, False, 0)
-            leaderAbilityUsed = True
-            return
-        case leaderEffect.GnawingDread:
-            index = searchDiscard(cardType.Any)
-            reduceAP(2)
-            playerHand[activePlayer].append(discardPile[index].pop())
-            leaderAbilityUsed = True
-            return
-        case leaderEffect.IllusiveTrickster:
-            if checkHand(cardType.Magic, activePlayer):
-                discardSpecific(cardType.Magic)
-                drawCard(3,activePlayer)
+        match Leaders[leader]["Effect"]:
+            case leaderEffect.ShadowClaw:
+                if ranked:
+                    if (activePlayer == 1 and not playerHand[2]) or (activePlayer == 2 and not playerHand[1]):
+                        return #No target
+                    else: target = (not(activePlayer-1))+1
+                else:
+                    target = choosePlayer(1)
+                #Need to get a target in the hand. will do rand for now
+                pullCard(target, False, 0)
+                reduceAP()
                 leaderAbilityUsed = True
-            return
+                return
+            case leaderEffect.GnawingDread:
+                index = searchDiscard(cardType.Any)
+                reduceAP(2)
+                playerHand[activePlayer].append(discardPile[index].pop())
+                leaderAbilityUsed = True
+                return
+            case leaderEffect.IllusiveTrickster:
+                if checkHand(cardType.Magic, activePlayer):
+                    discardSpecific(cardType.Magic,1)
+                    drawCard(3)
+                    leaderAbilityUsed = True
+                return
     return
 
-def useHeroAbility(hero):
+def useHeroAbility(hero) -> None:
     match Cards[hero]["Effect"]:
         case cardEffect.BadAxe:
-            player = choosePlayer(0)
+            player = choosePlayer()
             target = chooseHero()
             destroy(target, player)
             return
         case cardEffect.PullCard:
-            target = choosePlayer(0)
+            target = choosePlayer()
             pulledCard = pullCard(target,False,0)
             if Cards[pulledCard]["Class"] == Cards[hero]["Pull Type"]:
                 pullCard(target,False,0)
@@ -237,22 +236,22 @@ def useHeroAbility(hero):
             #TODO player picks a card from the discarded
             return
         case cardEffect.ForceDiscard:
-            discardSpecific(choosePlayer(0),2)
+            discardSpecific(choosePlayer(),2,1)
             return
         case cardEffect.PanChucks:
-            drawCard(2,activePlayer)
+            drawCard(2)
             firstDraw = playerHand[activePlayer][-2]
             secondDraw = playerHand[activePlayer][-1]
             if testingPhase:
                 print("Drew", firstDraw, "and", secondDraw)
                 if Cards[activePlayer][firstDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-2)
-                    player = choosePlayer(0)
+                    player = choosePlayer()
                     target = chooseHero()
                     destroy(target, player)
                 if Cards[activePlayer][secondDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-1)
-                    player = choosePlayer(0)
+                    player = choosePlayer()
                     target = chooseHero()
                     destroy(target, player)
             return
@@ -268,7 +267,7 @@ def useHeroAbility(hero):
         case cardEffect.DodgyDealer:
             return
         case cardEffect.FuzzyCheeks:
-            drawCard(1,activePlayer)
+            drawCard(1)
             playCard(cardType.Hero,False)
             return
         case cardEffect.GreedyCheeks:
@@ -427,7 +426,7 @@ def useHeroAbility(hero):
         case cardEffect.Mimi:
             return
         case cardEffect.Draw2: #Peanut
-            drawCard(2,activePlayer)
+            drawCard(2)
             return
         case cardEffect.SearchDiscard:
             searchDiscard(Cards[hero]["Search Target"])
@@ -436,14 +435,14 @@ def useHeroAbility(hero):
             stealHero()
             return
         case cardEffect.PullAndPlay:
-            pullCard(choosePlayer(0),True,Cards[hero]["Search Target"])
+            pullCard(choosePlayer(),True,Cards[hero]["Search Target"])
             return
         case cardEffect.Play2:
             playCards(activePlayer,2,False,Cards[hero]["Search Target"])
             return
     return
 
-def playCards(target,count,pickAll,type):
+def playCards(target,count,pickAll,type) -> None:
     for i in range(0,count,1):
         match(type):
             case cardType.Hero:
@@ -454,28 +453,25 @@ def playCards(target,count,pickAll,type):
                 return
     return
 
-def summonHero(slot,hero,player):
+def summonHero(slot,hero,player=activePlayer) -> None:
     global AP
     if AP > 0 and checkHeroSlot(slot,player,"None"):
-        reduceAP(1)
+        reduceAP()
         challenge()
         summon(slot,hero,player)
     return
 
-def summon(slot,hero,player):
-
+def summon(slot,hero,player=activePlayer) -> None:
     playerParties[player]["Hero"][slot] = hero
     return
 
-def checkHeroSlot(slot,player,key):
-    if playerParties[player]["Hero"][slot] == key:
-        return True
-    return False
+def checkHeroSlot(slot,player,key) -> bool:
+    return playerParties[player]["Hero"][slot] == key
 
 def askPlayer() -> bool:
     return
 
-def choosePlayer(req) -> int:
+def choosePlayer(req=0) -> int:
     if ranked:
         if activePlayer == 1:
             return 0
@@ -487,120 +483,126 @@ def choosePlayer(req) -> int:
         #Req = 1, has card in hand
         return input()
     
-def chooseHero(player):
+def chooseHero(player=activePlayer) -> int:
     return
 
-def challenge():
+def challenge() -> None:
+    #Fist of Reason gives +2
     return hasCardEffect(cardEffect.Challenge)
 
-def hasCardEffect(effect):
-    return
+def hasCardEffect(effect,player=activePlayer) -> bool:
+    for i in range(0,len(playerHand[player])):
+        if Cards[playerHand[player][i]]["Effect"] == effect:
+            return True
+    return False
 
-def pullCard(target,req,reqType) -> int:
+def pullCard(target,reqType=0) -> bool:
     #target is who is stolen from, req is true/false for if there is a requirement, reqType is what card type you need to pull or else you dont pull
-    pullIndex = int(rand(range(0,len(playerHand[target]))))
-    
-    playerHand[activePlayer].append()
-    return #return the type
+    pulledCard: str = playerHand[target].pop()
+    if testingPhase:
+        print(f"Pulled Card: {pulledCard}")
+    playerHand[activePlayer].append(pulledCard)
+    return (Cards[pulledCard]["Class"] == reqType)#return if it matched the type you were looking for
 
 def searchDiscard(cardType):
     return
 
-def playCard(cardType,optional):
-    if checkHand(cardType, activePlayer):
+def playCard(type,optional=True) -> None:
+    if checkHand(type,activePlayer):
         if optional:
             if askPlayer() == False:
                 placeCard()
                 removeFromHand()
                 return
     else:
-        whichCard(True,cardType)
+        whichCard(True,type)
         placeCard()
         removeFromHand()
+    if type == cardType.Magic and playerLeaders[activePlayer] == "Cloaked Sage":
+        drawCard(1)
     return
 
-def revealCard(index):
+def revealCard(index) -> None:
     return
 
-def whichCard(matchType,typeToMatch):
+def whichCard(matchType,typeToMatch) -> int:
     return
 
-def removeFromHand():
+def removeFromHand() -> None:
     return
 
-def placeCard():
+def placeCard() -> None:
     return
 
-def checkHand(cardType, player):
+def checkHand(cardType, player=activePlayer) -> None:
     for card in playerHand[player]:
         if Cards[(playerHand[player][card])]["Card Type"] == cardType:
             return True
     return False
 
-def checkField():
+def checkField() -> bool:
     return
 
-def handSize():
+def handSize(player=activePlayer) -> int:
+    return len(playerHand[player])
+
+def viewHand(player) -> None:
     return
 
-def viewHand(player):
-    return
-
-def mill(numMilled):
+def mill(numMilled, target=activePlayer) -> None:
     #mainDeck
     return
 
-def destroy(target,player):
+def destroy(target,player) -> None:
     discardPile.append(target)
     playerParties[player]["Hero"][target] = "None"
     #TODO effects that happen after destroyed 
+    if playerLeaders[activePlayer] == "Brutal Bow":
+        drawCard(1)
     return
 
-def sacrifice(target):
+def sacrifice(target) -> None:
     return
 
-def stealHero():
+def stealHero() -> None:
     return
 
-def checkHeroItem():
+def checkHeroItem() -> int:
     return
 
-def giveCard():
+def giveCard() -> None:
     return
 
-def tradeHands():
+def tradeHands() -> None:
     return
 
 def checkDrawn():
     return
 
-def returnCard(cardType,target):
+def returnCardToHand(cardType,target=activePlayer):
     return
 
-def equipItem():
+def equipItem() -> None:
     return
 
-def allPlayersDiscard(hitSelf, cardType):
+def allPlayersDiscard(hitSelf: bool, type=cardType.Any) -> None:
     for i in range(1,playerCount+1):
         if hitSelf or i != activePlayer:
-            discardSpecific(cardType,1)
+            discardSpecific(type,1,1)
     return
 
-def doNothing():
+def protectionStatus(player=activePlayer) -> bool: #Will probably remove
     return
 
-def protectionStatus(player):
-    return
-
-def draw():
+def draw() -> None: #Spend AP and draw a card as an action
     if AP > 0:
-        reduceAP(1)
-        drawCard(1,activePlayer)
+        reduceAP()
+        drawCard(1)
     else:
         print("No AP")
     return
 
-def drawCard(count, player):
+def drawCard(count, player=activePlayer) -> None: #Used in other functions
     for i in range(0,count,1):
         playerHand[player].append(mainDeck.pop())
     if testingPhase:
@@ -608,7 +610,7 @@ def drawCard(count, player):
         print(playerHand[player])
     return
 
-def drawMonsterCard(count):
+def drawMonsterCard(count=1) -> None:
     for i in range(2,2-count,-1):
         monsterField[i] = monsterDeck[-1]
         monsterDeck.pop()
@@ -617,7 +619,7 @@ def drawMonsterCard(count):
         print(monsterField)
     return
 
-def attack():
+def attack() -> None:
     if AP > 1:
         reduceAP(2)
     else:
@@ -625,7 +627,10 @@ def attack():
         return
     monster = selectMonster()
     heroReq = checkAtkRequirements(monster)
-    if rollDice() >= Monsters[monster]:
+    diceRoll = rollDice()
+    if playerLeaders[activePlayer] == "Divine Arrow":
+        diceRoll +=1
+    if diceRoll >= Monsters[monster]:
         effect = Monsters[monster]["Win Effect"]
     else:
         effect = Monsters[monster]["Lose Effect"]
@@ -634,14 +639,20 @@ def attack():
             playerParties[activePlayer]["Monster"][monstersSlain][activePlayer] = Monsters[monster]
             monstersSlain[activePlayer]  += 1
             activeMonster[monster] = monsterDeck.pop()
+            if playerLeaders[activePlayer] == "Raging Manticore":
+                drawCard(2)
         else:
             endGame()
+    else:
+        #Should activate on any player's fail
+        if playerLeaders[activePlayer] == "Rhythmic Archer":
+            drawCard(1)
     return
 
-def endGame():
+def endGame() -> None:
     return
 
-def selectMonster():
+def selectMonster() -> int:
     return 0
 
 def checkAtkRequirements(monster):
@@ -649,42 +660,44 @@ def checkAtkRequirements(monster):
     heroReq = 0
     return
 
-def discardHand():
+def discardHand() -> None:
+    if not playerHand[activePlayer]: return #Return if empty
     for card in len(playerHand[activePlayer]):
         discardPile.append(playerHand[activePlayer].pop())
     return
 
-def discardDraw():
-    if AP > 0:
+def discardDraw() -> None: #Pay 3 AP, discard your hand, draw 5
+    if AP > 2:
         reduceAP(3)
     else:
         print("Not enough AP")
         return
     discardHand()
-    drawCard(5,activePlayer)
+    drawCard(5)
     return
 
-def discardSpecific(type,count,target):
+def discardSpecific(type=cardType.Any,count=1,target=activePlayer) -> None:
     for i in range(0,count):
         cardIndex = selectFromHand(type,target)
         discardSelected(cardIndex,target)
     return
 
-def selectFromHand(type,target):
+def selectFromHand(type,target=activePlayer) -> int:
     index = int(input()) #TODO
     return index
 
-def discardSelected(cardIndex,target):
+def discardSelected(cardIndex,target=activePlayer) -> None:
     discardPile.append(playerHand[target][cardIndex].pop())
     return
 
-def reduceAP(APReduction):
+def reduceAP(APReduction=1) -> None:
     global AP
     AP -= APReduction
-    print(AP)
+    if testingPhase:
+        print(f"AP: {AP}")
     return
 
-def endTurn():
+def endTurn() -> None:
     global leaderAbilityUsed
     leaderAbilityUsed = False
     global AP, activePlayer, playerCount, turnCount
@@ -705,6 +718,3 @@ class position:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-
-#Make sure this is at the end
-#startGame()
