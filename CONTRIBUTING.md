@@ -1,0 +1,1 @@
+When trying to contribute to this project, please create a Pull Request so that I (or Enuxio) can review your code. Please do not upload any images that do not have watermarks without explicit consent from the staff of Unstable Games. Do not try to profit off of this project
