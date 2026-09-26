@@ -1,4 +1,5 @@
 # Security Policy
+The use of AI to create code is strictly forbidden in this project. Using AI to for example point out all merge conflicts is a valid use of AI. Only making your life easier, not doing your job for you.
 
 ## Supported Versions
 
