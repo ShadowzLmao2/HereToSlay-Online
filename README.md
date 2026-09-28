@@ -1,18 +1,18 @@
 # HereToSlay-Online
 How to install on your system and how to make it work:
-Make sure you have Python and pip downloaded. Run the commands
-```python --version```
-```pip --version```
-- and if both return a version number, then you are good. If not, install Python from the official website and go to https://pip.pypa.io/en/stable/installation/, find this link and right click and click save linked content as and save it as a file. https://bootstrap.pypa.io/get-pip.py
-- Then, run
-```cd /mnt/c/Users/[user]/[whatever folder it's in]```
-```py get-pip.py```
-
-To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)
-
-An online port of Here to Slay by UnstableGames. Go to https://unstablegames.com/collections/here-to-slay to purchase the original game. This port aims to include customizable decks per person with a ranked gamemode and the standard game with all Expansions selectable. It also includes all Expansions and Kickstarter cards. 1v1 and 2v2 ranked modes will be made available. FFA and 2v2 quickplays will also be made.
-Note that the Banner Quest Expansion will not be added to this project until late June 2026, which is when I will obtain the cards in real life, or if they are added to the Here to Slay wiki then I will add them sooner.
-Chances of each roll
+Make sure you have Python and pip downloaded. Run the commands  
+`python --version`  
+`pip --version`  
+and if both return a version number, then you are good. If not, install Python from the official website or from the Microsoft Store. Then, install pip by clicking on this link and running the file: https://bootstrap.pypa.io/pip/pip.pyz  
+Once that's done, you can run the two previously mentioned commands again and they should give a version number  
+Once that's done, you need to install Pygame. Run: `pip install pygame`. You can easily test to make sure it worked by running `python3 -m pygame.examples.aliens`  
+If you already have it downloaded, you can run `pip install pygame --upgrade` to update it instead.
+  
+To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)  
+  
+An online port of Here to Slay by UnstableGames. Go to https://unstablegames.com/collections/here-to-slay to purchase the original game. This port aims to include customizable decks per person with a ranked gamemode and the standard game with all Expansions selectable. It also includes all Expansions and Kickstarter cards. 1v1 and 2v2 ranked modes will be made available. FFA and 2v2 quickplays will also be made.  
+Note that the Banner Quest Expansion will not be added to this project until late June 2026, which is when I will obtain the cards in real life, or if they are added to the Here to Slay wiki then I will add them sooner.  
+Chances of each roll  
 - 2  : 1/36 | 2.78%
 - 3  : 2/36 | 5.56%
 - 4  : 3/36 | 8.33%
@@ -23,8 +23,8 @@ Chances of each roll
 - 9  : 4/36 | 11.11%
 - 10 : 3/36 | 8.33%
 - 11 : 2/36 | 5.56%
-- 12 : 1/36 | 2.78%
--           
+- 12 : 1/36 | 2.78%  
+        
 - 2+ : 36/36| 100%
 - 3+ : 35/36| 97.22%
 - 4+ : 33/36| 91.67%
@@ -35,8 +35,8 @@ Chances of each roll
 - 9+ : 10/36| 27.78%
 - 10+: 6/36 | 16.67%
 - 11+: 3/36 | 8.33%
-- 12+: 1/36 | 2.78%
--            
+- 12+: 1/36 | 2.78%  
+  
 - 12-: 36/36| 100%
 - 11-: 35/36| 97.22%
 - 10-: 33/36| 91.67%
@@ -47,16 +47,16 @@ Chances of each roll
 - 5- : 10/36| 27.78%
 - 4- : 6/36 | 16.67%
 - 3- : 3/36 | 8.33%
-- 2- : 1/36 | 2.78%
-
-Todo: 
+- 2- : 1/36 | 2.78%  
+  
+Todo:
 - Rules
 - Tutorial
 - GUI - tkinter: stuff
 - Internet Connection
 - Fix images (higher res) for:
     - BQ Cards/Monsters, all of Here to Sleigh
-- Test Buttons: Create a debug mode
+- Test Buttons: Create a debug mode  
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional
@@ -66,7 +66,7 @@ Specific Ruling Clarified by Staff:
 - There is no limit to party size
 - Items can be played on other players' heroes
 - Items go with Heroes (ie. if stolen, the item is stolen too)
-- Boston Terror can be used on a player with no cards in hand
+- Boston Terror can be used on a player with no cards in hand  
 
 Ranked Rules:
 - 2 Players
