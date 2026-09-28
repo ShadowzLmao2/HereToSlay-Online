@@ -4,7 +4,7 @@ from active_player import *
 from tutorial import *
 from functions import *
 from strings import *
-import random as rand
+import random
 #from enum import Enum
 global AP
 AP = 3
@@ -18,15 +18,17 @@ def startGame() -> None:
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
     #pickLeaders()
+    if testingPhase:
+        print("\nMonster Deck:")
+    shuffleDeck(monsterDeck)
+    drawMonsterCard(3)
     if ranked:
-        shuffleDeck(rankedMonsterDeck)
         shuffleDeck(p1Deck)
         shuffleDeck(p2Deck)
         drawCard(5,1)
         drawCard(5,2)
         global playerCount
         playerCount = 2
-        HereToSleigh = False
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
         global activePlayer
@@ -35,13 +37,9 @@ def startGame() -> None:
         if testingPhase:
             print("Main Deck:")
         shuffleDeck()
-        if testingPhase:
-            print("\nMonster Deck:")
-        shuffleDeck(monsterDeck)
         chooseLeader()
         for player in range(1,playerCount+1,1):
             drawCard(5,player)
-    drawMonsterCard(3)
     if testingPhase:
         print("PreGame Phase finished")
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
@@ -60,8 +58,8 @@ def main() -> None:
 def startTurn(player=activePlayer) -> None:
     if testingPhase:
         print("Turn Number:", turnCount)
-        if turnCount > 1:
-            print(f"Start of turn effect: {playerLeaders[activePlayer]["Start of Turn"]}")
+        #if turnCount > 1:
+            #print(f"Start of turn effect: {playerLeaders[activePlayer]["Start of Turn"]}")
     if (Leaders[playerLeaders[activePlayer]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch()
         if testingPhase:
@@ -139,15 +137,15 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
 
 def flipCoin() -> int:
     #0 = Tails, 1 = Heads
-    coinFlip = rand.int(0,1)
+    coinFlip = random.int(0,1)
     return coinFlip
 
 def rollDice() -> int:
-    return rand.int(1,6)+rand.int(1,6)
+    return random.int(1,6) + random.int(1,6)
 
 def shuffleDeck(deck=mainDeck) -> None:
     for i in range(len(deck)-1,0,-1):
-        r = rand.randint(0,i)
+        r = random.randint(0,i)
         deck[i], deck[r] = deck[r], deck[i]
     
     if testingPhase:

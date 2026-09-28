@@ -74,9 +74,8 @@ Ranked Rules:
 - Max 7 Heroes in a party
     - Trading Heroes happens reglardless of how many Heroes you have in your party, stealing fails if you have 7
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
-- Leader Bans: Unstable Unicorn
 - Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror
-- Monster Bans: Venemous Gemini
+- Monster Bans: Venomous Gemini
 - Other Bans:
     - All of 'Here to Sleigh'
 

@@ -3,14 +3,14 @@ testingPhase = True
 
 WarriorsAndDruids  = True
 BerserkersAndNecromancers = True
-DragonSorcerers = False
-BannerQuest = False
-HereToSleigh = False
-MonsterExpansion = False
-KSEandLimited = False
+DragonSorcerers = True
+BannerQuest = True
+HereToSleigh = True
+MonsterExpansion = True
+KSEandLimited = True
 maxHeroes = 5 + WarriorsAndDruids + BerserkersAndNecromancers
 autoUnicornIn1v1 = True
-ExtraEnemyMonsterSlot = False
+ExtraEnemyMonsterSlot = True
 if MonsterExpansion == False:
     ExtraEnemyMonsterSlot = True
 #Ranked
