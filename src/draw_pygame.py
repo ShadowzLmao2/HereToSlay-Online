@@ -8,4 +8,8 @@ while running:
         if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
             running = False
     clock.tick(60)
+
+def startPygame()
+    return
+
 pygame.quit()
