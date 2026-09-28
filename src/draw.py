@@ -54,7 +54,7 @@ leadersSize = 19
 monstersSize = 36
 cardsSize = 1
 
-def start() :
+def startGame() :
 
     #imageNames = readFolder('src', 'card_images')
     #imagePaths = setupImages(imageNames)
