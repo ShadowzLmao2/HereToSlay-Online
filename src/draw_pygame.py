@@ -1,19 +1,22 @@
 import pygame
-import draw
+from sprites import *
 pygame.init()
 screen = pygame.display.set_mode((1280,720))
 clock = pygame.time.Clock()
 running = True
-background = pygame.image.load('src/card_images/WarriorsAndDruids/Cards/majestelk.png').convert()
-background = pygame.transform.smoothscale(background, (pygame.Surface.get_width(background)/2, pygame.Surface.get_height(background)/2))
-screen.blit(background, (0, 0))
+background = MonsterCard('src/card_images/WarriorsAndDruids/Cards/majestelk.png',200,280,0,0)
+#screen.blit(background, (0, 0))
+all_sprites = pygame.sprite.Group()
+all_sprites.add(background)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT or event.type == pygame.K_ESCAPE:
             running = False
 
      # fill the screen with a color to wipe away anything from last frame
-    #screen.fill("purple")
+    screen.fill("purple")
+    all_sprites.draw(screen)
+    #screen.blit(background, (0, 0))
 
     # RENDER YOUR GAME HERE
 
