@@ -1,6 +1,6 @@
 from draw import *
 from draw_pygame import *
 
-startGame()
+#startGame()
 #startPygame()
 #compareCards()

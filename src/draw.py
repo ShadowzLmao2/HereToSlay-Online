@@ -9,6 +9,7 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk  # Import PIL for PNG support
 from buttonsData import *
+import pygame
 
 windowWidth = 1280
 windowHeight = 720
