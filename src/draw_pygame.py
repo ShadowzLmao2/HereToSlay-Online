@@ -9,7 +9,7 @@ while running:
             running = False
     clock.tick(60)
 
-def startPygame():
+def startPygame()
     return
 
 pygame.quit()

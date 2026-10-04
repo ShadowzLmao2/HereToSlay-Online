@@ -21,7 +21,7 @@ rankedList = [
 "Iron Resolve",
 "Mighty Blade",
 "Radiant Horn",
-#"Vibrant Glow",
+"Vibrant Glow",
 "Wise Shield",
 "Bullseye",
 "Hook",

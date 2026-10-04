@@ -3,10 +3,6 @@ from config import *
 from card_images import *
 from ranked import *
 #The Leader effects when activated - will probably remove the non-activateable ones
-
-class rollEffect(Enum):
-    saffyrePhoenix = 0
-    
 class leaderEffect(Enum):
     NoEffect          = 0
     #Heroes
@@ -834,8 +830,7 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 13,
         "Win Effect"  : monsterRollEffect.slay,
-        "Roll Effect" : rollEffect.saffyrePhoenix,
-        "Effect"      : monsterEffect.saffyrePhoenix, #Remember to add the +2 per Hero bonus
+        "Effect"      : monsterEffect.saffyrePhoenix, #remember to add the +2 per Hero bonus
         "Description" : "Each time one of your Hero cards is sacrificed or destroyed, you may play a Hero card from your hand immediately."
     },
     "Scavenger Griffin" : {

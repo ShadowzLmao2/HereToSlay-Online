@@ -144,7 +144,10 @@ def rollDice() -> int:
     return random.int(1,6) + random.int(1,6)
 
 def shuffleDeck(deck=mainDeck) -> None:
-    random.shuffle(deck)
+    for i in range(len(deck)-1,0,-1):
+        r = random.randint(0,i)
+        deck[i], deck[r] = deck[r], deck[i]
+    
     if testingPhase:
         print(deck)
     return
@@ -677,11 +680,8 @@ def discardSpecific(type=cardType.Any,count=1,target=activePlayer) -> None:
         discardSelected(cardIndex,target)
     return
 
-def selectFromHand(type=cardType.Any,target=activePlayer) -> int:
-    try:
-        index = int(input()) #TODO
-    except type != playerHand[target][index]:
-        selectFromHand(type,target)
+def selectFromHand(type,target=activePlayer) -> int:
+    index = int(input()) #TODO
     return index
 
 def discardSelected(cardIndex,target=activePlayer) -> None:

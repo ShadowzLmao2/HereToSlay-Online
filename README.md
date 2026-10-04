@@ -5,7 +5,7 @@ Make sure you have Python and pip downloaded. Run the commands
 `pip --version`  
 and if both return a version number, then you are good. If not, install Python from the official website or from the Microsoft Store. Then, install pip by clicking on this link and running the file: https://bootstrap.pypa.io/pip/pip.pyz  
 Once that's done, you can run the two previously mentioned commands again and they should give a version number  
-Once that's done, you need to install Pygame. Run: `pip install pygame-ce`. You can easily test to make sure it worked by running `python3 -m pygame.examples.aliens`  
+Once that's done, you need to install Pygame. Run: `pip install pygame`. You can easily test to make sure it worked by running `python3 -m pygame.examples.aliens`  
 If you already have it downloaded, you can run `pip install pygame --upgrade` to update it instead.
   
 To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)  
@@ -75,11 +75,11 @@ Ranked Rules:
 - Max 7 Heroes in a party
     - Trading Heroes happens reglardless of how many Heroes you have in your party, stealing fails if you have 7
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
-- Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror, Vibrant Glow
+- Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror
 - Monster Bans: Venomous Gemini
 - Other Bans:
     - All of 'Here to Sleigh'
 
-Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron, Lucky Bucky, Vicious Wildcat, Heavy Bear
+Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron, Lucky Bucky, Vicious Wildcat
 
 Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay
