@@ -9,6 +9,7 @@ from tkinter import *
 from tkinter import ttk
 from PIL import Image, ImageTk  # Import PIL for PNG support
 from buttonsData import *
+import pygame
 
 windowWidth = 1280
 windowHeight = 720
@@ -104,7 +105,7 @@ def startGame() :
     canvas.create_window((0,0), window=secondFrame, anchor="nw")
 
     #Because a button cannot have an attribute added after it is declared, declare both an img and a text and have them both blank, then call buttonSetup to assign
-    buttons.append(tk.Button(secondFrame, text='', image=None, command=doNothing, width=40, height=2, name='playButton'))
+    buttons.append(tk.Button(secondFrame, text='', image=None, command=window.quit, width=40, height=2, name='playButton'))
     #test(buttons[0])
     buttons.append(tk.Button(secondFrame, text='', image=None, command=lambda: compareCards(Leaders, Monsters, Cards), width=40, height=2, name='rankedButton'))
     setupButton(buttons[1], removeStart(buttons[1]))
