@@ -1,1 +1,1 @@
-switchLeaderType = "Would you like to switch the type of your Leader?"
+switchLeaderType = 'Would you like to switch the type of your Leader?'

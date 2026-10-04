@@ -20,11 +20,11 @@ def startGame() -> None:
     #pickLeaders()
     if testingPhase:
         print("\nMonster Deck:")
-    shuffleDeck(monsterDeck)
+    random.shuffle(monsterDeck)
     drawMonsterCard(3)
     if ranked:
-        shuffleDeck(p1Deck)
-        shuffleDeck(p2Deck)
+        random.shuffle(p1Deck)
+        random.shuffle(p2Deck)
         drawCard(5,1)
         drawCard(5,2)
         global playerCount
@@ -36,7 +36,7 @@ def startGame() -> None:
     else:        
         if testingPhase:
             print("Main Deck:")
-        shuffleDeck()
+        random.shuffle()
         chooseLeader()
         for player in range(1,playerCount+1,1):
             drawCard(5,player)
@@ -142,15 +142,6 @@ def flipCoin() -> int:
 
 def rollDice() -> int:
     return random.int(1,6) + random.int(1,6)
-
-def shuffleDeck(deck=mainDeck) -> None:
-    for i in range(len(deck)-1,0,-1):
-        r = random.randint(0,i)
-        deck[i], deck[r] = deck[r], deck[i]
-    
-    if testingPhase:
-        print(deck)
-    return
 
 def chooseAction() -> None:
     #Working: endTurn() draw() discardDraw() 
@@ -680,8 +671,11 @@ def discardSpecific(type=cardType.Any,count=1,target=activePlayer) -> None:
         discardSelected(cardIndex,target)
     return
 
-def selectFromHand(type,target=activePlayer) -> int:
-    index = int(input()) #TODO
+def selectFromHand(type=cardType.Any,target=activePlayer) -> int:
+    try:
+        index = int(input()) #TODO
+    except type != playerHand[target][index]:
+        selectFromHand(type,target)
     return index
 
 def discardSelected(cardIndex,target=activePlayer) -> None:
