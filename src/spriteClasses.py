@@ -10,6 +10,9 @@ class MonsterCard(pygame.sprite.Sprite):
         #Call parent class to construct
         pygame.sprite.Sprite.__init__(self)
 
+        self.image_width = width
+        self.image_height = height
+
         #Create image of sprite
         #If its an image path, assign image with bitmap of where path leads
         if type(imagePath) is str:
@@ -33,6 +36,10 @@ class MonsterCard(pygame.sprite.Sprite):
 
     def getImage(self):
         return self.image
+
+    def change_image(self, new_path):
+        self.image = pygame.image.load(new_path).convert()
+        self.image = pygame.transform.smoothscale(self.image, (self.image_width, self.image_height))
 
 class LeaderCard(pygame.sprite.Sprite):
 

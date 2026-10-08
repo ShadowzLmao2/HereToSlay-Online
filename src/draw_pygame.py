@@ -26,7 +26,7 @@ running = True
 background = MonsterCard('src/card_images/WarriorsAndDruids/Cards/majestelk.png',200,280,0,0)
 #background = MonsterCard(0,200,280,0,0)
 
-button = Button(400,400,100,100,lambda:print("test"),(128,128,128))
+button = Button(400,400,100,100,lambda:background.change_image("src/card_images/BannerQuest/Cards/bardModifier.png"),(128,128,128))
 
 textBoard = TextBoard(200,400,"this is a sign",100,40)
 
