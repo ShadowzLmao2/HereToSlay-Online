@@ -101,45 +101,60 @@ class NormalCard(pygame.sprite.Sprite):
         return self.image
 
 #Basic Button Class
+#What it needs to do:
+#1. Draw to screen
+#2. Check when mouse is clicked
+#3. Check if mouse is over it
+#4. Is it drawn
+#5. If it is drawn, then activate method it is linked to
 class Button(pygame.sprite.Sprite):
 
-    #Constructor
-    def __init__(self, x, y, text, name, method):
-        #call parent class to construct
+    def __init__(self, x, y, width, height, method, color):
         pygame.sprite.Sprite.__init__(self)
 
-        #Assign name, text, and method
-        self.name = name
-        self.text = text
-        self.method = method
-
-        #Set background to grey
-        self.image = pygame.Surface((50, 50))
-        self.color = (128,128,128)
+        self.image = pygame.Surface((width, height))
+        self.color = color
         self.image.fill(self.color)
 
-        # Initialize font (None uses the default system font)
-        self.font = pygame.font.Font(None, 12)
-
-        #Update text
-        self.update_text(text)
-
-        #Assign and fetch pos
+        self.method = method
+        
         self.rect = self.image.get_rect()
         self.rect.topleft = (x, y)
 
-    #Check mouse pos to see if its over the button
-    def update(self):
-        #Check if the mouse is hovering over the button.
-        mouse_pos = pygame.mouse.get_pos()
-        if self.rect.collidepoint(mouse_pos):
-            self.image = self.image_hover
-        else:
-            self.image = self.image_normal
+    # Used to process events specific to this sprite
+    def update(self, event_list):
+        for event in event_list:
+            #Check for mouse click
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                #print("mouse_clicked")
+                if self.rect.collidepoint(pygame.mouse.get_pos()):
+                    #print("over_button")
+                    self.handle_click()
 
-    #If mouse over the button, and mouse clicked, button pressed
-    def handle_event(self, event):
-        #Process click events passed down from the main loop.
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            if self.rect.collidepoint(event.pos):
-                self.method()  # Execute the button's unique logic
+    def handle_click(self):
+        #print("clicked_button")
+        self.method()
+
+
+class TextBoard(pygame.sprite.Sprite):
+
+    def __init__(self, x, y, text, width, height):
+        pygame.sprite.Sprite.__init__(self)
+
+        self.text = text
+        # Initialize font (None uses the default system font)
+        self.font = pygame.font.SysFont("Arial", 12)
+        self.textSurf = self.font.render(text, 1, (0,0,0))
+
+        #Set background to grey
+        self.image = pygame.Surface((width, height))
+        self.color = (128,128,128)
+        self.image.fill(self.color)
+
+        W = self.textSurf.get_width()
+        H = self.textSurf.get_height()
+        self.image.blit(self.textSurf, [width/2 - W/2, height/2 - H/2])
+        
+        #Assign and fetch pos
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (x, y)
