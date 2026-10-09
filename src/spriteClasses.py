@@ -1,5 +1,7 @@
 import pygame
 
+from cards import *
+
 #Classes for cards
 class MonsterCard(pygame.sprite.Sprite):
 
@@ -36,6 +38,11 @@ class MonsterCard(pygame.sprite.Sprite):
 
     def getImage(self):
         return self.image
+
+    def fetch_image(self, name):
+        path = Monsters.get(name)["Image"]
+        self.image = pygame.image.load(path).convert()
+        self.image = pygame.transform.smoothscale(self.image, (self.image_width, self.image_height))
 
     def change_image(self, new_path):
         self.image = pygame.image.load(new_path).convert()
