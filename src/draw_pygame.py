@@ -1,4 +1,5 @@
 import pygame
+import os
 
 from spriteClasses import *
 from screens import *
@@ -13,12 +14,20 @@ current_screen = "TEST"
 #To be used when switching screens, if it is not the same as current when starting the draw, unload old sprites and load new ones
 previous_screen = ""
 
+fullscreen = False
+
 pygame.init()
 
 w = 0
 h = 0
 
-screen = pygame.display.set_mode((1280,720), pygame.RESIZABLE)
+os.environ['SDL_VIDEO_CENTERED'] = '1'
+info = pygame.display.Info()
+
+w, h = info.current_w, info.current_h
+
+screen = pygame.display.set_mode((1280,720), pygame.RESIZABLE, pygame.SCALED)
+#screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 running = True
 
@@ -48,6 +57,15 @@ while running:
         elif event.type == pygame.VIDEORESIZE:
             w, h = pygame.display.get_surface().get_size()
             print("Window is now " + str(w) + "x" + str(h))
+
+        #Key Presses
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_F11:
+                fullscreen = not fullscreen
+                if fullscreen:
+                    screen = pygame.display.set_mode((screen.get_width(),screen.get_height()), pygame.FULLSCREEN)
+                else:
+                    screen = pygame.display.set_mode((1280,720), pygame.RESIZABLE)
 
     all_sprites.update(event_list)
 
