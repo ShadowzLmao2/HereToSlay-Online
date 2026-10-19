@@ -473,7 +473,8 @@ def choosePlayer(req=0) -> int:
         return input()
     
 def chooseHero(player=activePlayer) -> int:
-    return
+    index = int(input())
+    return index
 
 def challenge() -> None:
     #Fist of Reason gives +2
@@ -550,7 +551,10 @@ def destroy(target,player) -> None:
         drawCard(1)
     return
 
-def sacrifice(target) -> None:
+def sacrifice(target=activePlayer,heroType=heroType.NoClass, count=1) -> None:
+    for i in range(0,count):
+        index = chooseHero(target, heroType)
+        discardPile.append(playerParties[target]["Hero"][index].pop())
     return
 
 def stealHero() -> None:
@@ -617,28 +621,55 @@ def attack() -> None:
     monster = selectMonster()
     heroReq = checkAtkRequirements(monster)
     diceRoll = rollDice()
-    if playerLeaders[activePlayer] == "Divine Arrow":
+    if playerLeaders[activePlayer] == "Divine Arrow" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Divine Arrow"):
         diceRoll +=1
-    if diceRoll >= Monsters[monster]:
+    if "Reptilian Ripper" in playerMonsters[activePlayer]:
+        diceRoll +=2
+    if "Ancient Megashark" in playerMonsters[activePlayer]:
+        diceRoll +=2
+    for player in playerCount:
+        if player == activePlayer:
+            continue
+        if "Chitin Scourge" in playerMonsters[player]:
+            diceRoll -=1
+    if diceRoll >= Monsters[monster]["Win Roll"]:
         effect = Monsters[monster]["Win Effect"]
-    else:
+    elif diceRoll <= Monsters[monster]["Lose Roll"]:
         effect = Monsters[monster]["Lose Effect"]
-    if effect == monsterRollEffect.slay:
-        if monstersSlain[activePlayer] < 3:
-            playerParties[activePlayer]["Monster"][monstersSlain][activePlayer] = Monsters[monster]
-            monstersSlain[activePlayer]  += 1
-            activeMonster[monster] = monsterDeck.pop()
-            if playerLeaders[activePlayer] == "Raging Manticore":
-                drawCard(2)
-        else:
-            endGame()
     else:
-        #Should activate on any player's fail
-        if playerLeaders[activePlayer] == "Rhythmic Archer":
+        effect = monsterRollEffect.noEffect
+        if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
             drawCard(1)
+    match(effect): #Note: No fallthrough
+        case monsterRollEffect.slay:
+                if monstersSlain[activePlayer] < 3:
+                    playerMonsters[activePlayer].append(Monsters[monster])
+                    monstersSlain[activePlayer]  += 1
+                    activeMonster[monster] = monsterDeck.pop()
+                    if playerLeaders[activePlayer] == "Raging Manticore":
+                        drawCard(2)
+                else:
+                    endGame(activePlayer)
+        case monsterRollEffect.discard:
+            discardSpecific()
+        case monsterRollEffect.discardTwo:
+            discardSpecific(count=2)
+        case monsterRollEffect.discardHand:
+            discardHand()
+        case monsterRollEffect.sacrifice:
+            sacrifice()
+        case monsterRollEffect.sacrificeTwo:
+            sacrifice(count=2)
+        case monsterRollEffect.noEffect:
+            return
+        case _: #Default, happens if nothing else above
+            #endGame()
+            return
+        #Should activate on any player's fail
     return
 
-def endGame() -> None:
+def endGame(winningPlayer) -> None:
+    print(f"Player {winningPlayer} won")
     return
 
 def selectMonster() -> int:
@@ -649,10 +680,11 @@ def checkAtkRequirements(monster):
     heroReq = 0
     return
 
-def discardHand() -> None:
+def discardHand(player=activePlayer) -> None:
     if not playerHand[activePlayer]: return #Return if empty
-    for card in len(playerHand[activePlayer]):
-        discardPile.append(playerHand[activePlayer].pop())
+    handSize = len(playerHand[player])
+    for card in range(0,handSize):
+        discardPile.append(playerHand[player].pop())
     return
 
 def discardDraw() -> None: #Pay 3 AP, discard your hand, draw 5
@@ -666,6 +698,8 @@ def discardDraw() -> None: #Pay 3 AP, discard your hand, draw 5
     return
 
 def discardSpecific(type=cardType.Any,count=1,target=activePlayer) -> None:
+    if not playerHand[target]: return
+    if len(playerHand[target]) < count: count = len(playerHand[target])
     for i in range(0,count):
         cardIndex = selectFromHand(type,target)
         discardSelected(cardIndex,target)

@@ -62,12 +62,13 @@ class heroType(Enum):
 
 #The switch/case for what happens when you win or lose the roll to attack
 class monsterRollEffect(Enum):
-    slay         = 0
-    discard      = 1
-    sacrifice    = 2
-    discardHand  = 3 #BaN Expansion
-    sacrificeTwo = 4 #BaN Expansion
-    discardTwo   = 5 #DSE
+    noEffect     = 0
+    slay         = 1
+    discard      = 2
+    sacrifice    = 3
+    discardHand  = 4 #BaN Expansion
+    sacrificeTwo = 5 #BaN Expansion
+    discardTwo   = 6 #DSE
 
 #Monster Expansion attack requirements - since Monster Expansion has extra requirements to attack
 #some of the monsters, a separate enum was included for it

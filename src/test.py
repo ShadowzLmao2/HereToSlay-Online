@@ -51,6 +51,15 @@ def printAllHeroes():
             print(f"\"{key}\"")
     return
 
+def discardHandTest():
+    playerHand[1].append("Mirroryu")
+    playerHand[1].append("Extraga")
+    print(f"Before: {playerHand[1]}")
+    discardHand()
+    print(f"After: {playerHand[1]}")
+    print(f"Discard Pile: {discardPile}")
+    return
+
 def testGame() -> None:
     startGame()
     return
@@ -61,10 +70,10 @@ PreGame Phase      - "PreGame Phase initialized"
     Draw Phase         - Player # is printed, and then their hand, monster cards drawn are printed
 Player Turn Phase  - Player # is printed and their turn is started. Currently, the turn ends right away
 '''
-
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
 
+#discardHandTest()
 #printAllHeroes()
 #testPullCard()
 #checkCardsInHand()

@@ -69,12 +69,27 @@ Specific Ruling Clarified by Staff:
 - Items go with Heroes (ie. if stolen, the item is stolen too)
 - Boston Terror can be used on a player with no cards in hand  
 
+1v1 Casual Rules:
+Leader Bans: The Shadow Claw
+
+2v2 Official Variant:
+- Win by Slaying 5 Monsters or collecting 10 Heroes (No class requirement)
+- Take turns, assuming sides are blue and orange, the turn order is; blue 1, orange 1, blue 2, orange 2
+- Teammates can share hand knowledge but cannot share cards
+- Monster attack requirements require both players to have enough Heroes and their teammate must agree to attack.
+- Leaders do not count towards attacking Hero class requirements
+- Max 5 Heroes in a party, discard a Hero if you have 5 and are trying to play another
+Item Bans: All Masks
+Monster Bans: Mega Slime, Wandering Behemoth, Saffyre Phoenix, Venomous Gemini
+
+
 Ranked Rules:
 - 2 Players
 - Each player gets a unique deck
 - Max 7 Heroes in a party
     - Trading Heroes happens reglardless of how many Heroes you have in your party, stealing fails if you have 7
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
+- Leader Bans: The Shadow Claw
 - Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror
 - Monster Bans: Venomous Gemini
 - Other Bans:

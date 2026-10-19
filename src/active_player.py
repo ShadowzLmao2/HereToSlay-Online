@@ -40,6 +40,13 @@ unstableUnicornTarget = {
     5 : 5,
     6 : 6
 }
+playerMonsters = [[],
+                  [],
+                  [],
+                  [],
+                  [],
+                  []]
+playerBanners = []
 playerParties = {
     1 : {
         #Front Row
@@ -51,15 +58,6 @@ playerParties = {
             5: "None",
             6: "None",
             7: "None",
-            },
-        #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -82,15 +80,6 @@ playerParties = {
             5: "None",
             6: "None",
             7: "None",
-            },
-        #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
             },
         "Banner"  : {
             1: Banners["None"],
@@ -115,14 +104,6 @@ playerParties = {
             7: "None",
             },
         #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
-            },
         "Banner"  : {
             1: Banners["None"],
             "1 Active" : False,
@@ -146,14 +127,6 @@ playerParties = {
             7: "None",
             },
         #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
-            },
         "Banner"  : {
             1: Banners["None"],
             "1 Active" : False,
@@ -177,14 +150,6 @@ playerParties = {
             7: "None",
             },
         #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
-            },
         "Banner"  : {
             1: Banners["None"],
             "1 Active" : False,
@@ -208,14 +173,6 @@ playerParties = {
             7: "None",
             },
         #Back Row
-        "Monster" : {
-            1: Monsters["None"],
-            "1 Active" : False,
-            2: Monsters["None"],
-            "2 Active" : False,
-            3: Monsters["None"],
-            "3 Active" : False,
-            },
         "Banner"  : {
             1: Banners["None"],
             "1 Active" : False,
