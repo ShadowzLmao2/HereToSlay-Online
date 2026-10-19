@@ -527,8 +527,8 @@ Monsters = {
         "Win Roll"    : 1, #The number you need to roll or above to get the Win effect
         "Win Effect"  : monsterRollEffect.slay, #What happens when you roll or above the Win roll
         "Effect"      : monsterEffect.noEffect, #The monster's effect - Probably will change a lot of them to
-                                                #noEffect because it will probably be the activateable only
-        "Description" : "None" #Its effect on the card
+                                                #noEffect because it will use the names instead
+        "Description" : "None" #Its effect written on the card
     },
     "Abyss Queen" : {
         "Image" : 'src/card_images/BaseGame/Monsters/abyssQueen.png',

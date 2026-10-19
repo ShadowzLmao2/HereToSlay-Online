@@ -60,6 +60,18 @@ def discardHandTest():
     print(f"Discard Pile: {discardPile}")
     return
 
+def testAttackReqCheck():
+    test: str = input()
+    monster: str = ""
+    if test == "Hero Count":
+        monster = "Chitin Scourge"
+    elif test == "Class Req":
+        monster = "Malamammoth"
+        playerHeroes[1].append("Mirroryu")
+        playerHeroes[1].append("Extraga")
+
+    checkAtkRequirements(monster)
+    return
 def testGame() -> None:
     startGame()
     return
@@ -72,6 +84,8 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 '''
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
+
+#testAttackReqCheck()
 
 #discardHandTest()
 #printAllHeroes()

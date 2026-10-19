@@ -144,9 +144,9 @@ def rollDice() -> int:
     return random.int(1,6) + random.int(1,6)
 
 def chooseAction() -> None:
-    #Working: endTurn() draw() discardDraw() 
+    #Working: endTurn() draw() discardDraw() attack() 
     #WIP: activateHeroAbility(hero) activateLeaderAbility(leader)
-    #Not Working: attack() 
+    #TBC: 
     endTurn()
     return
 
@@ -613,22 +613,22 @@ def drawMonsterCard(count=1) -> None:
     return
 
 def attack() -> None:
-    if AP > 1:
-        reduceAP(2)
-    else:
+    if AP < 1:
         print("Not enough AP")
         return
     monster = selectMonster()
-    heroReq = checkAtkRequirements(monster)
+    if not checkAtkRequirements(monster):
+        print("Doesn't meet Party Requirements")
+        return
+    reduceAP(2)
     diceRoll = rollDice()
-    if playerLeaders[activePlayer] == "Divine Arrow" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Divine Arrow"):
-        diceRoll +=1
+    diceRoll += (playerLeaders[activePlayer] == "Divine Arrow" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Divine Arrow"))
     if "Reptilian Ripper" in playerMonsters[activePlayer]:
         diceRoll +=2
     if "Ancient Megashark" in playerMonsters[activePlayer]:
         diceRoll +=2
-    for player in playerCount:
-        if player == activePlayer:
+    for player in playerCount: #Checks all player parties
+        if player == activePlayer: #Don't apply the negative to yourself
             continue
         if "Chitin Scourge" in playerMonsters[player]:
             diceRoll -=1
@@ -638,7 +638,8 @@ def attack() -> None:
         effect = Monsters[monster]["Lose Effect"]
     else:
         effect = monsterRollEffect.noEffect
-        if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
+    if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
+        if effect != monsterEffect.slay:
             drawCard(1)
     match(effect): #Note: No fallthrough
         case monsterRollEffect.slay:
@@ -660,25 +661,40 @@ def attack() -> None:
             sacrifice()
         case monsterRollEffect.sacrificeTwo:
             sacrifice(count=2)
-        case monsterRollEffect.noEffect:
+        case _:
             return
-        case _: #Default, happens if nothing else above
-            #endGame()
-            return
-        #Should activate on any player's fail
     return
 
-def endGame(winningPlayer) -> None:
+def endGame(winningPlayer: int) -> None:
     print(f"Player {winningPlayer} won")
-    return
+    pass
 
 def selectMonster() -> int:
-    return 0
+    index = int(input())
+    return index
 
-def checkAtkRequirements(monster):
-    activeMonster[monster]
-    heroReq = 0
-    return
+def checkAtkRequirements(monster) -> bool:
+    heroCount, classList = getPartyCounts()
+    if heroCount < Monsters[monster]["Hero Req"]:
+        if testingPhase:
+            print(f"Not enough Heroes: {heroCount}/{Monsters[monster]["Hero Req"]}")
+        return False
+    if (Monsters[monster]["Class Req"] != heroType.NoClass) and not (Monsters[monster]["Class Req"] in classList):
+        if testingPhase:
+            print(f"No Hero of class {Monsters[monster]["Class Req"]}")
+        return False
+    return True
+
+def getPartyCounts(player: int = activePlayer) -> tuple[int,list]:
+    heroCount = 0
+    classList = []
+    for card in range(0, len(playerHeroes[activePlayer])):
+        heroCount +=1
+        classList.append(Cards[(playerHeroes[player][card])]["Class"])
+    if testingPhase:
+        print(f"Hero Count: {heroCount}")
+        print(f"Classes in Party: {classList}")
+    return heroCount, classList
 
 def discardHand(player=activePlayer) -> None:
     if not playerHand[activePlayer]: return #Return if empty
