@@ -451,11 +451,11 @@ def summonHero(slot,hero,player=activePlayer) -> None:
     return
 
 def summon(slot,hero,player=activePlayer) -> None:
-    playerParties[player]["Hero"][slot] = hero
+    playerHeroes[player][slot] = hero
     return
 
 def checkHeroSlot(slot,player,key) -> bool:
-    return playerParties[player]["Hero"][slot] == key
+    return playerHeroes[player][slot] == key
 
 def askPlayer() -> bool:
     return
@@ -543,9 +543,9 @@ def mill(numMilled, target=activePlayer) -> None:
     #mainDeck
     return
 
-def destroy(target,player) -> None:
+def destroy(target,player) -> None: #target should be the index of the card
     discardPile.append(target)
-    playerParties[player]["Hero"][target] = "None"
+    playerHeroes[player][target] = "None"
     #TODO effects that happen after destroyed 
     if playerLeaders[activePlayer] == "Brutal Bow":
         drawCard(1)
@@ -554,7 +554,7 @@ def destroy(target,player) -> None:
 def sacrifice(target=activePlayer,heroType=heroType.NoClass, count=1) -> None:
     for i in range(0,count):
         index = chooseHero(target, heroType)
-        discardPile.append(playerParties[target]["Hero"][index].pop())
+        discardPile.append(playerHeroes[target][index].pop())
     return
 
 def stealHero() -> None:
@@ -650,7 +650,7 @@ def attack() -> None:
                     if playerLeaders[activePlayer] == "Raging Manticore":
                         drawCard(2)
                 else:
-                    endGame(activePlayer)
+                    endGame("Monsters")
         case monsterRollEffect.discard:
             discardSpecific()
         case monsterRollEffect.discardTwo:
@@ -665,11 +665,15 @@ def attack() -> None:
             return
     return
 
-def endGame(winningPlayer: int) -> None:
-    print(f"Player {winningPlayer} won")
+def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
+    if typeOfWin == "Classes":
+        winType = winByClasses
+    elif typeOfWin == "Monsters":
+        winType = winByMonsters
+    print(f"Player {winningPlayer} won by {winType}.")
     pass
 
-def selectMonster() -> int:
+def selectMonster() -> int: #TODO
     index = int(input())
     return index
 
@@ -685,15 +689,16 @@ def checkAtkRequirements(monster) -> bool:
         return False
     return True
 
-def getPartyCounts(player: int = activePlayer) -> tuple[int,list]:
-    heroCount = 0
-    classList = []
-    for card in range(0, len(playerHeroes[activePlayer])):
-        heroCount +=1
-        classList.append(Cards[(playerHeroes[player][card])]["Class"])
+def getPartyCounts(target: int = activePlayer) -> tuple[int,list]: #Returns an int value and a list of enum'd ints
+    heroCount = len(playerHeroes[target])
+    classList = {} #It's actually a set, no duplicates that way
+    for card in range(0, heroCount):
+        classList.add(Cards[(playerHeroes[target][card])]["Class"])
     if testingPhase:
         print(f"Hero Count: {heroCount}")
         print(f"Classes in Party: {classList}")
+    if len(classList) == 6:
+        endGame("Classes", target)
     return heroCount, classList
 
 def discardHand(player=activePlayer) -> None:
