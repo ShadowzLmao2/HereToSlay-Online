@@ -26,6 +26,7 @@ def testLeaderTypeSwap() -> None:
     startGame()
     #leaderTypeSwitch("Brutal Bow")
     return
+
 def testBanlist() -> None:
     for i in range(0,len(rankedMonsterBanlist)):
         monsterDeck.remove(rankedMonsterBanlist[i])
@@ -72,9 +73,25 @@ def testAttackReqCheck():
 
     checkAtkRequirements(monster)
     return
-def testGame() -> None:
-    startGame()
+
+def testWin() -> None:
+    test: str = input("What are you testing: ")
+    if test == "Class":
+        playerHeroes[1].append("Lucky Bucky")
+        playerHeroes[1].append("Bad Axe")
+        playerHeroes[1].append("Calming Voice")
+        playerHeroes[1].append("Hook")
+        playerHeroes[1].append("Shurikitty")
+        playerHeroes[1].append("Bun Bun")
+        startGame(test="testWin Class")
+        return
+    elif test == "Monster":
+        return
+    else:
+        startGame()
     return
+
+
 '''  Game Order
 PreGame Phase      - "PreGame Phase initialized"
     Deck Shuffle Phase - the deck name is printed and then the deck
@@ -92,4 +109,4 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 #testPullCard()
 #checkCardsInHand()
 #testLeaderTypeSwap()
-#testGame()
+testWin() #Run testWin and dont give an input to test the game

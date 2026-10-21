@@ -2,22 +2,21 @@ from config import *
 from cards import *
 from active_player import *
 from tutorial import *
+import sys
 from functions import *
 from strings import *
 import random
 #from enum import Enum
-global AP
-AP = 3
 activePlayer = 1
 turnCount = 1
 playerCount = 4
+gameEnded = False
 
 #Separate from the GUI, handles the main game once you enter a game with another player
-def startGame() -> None:
+def startGame(test="None") -> None:
     if testingPhase:
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
-    #pickLeaders()
     if testingPhase:
         print("\nMonster Deck:")
     random.shuffle(monsterDeck)
@@ -25,37 +24,57 @@ def startGame() -> None:
     if ranked:
         random.shuffle(p1Deck)
         random.shuffle(p2Deck)
-        drawCard(5,1)
-        drawCard(5,2)
-        global playerCount
+        global playerCount, activePlayer
         playerCount = 2
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
-        global activePlayer
         activePlayer = flipCoin()+1
     else:        
+        random.shuffle(mainDeck)
         if testingPhase:
-            print("Main Deck:")
-        random.shuffle()
+            print(f"Main Deck:  {mainDeck}")
         chooseLeader()
-        for player in range(1,playerCount+1,1):
-            drawCard(5,player)
+    for player in range(1,playerCount+1,1):
+        drawCard(5,player)
     if testingPhase:
         print("PreGame Phase finished")
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
-    main()
+    main(test)
     return
 
-#Runs every round after startGame has been activated once and ends with endTurn()
-def main() -> None:
-    if testingPhase:
-        print(f"Player {activePlayer} turn started")
-    startTurn() 
-    chooseAction() #Basically waits for input
+#Is the main game loop. When the game ends, it returns to startGame which then ends
+def main(test: str = "None") -> None:
+    while not gameEnded:
+        global activePlayer, playerCount, turnCount
+        #Start of Turn
+        if testingPhase:
+            print(f"Player {activePlayer} turn started")
+        startTurn() 
+        chooseAction() #Basically, it waits for input
+        if not test == "None": #For efficiency while testing
+            #have a match case/elif chain for the tests
+            if test == "testWin Class":
+                getPartyCounts(1)
+
+        #End of Turn
+        if testingPhase:
+            print(f"Player {activePlayer} End Phase started")
+        if str(input()) == "end":
+            endGame("Test")
+        if activePlayer == playerCount:
+            activePlayer = 1
+        else:
+            activePlayer +=1
+        turnCount +=1
+        #All of this code (in the End of Turn section) MUST NOT cause anything to happen visually. It must run quickly before the game ends (if it does)
+        #repeats while there is no winner
     return
 
 #All the "Standby Phase" Stuff
 def startTurn(player=activePlayer) -> None:
+    global leaderAbilityUsed, activatedHeroAbility, AP
+    leaderAbilityUsed = False
+    AP = 3
     if testingPhase:
         print("Turn Number:", turnCount)
         #if turnCount > 1:
@@ -63,44 +82,46 @@ def startTurn(player=activePlayer) -> None:
     if (Leaders[playerLeaders[activePlayer]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch()
         if testingPhase:
-            print(f"{playerLeaders[activePlayer]}: {playerLeaderCurrentType[activePlayer]}")
+            print(f"{playerLeaders[activePlayer]}: {leaderCurrentType[activePlayer]}")
+    activatedHeroAbility = []
+    for hero in playerHeroes[activePlayer]: #setup stuff, to make it easier
+        activatedHeroAbility[hero] = False
     return
 
 def chooseLeader() -> None: #Pick your leader at the start of the game. Only used in casual
     if testingPhase:
         print("     Leader Section:\n")
-    global playerCount
     for i in range(1, playerCount+1,1):
-        playerLeaderCurrentType[i] = Leaders[(playerLeaders[i])]["Class"]
+        leaderCurrentType[i] = Leaders[(playerLeaders[i])]["Class"]
         if testingPhase:
-            print(f"Player {i}: {playerLeaders[i]}, Class: {playerLeaderCurrentType[i]}")
+            print(f"Player {i}: {playerLeaders[i]}, Class: {leaderCurrentType[i]}")
     return
 
 #For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
 def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
     if input(f"{switchLeaderType}\n") == "y":
-        leaderType = playerLeaderCurrentType[activePlayer]
+        leaderType = leaderCurrentType[activePlayer]
         match leader:
             case "Brutal Bow":
                 #Fighter/Ranger
                 if leaderType == heroType.Fighter:
-                    playerLeaderCurrentType[activePlayer] = heroType.Ranger
+                    leaderCurrentType[activePlayer] = heroType.Ranger
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Fighter
+                    leaderCurrentType[activePlayer] = heroType.Fighter
                 return
             case "Mystical Maestro":
                 #Wizard/Bard
                 if leaderType == heroType.Wizard:
-                    playerLeaderCurrentType[activePlayer] = heroType.Bard
+                    leaderCurrentType[activePlayer] = heroType.Bard
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Wizard
+                    leaderCurrentType[activePlayer] = heroType.Wizard
                 return
             case "Veiled Raider":
                 #Guardian/Thief
                 if leaderType == heroType.Guardian:
-                    playerLeaderCurrentType[activePlayer] = heroType.Thief
+                    leaderCurrentType[activePlayer] = heroType.Thief
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Guardian
+                    leaderCurrentType[activePlayer] = heroType.Guardian
                 return
             case "Unstable Unicorn":
                 #Copy another Leader
@@ -115,29 +136,32 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
             case "Fierce Panguardian":
                 #Guardian/Fighter
                 if leaderType == heroType.Guardian:
-                    playerLeaderCurrentType[activePlayer] = heroType.Fighter
+                    leaderCurrentType[activePlayer] = heroType.Fighter
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Guardian
+                    leaderCurrentType[activePlayer] = heroType.Guardian
                 return
             case "Illusive Trickster":
                 #Wizard/Thief
                 if leaderType == heroType.Wizard:
-                    playerLeaderCurrentType[activePlayer] = heroType.Thief
+                    leaderCurrentType[activePlayer] = heroType.Thief
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Wizard
+                    leaderCurrentType[activePlayer] = heroType.Wizard
                 return
             case "Rhythmic Archer":
                 #Bard/Ranger
                 if leaderType == heroType.Bard:
-                    playerLeaderCurrentType[activePlayer] = heroType.Ranger
+                    leaderCurrentType[activePlayer] = heroType.Ranger
                 else:
-                    playerLeaderCurrentType[activePlayer] = heroType.Bard
+                    leaderCurrentType[activePlayer] = heroType.Bard
                 return
     return
 
-def flipCoin() -> int:
+def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
     #0 = Tails, 1 = Heads
-    coinFlip = random.int(0,1)
+    for i in range(0,count):
+        coinFlip = random.int(0,1)
+        #if not coinFlip and stopOnTails:
+            #continue
     return coinFlip
 
 def rollDice() -> int:
@@ -146,11 +170,16 @@ def rollDice() -> int:
 def chooseAction() -> None:
     #Working: endTurn() draw() discardDraw() attack() 
     #WIP: activateHeroAbility(hero) activateLeaderAbility(leader)
-    #TBC: 
-    endTurn()
+    #TBC: playHero() 
     return
 
-def activateHeroAbility(hero) -> None:
+def activateHeroAbility(hero, index: int) -> None: 
+    #hero is the card's enum. index is its spot on the field
+    #will probably remove the hero input and replace with index
+    if activatedHeroAbility[index]:
+        if testingPhase:
+            print("Ability already activated this turn")
+        return
     if AP > 0:
         reduceAP()
         diceRoll = rollDice()
@@ -158,6 +187,7 @@ def activateHeroAbility(hero) -> None:
         if playerLeaders[activePlayer] == "Charismatic Song":
             diceRoll +=1
         if  diceRoll >= Cards[hero]["Effect Roll"]:
+            activatedHeroAbility[index] = True
             useHeroAbility(hero)
         else:
             if testingPhase:
@@ -170,7 +200,7 @@ def activateHeroAbility(hero) -> None:
 leaderAbilityUsed= False
 
 def activateLeaderAbility(leader=playerLeaders[activePlayer]) -> None:
-    global leaderAbilityUsed
+    #global leaderAbilityUsed
     #Sets the Unicorn's ability to whatever it copied at the start of the turn
     if leader == "Unstable Unicorn":
         leader = playerLeaders[(unstableUnicornTarget[activePlayer])]
@@ -443,7 +473,6 @@ def playCards(target,count,pickAll,type) -> None:
     return
 
 def summonHero(slot,hero,player=activePlayer) -> None:
-    global AP
     if AP > 0 and checkHeroSlot(slot,player,"None"):
         reduceAP()
         challenge()
@@ -666,40 +695,49 @@ def attack() -> None:
     return
 
 def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
+    global gameEnded
+    gameEnded = True
     if typeOfWin == "Classes":
         winType = winByClasses
     elif typeOfWin == "Monsters":
         winType = winByMonsters
+    elif typeOfWin == "Test":
+        winType = winByTest
+    else: #Potentially unnecessary
+        gameEnded = False
     print(f"Player {winningPlayer} won by {winType}.")
-    pass
+    return #Goes back to where you were, eventually returning to main, which ends the game loop
 
 def selectMonster() -> int: #TODO
     index = int(input())
     return index
 
 def checkAtkRequirements(monster) -> bool:
-    heroCount, classList = getPartyCounts()
+    heroCount, classSet = getPartyCounts()
     if heroCount < Monsters[monster]["Hero Req"]:
         if testingPhase:
-            print(f"Not enough Heroes: {heroCount}/{Monsters[monster]["Hero Req"]}")
+            heroReq = Monsters[monster]["Hero Req"]
+            print(f"Not enough Heroes: {heroCount} out of {heroReq}")
         return False
-    if (Monsters[monster]["Class Req"] != heroType.NoClass) and not (Monsters[monster]["Class Req"] in classList):
+    if (Monsters[monster]["Class Req"] != heroType.NoClass) and not (Monsters[monster]["Class Req"] in classSet):
         if testingPhase:
-            print(f"No Hero of class {Monsters[monster]["Class Req"]}")
+            classReq = Monsters[monster]["Class Req"]
+            print(f"No Hero of class {classReq}")
         return False
     return True
 
 def getPartyCounts(target: int = activePlayer) -> tuple[int,list]: #Returns an int value and a list of enum'd ints
     heroCount = len(playerHeroes[target])
-    classList = {} #It's actually a set, no duplicates that way
+    classSet = set() #It's actually a set, no duplicates that way
     for card in range(0, heroCount):
-        classList.add(Cards[(playerHeroes[target][card])]["Class"])
+        classSet.add(Cards[playerHeroes[target][card]]["Class"])
+    classSet.add(leaderCurrentType[target])
     if testingPhase:
         print(f"Hero Count: {heroCount}")
-        print(f"Classes in Party: {classList}")
-    if len(classList) == 6:
+        print(f"Classes in Party: {classSet}")
+    if len(classSet) == 6:
         endGame("Classes", target)
-    return heroCount, classList
+    return heroCount, classSet
 
 def discardHand(player=activePlayer) -> None:
     if not playerHand[activePlayer]: return #Return if empty
@@ -737,25 +775,11 @@ def discardSelected(cardIndex,target=activePlayer) -> None:
     discardPile.append(playerHand[target][cardIndex].pop())
     return
 
-def reduceAP(APReduction=1) -> None:
+def reduceAP(APReduction: int = 1) -> None:
     global AP
     AP -= APReduction
     if testingPhase:
         print(f"AP: {AP}")
-    return
-
-def endTurn() -> None:
-    global leaderAbilityUsed
-    leaderAbilityUsed = False
-    global AP, activePlayer, playerCount, turnCount
-    if testingPhase:
-        print(f"Player {activePlayer} End Phase started")
-    if activePlayer == playerCount:
-        activePlayer = 1
-    else:
-        activePlayer +=1
-    AP = 3
-    turnCount +=1
     return
 
 #Stores the x and y values of a button, as when a button is hidden it loses said values

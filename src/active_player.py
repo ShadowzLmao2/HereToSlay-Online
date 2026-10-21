@@ -3,6 +3,7 @@ from cards import *
 from card_images import *
 monstersSlain = [0,0,0,0,0,0]
 activeMonster = [0,0,0]
+activatedHeroAbility = []
 activatePlayer = 1
 playerCount = 4 #Max = 6
 discardPile = []
@@ -16,7 +17,7 @@ playerHand = [
 ]
 
 monsterField = [0,0,0]
-playerLeaderCurrentType = {
+leaderCurrentType = {
     1 : heroType.NoClass,
     2 : heroType.NoClass,
     3 : heroType.NoClass,
