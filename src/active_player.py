@@ -55,6 +55,13 @@ playerHeroes = [[],
                 [],
                 []]
 
+heroItems = [[],
+             [],
+             [],
+             [],
+             [],
+             []]
+
 playerBanners = [[],
                 [],
                 [],
