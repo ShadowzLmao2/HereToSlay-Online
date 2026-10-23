@@ -9,7 +9,7 @@ import random
 #from enum import Enum
 activePlayer = 1
 turnCount = 1
-playerCount = 4
+playerCount = 2
 gameEnded = False
 
 #Separate from the GUI, handles the main game once you enter a game with another player
@@ -39,6 +39,16 @@ def startGame(test="None") -> None:
     if testingPhase:
         print("PreGame Phase finished")
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
+        if test == "atk":
+            playerHeroes[1] = ["Bad Axe","Meowzio", "Lucky Bucky"]
+            monsterField[0] = "Abyss Queen"
+            monsterField[1] = "Anuran Cauldron"
+            monsterField[2] = "Bloodwing"
+            if bool(input("Should win?")):
+                playerMonsters[0].append("Ancient Megashark")
+                playerMonsters[0].append("Reptilian Ripper")
+            global heroItems
+            heroItems[1] = ["None","None","None"]
     main(test)
     return
 
@@ -84,8 +94,9 @@ def startTurn(player=activePlayer) -> None:
         if testingPhase:
             print(f"{playerLeaders[activePlayer]}: {leaderCurrentType[activePlayer]}")
     activatedHeroAbility = []
-    for hero in playerHeroes[activePlayer]: #setup stuff, to make it easier
-        activatedHeroAbility[hero] = False
+    for hero in range(0,len(playerHeroes[activePlayer])): #setup stuff, to make it easier
+        if len(activatedHeroAbility) <= hero: activatedHeroAbility.append(False)
+        else: activatedHeroAbility[hero] = False
     return
 
 def chooseLeader() -> None: #Pick your leader at the start of the game. Only used in casual
@@ -165,10 +176,11 @@ def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
     return coinFlip
 
 def rollDice() -> int:
-    return random.int(1,6) + random.int(1,6)
+    return random.randint(1,6) + random.randint(1,6)
 
 def chooseAction() -> None:
-    while AP > 0:
+    global AP
+    while AP > 0 and not gameEnded:
         action: str = input("Do:")
         match(action):
             case "End":
@@ -178,7 +190,7 @@ def chooseAction() -> None:
                 draw()
             case "Redraw":
                 discardDraw()
-            case "Attack":
+            case "atk":
                 attack()
             case "Hero":
                 index: int = int(input())
@@ -190,25 +202,22 @@ def chooseAction() -> None:
                 playFromHand(index, Cards[playerHand[index]]["Card Type"])
 
 
-    #Working: draw() discardDraw() attack() 
-    #WIP: activateHeroAbility(hero) activateLeaderAbility(leader)
-    #TBC: playFromHand()
+    #Working: draw() discardDraw() attack() playFromHand()
+    #WIP: activateHeroAbility(hero) activateLeaderAbility(leader) playMagic()
     return
 
 def playFromHand(card: int, cardType) -> None:
     if cardType == cardType.Hero:
         playHero(card)
-        return
     elif cardType == cardType.Magic:
         target = int(input())
         playMagic(card,target)
-        return
     elif cardType == cardType.Item:
         target = int(input())
         index = int(input())
         playItem(index, playerHand[activePlayer][card],target)
-        return
-
+    if testingPhase:
+        print(playerHand[activePlayer])
     return
 
 def activateHeroAbility(hero, index: int, summoned: bool = False) -> None: 
@@ -697,7 +706,7 @@ def destroy(index,player) -> None: #target should be the index of the card
 
     return
 
-def sacrifice(target=activePlayer,heroType=heroType.NoClass, count=1) -> None:
+def sacrifice(target: int = activePlayer,heroType=heroType.NoClass, count: int = 1) -> None:
     for i in range(0,count):
         index = chooseHero(target, heroType)
         discardPile.append(playerHeroes[target][index].pop())
@@ -757,11 +766,11 @@ def drawMonsterCard(count=1) -> None:
     return
 
 def attack() -> None:
-    if AP < 1:
+    if AP < 2:
         print("Not enough AP")
         return
     monster = selectMonster()
-    if not checkAtkRequirements(monster):
+    if not checkAtkRequirements(monsterField[monster]):
         print("Doesn't meet Party Requirements")
         return
     reduceAP(2)
@@ -771,28 +780,42 @@ def attack() -> None:
         diceRoll +=2
     if "Ancient Megashark" in playerMonsters[activePlayer]:
         diceRoll +=2
-    for player in playerCount: #Checks all player parties
+    for player in range(0,playerCount): #Checks all player parties
         if player == activePlayer: #Don't apply the negative to yourself
             continue
         if "Chitin Scourge" in playerMonsters[player]:
             diceRoll -=1
-    if diceRoll >= Monsters[monster]["Win Roll"]:
-        effect = Monsters[monster]["Win Effect"]
-    elif diceRoll <= Monsters[monster]["Lose Roll"]:
-        effect = Monsters[monster]["Lose Effect"]
+    if testingPhase:
+        diceRoll = 12
+    print(f"Rolled a: {diceRoll}")
+    if diceRoll >= Monsters[monsterField[monster]]["Win Roll"]:
+        effect = Monsters[monsterField[monster]]["Win Effect"]
+    elif diceRoll <= Monsters[monsterField[monster]]["Lose Roll"]:
+        effect = Monsters[monsterField[monster]]["Lose Effect"]
     else:
         effect = monsterRollEffect.noEffect
+    if testingPhase:
+        print(f"Effect: {effect}")
     if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
         if effect != monsterEffect.slay:
             drawCard(1)
     match(effect): #Note: No fallthrough
         case monsterRollEffect.slay:
-                if monstersSlain[activePlayer] < 3:
-                    playerMonsters[activePlayer].append(Monsters[monster])
-                    monstersSlain[activePlayer]  += 1
-                    activeMonster[monster] = monsterDeck.pop()
+                if len(playerMonsters[activePlayer-1]) < 2:
+                    #Copy the card to the player's field and then replace it with one from the Deck
+                    print(f"Monster attacked: {monsterField[monster]}")
+                    playerMonsters[activePlayer-1].append(monsterField[monster])
+                    print(f"Player {activePlayer}'s Monsters: {playerMonsters[activePlayer-1]}")
+                    if testingPhase:
+                        print(f"{monsterField[monster]} was slain by Player {activePlayer}")
+                    monsterField[monster] = monsterDeck.pop()
+                    if testingPhase:
+                        print(f"Monsters: {monsterField}")
+                    monsterField[monster] = monsterDeck.pop()
                     if playerLeaders[activePlayer] == "Raging Manticore":
                         drawCard(2)
+                    if testingPhase:
+                        print(f"Monsters: {monsterField}")
                 else:
                     endGame("Monsters")
         case monsterRollEffect.discard:
@@ -824,7 +847,10 @@ def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
     return #Goes back to where you were, eventually returning to main, which ends the game loop
 
 def selectMonster() -> int: #TODO
-    index = int(input())
+    try:
+        index = int(input("Which Monster: ")) - 1
+    except index < 0 or index > 2:
+        selectMonster()
     return index
 
 def checkAtkRequirements(monster) -> bool:
@@ -842,10 +868,15 @@ def checkAtkRequirements(monster) -> bool:
     return True
 
 def getPartyCounts(target: int = activePlayer) -> tuple[int,list]: #Returns an int value and a list of enum'd ints
+    if testingPhase:
+        print("Getting class counts")
     heroCount = len(playerHeroes[target])
     classSet = set() #It's actually a set, no duplicates that way
     for card in range(0, heroCount):
-        if Cards[heroItems[target][card]]["Effect"] == cardEffect.Mask:
+        if testingPhase:
+            print(f"Item: {heroItems[target][card]}")
+        mask = heroItems[target][card]
+        if Cards[mask]["Effect"] == cardEffect.Mask:
             classSet.add(Cards[heroItems[target][card]]["Mask Class"])
         else:
             classSet.add(Cards[playerHeroes[target][card]]["Class"])

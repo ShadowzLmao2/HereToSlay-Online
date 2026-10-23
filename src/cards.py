@@ -937,6 +937,11 @@ Monsters = {
     }
 }
 Cards = {
+    "None" : {
+        "Effect" : cardEffect.NoEffect,
+        "Mask Type" : heroType.NoClass,
+        "Description" : "For testing purposes"
+    },
     #Action
     "Challenge" : {
         "Image" : 'src/card_images/BaseGame/Cards/challenge.png',
@@ -1275,65 +1280,76 @@ Cards = {
         "Image" : 'src/card_images/BaseGame/Cards/bardMask.png',
         "Effect" : cardEffect.Mask,
         "Card Type" : cardType.Item,
+        "Mask Type" : heroType.Bard,
         "Description" : "The equipped Hero card is considered a Bard instead of its original class."
     },
     "Fighter Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/fighterMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Fighter,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Fighter instead of its original class."
     },
     "Guardian Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/guardianMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Guardian,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Guardian instead of its original class."
     },
     "Ranger Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/rangerMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Ranger,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Ranger instead of its original class."
     },
     "Thief Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/thiefMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Thief,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Thief instead of its original class."
     },
     "Wizard Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/wizardMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Sorcerer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Wizard instead of its original class."
     },
     "Druid Mask" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Druid,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Druid instead of its original class."
     },
     "Warrior Mask" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Warrior,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Warrior instead of its original class."
     },
     "Berserker Mask" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Berserker,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Berserker instead of its original class."
     },
     "Necromancer Mask" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Necromancer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Necromancer instead of its original class."
     },
     "Sorcerer Mask" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererMask.png',
         "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.Sorcerer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Sorcerer instead of its original class."
     },

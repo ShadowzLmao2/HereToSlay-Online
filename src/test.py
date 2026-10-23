@@ -74,6 +74,23 @@ def testAttackReqCheck():
     checkAtkRequirements(monster)
     return
 
+def monsterDeckPopTest():
+    #random.shuffle(monsterDeck)
+    print(monsterDeck)
+    monsterField[0] = monsterDeck.pop()
+    monsterField[1] = monsterDeck.pop()
+    monsterField[2] = monsterDeck.pop()
+    print(monsterField)
+    print(playerMonsters)
+    for index in range(0,3):
+        print(f"Round: {index+1}")
+        playerMonsters[0].append(monsterField[index])
+        monsterField[index] = monsterDeck.pop()
+        print(f"Monster {index+1}: {playerMonsters[0]}")
+        #print(f"Monsters: {monsterField}")
+    print(playerMonsters)
+    return
+
 def testWin() -> None:
     test: str = input("What are you testing: ")
     if test == "Class":
@@ -88,7 +105,7 @@ def testWin() -> None:
     elif test == "Monster":
         return
     else:
-        startGame()
+        startGame(test)
     return
 
 
@@ -109,4 +126,5 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 #testPullCard()
 #checkCardsInHand()
 #testLeaderTypeSwap()
-testWin() #Run testWin and dont give an input to test the game
+#monsterDeckPopTest()
+testWin() #Run testWin and dont give an input to just test the game

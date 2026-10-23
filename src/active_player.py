@@ -1,9 +1,7 @@
 from cards import *
 #from config import *
 from card_images import *
-monstersSlain = [0,0,0,0,0,0]
-activeMonster = [0,0,0]
-activatedHeroAbility = []
+activatedHeroAbility: bool = []
 activatePlayer = 1
 playerCount = 4 #Max = 6
 discardPile = []

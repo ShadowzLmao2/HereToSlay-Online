@@ -1,13 +1,13 @@
 from enum import Enum #From enuxio?
 testingPhase = True
 
-WarriorsAndDruids  = True
-BerserkersAndNecromancers = True
-DragonSorcerers = True
-BannerQuest = True
-HereToSleigh = True
-MonsterExpansion = True
-KSEandLimited = True
+WarriorsAndDruids  = False
+BerserkersAndNecromancers = False
+DragonSorcerers = False
+BannerQuest = False
+HereToSleigh = False
+MonsterExpansion = False
+KSEandLimited = False
 maxHeroes = 5 + WarriorsAndDruids + BerserkersAndNecromancers
 autoUnicornIn1v1 = True
 ExtraEnemyMonsterSlot = True
