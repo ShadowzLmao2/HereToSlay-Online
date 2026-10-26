@@ -1,8 +1,12 @@
 switchLeaderType = 'Would you like to switch the type of your Leader?'
 winByClasses = 'having 6 heroes of different classes'
 winByMonsters = 'slaying 3 monsters'
-winByTest = 'ending the test'
 
+#Temp
+targetStr = 'Target: '
+
+#Test
+winByTest = 'ending the test'
 testCommands = '''
 (blank) - run the game
 atk - attack a monster (and win the game)'''

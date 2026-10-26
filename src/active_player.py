@@ -64,6 +64,13 @@ heroItems = [[],
              [],
              []]
 
+morphMaskType = [[],
+             [],
+             [],
+             [],
+             [],
+             [],
+             []]
 playerBanners = [[],
                  [],
                  [],

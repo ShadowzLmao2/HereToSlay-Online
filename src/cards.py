@@ -939,7 +939,6 @@ Monsters = {
 Cards = {
     "None" : {
         "Effect" : cardEffect.NoEffect,
-        "Mask Type" : heroType.NoClass,
         "Description" : "For testing purposes"
     },
     #Action
@@ -1498,7 +1497,8 @@ Cards = {
     "Chaos Mask" : {
         "Image" : 'src/card_images/BannerQuest/Cards/chaosMask.png',
         "Curse" : True,
-        "Effect" : cardEffect.NoEffect,
+        "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.noClass,
         "Card Type" : cardType.Item,
         "Description" : "Unknown"
     },
@@ -1507,7 +1507,7 @@ Cards = {
         "Curse" : True,
         "Effect" : cardEffect.NoEffect,
         "Card Type" : cardType.Item,
-        "Description" : "Unknown"
+        "Description" : "When this card is equipped, roll a single dice to determine the equipped Hero card's class. This roll cannot be modified."
     },
     #Gifts
     "Bag of Holding Gifts" : {
@@ -1566,7 +1566,7 @@ Cards = {
     #     "Gift Type" : "Good",
     #     "Description" : ""
     # },
-    #Here to slay Curses
+    #Here to Sleigh Curses
     "Endless Unwrapping" : {
         "Image" : 'src/card_images/HereToSleigh/Gifts/EndlessUnwrapping.png',
         "Effect" : cardEffect.EndlessUnwrapping,
