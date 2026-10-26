@@ -92,20 +92,22 @@ def monsterDeckPopTest():
     return
 
 def testWin() -> None:
+    print(testCommands)
     test: str = input("What are you testing: ")
-    if test == "Class":
-        playerHeroes[1].append("Lucky Bucky")
-        playerHeroes[1].append("Bad Axe")
-        playerHeroes[1].append("Calming Voice")
-        playerHeroes[1].append("Hook")
-        playerHeroes[1].append("Shurikitty")
-        playerHeroes[1].append("Bun Bun")
-        startGame(test="testWin Class")
-        return
-    elif test == "Monster":
-        return
-    else:
-        startGame(test)
+    match test:
+        case "Class":
+            playerHeroes[1].append("Lucky Bucky")
+            playerHeroes[1].append("Bad Axe")
+            playerHeroes[1].append("Calming Voice")
+            playerHeroes[1].append("Hook")
+            playerHeroes[1].append("Shurikitty")
+            playerHeroes[1].append("Bun Bun")
+            startGame(test="testWin Class")
+            return
+        case "Monster":
+            return
+        case _:
+            startGame(test)
     return
 
 

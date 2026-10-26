@@ -1,6 +1,6 @@
 from cards import *
+#from card_images import *
 #from config import *
-from card_images import *
 activatedHeroAbility: bool = []
 activatePlayer = 1
 playerCount = 4 #Max = 6
@@ -11,10 +11,11 @@ playerHand = [
     [],
     [],
     [],
+    [],
     []
 ]
 
-monsterField = [0,0,0]
+monsterField = ["None","None","None"]
 leaderCurrentType = {
     1 : heroType.NoClass,
     2 : heroType.NoClass,
@@ -44,9 +45,11 @@ playerMonsters = [[],
                   [],
                   [],
                   [],
+                  [],
                   []]
 
 playerHeroes = [[],
+                [],
                 [],
                 [],
                 [],
@@ -58,11 +61,13 @@ heroItems = [[],
              [],
              [],
              [],
+             [],
              []]
 
 playerBanners = [[],
-                [],
-                [],
-                [],
-                [],
-                []]
+                 [],
+                 [],
+                 [],
+                 [],
+                 [],
+                 []]
