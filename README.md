@@ -51,13 +51,12 @@ Chances of each roll
 2- : 1/36  | 2.78%    
   
 Todo:
-- Rules
 - Tutorial
-- GUI - tkinter: stuff
-- Internet Connection
+- GUI - tkinter stuff
+- Internet Connection and p2p
 - Fix images (higher res) for:
     - BQ Cards/Monsters, all of Here to Sleigh
-- Test Buttons: Create a debug mode  
+- Create tests required to pass before PRing
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional
@@ -98,3 +97,6 @@ Ranked Rules:
 Considering Banning: Mass Sacrifice, Captivating Spell, Even Bigger Ring, Mega Slime, Doombringer, Anuran Cauldron, Lucky Bucky, Vicious Wildcat
 
 Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay
+
+Fun details:
+Even bigger ring gives up to a 55.6% chance higher than without to succeed. (from 8+ or 9+)

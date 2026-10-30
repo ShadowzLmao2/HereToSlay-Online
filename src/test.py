@@ -110,6 +110,24 @@ def testWin() -> None:
             startGame(test)
     return
 
+def modifierTest() -> None:
+    global playerCount
+    playerCount = 3
+    playerHand[1].append("+4 Modifier")
+    playerHand[2].append("+3/-1 Modifier")
+    playerHand[3].append("Mirroryu")
+    mod = modifier()
+    print(f"Modifier: {mod}")
+    return
+
+def addFromDiscardTest() -> None:
+    discardPile.append("Mirroryu")
+    discardPile.append("Extraga")
+    discardPile.append("Lucky Bucky")
+    discardPile.append("Bad Axe")
+    print(f"Discard Pile: {discardPile}")
+    addFromDiscard(4,1)
+    return
 
 '''  Game Order
 PreGame Phase      - "PreGame Phase initialized"
@@ -120,13 +138,13 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 '''
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
-
+modifierTest()
 #testAttackReqCheck()
-
+#addFromDiscardTest()
 #discardHandTest()
 #printAllHeroes()
 #testPullCard()
 #checkCardsInHand()
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
-testWin() #Run testWin and dont give an input to just test the game
+#testWin() #Run testWin and dont give an input to just test the game

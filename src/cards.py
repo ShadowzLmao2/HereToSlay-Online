@@ -32,7 +32,7 @@ class leaderEffect(Enum):
 #The type of the card - helps with determining where to put in after use
 class cardType(Enum):
     NoCard    = 0
-    Action    = 1
+    Modifier  = 1
     Magic     = 2
     Item      = 3
     Hero      = 4
@@ -127,10 +127,6 @@ class cardEffect(Enum):
         #Berserkers and Necromancers
     DragonsBile           = 20
     SoulboundGrimoire     = 21
-        #Dragon Sorcerers
-        #KSE
-    MaskOfMisfortune      = 22
-    
     #Magic
         #Base Game
     CallToTheFallen       = 23
@@ -292,20 +288,10 @@ class cardEffect(Enum):
     PotluckSurprise      = 165
     ReallyItchySweater   = 166
     WatchfulMedallion    = 167
-    WhiteElephant        = 168
+    WhiteElephant        = 22 #22 is unused, but I'm not fixing the list
 
-    # #BannerQuest:
-    # BardBanner          = 169
-    # BerserkerBanner     = 170
-    # DruidBanner         = 171
-    # FighterBanner       = 172
-    # GuardianBanner      = 173
-    # HuntersTrophyBanner = 174
-    # NecromancerBanner   = 175
-    # RangerBanner        = 176
-    # ThiefBanner         = 177
-    # WarriorBanner       = 178
-    # WizardBanner        = 179
+
+    
      
 #The effect of the monsters once you slay them
 class monsterEffect(Enum):
@@ -945,96 +931,96 @@ Cards = {
     "Challenge" : {
         "Image" : 'src/card_images/BaseGame/Cards/challenge.png',
         "Effect" : cardEffect.Challenge,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card."
     },
     "Fighter Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/fighterChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Fighter,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Bard Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/bardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Bard,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Guardian Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/guardianChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Guardian,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Ranger Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/rangerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Ranger,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Thief Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/thiefChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Thief,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Wizard Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/wizardChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Druid Challenge" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Druid,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Warrior Challenge" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Warrior,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Berserker Challenge" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Berserker,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Necromancer Challenge" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Necromancer,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Sorcerer Challenge" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererChallenge.png',
         "Effect" : cardEffect.Challenge,
         "Requirement" : heroType.Sorcerer,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Garbage Gift Challenge" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/GarbageGiftChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +1 to your roll for each Garbage Gift card in your Stockpile."
     },
     "Good Gift Challenge" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/GoodGiftChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "+4 Modifier" : {
@@ -1042,7 +1028,7 @@ Cards = {
         "Effect" : cardEffect.OneModifier,
         "Positive Effect" : 4,
         "Quantity" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +4 to that roll."
     },
     "+3/-1 Modifier" : {
@@ -1051,7 +1037,7 @@ Cards = {
         "Positive Effect" : 3,
         "Negative Effect" : 1,
         "Quantity" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -1 to that roll."
     },
     "+2/-2 Modifier" : {
@@ -1060,7 +1046,7 @@ Cards = {
         "Positive Effect" : 2,
         "Negative Effect" : 2,
         "Quantity" : 9,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll."
     },
     "+1/-3 Modifier" : {
@@ -1069,7 +1055,7 @@ Cards = {
         "Positive Effect" : 1,
         "Negative Effect" : 3,
         "Quantity" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -3 to that roll."
     },
     "-4 Modifier" : {
@@ -1077,7 +1063,7 @@ Cards = {
         "Effect" : cardEffect.OneModifier,
         "Negative Effect" : 4,
         "Quantity" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. -4 to that roll."
     },
     #Warriors and Druids Modifiers
@@ -1086,7 +1072,7 @@ Cards = {
         "Effect" : cardEffect.Draw2Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 1,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -1 to that roll. DRAW 2 cards."
     },
     "+2/-1 WaD Modifier" : {
@@ -1094,21 +1080,21 @@ Cards = {
         "Effect" : cardEffect.Draw1Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 1,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -1 to that roll. DRAW a card."
     },
     "+4 WaD Modifier" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/+4WaDModifier.png',
         "Effect" : cardEffect.DrawIfAboveModifier,
         "Positive Effect" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -1 to that roll. If the roll is modified above 12, DRAW a card."
     },
     "-4 WaD Modifier" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/-4WaDModifier.png',
         "Effect" : cardEffect.SearchDiscBelowMod,
         "Negative Effect" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +4 that roll. If the roll is modified below 2, choose a card from the discard pile and add it to your hand."
     },
     #Berserkers and Necromancers Modifiers
@@ -1117,14 +1103,14 @@ Cards = {
         "Effect" : cardEffect.AtkBonusModifier,
         "Positive Effect" : 2,
         "Negative Effect" : 2,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -2 to that roll. If you are attacking a Monster card, +4 to that roll instead."
     },
     "+7 BaN Modifier" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/+7BaNModifier.png',
         "Effect" : cardEffect.DiscardHandModifier,
         "Positive Effect" : 7,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. DISCARD your hand. +7 to that roll. "
     },
     #Dragon Sorcerers Modifiers
@@ -1132,14 +1118,14 @@ Cards = {
         "Image" : 'src/card_images/DragonSorcerers/Cards/+6DSModifier.png',
         "Effect" : cardEffect.Discard1Modifier,
         "Positive Effect" : 6,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice and DISCARD a card. +6 to that roll."
     },
     "-6 DS Modifier" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/-6DSModifier.png',
         "Effect" : cardEffect.Discard1Modifier,
         "Negative Effect" : 6,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice and DISCARD a card. -6 to that roll"
     },
     #KSE Modifiers
@@ -1148,7 +1134,7 @@ Cards = {
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 1,
         "Negative Effect" : 4,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +1 or -4 to that roll."
     },
     "+2/-3 KSE Modifier" : {
@@ -1156,7 +1142,7 @@ Cards = {
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 2,
         "Negative Effect" : 3,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +2 or -3 to that roll."
     },
     "+3/-2 KSE Modifier" : {
@@ -1164,7 +1150,7 @@ Cards = {
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 3,
         "Negative Effect" : 2,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +3 or -2 to that roll."
     },
     "+4/-1 KSE Modifier" : {
@@ -1172,7 +1158,7 @@ Cards = {
         "Effect" : cardEffect.Modifier,
         "Positive Effect" : 4,
         "Negative Effect" : 1,
-        "Card Type" : cardType.Action,
+        "Card Type" : cardType.Modifier,
         "Description" : "Play this card after any player (including you) rolls the dice. +4 or -1 to that roll."
     },
 #Magic
@@ -1352,6 +1338,28 @@ Cards = {
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Sorcerer instead of its original class."
     },
+    "Chaos Mask" : {
+        "Image" : 'src/card_images/BannerQuest/Cards/chaosMask.png',
+        "Curse" : True,
+        "Effect" : cardEffect.Mask,
+        "Card Type" : cardType.Item,
+        "Description" : "When this card is equipped, roll to determine the equipped Hero card's class. This roll cannot be modified."
+    },
+    "Morph Mask" : {
+        "Image" : 'src/card_images/BannerQuest/Cards/morphMask.png',
+        "Curse" : True,
+        "Effect" : cardEffect.Mask,
+        "Card Type" : cardType.Item,
+        "Description" : "When this card is equipped, roll a single dice to determine the equipped Hero card's class. This roll cannot be modified."
+    },
+    "Mask of Misfortune" : {
+        "Image" : 'src/card_images/KSE/Cards/maskOfMisfortune.png',
+        "Curse" : True,
+        "Effect" : cardEffect.Mask,
+        "Mask Type" : heroType.NoClass,
+        "Card Type" : cardType.Item,
+        "Description" : "This Hero card has no class."
+    },
     #Base Game Items
     "Decoy Doll" : {
         "Image" : 'src/card_images/BaseGame/Cards/decoyDoll.png',
@@ -1484,30 +1492,6 @@ Cards = {
         "Effect" : cardEffect.SoulboundGrimoire,
         "Card Type" : cardType.Item,
         "Description" : "Rolling to use the equipped Hero card's effect costs 2 action points."
-    },
-    #KSE Curses
-    "Mask of Misfortune" : {
-        "Image" : 'src/card_images/KSE/Cards/maskOfMisfortune.png',
-        "Curse" : True,
-        "Effect" : cardEffect.MaskOfMisfortune,
-        "Card Type" : cardType.Item,
-        "Description" : "This Hero card has no class."
-    },
-    #Banner Quest Curses
-    "Chaos Mask" : {
-        "Image" : 'src/card_images/BannerQuest/Cards/chaosMask.png',
-        "Curse" : True,
-        "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.noClass,
-        "Card Type" : cardType.Item,
-        "Description" : "Unknown"
-    },
-    "Morph Mask" : {
-        "Image" : 'src/card_images/BannerQuest/Cards/morphMask.png',
-        "Curse" : True,
-        "Effect" : cardEffect.NoEffect,
-        "Card Type" : cardType.Item,
-        "Description" : "When this card is equipped, roll a single dice to determine the equipped Hero card's class. This roll cannot be modified."
     },
     #Gifts
     "Bag of Holding Gifts" : {
@@ -2530,77 +2514,77 @@ Banners = {
     },
     "Bard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/bardBanner.png',
-        "Effect": bannerType.Bard,
+        "Banner": bannerType.Bard,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Bard, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then roll to use the effect of any Hero card in your Party immediately."
     },
     "Berserker Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/BerserkerBanner.png',
-        "Effect": bannerType.Berserker,
+        "Banner": bannerType.Berserker,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Berserker, 
         "Description": "Once per turn on your turn, you may DISCARD 3 cards, then ATTACK a Monster card immediately. (You must still meet the Party requirements listed on that Monster card to attack it.)"
     },
     "Druid Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/DruidBanner.png',
-        "Effect": bannerType.Druid,
+        "Banner": bannerType.Druid,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Druid, 
         "Description": "Once per turn on your turn, you my DISCARD 2 cards, then DRAW 2 cards."
     },
     "Fighter Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/FighterBanner.png',
-        "Effect": bannerType.Fighter,
+        "Banner": bannerType.Fighter,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Fighter, 
         "Description": "Once per turn on your turn, you may DISCARD 2 cards, then DESTROY a Hero card."
     },
     "Guardian Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/GuardianBanner.png',
-        "Effect": bannerType.Guardian,
+        "Banner": bannerType.Guardian,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Guardian, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then search the discard pile for a Modifier card and add it to your hand."
     },
     "Hunter's Trophy Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/HuntersTrophyBanner.png',
-        "Effect": bannerType.Hunter,
+        "Banner": bannerType.Hunter,
         "Requirement Amount": 1,
         "Requirement Type": 12, #There is no heroType.Hunter, so I am using 12 since it works the same
         "Description": "Once per turn on your turn, +1 to your roll when you roll to ATTACK a Monster card."
     },
     "Necromancer Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/NecromancerBanner.png',
-        "Effect": bannerType.Necromancer,
+        "Banner": bannerType.Necromancer,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Necromancer, 
         "Description": "Once per turn on your turn, you may DISCARD 2 cards, then search the discard pile for a Hero card and add it to your hand. Play it immediately."
     },
     "Ranger Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/RangerBanner.png',
-        "Effect": bannerType.Ranger,
+        "Banner": bannerType.Ranger,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Ranger, 
         "Description": "Once per turn on your turn, you may DRAW a card."
     },
     "Thief Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/ThiefBanner.png',
-        "Effect": bannerType.Thief,
+        "Banner": bannerType.Thief,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Thief, 
         "Description": "Once per turn on your turn, you may DISCARD 3 cards, then STEAL a Hero card."
     },
     "Warrior Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WarriorBanner.png',
-        "Effect": bannerType.Warrior,
+        "Banner": bannerType.Warrior,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Warrior, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
     },
     "Wizard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WizardBanner.png',
-        "Effect": bannerType.Wizard,
+        "Banner": bannerType.Wizard,
         "Requirement Amount": 3,
         "Requirement Type": heroType.Wizard, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then play a Magic card immediately."

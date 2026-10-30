@@ -15,6 +15,7 @@ silverLining = False
 
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame(test="None") -> None:
+    global playerCount, activePlayer
     if testingPhase:
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
@@ -25,7 +26,6 @@ def startGame(test="None") -> None:
     if ranked:
         random.shuffle(p1Deck)
         random.shuffle(p2Deck)
-        global playerCount, activePlayer
         playerCount = 2
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
@@ -227,7 +227,7 @@ def playFromHand(card: int, cardType) -> None:
     return
 
 def activateHeroAbility(index: int, summoned: bool = False, player: int = activePlayer) -> None:
-    global AP
+    global AP, silverLining
     if activatedHeroAbility[index] and not heroItems[player][index] == "Bottomless Bag":
         if testingPhase:
             print("Ability already activated this turn")
@@ -242,9 +242,8 @@ def activateHeroAbility(index: int, summoned: bool = False, player: int = active
             reduceAP()
         reduceAP()
     diceRoll = rollDice()
-    #TODO Unstable Unicorn Stuff
     if heroItems[player][index] != "None":
-        diceRoll += playerLeaders[player] == "Charismatic Song"
+        diceRoll += playerLeaders[player] == "Charismatic Song" or playerLeaders[unstableUnicornTarget[player]] == "Charismatic Song"
         diceRoll += 2*(heroItems[player][index] == "Really Big Ring")
         diceRoll += 4*(heroItems[player][index] == "Even Bigger Ring")
         diceRoll += 2*silverLining
@@ -279,7 +278,6 @@ def activateHeroAbility(index: int, summoned: bool = False, player: int = active
                 discardPile.append(heroItems[player][index])
                 heroItems[player][index] = "None"
         elif heroItems[player][index] == "Silver Lining":
-            global silverLining
             silverLining = True
         elif heroItems[player][index] == "Dragon's Bile":
             sacrifice(target=player)
@@ -337,8 +335,8 @@ def useHeroAbility(hero) -> None:
             if Cards[pulledCard]["Class"] == Cards[hero]["Pull Type"]:
                 pullCard(target,False,0)
         case cardEffect.BearyWise:
-            allPlayersDiscard(False, cardType.Any)
-            #TODO player picks a card from the discarded
+            allPlayersDiscard(hitSelf = False)
+            addFromDiscard()
         case cardEffect.ForceDiscard:
             discardSpecific(choosePlayer(),2,1)
         case cardEffect.PanChucks:
@@ -369,7 +367,7 @@ def useHeroAbility(hero) -> None:
         case cardEffect.ToughTeddy:
             #Every player owning a fighter discards
             for player in range(1,playerCount,1):
-                if player == activePlayer: #TODO check for a fighter
+                if player == activePlayer:
                     continue
                 for j in playerHeroes[player]:
                     if Cards[playerHeroes[player][j]]["Class"] == heroType.Fighter:
@@ -568,7 +566,7 @@ def playCards(target = activePlayer,count: int = 1,pickAll: bool = False,type=ca
 
 def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from your hand. Target is who it's used on
     discardPile.append(playerHand[target][index].pop())
-    match(Cards[playerHand[target][index]]["Effect"]): #TODO get all the effects working
+    match(Cards[playerHand[target][index]]["Effect"]):
         case cardEffect.CallToTheFallen:
             return
         case cardEffect.CriticalBoost:
@@ -621,15 +619,30 @@ def playItem(index, item, target:int = activePlayer) -> None:
                 morphMaskType[target][index] = heroType.Ranger
             case 6:
                 morphMaskType[target][index] = heroType.Wizard
-    #Check if you won after equipping an item
+    elif item == "Chaos Mask":
+        roll = rollDice()
+        match(roll):
+            case 1 | 2 | 3:
+                morphMaskType[target][index] = heroType.Warrior
+            case 4 | 5 | 6:
+                morphMaskType[target][index] = heroType.Druid
+            case 7 | 8 | 9:
+                morphMaskType[target][index] = heroType.Berserker
+            case 10 | 11 | 12:
+                morphMaskType[target][index] = heroType.Necromancer
+    #Check if you won after equipping a class changing item
     if Cards[item]["Effect"] == cardEffect.Mask: getPartyCounts(target)
     return
 
 def playHero(index,player=activePlayer) -> None:
-    #TODO Make it work for 2v2 (with limited hero slots)
     reduceAP()
     challenge()
-    playerHeroes[player].append(playerHand[index].pop())
+    if gamemode == 1:
+        playerHeroes[player].append(playerHand[index].pop())
+    elif gamemode == 2 and len(playerHeroes[player]) == 5:
+        tribute = int(input())
+        playerHeroes[player][tribute] = playerHand[index]
+        playerHand[index].pop()
     if len(heroItems[player]) < playerHeroes[player]: #Just some index stuff so playing an item works
         heroItems.append("None")
     activateHeroAbility(playerHand[index],index, summoned = True)
@@ -645,8 +658,9 @@ def trade(index: int, target: int, selfTarget: int) -> None:
 def checkHeroSlot(slot,player,key) -> bool:
     return playerHeroes[player][slot] == key
 
-def askPlayer() -> bool: #A yes or no prompt
-    return bool(input())
+def askPlayer(output: str = "") -> bool: #A yes or no prompt
+    if bool(input(output)): return True
+    return False
 
 def choosePlayer(req: str = "") -> int:
     if playerCount == 2: 
@@ -654,7 +668,6 @@ def choosePlayer(req: str = "") -> int:
         oneOpponent = True
     otherPlayer = player
     if testingPhase: return 2
-    #TODO
     match(req):
         case "hasCard": #has card in hand
             try: player = int(input())
@@ -675,10 +688,74 @@ def chooseHero(player=activePlayer) -> int:
     index = int(input())
     return index
 
-def challenge() -> None:
+def challenge() -> bool:
     #TODO
+    hasChallenge = []
+    for i in range(0,playerCount):
+        if i == activePlayer:
+            continue
+        if hasCardEffect(cardEffect.Challenge,i):
+            hasChallenge.append(i)
+    for i in range(0,len(hasChallenge)):
+        if askPlayer():
+            discardSpecific(cardType.Challenge,1,i,False)
+            player = i
+    mainRoll = rollDice()
+    if playerLeaders[activePlayer] == "Fist of Reason":
+        mainRoll += 2
+    challengeRoll = rollDice()
+    if playerLeaders[player] == "Fist of Reason":
+        challengeRoll += 2
+    if playerLeaders[player] == "Fierce Panguardian":
+        canModify = False
+    if "Bloodwing" in playerMonsters[activePlayer]:
+        discardSpecific(cardType.Any,1,player)
+    mainRoll += "Titan Wyvern" in playerMonsters[activePlayer]
+    challengeRoll += "Titan Wyvern" in playerMonsters[player]
+    if mainRoll < challengeRoll:
+        return False
     #Fist of Reason gives +2
-    return hasCardEffect(cardEffect.Challenge)
+    return True
+
+def hasModifier() -> list[int]:
+    hasChallenge:int = []
+    for j in range(1,playerCount+1):
+        for i in range(0,len(playerHand[j])):
+            if Cards[playerHand[j][i]]["Card Type"] == cardType.Modifier:
+                hasChallenge.append(j)
+    return hasChallenge
+
+netModifier: int = 0
+def modifier() -> int:
+    global netModifier
+    if not askAllToModifyOrChallenge:
+        listPlayers: list[int] = hasModifier()
+        for i in range(0,len(listPlayers)):
+            if askPlayer(useModifier):
+                netModifier += playModifier(listPlayers[i])
+    else:
+        for i in range(1,playerCount+2):
+            if askPlayer(output=useModifier):
+                netModifier += playModifier(i)
+    return netModifier
+
+def playModifier(player) -> int:
+    hasModifier = False
+    for i in range(0,len(playerHand[player])):
+        if Cards[playerHand[player][i]]["Card Type"] == cardType.Modifier:
+            hasModifier == True
+    if not hasModifier:
+        if testingPhase: print("You don't have a modifier")
+        return 0
+    index = int(input("Which Card: "))
+    boostSign = int(input("+ or - (1 or 0): "))
+    boost: int = 0
+    if boostSign == 1:
+        boost = Cards[playerHand[player][index]]["Positive Effect"]
+    else:
+        boost -= Cards[playerHand[player][index]]["Negative Effect"]
+    discardPile.append(playerHand[player].pop(index))
+    return boost
 
 def hasCardEffect(effect,player=activePlayer) -> bool:
     for i in range(0,len(playerHand[player])):
@@ -792,10 +869,17 @@ def returnCardToHand(cardType,target=activePlayer):
 def equipItem() -> None:
     return
 
-def allPlayersDiscard(hitSelf: bool, type=cardType.Any) -> None:
+def allPlayersDiscard(hitSelf: bool = True, type=cardType.Any) -> None:
     for i in range(1,playerCount+1):
         if hitSelf or i != activePlayer:
             discardSpecific(type,1,1)
+    return
+
+def addFromDiscard(count: int = playerCount-1, player: int = activePlayer) -> None:
+    for i in range(count-1,-1,-1):
+        print(discardPile[i])
+    index = int(input())
+    playerHand[player].append(discardPile.pop(-index))
     return
 
 def protectionStatus(player=activePlayer) -> bool: #Will probably remove
