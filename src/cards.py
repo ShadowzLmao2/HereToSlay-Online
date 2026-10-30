@@ -7,28 +7,6 @@ from ranked_banlist import *
 class rollEffect(Enum):
     saffyrePhoenix = 0
     
-class leaderEffect(Enum):
-    NoEffect          = 0
-    #Heroes
-    CharismaticSong   = 1
-    ShadowClaw        = 2
-    DivineArrow       = 3
-    CloakedSage       = 4
-    ProtectingHorn    = 5
-    FistOfReason      = 6
-    NobleShaman       = 7
-    PiercingHowl      = 8
-    GnawingDread      = 9
-    RagingManticore   = 10
-    FearlessFlame     = 11
-    VeiledRaider      = 12
-    BrutalBow         = 13
-    MysticalMaestro   = 14
-    FiercePanguardian = 15
-    IllusiveTrickster = 16
-    RhythmicArcher    = 17
-    UnstableUnicorn   = 18
-
 #The type of the card - helps with determining where to put in after use
 class cardType(Enum):
     NoCard    = 0
@@ -351,7 +329,6 @@ Leaders = {
     "Charismatic Song" : {
         "Image" : 'src/card_images/BaseGame/Leaders/charismaticSong.png',
         "Class" : heroType.Bard,
-        "Effect" : leaderEffect.CharismaticSong,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
@@ -359,7 +336,6 @@ Leaders = {
     "Fist of Reason" : {
         "Image" : 'src/card_images/BaseGame/Leaders/fistOfReason.png',
         "Class" : heroType.Fighter,
-        "Effect" : leaderEffect.FistOfReason,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
@@ -367,7 +343,6 @@ Leaders = {
     "Shadow Claw" : {
         "Image" : 'src/card_images/BaseGame/Leaders/shadowClaw.png',
         "Class" : heroType.Thief,
-        "Effect" : leaderEffect.ShadowClaw,
         "Activatable" : True,
         "Start of Turn" : False,
         "AP Cost" : 1,
@@ -376,7 +351,6 @@ Leaders = {
     "Cloaked Sage" : {
         "Image" : 'src/card_images/BaseGame/Leaders/cloakedSage.png',
         "Class" : heroType.Wizard,
-        "Effect" : leaderEffect.CloakedSage,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you play a Magic card, DRAW a card."
@@ -384,7 +358,6 @@ Leaders = {
     "Divine Arrow" : {
         "Image" : 'src/card_images/BaseGame/Leaders/divineArrow.png',
         "Class" : heroType.Ranger,
-        "Effect" : leaderEffect.DivineArrow,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
@@ -392,7 +365,6 @@ Leaders = {
     "Protecting Horn" : {
         "Image" : 'src/card_images/BaseGame/Leaders/protectingHorn.png',
         "Class" : heroType.Guardian,
-        "Effect" : leaderEffect.ProtectingHorn,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
@@ -400,7 +372,6 @@ Leaders = {
     "Noble Shaman" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/nobleShaman.png',
         "Class" : heroType.Druid,
-        "Effect" : leaderEffect.NobleShaman,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
@@ -408,7 +379,6 @@ Leaders = {
     "Piercing Howl" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/piercingHowl.png',
         "Class" : heroType.Warrior,
-        "Effect" : leaderEffect.PiercingHowl,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
@@ -416,7 +386,6 @@ Leaders = {
     "Gnawing Dread" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/gnawingDread.png',
         "Class" : heroType.Necromancer,
-        "Effect" : leaderEffect.GnawingDread,
         "Activatable" : True,
         "Start of Turn" : False,
         "AP Cost" : 2,
@@ -425,7 +394,6 @@ Leaders = {
     "Raging Manticore" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/ragingManticore.png',
         "Class" : heroType.Berserker,
-        "Effect" : leaderEffect.RagingManticore,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
@@ -433,7 +401,6 @@ Leaders = {
     "Fearless Flame" : {
         "Image" : 'src/card_images/DragonSorcerers/Leaders/fearlessFlame.png',
         "Class" : heroType.Sorcerer,
-        "Effect" : leaderEffect.FearlessFlame,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
@@ -442,7 +409,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/brutalBow.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Ranger,
-        "Effect" : leaderEffect.BrutalBow,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger. Each time you DESTROY a Hero card, DRAW a card."
@@ -451,7 +417,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/mysticalMaestro.png',
         "Class" : heroType.Wizard,
         "Secondary Class" : heroType.Bard,
-        "Effect" : leaderEffect.MysticalMaestro,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard. Each time you roll 4 or less (including Modifier cards), you may DRAW a card."
@@ -460,7 +425,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/Leaders/veiledRaider.png',
         "Class" : heroType.Guardian,
         "Secondary Class" : heroType.Thief,
-        "Effect" : leaderEffect.VeiledRaider,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief. Each time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
@@ -468,7 +432,6 @@ Leaders = {
     "Unstable Unicorn" : {
         "Image" : 'src/card_images/KSE/Leaders/unstableUnicorn.png',
         "Class" : heroType.NoClass,
-        "Effect" : leaderEffect.UnstableUnicorn,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
@@ -477,7 +440,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/fiercePanguardian.png',
         "Class" : heroType.Fighter,
         "Secondary Class" : heroType.Guardian,
-        "Effect" : leaderEffect.FiercePanguardian,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter. Each time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
@@ -486,7 +448,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/illusiveTrickster.png',
         "Class" : heroType.Thief,
         "Secondary Class" : heroType.Wizard,
-        "Effect" : leaderEffect.IllusiveTrickster,
         "Activatable" : True,
         "Start of Turn" : True,
         "AP Cost" : 0,
@@ -496,7 +457,6 @@ Leaders = {
         "Image" : 'src/card_images/KSE/IndividualExclusives/rhythmicArcher.png',
         "Class" : heroType.Ranger,
         "Secondary Class" : heroType.Bard,
-        "Effect" : leaderEffect.RhythmicArcher,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger. Each time any player (including you) unsuccessfully rolls to ATTACK a Monster card, you may DRAW a card."
