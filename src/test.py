@@ -129,6 +129,16 @@ def addFromDiscardTest() -> None:
     addFromDiscard(4,1)
     return
 
+def drawTests() -> None:
+    mainDeck.append("Challenge")
+    mainDeck.append("Extraga")
+    playerMonsters[1].append("Calamity Mongrel")
+    playerHand[1].append("Bun Bun")
+    for i in range(1,2):
+        print(playerHand[i])
+    drawCard(2,1)
+    return
+
 '''  Game Order
 PreGame Phase      - "PreGame Phase initialized"
     Deck Shuffle Phase - the deck name is printed and then the deck
@@ -138,7 +148,8 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 '''
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
-modifierTest()
+drawTests()
+# modifierTest()
 #testAttackReqCheck()
 #addFromDiscardTest()
 #discardHandTest()

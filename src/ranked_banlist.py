@@ -111,4 +111,5 @@ rankedList = [
 ]
 rankedMonsterBanlist = [
     "Venomous Gemini"
+    "Clawed Nightmare"
 ]

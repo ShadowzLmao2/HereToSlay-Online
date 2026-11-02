@@ -90,7 +90,7 @@ Ranked Rules:
 - First to 4 Monsters or 7 unique Heroes (plus the leader being a different type) wins
 - Leader Bans: The Shadow Claw
 - Hero Bans: Dystortivern, Dodgy Dealer, Grim Terror
-- Monster Bans: Venomous Gemini
+- Monster Bans: Venomous Gemini, Clawed Gemini
 - Other Bans:
     - All of 'Here to Sleigh'
 

@@ -520,7 +520,7 @@ Monsters = {
         "Effect"      : monsterEffect.bloodwing,
         "Description" : "Each time another player CHALLENGES you, that player must DISCARD a card."
     },
-    "Corrupted Sabreetooth" : {
+    "Corrupted Sabretooth" : {
         "Image" : 'src/card_images/BaseGame/Monsters/corruptedSabretooth.png',
         "Hero Req"    : 3,
         "Class Req"   : heroType.NoClass,
