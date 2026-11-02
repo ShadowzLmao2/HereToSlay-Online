@@ -5,6 +5,15 @@ activatedHeroAbility: bool = []
 activatePlayer = 1
 playerCount = 4 #Max = 6
 discardPile = []
+playerEffects = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+]
 playerHand = [
     [],
     [],

@@ -1697,7 +1697,8 @@ Cards = {
         "Effect" : cardEffect.TipsyTootie,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
-        "Description" : "Choose a player. STEAL a Hero card from that player's Party and move this card to that player's Party."
+        "Description" : "Choose a player. STEAL a Hero card from that player's Party and move this card to that player's Party.",
+        "Ranked Description" : "Choose a player. TRADE this card with a Hero card in that player's Party."
     },
     "Calming Voice" : {
         "Image" : 'src/card_images/BaseGame/Cards/calmingVoice.png',
