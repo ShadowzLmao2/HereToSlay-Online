@@ -15,6 +15,7 @@ silverLining = False
 panguardian = False
 muscipulaRex = False
 nobleShamanUsed = False
+globalModifier = 0
 
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame(test="None") -> None:
@@ -86,8 +87,9 @@ def main(test: str) -> None:
                     drawCard(3)
             if "Scavenger Griffin" in playerMonsters[activePlayer]:
                 stealHero()
-        global silverLining, panguardian, nobleShamanUsed
+        global silverLining, panguardian, nobleShamanUsed, globalModifier
         silverLining, panguardian, nobleShamanUsed = False
+        globalModifier = 0
         if activePlayer == playerCount:
             activePlayer = 1
         else:
@@ -195,6 +197,8 @@ def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
 
 def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer) -> int:
     diceRoll = random.randint(1,6) + random.randint(1,6)
+    if player == activePlayer:
+        diceRoll += globalModifier
     diceRoll += "Anuran Cauldron" in playerMonsters[player]
     if not heroRoll: return diceRoll
 
@@ -624,37 +628,59 @@ def playCards(target = activePlayer,count: int = 1,type=cardType.Any) -> None: #
     return
 
 def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from your hand. Target is who it's used on
+    global AP 
     discardPile.append(playerHand[target][index].pop())
     match(Cards[playerHand[target][index]]["Effect"]):
         case cardEffect.CallToTheFallen:
-            return
+            searchDiscard(cardType.Hero)
         case cardEffect.CriticalBoost:
-            return
+            drawCard(3)
+            discardSpecific()
         case cardEffect.DestructiveSpell:
-            return
+            discardSpecific()
+            destroy(chooseHero(),chooseHero(),choosePlayer())
         case cardEffect.EnchantedSpell:
-            return
+            global globalModifier
+            globalModifier += 2
         case cardEffect.EntanglingTrap:
-            return
+            discardSpecific(count=2)
+            stealHero()
         case cardEffect.ForcedExchange:
             selfIndex = int(input())
             target = int(input(targetStr))
             trade(index,choosePlayer(),selfIndex)
             return
         case cardEffect.WindsOfChange:
-            return
+            for i in range(0,playerCount):
+                for i in range(0,len(heroItems[i])):
+                    playerHand[i].append(heroItems[i].pop())
         case cardEffect.BeastCall:
-            return
+            monsterDeck.insert(0,monsterField[1])
+            monsterDeck.insert(0,monsterField[2])
+            monsterDeck.insert(0,monsterField[3])
+            monsterField[1] = monsterDeck.pop()
+            monsterField[2] = monsterDeck.pop()
+            monsterField[3] = monsterDeck.pop()
+            AP += 1
         case cardEffect.RapidRefresh:
-            return
+            discardHand()
+            drawCard(4)
         case cardEffect.LightningLabrys:
-            return
+            count = int(input())
+            if count > len(playerHand[activePlayer]):
+                count = len(playerHand())
+            for i in range(0,count):
+                discardSpecific()
+                player = choosePlayer()
+                sacrifice(player)
         case cardEffect.MassSacrifice:
-            return
+            discardHand()
+            drawCard(5)
         case cardEffect.EggOfFortune:
-            return
+            discardSpecific()
+            pullCard(choosePlayer())
         case cardEffect.CaptivatingSpell:
-            return
+            globalModifier += 3
     if playerLeaders[target] == "Cloaked Sage":
         drawCard(player = target)
     if "Voltclaw Lion" in playerMonsters[target]:
@@ -916,7 +942,7 @@ def destroy(index,target,player: int = activePlayer) -> None: #target should be 
     #else:
     return
 
-def sacrifice(target: int = activePlayer,heroType=heroType.NoClass, count: int = 1) -> None:
+def sacrifice(target: int = activePlayer,heroType=heroType.Any, count: int = 1) -> None:
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
         if askPlayer():
@@ -1017,7 +1043,7 @@ def shuffleGYintoDeck() -> None:
     random.shuffle(mainDeck)
     return
 
-def drawCard(count: int = 1, player: int = activePlayer, temp: int = 0) -> None:
+def drawCard(count: int = 1, player: int = activePlayer) -> None:
     newCount = 0
     shuffle = False
     if len(mainDeck) < count:
@@ -1056,7 +1082,7 @@ def drawCard(count: int = 1, player: int = activePlayer, temp: int = 0) -> None:
         for i in range(0,len(discardIndex)):
             discardPile.append(playerHand[player][discardIndex].pop())
     if newCount > 0:
-        drawCard(newCount,player,temp+1)
+        drawCard(newCount,player)
     return
 
 def drawMonsterCard(count=1) -> None:
