@@ -10,11 +10,13 @@ import random
 activePlayer = 1
 turnCount = 1
 playerCount = 2
+dragalterModifier = [0,0]
 gameEnded = False
 silverLining = False
 panguardian = False
 muscipulaRex = False
 nobleShamanUsed = False
+canModify = False
 globalModifier = 0
 
 #Separate from the GUI, handles the main game once you enter a game with another player
@@ -87,8 +89,8 @@ def main(test: str) -> None:
                     drawCard(3)
             if "Scavenger Griffin" in playerMonsters[activePlayer]:
                 stealHero()
-        global silverLining, panguardian, nobleShamanUsed, globalModifier
-        silverLining, panguardian, nobleShamanUsed = False
+        global silverLining, panguardian, nobleShamanUsed, globalModifier, canModify
+        silverLining, panguardian, nobleShamanUsed, canModify = False
         globalModifier = 0
         playerEffects[activePlayer] = []
         if activePlayer == playerCount:
@@ -202,7 +204,15 @@ def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer)
         diceRoll += globalModifier
     diceRoll += "Anuran Cauldron" in playerMonsters[player]
     if not heroRoll: return diceRoll
-
+    if "Majestelk" in playerEffects(player):
+        response = int(input())
+        match(response):
+            case 0:
+                diceRoll -= 5
+            case 1:
+                diceRoll += 5
+            case _:
+                diceRoll += 0
     #Items
     if heroItems[player][index] != "None":
         diceRoll += 2*(heroItems[player][index] == "Really Big Ring")
@@ -388,6 +398,7 @@ def activateLeaderAbility(leader=playerLeaders[activePlayer]) -> None:
     return
 
 def useHeroAbility(hero) -> None:
+    global playerEffects, globalModifier, AP, canModify, dragalterModifier
     match Cards[hero]["Effect"]:
         case cardEffect.BadAxe:
             player = choosePlayer()
@@ -563,99 +574,210 @@ def useHeroAbility(hero) -> None:
         case cardEffect.BigBuckley:
             attack(True)
         case cardEffect.BuckOmens:
-            return
+            target = int(input())
+            for i in range(0,len(playerHand[target])):
+                print(playerHand[target][i])
+            index = int(input())
+            playerHand[player].append(playerHand[target][index].pop())
+            playHero(playerHand[player][-1],player,False)
         case cardEffect.DoeFallow:
             sacrifice(player)
             count = 7-len(playerHand[player])
             drawCard(count,player)
-            return
-        case cardEffect.Majestelk:
-            return
-        case cardEffect.MagusMoose:
-            return
         case cardEffect.Maegisty:
-            return
+            playerEffects[player].append("Maegisty")
+        case cardEffect.MagusMoose:
+            searchDiscard(cardType.Hero,player)
+            if askPlayer():
+                playHero(playerHand[player][-1],player,False)
+        case cardEffect.Majestelk:
+            sacrifice(player)
+            playerEffects[player].append("Majestelk")
         case cardEffect.Stagguard:
-            return
+            playerEffects[player].append("Stagguard")
         case cardEffect.BlindingBlade:
-            return
+            target = int(input)
+            for i in range(0,len(heroItems[target])):
+                playerHand[target].append(heroItems[target][i].pop())
         case cardEffect.CriticalFang:
-            return
+            playerEffects[player].append("Critical Fang")
         case cardEffect.HardenedHunter:
-            return
+            count = 0
+            for i in range(0,playerCount):
+                if i == player:
+                    continue
+                count += len(playerMonsters[i])
+            drawCard(count,player)
         case cardEffect.LootingLupo:
-            return
+            drawCard(len(heroItems[player],player))
         case cardEffect.SilentShield:
-            return
+            playerEffects[player].append("Silent Shield")
         case cardEffect.TenaciousTimber:
-            return
+            for i in range(0,len(playerMonsters[player])):
+                stealHero(player,int(input()))
         case cardEffect.WolfgangPack:
-            return
+            globalModifier += len(playerHeroes[player]) - 1
         case cardEffect.Annihilator:
-            return
+            searchDiscard(cardType.Challenge,player)
         case cardEffect.BrawlingSpirit:
-            return
+            for i in range(0,playerCount):
+                if len(playerHeroes) > 2:
+                    sacrifice(i)
         case cardEffect.GruesomeGladiator:
-            return
+            for i in range(0,playerCount):
+                if i == player:
+                    continue
+                pullCard(i,revealHand=True)
         case cardEffect.Meowntain:
-            return
+            sacrifice(player)
+            globalModifier += 5
         case cardEffect.RabidBeast:
-            return
+            count = int(input())
+            if count > len(playerHeroes[player]): count = len(playerHeroes[player])
+            for i in range(0,count):
+                sacrifice()
+                destroy(chooseHero(),chooseHero(),choosePlayer(),activator=player)
         case cardEffect.RoaryalGuard:
-            return
+            chosenClass = int(input())
+            for i in range(0,playerCount):
+                for j in range(0,len(playerHeroes[i])):
+                    if playerHeroes[i][j]["Class"] == chosenClass:
+                        playerHand[i].append(playerHeroes[i].pop(j))
+                        discardPile.append(heroItems[i].pop(j))
         case cardEffect.ViciousWildcat:
-            return
+            index = int(input())
+            playerMonsters[player].append(monsterField.pop(index))
+            AP = 0
         case cardEffect.UnbridledFury:
-            return
+            heroDestroyed = destroy(chooseHero(),chooseHero(),choosePlayer(),activator = player)
+            if Cards[heroDestroyed]["Class"] == heroType.Berserker:
+                AP += 1
         case cardEffect.BarkHexer:
-            return
+            allPlayersDiscard(True)
+            allPlayersDiscard(False)
         case cardEffect.BeholdenRetriever:
-            return
+            sacrifice(player)
+            searchDiscard(cardType.Item,player,cardType.Hero)
         case cardEffect.BoneCollector:
-            return
+            sacrificeItem(player)
+            searchDiscard(cardType.Hero,player)
+            playHero(-1,player,False)
         case cardEffect.BostonTerror:
-            return
+            target = choosePlayer()
+            if bool(input()):
+                pullCard(target)
+            else:
+                searchDiscard(player=player)
+                searchDiscard(player=player)
         case cardEffect.GrimPupper:
-            return
+            for i in range(0,playerCount):
+                sacrifice(i)
         case cardEffect.HollowHusk:
-            return
+            pullCard(choosePlayer(),cardType.Magic,True)
+            if bool(input()):
+                playMagic(-1,player)
         case cardEffect.PerfectVessel:
-            return
+            index = playerHeroes[player].index("Perfect Vessel")
+            discardPile.append(playerHeroes[player][index])
+            stealHero(player,choosePlayer())
         case cardEffect.ShadowSaint:
-            return
-        case cardEffect.Dystortivern:
-            return
-        case cardEffect.Extraga:
-            return
+            discardSpecific(cardType.Modifier,target=player)
+            canModify = False
         case cardEffect.Dragalter:
-            return
+            discardSpecific(cardType.Modifier)
+            playerEffects[player].append("Dragalter")
+            dragalterModifier = [Cards[discardPile[-1]]["Negative Effect"],Cards[discardPile[-1]]["Positive Effect"]]
+        case cardEffect.Dystortivern:
+            target = int(input())
+            playerLeaders[player],playerLeaders[target] = playerLeaders[target],playerLeaders[player]
+        case cardEffect.Extraga:
+            for i in range(0,playerCount):
+                for j in range(0,len(playerHeroes[i])):
+                    if Cards[playerHeroes[i][j]]["Class"] == heroType.Sorcerer:
+                        playerHand[i].append(playerHeroes[i][j].pop())
+                        discardPile.append(heroItems[i][j].pop())
         case cardEffect.Luut:
-            return
-        case cardEffect.Renovern:
-            return
+            target = choosePlayer()
+            index = chooseHero(target)
+            destination = chooseHero(player)
+            heroItems[player][destination],heroItems[target][index] = heroItems[target][index],"None"
         case cardEffect.Mirroryu:
-            return
-        case cardEffect.Smok:
-            return
+            index = int(input())
+            useHeroAbility(playerHeroes[player][index])
         case cardEffect.Oracon:
-            return
+            target = choosePlayer()
+            if pullCard(target,cardType.Modifier):
+                sacrifice(target)
+        case cardEffect.Renovern:
+            searchDiscard(cardType.Item,player)
+            playItem(-1,playerHand[player][-1],player)
         case cardEffect.Shamanaga:
-            return
+            searchDiscard(cardType.Hero,player)
+            playHero(-1,player,False)
+            sacrificeSpecific(player)
+        case cardEffect.Smok:
+            drawCard(2,player)
+            if Cards[playerHand[player][-1]]["Card Type"] == cardType.Magic or Cards[playerHand[player][-2]]["Card Type"] == cardType.Magic:
+                AP += 1
         case cardEffect.Bearserker:
-            return
-        case cardEffect.Hamlet:
-            return
+            target = choosePlayer
+            discardHand(target)
+            drawCard(3,target)
         case cardEffect.ComplexIllusion:
-            return
+            drawCard(2,player)
+            if Cards[playerHand[player][-1]]["Card Type"] == cardType.Modifier or Cards[playerHand[player][-2]]["Card Type"] == cardType.Modifier:
+                AP += 1 #Reveal Card
         case cardEffect.Enchantler:
-            return
+            count = int(input())
+            if count > len(playerHand[player]): count = len(playerHand[player])
+            discardSpecific(count=count,target=player)
+            globalModifier += 2*count
+        case cardEffect.Hamlet:
+            for i in range(0,playerCount):
+                for j in range(0,len(playerHeroes[i])):
+                    if Cards[playerHeroes[i][j]] == "Hamlet" and i == player:
+                        continue
+                    if Cards[playerHeroes[i][j]]["Class"] == heroType.Bard:
+                        playerHand[i].append(playerHeroes[i][j])
         case cardEffect.Hoodwink:
-            return
+            target = choosePlayer()
+            index = chooseHero()
+            secondTarget = choosePlayer()
+            secondIndex = chooseHero()
+            heroItems[target][index],heroItems[secondTarget][secondIndex] = heroItems[secondTarget][secondIndex],heroItems[target][index]
         case cardEffect.PurringBandit:
-            return
+            for i in range(0,playerCount):
+                if i == player:
+                    continue
+                if len(playerHand[i]) > len(playerHand[player]):
+                    pullCard(i)
         case cardEffect.NimbleGray:
-            return
+            playerEffects[player].append("Nimble Gray")
         case cardEffect.Mimi:
+            return
+        case cardEffect.GiftBearer:
+            return
+        case cardEffect.SantaClaws:
+            return
+        case cardEffect.ChristmasCarol:
+            return
+        case cardEffect.LilDrummerBard:
+            return
+        case cardEffect.ShinyNose:
+            return
+        case cardEffect.SnowSlinger:
+            return
+        case cardEffect.Prancer:
+            return
+        case cardEffect.ShootingStar:
+            return
+        case cardEffect.FirepalceFugitive:
+            return
+        case cardEffect.GiftBagBandit:
+            return
+        case cardEffect.Evergreen:
+            return
+        case cardEffect.HollyJolly:
             return
         case cardEffect.Draw2: #Peanut
             drawCard(2)
@@ -767,7 +889,7 @@ def playItem(index, item, target:int = activePlayer) -> None:
             case 6:
                 morphMaskType[target][index] = heroType.Wizard
     elif item == "Chaos Mask":
-        roll = rollDice()
+        roll = random.randint(1,6) + random.randint(1,6)
         match(roll):
             case 1 | 2 | 3:
                 morphMaskType[target][index] = heroType.Warrior
@@ -781,7 +903,6 @@ def playItem(index, item, target:int = activePlayer) -> None:
         drawCard(player=target)
     #Check if you won after equipping a class changing item
     if Cards[item]["Effect"] == cardEffect.Mask: getPartyCounts(target)
-
     return
 
 def playHero(index,player=activePlayer,loseAP: bool = True) -> None:
@@ -876,14 +997,20 @@ def challenge() -> bool:
 
 def hasModifier() -> list[int]:
     hasChallenge:int = []
+    stagguardPlayer = -1
+    for i in range(0,playerCount):
+        if "Stagguard" in playerEffects[i]:
+            stagguardPlayer: int = i
     for j in range(1,playerCount+1):
+        if not(stagguardPlayer == -1 or i == stagguardPlayer):
+            continue
         for i in range(0,len(playerHand[j])):
             if Cards[playerHand[j][i]]["Card Type"] == cardType.Modifier:
                 hasChallenge.append(j)
     return hasChallenge
 
 netModifier: int = 0
-def modifier() -> int:
+def modifier(player: int = activePlayer) -> int:
     count: int = 0
     global netModifier
     if not askAllToModifyOrChallenge:
@@ -908,6 +1035,11 @@ def modifier() -> int:
     for i in range(0,playerCount):
         if "Crowned Serpent" in playerMonsters[i]:
             drawCard(count,i)
+    if "Dragalter" in playerEffects[player]:
+        if bool(input()):
+            netModifier += dragalterModifier[1]
+        else:
+            netModifier -= dragalterModifier[0]
     return netModifier
 
 def playModifier(player) -> int:
@@ -943,15 +1075,22 @@ def hasCardEffect(effect,player=activePlayer) -> bool:
             return True
     return False
 
-def pullCard(target,reqType=0) -> bool:
+def pullCard(target: int = activePlayer,reqType: int = cardType.Any, revealHand: bool = False) -> bool:
     #target is who is stolen from, req is true/false for if there is a requirement, reqType is what card type you need to pull or else you dont pull
-    pulledCard: str = playerHand[target].pop()
+    index = -1
+    if revealHand:
+        for i in range(0,len(playerHand[target])):
+            print(playerHand[target][i])
+        index = int(input())
+    else:
+        random.shuffle(playerHand[target])
+    pulledCard: str = playerHand[target].pop(index)
     if testingPhase:
         print(f"Pulled Card: {pulledCard}")
     playerHand[activePlayer].append(pulledCard)
     return (Cards[pulledCard]["Class"] == reqType)#return if it matched the type you were looking for
 
-def searchDiscard(cardType, player: int = activePlayer) -> None:
+def searchDiscard(cardType = cardType.Any, player: int = activePlayer, alternateCardType = cardType.Any) -> None:
     return
 
 def revealCard(index: int, player: int = activePlayer) -> None:
@@ -980,19 +1119,27 @@ def mill(numMilled, target=activePlayer) -> None:
     #mainDeck
     return
 
-def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,activator: int = activePlayer) -> None: #target should be the index of the card
+def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,activator: int = activePlayer) -> int: #target should be the index of the card
     #Always pops item, but only pops item if it has Decoy Doll
-    if "Terratuga" in playerMonsters[target]: return
+    heroDestroyed = 0
+    if "Terratuga" in playerMonsters[target]: return heroDestroyed
     if not "Corrupted Sabretooth" in playerMonsters[player]: #TODO
         discardPile.append(heroItems[target][index].pop())
         if heroItems[target][index] != "Decoy Doll": #Protects the hero
-            discardPile.append(playerHeroes[target][index].pop())
+            if "Maegisty" in playerEffects[player]:
+                playerHand[player].append(playerHeroes[target][index].pop())
+            else:
+                heroDestroyed = playerHeroes[target][index]
+                discardPile.append(playerHeroes[target][index].pop())
         #TODO effects that happen after destroyed 
         if playerLeaders[target] == "Brutal Bow":
             drawCard(1)
         for i in range(0,len(playerHeroes[target])):
             if heroItems[target][i] == "Soul Tether":
-                discardPile.append(playerHeroes[target][i].pop())
+                if "Maegisty" in playerEffects[player]:
+                    playerHand.append(playerHeroes[target][i].pop())
+                else:
+                    discardPile.append(playerHeroes[target][i].pop())
                 if not shurikitty:
                     discardPile.append(heroItems[target][i].pop())
                 else:
@@ -1002,9 +1149,54 @@ def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,ac
         if "Wandering Behemoth" in playerMonsters[target]:
             drawCard(player = target)
     #else:
+    return heroDestroyed
+
+def sacrificeItem(target: int = activePlayer, count: int = 1) -> None:
+    index = int(input())
+    discardPile.append(heroItems[index].pop())
     return
 
-def sacrifice(target: int = activePlayer,heroType=heroType.Any, count: int = 1) -> None:
+def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
+    hasHero = False #in hand
+    if "Dragon Wasp" in playerMonsters[target]:
+        if askPlayer():
+            discardSpecific(count=2,target=target,canCancel=False)
+            return
+    if "Maegisty" in playerEffects[target]:
+        playerHand.append(playerHeroes[target][index].pop())
+        discardPile.append(heroItems[target][index].pop())
+    else:
+        discardPile.append(playerHeroes[target][index].pop())
+        discardPile.append(heroItems[target][index].pop())
+    for i in range(0,len(playerHeroes[target])):
+        if heroItems[target][i] == "Soul Tether":
+            if "Maegisty" in playerEffects[target]:
+                playerHand.append(playerHeroes[target][index].pop())
+            else:
+                discardPile.append(playerHeroes[target][index].pop())
+            discardPile.append(heroItems[target][i].pop())
+            discardPile.append(heroItems[target][index].pop())
+    if WarriorsAndDruids:
+        for i in range(0,playerCount):
+            if "Feral Dragon" in playerMonsters[i]:
+                drawCard(player=i)
+                continue
+    if "Wandering Behemoth" in playerMonsters[target]:
+        drawCard(player=target)
+    if "Doombringer" in playerMonsters[target]:
+        searchDiscard(cardType.Any,target)
+    if "Saffyre Phoenix" in playerHand[target]:
+        for i in range(0,len(playerHand[target])):
+            if Cards[playerHand[target][i]]["Card Type"] == cardType.Hero:
+                hasHero = True
+                continue
+        if hasHero:
+            if askPlayer():
+                index = int(input())
+                playHero(index,target)
+    return
+
+def sacrifice(target: int = activePlayer,heroType=heroType.Any, count: int = 1, forcedIndex: int = 0) -> None:
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
         if askPlayer():
@@ -1012,11 +1204,20 @@ def sacrifice(target: int = activePlayer,heroType=heroType.Any, count: int = 1) 
             return
     for i in range(0,count):
         index = chooseHero(target, heroType)
-        discardPile.append(playerHeroes[target][index].pop())
+        if "Maegisty" in playerEffects[target]:
+            playerHand.append(playerHeroes[target][index].pop())
+            discardPile.append(heroItems[target][index].pop())
+        else:
+            discardPile.append(playerHeroes[target][index].pop())
+            discardPile.append(heroItems[target][index].pop())
     for i in range(0,len(playerHeroes[target])):
         if heroItems[target][i] == "Soul Tether":
-            discardPile.append(playerHeroes[target][i].pop())
+            if "Maegisty" in playerEffects[target]:
+                playerHand.append(playerHeroes[target][index].pop())
+            else:
+                discardPile.append(playerHeroes[target][index].pop())
             discardPile.append(heroItems[target][i].pop())
+            discardPile.append(heroItems[target][index].pop())
     if WarriorsAndDruids:
         for i in range(0,playerCount):
             if "Feral Dragon" in playerMonsters[i]:
@@ -1163,15 +1364,15 @@ def drawMonsterCard(count=1) -> None:
         print(monsterField)
     return
 
-def attack(bigBuckley=False) -> None:
-    if AP < 2 and not bigBuckley:
+def attack(dontLoseAP=False) -> None:
+    if AP < 2 and not dontLoseAP:
         print("Not enough AP")
         return
     monster = selectMonster()
-    if not checkAtkRequirements(monsterField[monster]):
+    if not checkAtkRequirements(monsterField[monster]) and not "Nimble Gray" in playerEffects[activePlayer]:
         print("Doesn't meet Party Requirements")
         return
-    if not bigBuckley:
+    if not dontLoseAP:
         reduceAP(2)
     diceRoll = rollDice()
     diceRoll += (playerLeaders[activePlayer] == "Divine Arrow" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Divine Arrow"))
@@ -1179,6 +1380,8 @@ def attack(bigBuckley=False) -> None:
         diceRoll += 2
     if "Ancient Megashark" in playerMonsters[activePlayer]:
         diceRoll += 1
+    if "Critical Fang" in playerEffects[activePlayer]:
+        diceRoll += 4
     for player in range(0,playerCount): #Checks all player parties
         if player == activePlayer: #Don't apply the negative to yourself
             continue

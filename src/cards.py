@@ -2076,7 +2076,7 @@ Cards = {
         "Card Type" : cardType.Hero,
         "Description" : "DRAW a card for each Item card equipped to a Hero card in your Party."
     },
-    "Silent Shield" : {
+    "Silent Shield" : { #TODO
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/silentShield.png',
         "Class" : heroType.Warrior,
         "Effect" : cardEffect.SilentShield,
@@ -2284,7 +2284,7 @@ Cards = {
         "Effect" : cardEffect.Renovern,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
-        "Description" : "Search the discard pile for an item card and play it immediately."
+        "Description" : "Search the discard pile for an Item card and play it immediately."
     },
     "Shamanaga" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/shamanaga.png',
@@ -2303,14 +2303,6 @@ Cards = {
         "Description" : "DRAW 2 cards. If at least one of those cards is a Magic card, you may reveal it, then spend an extra action point this turn."
     },
     #KSE
-    "Hamlet" : {
-        "Image" : 'src/card_images/KSE/Cards/hamlet.png',
-        "Class" : heroType.Bard,
-        "Effect" : cardEffect.Hamlet,
-        "Effect Roll" : 7,
-        "Card Type" : cardType.Hero,
-        "Description" : "Each player (including you) must return any other Bards in their Party to their hand."
-    },
     "Bearserker" : {
         "Image" : 'src/card_images/KSE/Cards/bearserker.png',
         "Class" : heroType.Fighter,
@@ -2335,6 +2327,14 @@ Cards = {
         "Negative Roll" : True,
         "Card Type" : cardType.Hero,
         "Description" : "DISCARD any number of cards. +2 to all of your rolls for the rest of your turn for each card discarded."
+    },
+    "Hamlet" : {
+        "Image" : 'src/card_images/KSE/Cards/hamlet.png',
+        "Class" : heroType.Bard,
+        "Effect" : cardEffect.Hamlet,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Description" : "Each player (including you) must return any other Bards in their Party to their hand."
     },
     "Hoodwink" : {
         "Image" : 'src/card_images/KSE/Cards/hoodwink.png',
@@ -2589,7 +2589,7 @@ mainDeck = [
     "Kit Napper",
     "Meowzio",
     "Plundering Puma",
-    "Shurkitty",
+    "Shurikitty",
     "Silent Shadow",
     "Slippery Paws",
     "Sly Pickings",

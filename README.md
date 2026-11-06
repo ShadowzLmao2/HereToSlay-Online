@@ -100,3 +100,7 @@ Wiki: https://www.unstablegameswiki.com/index.php?title=Here_To_Slay
 
 Fun details:
 Even bigger ring gives up to a 55.6% chance higher than without to succeed. (from 8+ or 9+)
+
+
+Questions:
+Does Maegisty's effect return Items to the hand too?

@@ -14,6 +14,7 @@ playerEffects = [
     [],
     []
 ]
+majestelk = False
 playerHand = [
     [],
     [],
