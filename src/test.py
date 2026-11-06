@@ -11,7 +11,7 @@ playerCount = 4
 def testPullCard() -> None:
     playerHand[2].append("Bear Claw")
     print(f"Initial Hands: {playerHand[1]}, {playerHand[2]}")
-    correctPullType = pullCard(2,heroType.Fighter)
+    correctPullType = pullCard(2,heroClass.Fighter)
     print(f"Final Hands: {playerHand[1]}, {playerHand[2]}")
     print(f"Was it a fighter? {correctPullType}")
     return

@@ -23,7 +23,7 @@ class cardType(Enum):
 
 #The class of the Hero - used for attacking monsters, winning the game off of having 5 different types,
 #and some other card specific interactions
-class heroType(Enum):
+class heroClass(Enum):
     NoClass     = 0
     Thief       = 1
     Guardian    = 2
@@ -328,21 +328,21 @@ Leaders = {
         },
     "Charismatic Song" : {
         "Image" : 'src/card_images/BaseGame/Leaders/charismaticSong.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to use a Hero card's effect, +1 to your roll."
     },
     "Fist of Reason" : {
         "Image" : 'src/card_images/BaseGame/Leaders/fistOfReason.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to CHALLENGE, +2 to your roll."
     },
     "Shadow Claw" : {
         "Image" : 'src/card_images/BaseGame/Leaders/shadowClaw.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Activatable" : True,
         "Start of Turn" : False,
         "AP Cost" : 1,
@@ -350,42 +350,42 @@ Leaders = {
     },
     "Cloaked Sage" : {
         "Image" : 'src/card_images/BaseGame/Leaders/cloakedSage.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you play a Magic card, DRAW a card."
     },
     "Divine Arrow" : {
         "Image" : 'src/card_images/BaseGame/Leaders/divineArrow.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll to ATTACK a Monster card, +1 to your roll."
     },
     "Protecting Horn" : {
         "Image" : 'src/card_images/BaseGame/Leaders/protectingHorn.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you play a Modifier card on a roll, +1 or -1 to that roll."
     },
     "Noble Shaman" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/nobleShaman.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Once per turn on each player's turn, you may choose any player's roll. -1 to that roll."
     },
     "Piercing Howl" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Leaders/piercingHowl.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll, +1 to your roll for each Item card equipped to a Hero card in your party."
     },
     "Gnawing Dread" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/gnawingDread.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Activatable" : True,
         "Start of Turn" : False,
         "AP Cost" : 2,
@@ -393,61 +393,61 @@ Leaders = {
     },
     "Raging Manticore" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Leaders/ragingManticore.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you SLAY a Monster card, DRAW 2 cards."
     },
     "Fearless Flame" : {
         "Image" : 'src/card_images/DragonSorcerers/Leaders/fearlessFlame.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Activatable" : False,
         "Start of Turn" : False,
         "Description" : "Each time you roll the dice, you may DISCARD a card. If you do, +1 to your roll."
     },
     "Brutal Bow" : {
         "Image" : 'src/card_images/KSE/Leaders/brutalBow.png',
-        "Class" : heroType.Fighter,
-        "Secondary Class" : heroType.Ranger,
+        "Class" : heroClass.Fighter,
+        "Secondary Class" : heroClass.Ranger,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Brutal Bow's class between Fighter and Ranger. Each time you DESTROY a Hero card, DRAW a card."
     },
     "Mystical Maestro" : {
         "Image" : 'src/card_images/KSE/Leaders/mysticalMaestro.png',
-        "Class" : heroType.Wizard,
-        "Secondary Class" : heroType.Bard,
+        "Class" : heroClass.Wizard,
+        "Secondary Class" : heroClass.Bard,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Mystical Maestro's class between Mage and Bard. Each time you roll 4 or less (including Modifier cards), you may DRAW a card."
     },
     "Veiled Raider" : {
         "Image" : 'src/card_images/KSE/Leaders/veiledRaider.png',
-        "Class" : heroType.Guardian,
-        "Secondary Class" : heroType.Thief,
+        "Class" : heroClass.Guardian,
+        "Secondary Class" : heroClass.Thief,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Veiled Raider's class between Guardian and Thief. Each time you roll 12 or more (including Modifier cards), you may STEAL a Hero."
     },
     "Unstable Unicorn" : {
         "Image" : 'src/card_images/KSE/Leaders/unstableUnicorn.png',
-        "Class" : heroType.NoClass,
+        "Class" : heroClass.NoClass,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "The Unstable Unicorn has no class. At the beginning of your turn, you may choose another player's Party Leader card. The Unstable Unicorn's skill is that Party Leader card's skill until your next turn."
     },
     "Fierce Panguardian" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/fiercePanguardian.png',
-        "Class" : heroType.Fighter,
-        "Secondary Class" : heroType.Guardian,
+        "Class" : heroClass.Fighter,
+        "Secondary Class" : heroClass.Guardian,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Fierce Panguardian's class between Guardian and Fighter. Each time you CHALLENGE another player's card, that player cannot play Modifier cards until the end of the turn."
     },
     "Illusive Trickster" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/illusiveTrickster.png',
-        "Class" : heroType.Thief,
-        "Secondary Class" : heroType.Wizard,
+        "Class" : heroClass.Thief,
+        "Secondary Class" : heroClass.Wizard,
         "Activatable" : True,
         "Start of Turn" : True,
         "AP Cost" : 0,
@@ -455,8 +455,8 @@ Leaders = {
     },
     "Rhythmic Archer" : {
         "Image" : 'src/card_images/KSE/IndividualExclusives/rhythmicArcher.png',
-        "Class" : heroType.Ranger,
-        "Secondary Class" : heroType.Bard,
+        "Class" : heroClass.Ranger,
+        "Secondary Class" : heroClass.Bard,
         "Activatable" : False,
         "Start of Turn" : True,
         "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger. Each time any player (including you) unsuccessfully rolls to ATTACK a Monster card, you may DRAW a card."
@@ -467,7 +467,7 @@ Monsters = {
     "None" : {
         "Image": '', #Directory to the image
         "Hero Req"    : 0, #Number of Heroes required to attack the monster
-        "Class Req"   : heroType.NoClass, #Type of Hero required to attack the monster
+        "Class Req"   : heroClass.NoClass, #Type of Hero required to attack the monster
         "Lose Roll"   : 1, #The number you need to roll or below to get the Lose effect
         "Lose Effect" : monsterRollEffect.slay, #What happens when you roll or below the Lose roll
         "Win Roll"    : 1, #The number you need to roll or above to get the Win effect
@@ -479,7 +479,7 @@ Monsters = {
     "Abyss Queen" : {
         "Image" : 'src/card_images/BaseGame/Monsters/abyssQueen.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
@@ -490,7 +490,7 @@ Monsters = {
     "Anuran Cauldron" : {
         "Image" : 'src/card_images/BaseGame/Monsters/anuranCauldron.png',
         "Hero Req"    : 3,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -501,7 +501,7 @@ Monsters = {
     "Arctic Aries" : {
         "Image" : 'src/card_images/BaseGame/Monsters/arcticAries.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
@@ -512,7 +512,7 @@ Monsters = {
     "Bloodwing" : {
         "Image" : 'src/card_images/BaseGame/Monsters/bloodwing.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -523,7 +523,7 @@ Monsters = {
     "Corrupted Sabretooth" : {
         "Image" : 'src/card_images/BaseGame/Monsters/corruptedSabretooth.png',
         "Hero Req"    : 3,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -534,7 +534,7 @@ Monsters = {
     "Crowned Serpent" : {
         "Image" : 'src/card_images/BaseGame/Monsters/crownedSerpent.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
@@ -545,7 +545,7 @@ Monsters = {
     "Dark Dragon King" : {
         "Image" : 'src/card_images/BaseGame/Monsters/darkDragonKing.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Bard,
+        "Class Req"   : heroClass.Bard,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -556,7 +556,7 @@ Monsters = {
     "Dracos" : {
         "Image" : 'src/card_images/BaseGame/Monsters/dracos.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 8,
@@ -567,7 +567,7 @@ Monsters = {
     "Malamammoth" : {
         "Image" : 'src/card_images/BaseGame/Monsters/malamammoth.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Ranger,
+        "Class Req"   : heroClass.Ranger,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -578,7 +578,7 @@ Monsters = {
     "Mega Slime" : {
         "Image" : 'src/card_images/BaseGame/Monsters/megaSlime.png',
         "Hero Req"    : 4,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
@@ -589,7 +589,7 @@ Monsters = {
     "Orthus" : {
         "Image" : 'src/card_images/BaseGame/Monsters/orthus.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Wizard,
+        "Class Req"   : heroClass.Wizard,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -600,7 +600,7 @@ Monsters = {
     "Rex Major" : {
         "Image" : 'src/card_images/BaseGame/Monsters/rexMajor.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Guardian,
+        "Class Req"   : heroClass.Guardian,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -611,7 +611,7 @@ Monsters = {
     "Terratuga" : {
         "Image" : 'src/card_images/BaseGame/Monsters/terratuga.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 11,
@@ -622,7 +622,7 @@ Monsters = {
     "Titan Wyvern" : {
         "Image" : 'src/card_images/BaseGame/Monsters/titanWyvern.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Fighter,
+        "Class Req"   : heroClass.Fighter,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -633,7 +633,7 @@ Monsters = {
     "Warworn Owlbear" : {
         "Image" : 'src/card_images/BaseGame/Monsters/warwornOwlbear.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Thief,
+        "Class Req"   : heroClass.Thief,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 8,
@@ -645,7 +645,7 @@ Monsters = {
     "Feral Dragon" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Monsters/feralDragon.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -656,7 +656,7 @@ Monsters = {
     "Muscipula Rex" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Monsters/muscipulaRex.png',
         "Hero Req"    : 3,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 7,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
@@ -668,7 +668,7 @@ Monsters = {
     "Doombringer" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Monsters/doombringer.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Necromancer,
+        "Class Req"   : heroClass.Necromancer,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discardHand,
         "Win Roll"    : 8,
@@ -679,7 +679,7 @@ Monsters = {
     "Reptilian Ripper" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Monsters/reptilianRipper.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Berserker,
+        "Class Req"   : heroClass.Berserker,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrificeTwo,
         "Win Roll"    : 7,
@@ -691,7 +691,7 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/ancientMegashark.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discard,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -703,8 +703,8 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/clawedNightmare.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
-        "Class Req"   : heroType.Bard,
-        "Class Req 2" : heroType.Thief,
+        "Class Req"   : heroClass.Bard,
+        "Class Req 2" : heroClass.Thief,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -716,7 +716,7 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/dragonWasp.png',
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardTwo,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -728,8 +728,8 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/goretelodont.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
-        "Class Req"   : heroType.Guardian,
-        "Class Req 2" : heroType.Ranger,
+        "Class Req"   : heroClass.Guardian,
+        "Class Req 2" : heroClass.Ranger,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -741,7 +741,7 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/lumberingDemon.png',
         "Hero Req"    : 2,
         "MoEx AtkReq" : MoExAtkReq.noReq,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
@@ -754,7 +754,7 @@ Monsters = {
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Challenge,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -765,7 +765,7 @@ Monsters = {
     "Reef Ripper" : {
         "Image" : 'src/card_images/MonsterExpansion/reefRipper.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.slay,
         "Win Roll"    : 9,
@@ -776,7 +776,7 @@ Monsters = {
     "Saffyre Phoenix" : {
         "Image" : 'src/card_images/MonsterExpansion/saffyrePhoenix.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 8,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 13,
@@ -789,8 +789,8 @@ Monsters = {
         "Image" : 'src/card_images/MonsterExpansion/scavengerGriffin.png',
         "Hero Req"    : 3,
         "MoEx AtkReq" : MoExAtkReq.heroClass,
-        "Class Req"   : heroType.Fighter,
-        "Class Req 2" : heroType.Wizard,
+        "Class Req"   : heroClass.Fighter,
+        "Class Req 2" : heroClass.Wizard,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 9,
@@ -801,7 +801,7 @@ Monsters = {
     "Venomous Gemini" : {
         "Image" : 'src/card_images/MonsterExpansion/venomousGemini.png',
         "Hero Req"    : 5,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -814,7 +814,7 @@ Monsters = {
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Magic,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -825,7 +825,7 @@ Monsters = {
     "Wandering Behemoth" : {
         "Image" : 'src/card_images/MonsterExpansion/wanderingBehemoth.png',
         "Hero Req"    : 1,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
@@ -838,7 +838,7 @@ Monsters = {
         "Hero Req"    : 1,
         "MoEx AtkReq" : MoExAtkReq.discardSpecific,
         "Spec Discard": cardType.Item,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 7,
@@ -850,7 +850,7 @@ Monsters = {
     "Chitin Scourge" : {
         "Image" : 'src/card_images/BannerQuest/Monsters/chitinScourge.png',
         "Hero Req"    : 3,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 6,
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 8,
@@ -861,7 +861,7 @@ Monsters = {
     "Razor Tongue" : {
         "Image" : 'src/card_images/BannerQuest/Monsters/razorTongue.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.NoClass,
+        "Class Req"   : heroClass.NoClass,
         "Lose Roll"   : 5,
         "Lose Effect" : monsterRollEffect.discard,
         "Win Roll"    : 9,
@@ -873,7 +873,7 @@ Monsters = {
     "Calamity Mongrel" : {
         "Image" : 'src/card_images/DragonSorcerers/Monsters/calamityMongrel.png',
         "Hero Req"    : 2,
-        "Class Req"   : heroType.Sorcerer,
+        "Class Req"   : heroClass.Sorcerer,
         "Lose Roll"   : 4,
         "Lose Effect" : monsterRollEffect.discardTwo,
         "Win Roll"    : 8,
@@ -897,77 +897,77 @@ Cards = {
     "Fighter Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/fighterChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Fighter,
+        "Requirement" : heroClass.Fighter,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Bard Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/bardChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Bard,
+        "Requirement" : heroClass.Bard,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Guardian Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/guardianChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Guardian,
+        "Requirement" : heroClass.Guardian,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Ranger Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/rangerChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Ranger,
+        "Requirement" : heroClass.Ranger,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Thief Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/thiefChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Thief,
+        "Requirement" : heroClass.Thief,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Wizard Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/wizardChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Sorcerer,
+        "Requirement" : heroClass.Sorcerer,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Druid Challenge" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Druid,
+        "Requirement" : heroClass.Druid,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Warrior Challenge" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Warrior,
+        "Requirement" : heroClass.Warrior,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Berserker Challenge" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Berserker,
+        "Requirement" : heroClass.Berserker,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Necromancer Challenge" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Necromancer,
+        "Requirement" : heroClass.Necromancer,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
     "Sorcerer Challenge" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroType.Sorcerer,
+        "Requirement" : heroClass.Sorcerer,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
@@ -1225,76 +1225,76 @@ Cards = {
         "Image" : 'src/card_images/BaseGame/Cards/bardMask.png',
         "Effect" : cardEffect.Mask,
         "Card Type" : cardType.Item,
-        "Mask Type" : heroType.Bard,
+        "Mask Type" : heroClass.Bard,
         "Description" : "The equipped Hero card is considered a Bard instead of its original class."
     },
     "Fighter Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/fighterMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Fighter,
+        "Mask Type" : heroClass.Fighter,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Fighter instead of its original class."
     },
     "Guardian Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/guardianMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Guardian,
+        "Mask Type" : heroClass.Guardian,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Guardian instead of its original class."
     },
     "Ranger Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/rangerMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Ranger,
+        "Mask Type" : heroClass.Ranger,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Ranger instead of its original class."
     },
     "Thief Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/thiefMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Thief,
+        "Mask Type" : heroClass.Thief,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Thief instead of its original class."
     },
     "Wizard Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/wizardMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Sorcerer,
+        "Mask Type" : heroClass.Sorcerer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Wizard instead of its original class."
     },
     "Druid Mask" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/druidMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Druid,
+        "Mask Type" : heroClass.Druid,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Druid instead of its original class."
     },
     "Warrior Mask" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/warriorMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Warrior,
+        "Mask Type" : heroClass.Warrior,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Warrior instead of its original class."
     },
     "Berserker Mask" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/berserkerMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Berserker,
+        "Mask Type" : heroClass.Berserker,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Berserker instead of its original class."
     },
     "Necromancer Mask" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/necromancerMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Necromancer,
+        "Mask Type" : heroClass.Necromancer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Necromancer instead of its original class."
     },
     "Sorcerer Mask" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/sorcererMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.Sorcerer,
+        "Mask Type" : heroClass.Sorcerer,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Sorcerer instead of its original class."
     },
@@ -1316,7 +1316,7 @@ Cards = {
         "Image" : 'src/card_images/KSE/Cards/maskOfMisfortune.png',
         "Curse" : True,
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroType.NoClass,
+        "Mask Type" : heroClass.NoClass,
         "Card Type" : cardType.Item,
         "Description" : "This Hero card has no class."
     },
@@ -1571,7 +1571,7 @@ Cards = {
 #Heroes
     "Bad Axe" : {
         "Image" : 'src/card_images/BaseGame/Cards/badAxe.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.BadAxe,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1579,7 +1579,7 @@ Cards = {
     },
     "Bear Claw" : {
         "Image" : 'src/card_images/BaseGame/Cards/bearClaw.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Hero,
         "Effect Roll" : 7,
@@ -1588,7 +1588,7 @@ Cards = {
     },
     "Beary Wise" : {
         "Image" : 'src/card_images/BaseGame/Cards/bearyWise.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.BearyWise,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1596,7 +1596,7 @@ Cards = {
     },
     "Fury Knuckle" : {
         "Image" : 'src/card_images/BaseGame/Cards/furyKnuckle.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.PullCard,
         "Pull Type" : cardType.Challenge,
         "Effect Roll" : 5,
@@ -1605,7 +1605,7 @@ Cards = {
     },
     "Heavy Bear" : {
         "Image" : 'src/card_images/BaseGame/Cards/heavyBear.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.ForceDiscard,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -1613,7 +1613,7 @@ Cards = {
     },
     "Pan Chucks" : {
         "Image" : 'src/card_images/BaseGame/Cards/panChucks.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.PanChucks,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1621,7 +1621,7 @@ Cards = {
     },
     "Qi Bear" : {
         "Image" : 'src/card_images/BaseGame/Cards/qiBear.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.QiBear,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1629,7 +1629,7 @@ Cards = {
     },
     "Tough Teddy" : {
         "Image" : 'src/card_images/BaseGame/Cards/toughTeddy.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.ToughTeddy,
         "Effect Roll" : 4,
         "Card Type" : cardType.Hero,
@@ -1637,7 +1637,7 @@ Cards = {
     },
     "Dodgy Dealer" : {
         "Image" : 'src/card_images/BaseGame/Cards/dodgyDealer.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.DodgyDealer,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1645,7 +1645,7 @@ Cards = {
     },
     "Fuzzy Cheeks" : {
         "Image" : 'src/card_images/BaseGame/Cards/fuzzyCheeks.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.FuzzyCheeks,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1653,7 +1653,7 @@ Cards = {
     },
     "Greedy Cheeks" : {
         "Image" : 'src/card_images/BaseGame/Cards/greedyCheeks.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.GreedyCheeks,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1661,7 +1661,7 @@ Cards = {
     },
     "Lucky Bucky" : {
         "Image" : 'src/card_images/BaseGame/Cards/luckyBucky.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.LuckyBucky,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1669,7 +1669,7 @@ Cards = {
     },
     "Mellow Dee" : {
         "Image" : 'src/card_images/BaseGame/Cards/mellowDee.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.MellowDee,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1677,7 +1677,7 @@ Cards = {
     },
     "Napping Nibbles" : {
         "Image" : 'src/card_images/BaseGame/Cards/nappingNibbles.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.NoEffect,
         "Effect Roll" : 2,
         "Card Type" : cardType.Hero,
@@ -1685,7 +1685,7 @@ Cards = {
     },
     "Peanut" : {
         "Image" : 'src/card_images/BaseGame/Cards/peanut.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.Draw2,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1693,7 +1693,7 @@ Cards = {
     },
     "Tipsy Tootie" : {
         "Image" : 'src/card_images/BaseGame/Cards/tipsyTootie.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.TipsyTootie,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1702,7 +1702,7 @@ Cards = {
     },
     "Calming Voice" : {
         "Image" : 'src/card_images/BaseGame/Cards/calmingVoice.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.CalmingVoice,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1710,7 +1710,7 @@ Cards = {
     },
     "Guiding Light" : {
         "Image" : 'src/card_images/BaseGame/Cards/guidingLight.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
         "Effect Roll" : 7,
@@ -1719,7 +1719,7 @@ Cards = {
     },
     "Holy Curselifter" : {
         "Image" : 'src/card_images/BaseGame/Cards/holyCurselifter.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.HolyCurselifter,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -1727,7 +1727,7 @@ Cards = {
     },
     "Iron Resolve" : {
         "Image" : 'src/card_images/BaseGame/Cards/ironResolve.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.IronResolve,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1735,7 +1735,7 @@ Cards = {
     },
     "Mighty Blade" : {
         "Image" : 'src/card_images/BaseGame/Cards/mightyBlade.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.MightyBlade,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1743,7 +1743,7 @@ Cards = {
     },
     "Radiant Horn" : {
         "Image" : 'src/card_images/BaseGame/Cards/radiantHorn.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Hero,
         "Effect Roll" : 6,
@@ -1752,7 +1752,7 @@ Cards = {
     },
     "Vibrant Glow" : {
         "Image" : 'src/card_images/BaseGame/Cards/vibrantGlow.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.VibrantGlow,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1760,7 +1760,7 @@ Cards = {
     },
     "Wise Shield" : {
         "Image" : 'src/card_images/BaseGame/Cards/wiseShield.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.WiseShield,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1768,7 +1768,7 @@ Cards = {
     },
     "Bullseye" : {
         "Image" : 'src/card_images/BaseGame/Cards/bullseye.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.Bullseye,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1776,7 +1776,7 @@ Cards = {
     },
     "Hook" : {
         "Image" : 'src/card_images/BaseGame/Cards/hook.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.Hook,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1784,7 +1784,7 @@ Cards = {
     },
     "Lookie Rookie" : {
         "Image" : 'src/card_images/BaseGame/Cards/lookieRookie.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.SearchDiscard,
         "Search Target" : cardType.Item,
         "Effect Roll" : 5,
@@ -1793,7 +1793,7 @@ Cards = {
     },
     "Quick Draw" : {
         "Image" : 'src/card_images/BaseGame/Cards/quickDraw.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.QuickDraw,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1801,7 +1801,7 @@ Cards = {
     },
     "Serious Grey" : {
         "Image" : 'src/card_images/BaseGame/Cards/seriousGrey.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.SeriousGrey,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1809,7 +1809,7 @@ Cards = {
     },
     "Sharp Fox" : {
         "Image" : 'src/card_images/BaseGame/Cards/sharpFox.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.SharpFox,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -1817,7 +1817,7 @@ Cards = {
     },
     "Wildshot" : {
         "Image" : 'src/card_images/BaseGame/Cards/wildshot.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.Wildshot,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1825,7 +1825,7 @@ Cards = {
     },
     "Wily Red" : {
         "Image" : 'src/card_images/BaseGame/Cards/wilyRed.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.WilyRed,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1833,7 +1833,7 @@ Cards = {
     },
     "Kit Napper" : {
         "Image" : 'src/card_images/BaseGame/Cards/kitNapper.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.StealHero,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1841,7 +1841,7 @@ Cards = {
     },
     "Meowzio" : {
         "Image" : 'src/card_images/BaseGame/Cards/meowzio.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.Meowzio,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1849,7 +1849,7 @@ Cards = {
     },
     "Plundering Puma" : {
         "Image" : 'src/card_images/BaseGame/Cards/plunderingPuma.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.PlunderingPuma,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1857,7 +1857,7 @@ Cards = {
     },
     "Shurikitty" : {
         "Image" : 'src/card_images/BaseGame/Cards/shurikitty.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.Shurikitty,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -1865,7 +1865,7 @@ Cards = {
     },
     "Silent Shadow" : {
         "Image" : 'src/card_images/BaseGame/Cards/silentShadow.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.SilentShadow,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -1873,7 +1873,7 @@ Cards = {
     },
     "Slippery Paws" : {
         "Image" : 'src/card_images/BaseGame/Cards/slipperyPaws.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.SlipperyPaws,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1881,7 +1881,7 @@ Cards = {
     },
     "Sly Pickings" : {
         "Image" : 'src/card_images/BaseGame/Cards/slyPickings.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Item,
         "Effect Roll" : 6,
@@ -1890,7 +1890,7 @@ Cards = {
     },
     "Smooth Mimimeow" : {
         "Image" : 'src/card_images/BaseGame/Cards/smoothMimimeow.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.SmoothMimimeow,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1898,7 +1898,7 @@ Cards = {
     },
     "Bun Bun" : {
         "Image" : 'src/card_images/BaseGame/Cards/bunBun.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.BunBun,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -1906,7 +1906,7 @@ Cards = {
     },
     "Buttons" : {
         "Image" : 'src/card_images/BaseGame/Cards/buttons.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.PullAndPlay,
         "Search Target" : cardType.Magic,
         "Effect Roll" : 6,
@@ -1915,7 +1915,7 @@ Cards = {
     },
     "Fluffy" : {
         "Image" : 'src/card_images/BaseGame/Cards/fluffy.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Fluffy,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1923,7 +1923,7 @@ Cards = {
     },
     "Hopper" : {
         "Image" : 'src/card_images/BaseGame/Cards/hopper.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Hopper,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -1931,7 +1931,7 @@ Cards = {
     },
     "Snowball" : {
         "Image" : 'src/card_images/BaseGame/Cards/snowball.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Snowball,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -1939,7 +1939,7 @@ Cards = {
     },
     "Spooky" : {
         "Image" : 'src/card_images/BaseGame/Cards/spooky.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Spooky,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1947,7 +1947,7 @@ Cards = {
     },
     "Whiskers" : {
         "Image" : 'src/card_images/BaseGame/Cards/whiskers.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Whiskers,
         "Effect Roll" : 11,
         "Card Type" : cardType.Hero,
@@ -1955,7 +1955,7 @@ Cards = {
     },
     "Wiggles" : {
         "Image" : 'src/card_images/BaseGame/Cards/wiggles.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Wiggles,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -1964,7 +1964,7 @@ Cards = {
     #Warriors and Druids
     "Big Buckley" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/bigBuckley.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.BigBuckley,
         "Effect Roll" : 8,
         "Negative Roll" : True,
@@ -1973,7 +1973,7 @@ Cards = {
     },
     "Buck Omens" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/buckOmens.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.BuckOmens,
         "Effect Roll" : 6,
         "Negative Roll" : True,
@@ -1982,7 +1982,7 @@ Cards = {
     },
     "Doe Fallow" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/doeFallow.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.DoeFallow,
         "Effect Roll" : 7,
         "Negative Roll" : True,
@@ -1991,7 +1991,7 @@ Cards = {
     },
     "Glowing Antler" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/glowingAntler.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Magic,
         "Effect Roll" : 7,
@@ -2001,7 +2001,7 @@ Cards = {
     },
     "Maegisty" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/maegisty.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.Maegisty,
         "Effect Roll" : 7,
         "Negative Roll" : True,
@@ -2010,7 +2010,7 @@ Cards = {
     },
     "Magus Moose" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/magusMoose.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.MagusMoose,
         "Effect Roll" : 5,
         "Negative Roll" : True,
@@ -2019,7 +2019,7 @@ Cards = {
     },
     "Majestelk" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/majestelk.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.Majestelk,
         "Effect Roll" : 7,
         "Negative Roll" : True,
@@ -2028,7 +2028,7 @@ Cards = {
     },
     "Stagguard" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/stagguard.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.Stagguard,
         "Effect Roll" : 8,
         "Negative Roll" : True,
@@ -2037,7 +2037,7 @@ Cards = {
     },
     "Agile Dagger" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/agileDagger.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.Play2,
         "Search Target" : cardType.Item,
         "Effect Roll" : 7,
@@ -2046,7 +2046,7 @@ Cards = {
     },
     "Blinding Blade" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/blindingBlade.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.BlindingBlade,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2054,7 +2054,7 @@ Cards = {
     },
     "Critical Fang" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/criticalFang.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.CriticalFang,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2062,7 +2062,7 @@ Cards = {
     },
     "Hardened Hunter" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/hardenedHunter.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.HardenedHunter,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2070,7 +2070,7 @@ Cards = {
     },
     "Looting Lupo" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/lootingLupo.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.LootingLupo,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -2078,7 +2078,7 @@ Cards = {
     },
     "Silent Shield" : { #TODO
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/silentShield.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.SilentShield,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2086,7 +2086,7 @@ Cards = {
     },
     "Tenacious Timber" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/tenaciousTimber.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.TenaciousTimber,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2094,7 +2094,7 @@ Cards = {
     },
     "Wolfgang Pack" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/wolfgangPack.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.WolfgangPack,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -2103,7 +2103,7 @@ Cards = {
     #Berserkers and Necromancers
     "Bark Hexer" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/barkHexer.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.BarkHexer,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2111,7 +2111,7 @@ Cards = {
     },
     "Beholden Retriever" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/beholdenRetriever.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.BeholdenRetriever,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -2119,7 +2119,7 @@ Cards = {
     },
     "Bone Collector" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/boneCollector.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.BoneCollector,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2127,7 +2127,7 @@ Cards = {
     },
     "Boston Terror" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/bostonTerror.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.BostonTerror,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2135,7 +2135,7 @@ Cards = {
     },
     "Grim Pupper" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/grimPupper.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.GrimPupper,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2143,7 +2143,7 @@ Cards = {
     },
     "Hollow Husk" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/hollowHusk.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.HollowHusk,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2151,7 +2151,7 @@ Cards = {
     },
     "Perfect Vessel" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/perfectVessel.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.PerfectVessel,
         "Effect Roll" : 4,
         "Card Type" : cardType.Hero,
@@ -2159,7 +2159,7 @@ Cards = {
     },
     "Shadow Saint" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/shadowSaint.png',
-        "Class" : heroType.Necromancer,
+        "Class" : heroClass.Necromancer,
         "Effect" : cardEffect.ShadowSaint,
         "Effect Roll" : 5,
         "Card Type" : cardType.Hero,
@@ -2167,7 +2167,7 @@ Cards = {
     },
     "Annihilator" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/annihilator.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.Annihilator,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2175,7 +2175,7 @@ Cards = {
     },
     "Brawling Spirit" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/brawlingSpirit.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.BrawlingSpirit,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2183,7 +2183,7 @@ Cards = {
     },
     "Gruesome Gladiator" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/gruesomeGladiator.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.GruesomeGladiator,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -2191,7 +2191,7 @@ Cards = {
     },
     "Meowntain" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/meowntain.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.Meowntain,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2199,7 +2199,7 @@ Cards = {
     },
     "Rabid Beast" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/rabidBeast.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.RabidBeast,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2207,7 +2207,7 @@ Cards = {
     },
     "Roaryal Guard" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/roaryalGuard.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.RoaryalGuard,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2215,7 +2215,7 @@ Cards = {
     },
     "Vicious Wildcat" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/viciousWildcat.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.ViciousWildcat,
         "Effect Roll" : 12,
         "Card Type" : cardType.Hero,
@@ -2223,7 +2223,7 @@ Cards = {
     },
     "Unbridled Fury" : {
         "Image" : 'src/card_images/BerserkersAndNecromancers/Cards/unbridledFury.png',
-        "Class" : heroType.Berserker,
+        "Class" : heroClass.Berserker,
         "Effect" : cardEffect.UnbridledFury,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2232,7 +2232,7 @@ Cards = {
     #Dragon Sorcerers
     "Dragalter" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/dragalter.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Dragalter,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2240,7 +2240,7 @@ Cards = {
     },
     "Dystortivern" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/dystortivern.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Dystortivern,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -2248,7 +2248,7 @@ Cards = {
     },
     "Extraga" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/extraga.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Extraga,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2256,7 +2256,7 @@ Cards = {
     },
     "Luut" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/luut.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Luut,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2264,7 +2264,7 @@ Cards = {
     },
     "Mirroryu" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/mirroryu.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Mirroryu,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2272,7 +2272,7 @@ Cards = {
     },
     "Oracon" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/oracon.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Oracon,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2280,7 +2280,7 @@ Cards = {
     },
     "Renovern" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/renovern.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Renovern,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2288,7 +2288,7 @@ Cards = {
     },
     "Shamanaga" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/shamanaga.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Shamanaga,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2296,7 +2296,7 @@ Cards = {
     },
     "Smok" : {
         "Image" : 'src/card_images/DragonSorcerers/Cards/smok.png',
-        "Class" : heroType.Sorcerer,
+        "Class" : heroClass.Sorcerer,
         "Effect" : cardEffect.Smok,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2305,7 +2305,7 @@ Cards = {
     #KSE
     "Bearserker" : {
         "Image" : 'src/card_images/KSE/Cards/bearserker.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.Bearserker,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2313,7 +2313,7 @@ Cards = {
     },
     "Complex Illusion" : {
         "Image" : 'src/card_images/KSE/Cards/complexIllusion.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.ComplexIllusion,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2321,7 +2321,7 @@ Cards = {
     },
     "Enchantler" : {
         "Image" : 'src/card_images/KSE/Cards/enchantler.png',
-        "Class" : heroType.Druid,
+        "Class" : heroClass.Druid,
         "Effect" : cardEffect.Enchantler,
         "Effect Roll" : 7,
         "Negative Roll" : True,
@@ -2330,7 +2330,7 @@ Cards = {
     },
     "Hamlet" : {
         "Image" : 'src/card_images/KSE/Cards/hamlet.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.Hamlet,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2338,7 +2338,7 @@ Cards = {
     },
     "Hoodwink" : {
         "Image" : 'src/card_images/KSE/Cards/hoodwink.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.Hoodwink,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2346,7 +2346,7 @@ Cards = {
     },
     "Purring Bandit" : {
         "Image" : 'src/card_images/KSE/Cards/purringBandit.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.PurringBandit,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2354,7 +2354,7 @@ Cards = {
     },
     "Nimble Gray" : {
         "Image" : 'src/card_images/KSE/Cards/nimbleGray.png',
-        "Class" : heroType.Warrior,
+        "Class" : heroClass.Warrior,
         "Effect" : cardEffect.NimbleGray,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2362,7 +2362,7 @@ Cards = {
     },
     "Mimi" : {
         "Image" : 'src/card_images/KSE/Cards/mimi.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Mimi,
         "Effect Roll" : 4,
         "Card Type" : cardType.Hero,
@@ -2371,7 +2371,7 @@ Cards = {
     #Here to Sleigh
     "Gift Bearer" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/GiftBearer.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.GiftBearer,
         "Effect Roll" : 7,
         "Card Type" : cardType.Hero,
@@ -2379,7 +2379,7 @@ Cards = {
     },
     "Santa Claws" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/SantaClaws.png',
-        "Class" : heroType.Fighter,
+        "Class" : heroClass.Fighter,
         "Effect" : cardEffect.SantaClaws,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2387,7 +2387,7 @@ Cards = {
     },
     "Christmas Carol" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/ChristmasCarol.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.ChristmasCarol,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2395,7 +2395,7 @@ Cards = {
     },
     "Lil' Drummer Bard" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/LilDrummerBard.png',
-        "Class" : heroType.Bard,
+        "Class" : heroClass.Bard,
         "Effect" : cardEffect.LilDrummerBard,
         "Effect Roll" : 8,
         "Card Type" : cardType.Hero,
@@ -2403,7 +2403,7 @@ Cards = {
     },
     "Shiny Nose" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/ShinyNose.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.ShinyNose,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2411,7 +2411,7 @@ Cards = {
     },
     "Snow Slinger" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/SnowSlinger.png',
-        "Class" : heroType.Guardian,
+        "Class" : heroClass.Guardian,
         "Effect" : cardEffect.SnowSlinger,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -2419,7 +2419,7 @@ Cards = {
     },
     "Prancer" : {
         "Image" : '',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.Prancer,
         "Effect Roll" : 11,
         "Card Type" : cardType.Hero,
@@ -2427,7 +2427,7 @@ Cards = {
     },
     "Shooting Star" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/ShootingStar.png',
-        "Class" : heroType.Ranger,
+        "Class" : heroClass.Ranger,
         "Effect" : cardEffect.ShootingStar,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2435,7 +2435,7 @@ Cards = {
     },
     "Fireplace Fugitive" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/FireplaceFugitive.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.FireplaceFugitive,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2443,7 +2443,7 @@ Cards = {
     },
     "Gift Bag Bandit" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/GiftBagBandit.png',
-        "Class" : heroType.Thief,
+        "Class" : heroClass.Thief,
         "Effect" : cardEffect.GiftBagBandit,
         "Effect Roll" : 9,
         "Card Type" : cardType.Hero,
@@ -2451,7 +2451,7 @@ Cards = {
     },
     "Evergreen" : {
         "Image" : '',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.Evergreen,
         "Effect Roll" : 10,
         "Card Type" : cardType.Hero,
@@ -2459,7 +2459,7 @@ Cards = {
     },
     "Holly Jolly" : {
         "Image" : 'src/card_images/HereToSleigh/Cards/HollyJolly.png',
-        "Class" : heroType.Wizard,
+        "Class" : heroClass.Wizard,
         "Effect" : cardEffect.HollyJolly,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
@@ -2477,77 +2477,77 @@ Banners = {
         "Image": 'src/card_images/BannerQuest/Banners/bardBanner.png',
         "Banner": bannerType.Bard,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Bard, 
+        "Requirement Type": heroClass.Bard, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then roll to use the effect of any Hero card in your Party immediately."
     },
     "Berserker Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/BerserkerBanner.png',
         "Banner": bannerType.Berserker,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Berserker, 
+        "Requirement Type": heroClass.Berserker, 
         "Description": "Once per turn on your turn, you may DISCARD 3 cards, then ATTACK a Monster card immediately. (You must still meet the Party requirements listed on that Monster card to attack it.)"
     },
     "Druid Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/DruidBanner.png',
         "Banner": bannerType.Druid,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Druid, 
+        "Requirement Type": heroClass.Druid, 
         "Description": "Once per turn on your turn, you my DISCARD 2 cards, then DRAW 2 cards."
     },
     "Fighter Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/FighterBanner.png',
         "Banner": bannerType.Fighter,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Fighter, 
+        "Requirement Type": heroClass.Fighter, 
         "Description": "Once per turn on your turn, you may DISCARD 2 cards, then DESTROY a Hero card."
     },
     "Guardian Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/GuardianBanner.png',
         "Banner": bannerType.Guardian,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Guardian, 
+        "Requirement Type": heroClass.Guardian, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then search the discard pile for a Modifier card and add it to your hand."
     },
     "Hunter's Trophy Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/HuntersTrophyBanner.png',
         "Banner": bannerType.Hunter,
         "Requirement Amount": 1,
-        "Requirement Type": 12, #There is no heroType.Hunter, so I am using 12 since it works the same
+        "Requirement Type": 12, #There is no heroClass.Hunter, so I am using 12 since it works the same
         "Description": "Once per turn on your turn, +1 to your roll when you roll to ATTACK a Monster card."
     },
     "Necromancer Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/NecromancerBanner.png',
         "Banner": bannerType.Necromancer,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Necromancer, 
+        "Requirement Type": heroClass.Necromancer, 
         "Description": "Once per turn on your turn, you may DISCARD 2 cards, then search the discard pile for a Hero card and add it to your hand. Play it immediately."
     },
     "Ranger Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/RangerBanner.png',
         "Banner": bannerType.Ranger,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Ranger, 
+        "Requirement Type": heroClass.Ranger, 
         "Description": "Once per turn on your turn, you may DRAW a card."
     },
     "Thief Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/ThiefBanner.png',
         "Banner": bannerType.Thief,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Thief, 
+        "Requirement Type": heroClass.Thief, 
         "Description": "Once per turn on your turn, you may DISCARD 3 cards, then STEAL a Hero card."
     },
     "Warrior Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WarriorBanner.png',
         "Banner": bannerType.Warrior,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Warrior, 
+        "Requirement Type": heroClass.Warrior, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
     },
     "Wizard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WizardBanner.png',
         "Banner": bannerType.Wizard,
         "Requirement Amount": 3,
-        "Requirement Type": heroType.Wizard, 
+        "Requirement Type": heroClass.Wizard, 
         "Description": "Once per turn on your turn, you may DISCARD a card, then play a Magic card immediately."
     },
 }

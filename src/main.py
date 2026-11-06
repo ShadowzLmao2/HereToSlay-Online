@@ -138,24 +138,24 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
         match leader:
             case "Brutal Bow":
                 #Fighter/Ranger
-                if leaderType == heroType.Fighter:
-                    leaderCurrentType[activePlayer] = heroType.Ranger
+                if leaderType == heroClass.Fighter:
+                    leaderCurrentType[activePlayer] = heroClass.Ranger
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Fighter
+                    leaderCurrentType[activePlayer] = heroClass.Fighter
                 return
             case "Mystical Maestro":
                 #Wizard/Bard
-                if leaderType == heroType.Wizard:
-                    leaderCurrentType[activePlayer] = heroType.Bard
+                if leaderType == heroClass.Wizard:
+                    leaderCurrentType[activePlayer] = heroClass.Bard
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Wizard
+                    leaderCurrentType[activePlayer] = heroClass.Wizard
                 return
             case "Veiled Raider":
                 #Guardian/Thief
-                if leaderType == heroType.Guardian:
-                    leaderCurrentType[activePlayer] = heroType.Thief
+                if leaderType == heroClass.Guardian:
+                    leaderCurrentType[activePlayer] = heroClass.Thief
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Guardian
+                    leaderCurrentType[activePlayer] = heroClass.Guardian
                 return
             case "Unstable Unicorn":
                 #Copy another Leader
@@ -169,24 +169,24 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
                 return
             case "Fierce Panguardian":
                 #Guardian/Fighter
-                if leaderType == heroType.Guardian:
-                    leaderCurrentType[activePlayer] = heroType.Fighter
+                if leaderType == heroClass.Guardian:
+                    leaderCurrentType[activePlayer] = heroClass.Fighter
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Guardian
+                    leaderCurrentType[activePlayer] = heroClass.Guardian
                 return
             case "Illusive Trickster":
                 #Wizard/Thief
-                if leaderType == heroType.Wizard:
-                    leaderCurrentType[activePlayer] = heroType.Thief
+                if leaderType == heroClass.Wizard:
+                    leaderCurrentType[activePlayer] = heroClass.Thief
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Wizard
+                    leaderCurrentType[activePlayer] = heroClass.Wizard
                 return
             case "Rhythmic Archer":
                 #Bard/Ranger
-                if leaderType == heroType.Bard:
-                    leaderCurrentType[activePlayer] = heroType.Ranger
+                if leaderType == heroClass.Bard:
+                    leaderCurrentType[activePlayer] = heroClass.Ranger
                 else:
-                    leaderCurrentType[activePlayer] = heroType.Bard
+                    leaderCurrentType[activePlayer] = heroClass.Bard
                 return
     return
 
@@ -445,7 +445,7 @@ def useHeroAbility(hero) -> None:
                 if player == activePlayer:
                     continue
                 for j in playerHeroes[player]:
-                    if Cards[playerHeroes[player][j]]["Class"] == heroType.Fighter:
+                    if Cards[playerHeroes[player][j]]["Class"] == heroClass.Fighter:
                         hasFighter = True
                         continue
                 if hasFighter:
@@ -542,7 +542,7 @@ def useHeroAbility(hero) -> None:
                     continue
                 if len(playerHand[j]) > 0:
                     for j in range(0,len(playerHeroes[i])):
-                        if Cards[playerHeroes[i][j]]["Class"] == heroType.Thief:
+                        if Cards[playerHeroes[i][j]]["Class"] == heroClass.Thief:
                             hasThief = True
                             continue
                     if hasThief:
@@ -650,7 +650,7 @@ def useHeroAbility(hero) -> None:
             AP = 0
         case cardEffect.UnbridledFury:
             heroDestroyed = destroy(chooseHero(),chooseHero(),choosePlayer(),activator = player)
-            if Cards[heroDestroyed]["Class"] == heroType.Berserker:
+            if Cards[heroDestroyed]["Class"] == heroClass.Berserker:
                 AP += 1
         case cardEffect.BarkHexer:
             allPlayersDiscard(True)
@@ -693,7 +693,7 @@ def useHeroAbility(hero) -> None:
         case cardEffect.Extraga:
             for i in range(0,playerCount):
                 for j in range(0,len(playerHeroes[i])):
-                    if Cards[playerHeroes[i][j]]["Class"] == heroType.Sorcerer:
+                    if Cards[playerHeroes[i][j]]["Class"] == heroClass.Sorcerer:
                         playerHand[i].append(playerHeroes[i][j].pop())
                         discardPile.append(heroItems[i][j].pop())
         case cardEffect.Luut:
@@ -737,7 +737,7 @@ def useHeroAbility(hero) -> None:
                 for j in range(0,len(playerHeroes[i])):
                     if Cards[playerHeroes[i][j]] == "Hamlet" and i == player:
                         continue
-                    if Cards[playerHeroes[i][j]]["Class"] == heroType.Bard:
+                    if Cards[playerHeroes[i][j]]["Class"] == heroClass.Bard:
                         playerHand[i].append(playerHeroes[i][j])
         case cardEffect.Hoodwink:
             target = choosePlayer()
@@ -877,28 +877,28 @@ def playItem(index, item, target:int = activePlayer) -> None:
         roll = rollDie()
         match(roll):
             case 1:
-                morphMaskType[target][index] = heroType.Fighter
+                morphMaskType[target][index] = heroClass.Fighter
             case 2:
-                morphMaskType[target][index] = heroType.Ranger
+                morphMaskType[target][index] = heroClass.Ranger
             case 3:
-                morphMaskType[target][index] = heroType.Thief
+                morphMaskType[target][index] = heroClass.Thief
             case 4:
-                morphMaskType[target][index] = heroType.Guardian
+                morphMaskType[target][index] = heroClass.Guardian
             case 5:
-                morphMaskType[target][index] = heroType.Ranger
+                morphMaskType[target][index] = heroClass.Ranger
             case 6:
-                morphMaskType[target][index] = heroType.Wizard
+                morphMaskType[target][index] = heroClass.Wizard
     elif item == "Chaos Mask":
         roll = random.randint(1,6) + random.randint(1,6)
         match(roll):
             case 1 | 2 | 3:
-                morphMaskType[target][index] = heroType.Warrior
+                morphMaskType[target][index] = heroClass.Warrior
             case 4 | 5 | 6:
-                morphMaskType[target][index] = heroType.Druid
+                morphMaskType[target][index] = heroClass.Druid
             case 7 | 8 | 9:
-                morphMaskType[target][index] = heroType.Berserker
+                morphMaskType[target][index] = heroClass.Berserker
             case 10 | 11 | 12:
-                morphMaskType[target][index] = heroType.Necromancer
+                morphMaskType[target][index] = heroClass.Necromancer
     if "Wicked Sea Serpent" in playerMonsters[target]:
         drawCard(player=target)
     #Check if you won after equipping a class changing item
@@ -961,7 +961,6 @@ def chooseHero(player=activePlayer) -> int:
     return index
 
 def challenge() -> bool:
-    #TODO
     global panguardian
     if "Mighty Blade" in playerEffects[activePlayer]:
         return
@@ -987,12 +986,12 @@ def challenge() -> bool:
         discardSpecific(target=player)
     mainRoll += "Titan Wyvern" in playerMonsters[activePlayer]
     challengeRoll += "Titan Wyvern" in playerMonsters[player]
-
+    mainRoll += modifier()
+    challengeRoll += modifier() #TODO make this into one function call
     if "Possessed Plush" in playerMonsters[player]:
         drawCard(player=player)
     if mainRoll < challengeRoll:
         return False
-    #Fist of Reason gives +2
     return True
 
 def hasModifier() -> list[int]:
@@ -1123,7 +1122,7 @@ def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,ac
     #Always pops item, but only pops item if it has Decoy Doll
     heroDestroyed = 0
     if "Terratuga" in playerMonsters[target]: return heroDestroyed
-    if not "Corrupted Sabretooth" in playerMonsters[player]: #TODO
+    if not "Corrupted Sabretooth" in playerMonsters[player]:
         discardPile.append(heroItems[target][index].pop())
         if heroItems[target][index] != "Decoy Doll": #Protects the hero
             if "Maegisty" in playerEffects[player]:
@@ -1131,7 +1130,6 @@ def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,ac
             else:
                 heroDestroyed = playerHeroes[target][index]
                 discardPile.append(playerHeroes[target][index].pop())
-        #TODO effects that happen after destroyed 
         if playerLeaders[target] == "Brutal Bow":
             drawCard(1)
         for i in range(0,len(playerHeroes[target])):
@@ -1196,14 +1194,14 @@ def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
                 playHero(index,target)
     return
 
-def sacrifice(target: int = activePlayer,heroType=heroType.Any, count: int = 1, forcedIndex: int = 0) -> None:
+def sacrifice(target: int = activePlayer,heroClass=heroClass.Any, count: int = 1, forcedIndex: int = 0) -> None:
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
         if askPlayer():
             discardSpecific(count=2,target=target,canCancel=False)
             return
     for i in range(0,count):
-        index = chooseHero(target, heroType)
+        index = chooseHero(target, heroClass)
         if "Maegisty" in playerEffects[target]:
             playerHand.append(playerHeroes[target][index].pop())
             discardPile.append(heroItems[target][index].pop())
@@ -1452,7 +1450,7 @@ def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
     print(f"Player {winningPlayer} won by {winType}.")
     return #Goes back to where you were, eventually returning to main, which ends the game loop
 
-def selectMonster() -> int: #TODO
+def selectMonster() -> int:
     try:
         index = int(input("Which Monster: ")) - 1
     except index < 0 or index > 2:
@@ -1466,7 +1464,7 @@ def checkAtkRequirements(monster) -> bool:
             heroReq = Monsters[monster]["Hero Req"]
             print(f"Not enough Heroes: {heroCount} out of {heroReq}")
         return False
-    if (Monsters[monster]["Class Req"] != heroType.NoClass) and not (Monsters[monster]["Class Req"] in classSet):
+    if (Monsters[monster]["Class Req"] != heroClass.NoClass) and not (Monsters[monster]["Class Req"] in classSet):
         if testingPhase:
             classReq = Monsters[monster]["Class Req"]
             print(f"No Hero of class {classReq}")
@@ -1502,6 +1500,9 @@ def discardHand(player=activePlayer) -> None:
     handSize = len(playerHand[player])
     for card in range(0,handSize):
         discardPile.append(playerHand[player].pop())
+    for i in range(0,playerCount):
+        if "Razor Tongue" in playerMonsters[i]:
+            drawCard(player=i)
     return
 
 def discardDraw() -> None: #Pay 3 AP, discard your hand, draw 5
@@ -1523,13 +1524,16 @@ def discardSpecific(type=cardType.Any,count=1,target=activePlayer, canCancel: bo
             count = i
             continue
         discardSelected(cardIndex,target)
+    for i in range(0,playerCount):
+        if "Razor Tongue" in playerMonsters[i] and i != target:
+            drawCard(player=i)
     return count
 
 def selectFromHand(type=cardType.Any,target=activePlayer, canCancel: bool = False) -> int:
     cancelled = False #If the player wants to cancel
     try:
-        index = int(input()) #TODO
-    except type != playerHand[target][index]:
+        index = int(input())
+    except type != Cards[playerHand[target][index]]["Card Type"]:
         selectFromHand(type,target)
     except cancelled and canCancel:
         return -1
@@ -1537,9 +1541,6 @@ def selectFromHand(type=cardType.Any,target=activePlayer, canCancel: bool = Fals
 
 def discardSelected(cardIndex,target=activePlayer) -> None:
     discardPile.append(playerHand[target][cardIndex].pop())
-    for i in range(0,playerCount):
-        if "Razor Tongue" in playerMonsters[i] and i != target:
-            drawCard(player=i) #TODO This will have issues
     return
 
 def reduceAP(APReduction: int = 1) -> None:

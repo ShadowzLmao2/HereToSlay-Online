@@ -27,12 +27,12 @@ playerHand = [
 
 monsterField = ["None","None","None"]
 leaderCurrentType = {
-    1 : heroType.NoClass,
-    2 : heroType.NoClass,
-    3 : heroType.NoClass,
-    4 : heroType.NoClass,
-    5 : heroType.NoClass,
-    6 : heroType.NoClass
+    1 : heroClass.NoClass,
+    2 : heroClass.NoClass,
+    3 : heroClass.NoClass,
+    4 : heroClass.NoClass,
+    5 : heroClass.NoClass,
+    6 : heroClass.NoClass
 }
 playerLeaders = {
     1 : "None",

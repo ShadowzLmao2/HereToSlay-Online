@@ -55,7 +55,7 @@ while running:
             running = False
 
         elif event.type == pygame.VIDEORESIZE:
-            w, h = pygame.display.get_surface().get_size()
+            w, h = pygame.display.get_surface().get_size() #This needs to have a delay, it prints way too much
             print("Window is now " + str(w) + "x" + str(h))
 
         #Key Presses
