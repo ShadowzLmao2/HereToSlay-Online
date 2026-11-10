@@ -74,7 +74,7 @@ heroItems = [[],
              [],
              []]
 
-morphMaskType = [[],
+maskClass = [[],
              [],
              [],
              [],

@@ -1,7 +1,7 @@
 from enum import Enum #From enuxio?
 testingPhase = True
 
-gamemode = 1 #1 is 1v1 or FFA, 2 is 2v2
+gamemode = 1 #1 is 1v1 or FFA, 2 is 2v2 
 WarriorsAndDruids  = False
 BerserkersAndNecromancers = False
 DragonSorcerers = False
@@ -19,6 +19,7 @@ askAllToModifyOrChallenge = True
 ranked = False
 maxRankedCards = 60
 minRankedCards = 40
+heroWinCount = 5
 
 
 #Currently useless. I have yet to import the images and text for other supported languages
