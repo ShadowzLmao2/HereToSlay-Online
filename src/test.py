@@ -148,7 +148,7 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 '''
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
-drawTests()
+#drawTests()
 # modifierTest()
 #testAttackReqCheck()
 #addFromDiscardTest()
@@ -158,4 +158,4 @@ drawTests()
 #checkCardsInHand()
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
-#testWin() #Run testWin and dont give an input to just test the game
+testWin() #Run testWin and dont give an input to just test the game

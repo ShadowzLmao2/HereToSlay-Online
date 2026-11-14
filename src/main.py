@@ -2,10 +2,21 @@ from config import *
 from cards import *
 from active_player import *
 from tutorial import *
-import sys
+lazy import sys
 from functions import *
 from strings import *
-import random
+sys.dont_write_bytecode = True
+# lazy import config
+# lazy import cards
+# lazy import active_player
+# lazy import tutorial
+# lazy import sys
+# lazy import functions
+# lazy import strings
+#import taichi #May use in the future for optimizations
+lazy import random
+
+#taichi.init(arch=taichi.cpu)
 #from enum import Enum
 activePlayer = 1
 turnCount = 1
@@ -84,13 +95,13 @@ def main(test: str) -> None:
                 second = int(input())
                 pullCard(first)
                 pullCard(second)
-            if "Gorteledont" in playerMonsters[activePlayer]:
+            if "Gortelodont" in playerMonsters[activePlayer]:
                 if askPlayer():
                     drawCard(3)
             if "Scavenger Griffin" in playerMonsters[activePlayer]:
                 stealHero()
         global silverLining, panguardian, nobleShamanUsed, globalModifier, canModify
-        silverLining, panguardian, nobleShamanUsed, canModify = False
+        silverLining = panguardian = nobleShamanUsed = canModify = False
         globalModifier = 0
         playerEffects[activePlayer] = []
         if activePlayer == playerCount:
@@ -193,7 +204,7 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
 def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
     #0 = Tails, 1 = Heads
     for i in range(0,count):
-        coinFlip = random.int(0,1)
+        coinFlip = random.randint(0,1)
         #if not coinFlip and stopOnTails:
             #continue
     return coinFlip
@@ -204,7 +215,7 @@ def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer)
         diceRoll += globalModifier
     diceRoll += "Anuran Cauldron" in playerMonsters[player]
     if not heroRoll: return diceRoll
-    if "Majestelk" in playerEffects(player):
+    if "Majestelk" in playerEffects[player]:
         response = int(input())
         match(response):
             case 0:
@@ -493,11 +504,11 @@ def useHeroAbility(hero) -> None:
             return
         case cardEffect.QuickDraw:
             drawCard(2,player)
-            indeces = []
+            indices = []
             if Cards[player][playerHand[-1]]["Card Type"] == cardType.Item:
-                indeces.append(-1)
+                indices.append(-1)
             if Cards[player][playerHand[-2]]["Card Type"] == cardType.Item:
-                indeces.append(-2)
+                indices.append(-2)
             finalIndex = int(input())
             playItem(finalIndex, playerHand[player][finalIndex],player)
             return
@@ -532,7 +543,7 @@ def useHeroAbility(hero) -> None:
             index = int(input())
             playerHand[player].append(playerHand[target][index].pop())
         case cardEffect.SlipperyPaws:
-            target = choosePlayer
+            target = choosePlayer()
             pullCard(target)
             pullCard(target)
             discardSpecific(target=player)
@@ -596,7 +607,7 @@ def useHeroAbility(hero) -> None:
         case cardEffect.Stagguard:
             playerEffects[player].append("Stagguard")
         case cardEffect.BlindingBlade:
-            target = int(input)
+            target = int(input())
             for i in range(0,len(heroItems[target])):
                 playerHand[target].append(heroItems[target][i].pop())
         case cardEffect.CriticalFang:
@@ -609,7 +620,7 @@ def useHeroAbility(hero) -> None:
                 count += len(playerMonsters[i])
             drawCard(count,player)
         case cardEffect.LootingLupo:
-            drawCard(len(heroItems[player],player))
+            drawCard(len(heroItems[player]),player)
         case cardEffect.SilentShield:
             playerEffects[player].append("Silent Shield")
         case cardEffect.TenaciousTimber:
@@ -771,7 +782,7 @@ def useHeroAbility(hero) -> None:
             return
         case cardEffect.ShootingStar:
             return
-        case cardEffect.FirepalceFugitive:
+        case cardEffect.FireplaceFugitive:
             return
         case cardEffect.GiftBagBandit:
             return
@@ -792,7 +803,7 @@ def useHeroAbility(hero) -> None:
     return
 
 def playCards(target = activePlayer,count: int = 1,type=cardType.Any) -> None: #When you are forced to (aka given the option)
-    index = int(input)
+    index = int(input())
     for i in range(0,count):
         match(type):
             case cardType.Hero:
@@ -953,7 +964,7 @@ def choosePlayer(req: str = "") -> int:
             if playerCount == 2: 
                 return player
             else:
-                player = int(input)
+                player = int(input())
     return player
     
 def chooseHero(player=activePlayer) -> int:
@@ -1045,7 +1056,7 @@ def playModifier(player) -> int:
     hasModifier = False
     for i in range(0,len(playerHand[player])):
         if Cards[playerHand[player][i]]["Card Type"] == cardType.Modifier:
-            hasModifier == True
+            hasModifier = True
     if not hasModifier:
         if testingPhase: print("You don't have a modifier")
         return 0
@@ -1194,7 +1205,7 @@ def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
                 playHero(index,target)
     return
 
-def sacrifice(target: int = activePlayer,heroClass=heroClass.Any, count: int = 1, forcedIndex: int = 0) -> None:
+def sacrifice(target: int = activePlayer,heroClass=heroClass.NoClass, count: int = 1, forcedIndex: int = 0) -> None:
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
         if askPlayer():
@@ -1397,7 +1408,7 @@ def attack(dontLoseAP=False) -> None:
     if testingPhase:
         print(f"Effect: {effect}")
     if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
-        if effect != monsterEffect.slay:
+        if effect != monsterRollEffect.slay:
             drawCard()
     
     match(effect):

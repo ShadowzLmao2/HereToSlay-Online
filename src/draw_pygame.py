@@ -21,7 +21,7 @@ pygame.init()
 w = 0
 h = 0
 
-os.environ['SDL_VIDEO_CENTERED'] = '1'
+os.environ['SDL_VIDEO_CENTERED'] = '1' #What does this do
 info = pygame.display.Info()
 
 w, h = info.current_w, info.current_h

@@ -1,6 +1,6 @@
 from enum import Enum #From enuxio?
 from config import *
-from card_images import *
+#from card_images import *
 from ranked_banlist import *
 #The Leader effects when activated - will probably remove the non-activateable ones
 
@@ -157,116 +157,116 @@ class cardEffect(Enum):
     Bullseye        = 64
     Hook            = 66
     QuickDraw       = 67
-    SeriousGrey     = 67
-    SharpFox        = 68
-    Wildshot        = 69
-    WilyRed         = 70
-    Meowzio         = 71
-    PlunderingPuma  = 72
-    Shurikitty      = 73
-    SilentShadow    = 74
-    SlipperyPaws    = 75
-    SmoothMimimeow  = 76
-    BunBun          = 77
-    Fluffy          = 78
-    Hopper          = 79
-    Snowball        = 80
-    Spooky          = 81
-    Whiskers        = 82
-    Wiggles         = 83
+    SeriousGrey     = 68
+    SharpFox        = 69
+    Wildshot        = 70
+    WilyRed         = 71
+    Meowzio         = 72
+    PlunderingPuma  = 73
+    Shurikitty      = 74
+    SilentShadow    = 75
+    SlipperyPaws    = 76
+    SmoothMimimeow  = 77
+    BunBun          = 78
+    Fluffy          = 79
+    Hopper          = 80
+    Snowball        = 81
+    Spooky          = 82
+    Whiskers        = 83
+    Wiggles         = 84
     #Warriors and Druids
-    BigBuckley      = 84
-    BuckOmens       = 85
-    DoeFallow       = 86
-    Majestelk       = 87
-    MagusMoose      = 88
-    Maegisty        = 89
-    Stagguard       = 90
-    BlindingBlade   = 91
-    CriticalFang    = 92
-    HardenedHunter  = 93
-    LootingLupo     = 94
-    SilentShield    = 95
-    TenaciousTimber = 96
-    WolfgangPack    = 97
+    BigBuckley      = 85
+    BuckOmens       = 86
+    DoeFallow       = 87
+    Majestelk       = 88
+    MagusMoose      = 89
+    Maegisty        = 90
+    Stagguard       = 91
+    BlindingBlade   = 92
+    CriticalFang    = 93
+    HardenedHunter  = 94
+    LootingLupo     = 95
+    SilentShield    = 96
+    TenaciousTimber = 97
+    WolfgangPack    = 98
     #Berserkers and Necromancers
-    Annihilator        = 98
-    BrawlingSpirit     = 99
-    GruesomeGladiator  = 100
-    Meowntain          = 101
-    RabidBeast         = 102
-    RoaryalGuard       = 103
-    ViciousWildcat     = 104
-    UnbridledFury      = 105
-    BarkHexer          = 106
-    BeholdenRetriever  = 107
-    BoneCollector      = 108
-    BostonTerror       = 109
-    GrimPupper         = 110
-    HollowHusk         = 111
-    PerfectVessel      = 112
-    ShadowSaint        = 113
+    Annihilator        = 99
+    BrawlingSpirit     = 100
+    GruesomeGladiator  = 101
+    Meowntain          = 102
+    RabidBeast         = 103
+    RoaryalGuard       = 104
+    ViciousWildcat     = 105
+    UnbridledFury      = 106
+    BarkHexer          = 107
+    BeholdenRetriever  = 108
+    BoneCollector      = 109
+    BostonTerror       = 110
+    GrimPupper         = 111
+    HollowHusk         = 112
+    PerfectVessel      = 113
+    ShadowSaint        = 114
     #Dragon Sorcerers
-    Dystortivern       = 114
-    Extraga            = 115
-    Dragalter          = 116
-    Luut               = 117
-    Renovern           = 118
-    Mirroryu           = 119
-    Smok               = 120
-    Oracon             = 121
-    Shamanaga          = 122
+    Dystortivern       = 115
+    Extraga            = 116
+    Dragalter          = 117
+    Luut               = 118
+    Renovern           = 119
+    Mirroryu           = 120
+    Smok               = 121
+    Oracon             = 122
+    Shamanaga          = 123
     #KSE
-    Bearserker         = 123
-    Hamlet             = 124
-    ComplexIllusion    = 125
-    Enchantler         = 126
-    Hoodwink           = 127
-    PurringBandit      = 128
-    NimbleGray         = 129
-    Mimi               = 130
+    Bearserker         = 124
+    Hamlet             = 125
+    ComplexIllusion    = 126
+    Enchantler         = 127
+    Hoodwink           = 128
+    PurringBandit      = 129
+    NimbleGray         = 130
+    Mimi               = 131
 
-    PullCard           = 131
-    ForceDiscard       = 132
-    Draw2              = 133
-    SearchDiscard      = 134
-    StealHero          = 135
-    PullAndPlay        = 136
-    Play2              = 137
-    OneModifier        = 138
+    PullCard           = 132
+    ForceDiscard       = 133
+    Draw2              = 134
+    SearchDiscard      = 135
+    StealHero          = 136
+    PullAndPlay        = 137
+    Play2              = 138
+    OneModifier        = 139
 
-    GiftBearer         = 139
-    SantaClaws         = 140
-    ChristmasCarol     = 141
-    LilDrummerBard     = 142
-    ShinyNose          = 143
-    SnowSlinger        = 144
-    Prancer            = 145
-    ShootingStar       = 146
-    FireplaceFugitive  = 147
-    GiftBagBandit      = 148
-    Evergreen          = 149
-    HollyJolly         = 150
+    GiftBearer         = 140
+    SantaClaws         = 141
+    ChristmasCarol     = 142
+    LilDrummerBard     = 143
+    ShinyNose          = 144
+    SnowSlinger        = 145
+    Prancer            = 146
+    ShootingStar       = 147
+    FireplaceFugitive  = 148
+    GiftBagBandit      = 149
+    Evergreen          = 150
+    HollyJolly         = 151
 
-    FreshlySharpenedSkates = 151
-    MilkAndCookies       = 152
-    Gift                 = 153
+    FreshlySharpenedSkates = 150
+    MilkAndCookies         = 151
+    Gift                   = 152
     #Gifts
-    BagOfHoldingGifts    = 154
-    EZMixPotions         = 155
-    MythicalMystery      = 156
-    RudolphsNose         = 157
-    SnowsofTime          = 158
-    TheGiftofDestruction = 159
-    WarmSocks            = 160
-    EndlessUnwrapping    = 161
-    GagGift              = 162
-    LumpofCoal           = 163
-    MintConditionMittens = 164
-    PotluckSurprise      = 165
-    ReallyItchySweater   = 166
-    WatchfulMedallion    = 167
-    WhiteElephant        = 22 #22 is unused, but I'm not fixing the list
+    BagOfHoldingGifts    = 153
+    EZMixPotions         = 154
+    MythicalMystery      = 155
+    RudolphsNose         = 156
+    SnowsofTime          = 157
+    TheGiftofDestruction = 158
+    WarmSocks            = 159
+    EndlessUnwrapping    = 160
+    GagGift              = 161
+    LumpofCoal           = 162
+    MintConditionMittens = 163
+    PotluckSurprise      = 164
+    ReallyItchySweater   = 165
+    WatchfulMedallion    = 166
+    WhiteElephant        = 22 #22 is unused, but I'm not fixing the list -- actually I did but i forgot that
 
 
     
@@ -459,7 +459,7 @@ Leaders = {
         "Secondary Class" : heroClass.Bard,
         "Activatable" : False,
         "Start of Turn" : True,
-        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archers's class between Bard and Ranger. Each time any player (including you) unsuccessfully rolls to ATTACK a Monster card, you may DRAW a card."
+        "Description" : "At the beginning of your turn, you may switch The Rhythmic Archer's class between Bard and Ranger. Each time any player (including you) unsuccessfully rolls to ATTACK a Monster card, you may DRAW a card."
     }
 }
 #Monsters
@@ -661,7 +661,7 @@ Monsters = {
         "Lose Effect" : monsterRollEffect.sacrifice,
         "Win Roll"    : 10,
         "Win Effect"  : monsterRollEffect.slay,
-        "Effect"      : monsterEffect.feralDragon,
+        "Effect"      : monsterEffect.muscipulaRex,
         "Description" : "Once per turn on your turn, you may DRAW a card without spending an action point."
     },
     #Berserkers and Necromancers Monsters
@@ -722,7 +722,7 @@ Monsters = {
         "Win Roll"    : 7,
         "Win Effect"  : monsterRollEffect.slay,
         "Effect"      : monsterEffect.dragonWasp,
-        "Description" : "Each time one of your Hero cards would be sacrificed or destroyed, you may DISACRD 2 cards instead."
+        "Description" : "Each time one of your Hero cards would be sacrificed or destroyed, you may DISCARD 2 cards instead."
     },
     "Goretelodont" : {
         "Image" : 'src/card_images/MonsterExpansion/goretelodont.png',
@@ -932,7 +932,7 @@ Cards = {
     "Wizard Challenge" : {
         "Image" : 'src/card_images/KSE/Cards/wizardChallenge.png',
         "Effect" : cardEffect.Challenge,
-        "Requirement" : heroClass.Sorcerer,
+        "Requirement" : heroClass.Wizard,
         "Card Type" : cardType.Challenge,
         "Description" : "You may play this card when another player attempts to play a Hero, Item, or Magic card. CHALLENGE that card. +3 to your roll"
     },
@@ -1048,14 +1048,14 @@ Cards = {
         "Effect" : cardEffect.DrawIfAboveModifier,
         "Positive Effect" : 4,
         "Card Type" : cardType.Modifier,
-        "Description" : "Play this card after any player (including you) rolls the dice. +1 or -1 to that roll. If the roll is modified above 12, DRAW a card."
+        "Description" : "Play this card after any player (including you) rolls the dice. +4 to that roll. If the roll is modified above 12, DRAW a card."
     },
     "-4 WaD Modifier" : {
         "Image" : 'src/card_images/WarriorsAndDruids/Cards/-4WaDModifier.png',
         "Effect" : cardEffect.SearchDiscBelowMod,
         "Negative Effect" : 4,
         "Card Type" : cardType.Modifier,
-        "Description" : "Play this card after any player (including you) rolls the dice. +4 that roll. If the roll is modified below 2, choose a card from the discard pile and add it to your hand."
+        "Description" : "Play this card after any player (including you) rolls the dice. -4 that roll. If the roll is modified below 2, choose a card from the discard pile and add it to your hand."
     },
     #Berserkers and Necromancers Modifiers
     "+2/-2 BaN Modifier" : {
@@ -1151,7 +1151,7 @@ Cards = {
     },
     "Entangling Trap" : {
         "Image" : 'src/card_images/BaseGame/Cards/entanglingTrap.png',
-        "Effect" : cardEffect.EnchantedSpell,
+        "Effect" : cardEffect.EntanglingTrap,
         "Quantity"    : 2,
         "Card Type" : cardType.Magic,
         "Description" : "DISCARD 2 cards, then STEAL a Hero card."
@@ -1163,7 +1163,7 @@ Cards = {
         "Description" : "Choose a player. STEAL a Hero card from that player's Party, then move a Hero card from your Party to that player's Party.",
         "Ranked Description" : "Choose a player. TRADE Heroes with that player."
     },
-    "Forecful Winds" : {
+    "Forceful Winds" : {
         "Image" : 'src/card_images/BaseGame/Cards/forcefulWinds.png',
         "Effect" : cardEffect.ForcefulWinds,
         "Card Type" : cardType.Magic,
@@ -1259,7 +1259,7 @@ Cards = {
     "Wizard Mask" : {
         "Image" : 'src/card_images/BaseGame/Cards/wizardMask.png',
         "Effect" : cardEffect.Mask,
-        "Mask Type" : heroClass.Sorcerer,
+        "Mask Type" : heroClass.Wizard,
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Wizard instead of its original class."
     },
@@ -1476,7 +1476,7 @@ Cards = {
         "Description" : "When this card enters your Stockpile, each other player must return a Hero card in their Party to their hand."
     },
     "Rudolph's Nose" : {
-        "Image" : 'src/card_images/HereToSleigh/Gifts/RudulphsNose.png',
+        "Image" : 'src/card_images/HereToSleigh/Gifts/RudolphsNose.png',
         "Effect" : cardEffect.RudolphsNose,
         "Card Type" : cardType.Item,
         "Gift Type" : "Good",
@@ -1532,7 +1532,7 @@ Cards = {
         "Gift Type" : "Bad",
         "Description" : ""
     },
-    "MintConditionMittens" : {
+    "Mint Condition Mittens" : {
         "Image" : 'src/card_images/HereToSleigh/Gifts/MintConditionMittens.png',
         "Effect" : cardEffect.MintConditionMittens,
         "Card Type" : cardType.Item,
@@ -1745,7 +1745,7 @@ Cards = {
         "Image" : 'src/card_images/BaseGame/Cards/radiantHorn.png',
         "Class" : heroClass.Guardian,
         "Effect" : cardEffect.SearchDiscard,
-        "Search Target" : cardType.Hero,
+        "Search Target" : cardType.Modifier,
         "Effect Roll" : 6,
         "Card Type" : cardType.Hero,
         "Description" : "Search the discard pile for a Modifier card and add it to your hand"
@@ -2558,7 +2558,7 @@ mainDeck = [
     "Fuzzy Cheeks",
     "Greedy Cheeks",
     "Lucky Bucky",
-    "Mellow",
+    "Mellow Dee",
     "Napping Nibbles",
     "Peanut",
     "Tipsy Tootie",
@@ -2606,8 +2606,8 @@ mainDeck = [
     "Decoy Doll",
     "Fighter Mask",
     "Guardian Mask",
-    "Particularly Rust Coin",
-    "Particularly Rust Coin",
+    "Particularly Rusty Coin",
+    "Particularly Rusty Coin",
     "Ranger Mask",
     "Really Big Ring",
     "Really Big Ring",
@@ -2703,7 +2703,7 @@ wadDeck = [ #Warriors and Druids Expansion card list
     "Silent Shield",
     "Tenacious Timber",
     "Wolfgang Pack",
-    "Bottomless Bad",
+    "Bottomless Bag",
     "Druid Mask",
     "Even Bigger Ring",
     "Temporal Hourglass",
@@ -2720,7 +2720,7 @@ wadDeck = [ #Warriors and Druids Expansion card list
 ]
 banDeck = [ #Berserkers and Necromancers Expansion card list
     "Bark Hexer",
-    "Beholden Retriver",
+    "Beholden Retriever",
     "Bone Collector",
     "Boston Terror",
     "Grim Pupper",
@@ -2740,7 +2740,7 @@ banDeck = [ #Berserkers and Necromancers Expansion card list
     "Necromancer Mask",
     "Silver Lining",
     "+2/-2 BaN Modifier",
-    "+7 BaN Modifer",
+    "+7 BaN Modifier",
     "Dragon's Bile",
     "Soulbound Grimoire",
     "Lightning Labrys",
@@ -2818,7 +2818,7 @@ htsDeck = [ #Here to Sleigh Expansion card list
     "Gift Bearer",
     "Santa Claws",
     "Christmas Carol",
-    "Lil' Drummer  Bard",
+    "Lil' Drummer Bard",
     "Shiny Nose",
     "Snow Slinger",
     "Prancer",
@@ -2829,9 +2829,9 @@ htsDeck = [ #Here to Sleigh Expansion card list
     "Holly Jolly",
     "Freshly Sharpened Skates",
     "Milk and Cookies",
-    "Garbge Gift Challenge",
-    "Garbge Gift Challenge",
-    "Garbge Gift Challenge",
+    "Garbage Gift Challenge",
+    "Garbage Gift Challenge",
+    "Garbage Gift Challenge",
     "Good Gift Challenge",
     "Good Gift Challenge",
     "Good Gift Challenge",
@@ -2878,7 +2878,7 @@ moeDeck = [ #Monster Expansion card list
     "Ancient Megashark",
     "Clawed Nightmare",
     "Dragon Wasp",
-    "Goreteledont",
+    "Gortelodont",
     "Lumbering Demon",
     "Possessed Plush",
     "Reef Ripper",

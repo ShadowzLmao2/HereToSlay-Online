@@ -8,6 +8,8 @@ and if both return a version number, then you are good. If not, install Python f
 Once that's done, you can run the two previously mentioned commands again and they should give a version number  
 Once that's done, you need to install Pygame. Run: `pip install pygame`. You can test to make sure it worked by running `python3 -m pygame.examples.aliens`  
 If you already have it downloaded, you can run `pip install pygame --upgrade` to update it instead.
+To get Taichi working, run `pip install -U uv`
+Also, make sure to run `pip install --upgrade taichi`
   
 To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)  
   
@@ -58,6 +60,8 @@ Todo:
 - Fix images (higher res) for:
     - BQ Cards/Monsters, all of Here to Sleigh
 - Create tests required to pass before PRing
+
+Unsure if we should use cython or taichi
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional
