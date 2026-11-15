@@ -1,22 +1,21 @@
 from config import *
 from cards import *
 from active_player import *
-from tutorial import *
-lazy import sys
 from functions import *
 from strings import *
-sys.dont_write_bytecode = True
-# lazy import config
-# lazy import cards
-# lazy import active_player
-# lazy import tutorial
-# lazy import sys
+# import config
+# import cards
+# import active_player
+# #lazy import tutorial
 # lazy import functions
 # lazy import strings
-#import taichi #May use in the future for optimizations
-lazy import random
 
-#taichi.init(arch=taichi.cpu)
+# from setuptools import setup
+# from Cython.Build import cythonize
+
+lazy import sys
+sys.dont_write_bytecode = True
+from random import randint, shuffle
 #from enum import Enum
 activePlayer = 1
 turnCount = 1
@@ -38,17 +37,17 @@ def startGame(test="None") -> None:
         print("PreGame Phase started\n")
     if testingPhase:
         print("\nMonster Deck:")
-    random.shuffle(monsterDeck)
+    shuffle(monsterDeck)
     drawMonsterCard(3)
     if ranked:
-        random.shuffle(p1Deck)
-        random.shuffle(p2Deck)
+        shuffle(p1Deck)
+        shuffle(p2Deck)
         playerCount = 2
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
         activePlayer = flipCoin()+1
     else:        
-        random.shuffle(mainDeck)
+        shuffle(mainDeck)
         if testingPhase:
             print(f"Main Deck:  {mainDeck}")
         chooseLeader()
@@ -95,7 +94,7 @@ def main(test: str) -> None:
                 second = int(input())
                 pullCard(first)
                 pullCard(second)
-            if "Gortelodont" in playerMonsters[activePlayer]:
+            if "Goretelodont" in playerMonsters[activePlayer]:
                 if askPlayer():
                     drawCard(3)
             if "Scavenger Griffin" in playerMonsters[activePlayer]:
@@ -204,13 +203,13 @@ def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
 def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
     #0 = Tails, 1 = Heads
     for i in range(0,count):
-        coinFlip = random.randint(0,1)
+        coinFlip = randint(0,1)
         #if not coinFlip and stopOnTails:
             #continue
     return coinFlip
 
 def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer) -> int:
-    diceRoll = random.randint(1,6) + random.randint(1,6)
+    diceRoll = randint(1,6) + randint(1,6)
     if player == activePlayer:
         diceRoll += globalModifier
     diceRoll += "Anuran Cauldron" in playerMonsters[player]
@@ -270,7 +269,7 @@ def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer)
     return diceRoll
 
 def rollDie() -> int:
-    return random.randint(1,6)
+    return randint(1,6)
 
 def chooseAction() -> None:
     global AP
@@ -900,7 +899,7 @@ def playItem(index, item, target:int = activePlayer) -> None:
             case 6:
                 morphMaskType[target][index] = heroClass.Wizard
     elif item == "Chaos Mask":
-        roll = random.randint(1,6) + random.randint(1,6)
+        roll = randint(1,6) + randint(1,6)
         match(roll):
             case 1 | 2 | 3:
                 morphMaskType[target][index] = heroClass.Warrior
@@ -1093,7 +1092,7 @@ def pullCard(target: int = activePlayer,reqType: int = cardType.Any, revealHand:
             print(playerHand[target][i])
         index = int(input())
     else:
-        random.shuffle(playerHand[target])
+        shuffle(playerHand[target])
     pulledCard: str = playerHand[target].pop(index)
     if testingPhase:
         print(f"Pulled Card: {pulledCard}")
@@ -1319,7 +1318,7 @@ def shuffleGYintoDeck() -> None:
     global mainDeck, discardPile
     mainDeck = discardPile
     discardPile = []
-    random.shuffle(mainDeck)
+    shuffle(mainDeck)
     return
 
 def drawCard(count: int = 1, player: int = activePlayer) -> None:

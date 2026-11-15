@@ -15,8 +15,11 @@ current_screen = "TEST"
 previous_screen = ""
 
 fullscreen = False
-
-pygame.init()
+class HereToSlayOnline:
+    def __init__(self):
+        pygame.init()
+        self.font = pygame.font.Font(size=34)
+        self.clicked = False
 
 w = 0
 h = 0
@@ -77,7 +80,6 @@ while running:
     pygame.display.flip()
     clock.tick(60)
 
-def startPygame():
-    return
+HereToSlayOnline().run()
 
 pygame.quit()

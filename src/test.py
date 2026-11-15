@@ -4,7 +4,10 @@ from config import *
 from cards import *
 from functions import *
 from main import *
-import random as rand
+from random import randint, shuffle
+
+sys.dont_write_bytecode = True
+
 #ranked = True
 playerCount = 4
 
@@ -75,7 +78,7 @@ def testAttackReqCheck():
     return
 
 def monsterDeckPopTest():
-    #random.shuffle(monsterDeck)
+    #shuffle(monsterDeck)
     print(monsterDeck)
     monsterField[0] = monsterDeck.pop()
     monsterField[1] = monsterDeck.pop()
@@ -158,4 +161,5 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 #checkCardsInHand()
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
+
 testWin() #Run testWin and dont give an input to just test the game

@@ -2,7 +2,7 @@ from enum import Enum #From enuxio?
 from config import *
 #from card_images import *
 from ranked_banlist import *
-#The Leader effects when activated - will probably remove the non-activateable ones
+#The Leader effects when activated - will probably remove the non-activatable ones
 
 class rollEffect(Enum):
     saffyrePhoenix = 0
