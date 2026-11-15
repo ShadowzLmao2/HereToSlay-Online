@@ -13,7 +13,7 @@ from strings import *
 # from setuptools import setup
 # from Cython.Build import cythonize
 
-lazy import sys
+import sys
 sys.dont_write_bytecode = True
 from random import randint, shuffle
 #from enum import Enum
@@ -283,7 +283,7 @@ def chooseAction() -> None:
                 draw()
             case "Redraw":
                 discardDraw()
-            case "atk":
+            case "Atk":
                 attack()
             case "Hero":
                 index: int = int(input())
@@ -293,10 +293,6 @@ def chooseAction() -> None:
             case "Play":
                 index: int = int(input())
                 playFromHand(index, Cards[playerHand[index]]["Card Type"])
-
-
-    #Working: draw() discardDraw() attack() playFromHand()
-    #WIP: activateHeroAbility(hero) activateLeaderAbility(leader) playMagic()
     return
 
 def playFromHand(card: int, cardType) -> None:
@@ -1266,23 +1262,8 @@ def stealHero(playerDestination: int = activePlayer, playerTarget: int = activeP
                 heroItems[playerDestination].append(heroItems[playerTarget][i].pop())
     return
 
-def checkHeroItem() -> int:
-    return
-
-def giveCard() -> None:
-    return
-
 def tradeHands(targetOne: int = activePlayer, targetTwo: int = not(activePlayer-1)+1) -> None:
     playerHand[targetOne], playerHand[targetTwo] = playerHand[targetTwo], playerHand[targetOne]
-    return
-
-def checkDrawn():
-    return
-
-def returnCardToHand(cardType,target=activePlayer):
-    return
-
-def equipItem() -> None:
     return
 
 def allPlayersDiscard(hitSelf: bool = True, type=cardType.Any) -> None:
@@ -1443,7 +1424,6 @@ def attack(dontLoseAP=False) -> None:
             sacrifice(count=2)
         case _:
             return
-    
     return
 
 def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
