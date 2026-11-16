@@ -43,7 +43,7 @@ def checkCardsInHand() -> None:
     playerHand[1].append("Mirroryu")
     playerHand[1].append("Luut")
     #Random index in hand
-    index = rand.randint(0,len(playerHand[1])-1)
+    index = randint(0,len(playerHand[1])-1)
     print(f"Random index: {index}")
     print(f"Hand Size: {len(playerHand[1])}")
     #print(f"Card: {playerHand[1]}")

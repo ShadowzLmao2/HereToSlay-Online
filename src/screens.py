@@ -1,4 +1,4 @@
-from draw_pygame import *
+from draw import *
 
 def menu():
     pass

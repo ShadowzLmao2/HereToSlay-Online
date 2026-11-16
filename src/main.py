@@ -274,6 +274,7 @@ def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer)
             if askPlayer():
                 diceRoll -= 1
                 nobleShamanUsed = True
+    if testingPhase: print(f"Rolled: {diceRoll}")
     return diceRoll
 
 def rollDie() -> int:
@@ -285,23 +286,31 @@ def chooseAction() -> None:
         print(playerHand[activePlayer])
         action: str = input("Do:")
         match(action):
-            case "End":
+            case "end":
                 AP = 0
                 return
-            case "Draw":
+            case "draw":
                 draw()
-            case "Redraw":
+            case "redraw":
                 discardDraw()
-            case "Atk":
+            case "atk":
                 attack()
-            case "Hero":
+            case "hero":
                 index: int = int(input())
                 playHero(index,activePlayer)
-            case "Leader":
+            case "leader":
                 activateLeaderAbility()
-            case "Play":
+            case "play":
                 index: int = int(input())
                 playFromHand(index, Cards[playerHand[index]]["Card Type"])
+            case "dt":
+                index: int = int(input())
+                print(Cards[playerHand[activePlayer][index]]["Description"])
+            case "field":
+                print(playerHeroes[activePlayer])
+                print(heroItems[activePlayer])
+            case "gy":
+                print(discardPile)
     return
 
 def playFromHand(card: int, cardType) -> None:
@@ -320,16 +329,13 @@ def playFromHand(card: int, cardType) -> None:
 
 def activateHeroAbility(index: int, summoned: bool = False, player: int = activePlayer) -> None:
     global AP, silverLining, panguardian, heroAbilityUsed
-    try:
-        if heroAbilityUsed[index]: print("if heroAbilityUsed works")
-    except TypeError: print("if heroAbilityUsed does not work")
     if heroAbilityUsed[index] and not heroItems[player][index] == "Bottomless Bag":
         if testingPhase:
             print("Ability already activated this turn")
         return
     if heroItems[player][index] == "Sealing Key":
         return
-    if (AP < 0 or (AP < 1 and heroItems[player][index] == "Soulbound Grimoire")) and not summoned:
+    if (AP < 1 or (AP < 2 and heroItems[player][index] == "Soulbound Grimoire")) and not summoned:
         print("No AP")
         return
     if not summoned:
@@ -337,6 +343,8 @@ def activateHeroAbility(index: int, summoned: bool = False, player: int = active
             reduceAP()
         reduceAP()
     diceRoll = rollDice(True,index,player) #includes item buffs
+    index = len(playerHeroes[activePlayer])-1
+    print(f"Required: {Cards[playerHeroes[activePlayer][index]]["Effect Roll"]}")
     if not panguardian:
         diceRoll += modifier()
     if heroItems[player][index] == "Goblet of Caffeination" and diceRoll < Cards[playerHeroes[player][index]]["Effect Roll"]: 
@@ -421,8 +429,7 @@ def useHeroAbility(hero) -> None:
             destroy(target, player)
         case cardEffect.PullCard:
             target = choosePlayer()
-            pulledCard = pullCard(target,False,0)
-            if Cards[pulledCard]["Class"] == Cards[hero]["Pull Type"]:
+            if pullCard(target,False,0):
                 pullCard(target,False,0)
         case cardEffect.BearyWise:
             allPlayersDiscard(hitSelf = False)
@@ -584,6 +591,12 @@ def useHeroAbility(hero) -> None:
             stealHero(player,choosePlayer())
             destroy(chooseHero(),chooseHero(),choosePlayer())
         case cardEffect.Wiggles:
+            hasHero = False
+            for i in range(1,playerCount):
+                if len(playerHeroes[i]) > 0:
+                    hasHero = True
+                    continue
+            if not hasHero: return
             stealHero(player,choosePlayer())
             activateHeroAbility(playerHeroes[player][-1],player=player)
         case cardEffect.BigBuckley:
@@ -934,7 +947,7 @@ def playHero(index,player=activePlayer,loseAP: bool = True) -> None:
         playerHeroes[player][tribute] = playerHand[index]
         playerHand[index].pop()
     
-    if len(heroItems[player]) < len(playerHeroes[player])+1: #Expands heroItems list to match the playerHeroes length
+    if len(heroItems[player]) < len(playerHeroes[player]): #Expands heroItems list to match the playerHeroes length
         heroItems[player].append("")
     if testingPhase: print(f"Items: {heroItems[player]}")
     activateHeroAbility(len(playerHeroes[player])-1,True,player)
@@ -1108,7 +1121,7 @@ def pullCard(target: int = activePlayer,reqType: int = cardType.Any, revealHand:
     if testingPhase:
         print(f"Pulled Card: {pulledCard}")
     playerHand[activePlayer].append(pulledCard)
-    return (Cards[pulledCard]["Class"] == reqType)#return if it matched the type you were looking for
+    return (Cards[pulledCard]["Card Type"] == reqType) #return if it matched the type you were looking for
 
 def searchDiscard(cardType = cardType.Any, player: int = activePlayer, alternateCardType = cardType.Any) -> None:
     return
@@ -1546,7 +1559,7 @@ def selectFromHand(type=cardType.Any,target=activePlayer, canCancel: bool = Fals
     return index
 
 def discardSelected(cardIndex,target=activePlayer) -> None:
-    discardPile.append(playerHand[target][cardIndex].pop())
+    discardPile.append(playerHand[target].pop(cardIndex))
     return
 
 def reduceAP(APReduction: int = 1) -> None:

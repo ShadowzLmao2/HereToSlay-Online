@@ -20,11 +20,15 @@ class HereToSlayOnline:
         pygame.init()
         self.font = pygame.font.Font(size=34)
         self.clicked = False
+        screen = pygame.display.set_mode((1280,720))
+        
+    def run(self):
+        pass
 
 w = 0
 h = 0
 
-os.environ['SDL_VIDEO_CENTERED'] = '1' #What does this do
+os.environ['SDL_VIDEO_CENTERED'] = '1' #What does this do?
 info = pygame.display.Info()
 
 w, h = info.current_w, info.current_h
@@ -49,6 +53,7 @@ all_sprites.add(background)
 all_sprites.add(button)
 all_sprites.add(textBoard)
 
+HereToSlayOnline().run()
 
 while running:
     event_list = pygame.event.get()
@@ -79,7 +84,5 @@ while running:
     # flip() the display to put your work on screen
     pygame.display.flip()
     clock.tick(60)
-
-HereToSlayOnline().run()
 
 pygame.quit()
