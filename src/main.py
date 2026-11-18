@@ -294,23 +294,26 @@ def chooseAction() -> None:
             case "atk":
                 attack()
             case "hero":
-                index: int = int(input())
+                index: int = int(input())+1
                 playHero(index,activePlayer.current())
             case "leader":
                 activateLeaderAbility()
             case "play":
-                index: int = int(input())
+                index: int = int(input())+1
                 playFromHand(index, Cards[playerHand[index]]["Card Type"])
             case "dt":
-                index: int = int(input())
+                index: int = int(input())+1
                 print(Cards[playerHand[activePlayer.current()][index]]["Description"])
             case "field":
-                print(playerHeroes[activePlayer.current()])
-                print(heroItems[activePlayer.current()])
+                print(f"Heroes: {playerHeroes[activePlayer.current()]}")
+                print(f"Items: {heroItems[activePlayer.current()]}")
             case "gy":
                 print(discardPile)
             case "monster":
                 print(monsterField)
+            case "stop":
+                gameEnded = True
+                return
     return
 
 def playFromHand(card: int, cardType) -> None:
@@ -443,12 +446,12 @@ def useHeroAbility(hero,player: int = activePlayer.current()) -> None:
             secondDraw = playerHand[activePlayer.current()][-1]
             if testingPhase:
                 print(f"Drew {firstDraw} and {secondDraw}")
-                if Cards[playerHand[activePlayer.current()][-2]][firstDraw]["Effect"] == cardEffect.Challenge:
-                    revealCard(-2)
-                    destroy(chooseHero(),choosePlayer(),player)
-                elif Cards[playerHand[activePlayer.current()][-1]][secondDraw]["Effect"] == cardEffect.Challenge:
-                    revealCard(-1)
-                    destroy(chooseHero(),choosePlayer(),player)
+            if Cards[firstDraw]["Effect"] == cardEffect.Challenge:
+                revealCard(-2)
+                destroy(chooseHero(),choosePlayer(),player)
+            elif Cards[secondDraw]["Effect"] == cardEffect.Challenge:
+                revealCard(-1)
+                destroy(chooseHero(),choosePlayer(),player)
         case cardEffect.QiBear:
             count = int(input())
             for i in range(0,count):
@@ -458,7 +461,8 @@ def useHeroAbility(hero,player: int = activePlayer.current()) -> None:
             #discard up to 3, pop hero for each
         case cardEffect.ToughTeddy:
             #Every player owning a fighter discards
-            for player in range(1,activePlayer.count(),1):
+            hasFighter = False
+            for player in range(1,activePlayer.count()+1):
                 if player == activePlayer.current():
                     continue
                 for j in range(0,len(playerHeroes[player])):
@@ -557,7 +561,7 @@ def useHeroAbility(hero,player: int = activePlayer.current()) -> None:
             for i in range(1,activePlayer.count()+1):
                 if i == player:
                     continue
-                if len(playerHand[j]) > 0:
+                if playerHand[i]: #Has 1+ cards in hand
                     for j in range(0,len(playerHeroes[i])):
                         if Cards[playerHeroes[i][j]]["Class"] == heroClass.Thief:
                             hasThief = True
@@ -664,7 +668,7 @@ def useHeroAbility(hero,player: int = activePlayer.current()) -> None:
             chosenClass = int(input())
             for i in range(1,activePlayer.count()+1):
                 for j in range(0,len(playerHeroes[i])):
-                    if playerHeroes[i][j]["Class"] == chosenClass:
+                    if Cards[playerHeroes[i][j]]["Class"] == chosenClass:
                         playerHand[i].append(playerHeroes[i].pop(j))
                         discardPile.append(heroItems[i].pop(j))
         case cardEffect.ViciousWildcat:
@@ -995,11 +999,9 @@ def challenge() -> bool:
         return
     hasChallenge = []
     for i in range(1,activePlayer.count()+1):
-        if i == activePlayer.current():
-            continue
-        if hasCardEffect(cardEffect.Challenge,i):
-            hasChallenge.append(i)
-    for i in range(0,len(hasChallenge)):
+        if i != activePlayer.current() and hasCardEffect(cardEffect.Challenge,i):
+                hasChallenge.append(i)
+    for i in range(1,len(hasChallenge)+1):
         if askPlayer():
             discardSpecific(cardType.Challenge,1,i,False)
             player = i
@@ -1045,14 +1047,14 @@ def modifier(player: int = activePlayer.current()) -> int:
     netModifier = 0
     if not askAllToModifyOrChallenge:
         listPlayers: list[int] = hasModifier()
-        for i in range(0,len(listPlayers)):
+        for i in range(1,len(listPlayers)):
             if askPlayer(useModifier):
                 netModifier += playModifier(listPlayers[i])
                 count += 1
                 if i != activePlayer.current() and "Abyss Queen" in playerMonsters[activePlayer.current()]:
                     netModifier += 1
     else:
-        for i in range(1,activePlayer.count()+2):
+        for i in range(1,activePlayer.count()+1):
             if askPlayer(output=useModifier):
                 netModifier += playModifier(i)
                 count += 1
