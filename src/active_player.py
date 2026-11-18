@@ -7,21 +7,17 @@ discardPile = []
 
 class activePlayerClass:
     activePlayer = 1
-    playerCount = 2
-    def __init__(self):
-        pass
+    def __init__(self,playerCount):
+        self.playerCount = playerCount
 
-    @classmethod
-    def playerCount(cls, playerCount: int):
-        cls.playerCount = playerCount
-        if testingPhase:
-            print(f"Player Count: {playerCount}")
+    def updatePlayerCount(self,playerCount):
+        self.playerCount = playerCount
 
-    @classmethod
-    def increment(cls):
+    def increment(self):
+        cls = type(self)
         if testingPhase:
             print(f"Before: {cls.activePlayer}")
-        if cls.activePlayer == cls.playerCount:
+        if cls.activePlayer == self.playerCount:
             cls.activePlayer = 1
         else:
             cls.activePlayer += 1
@@ -32,9 +28,8 @@ class activePlayerClass:
     def current(cls):
         return cls.activePlayer
 
-    @classmethod
-    def count(cls):
-        return cls.playerCount
+    def count(self):
+        return self.playerCount
 
 
 playerEffects = [

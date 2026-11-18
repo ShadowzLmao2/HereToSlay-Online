@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 from card_images import *
 from strings import *
 from config import *
@@ -5,8 +8,6 @@ from cards import *
 from functions import *
 from main import *
 from random import randint, shuffle
-
-sys.dont_write_bytecode = True
 
 #ranked = True
 
@@ -150,8 +151,7 @@ def otherPlayerEffects():
 def activePlayerTest():
     playerHand[1] = ["Player 1"]
     playerHand[2] = ["Player 2"]
-    activePlayer = activePlayerClass()
-    activePlayer.playerCount(2)
+    activePlayer = activePlayerClass(2)
     activePlayer.increment()
     activePlayer.increment()
     print(playerHand[activePlayer.current()])

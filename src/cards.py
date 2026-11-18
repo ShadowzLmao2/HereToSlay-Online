@@ -4,6 +4,9 @@ from config import *
 from ranked_banlist import *
 #The Leader effects when activated - will probably remove the non-activatable ones
 
+import sys
+sys.dont_write_bytecode = True
+
 class rollEffect(Enum):
     saffyrePhoenix = 0
     
