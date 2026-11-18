@@ -3,9 +3,40 @@ from cards import *
 #from config import *
 leaderAbilityUsed = False
 heroAbilityUsed: bool = []
-activatePlayer = 1
-playerCount = 4 #Max = 6
 discardPile = []
+
+class activePlayerClass:
+    activePlayer = 1
+    playerCount = 2
+    def __init__(self):
+        pass
+
+    @classmethod
+    def playerCount(cls, playerCount: int):
+        cls.playerCount = playerCount
+        if testingPhase:
+            print(f"Player Count: {playerCount}")
+
+    @classmethod
+    def increment(cls):
+        if testingPhase:
+            print(f"Before: {cls.activePlayer}")
+        if cls.activePlayer == cls.playerCount:
+            cls.activePlayer = 1
+        else:
+            cls.activePlayer += 1
+        if testingPhase:
+            print(f"After: {cls.activePlayer}")
+
+    @classmethod
+    def current(cls):
+        return cls.activePlayer
+
+    @classmethod
+    def count(cls):
+        return cls.playerCount
+
+
 playerEffects = [
     [],
     [],

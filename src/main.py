@@ -15,9 +15,7 @@ sys.dont_write_bytecode = True
 from random import randint, shuffle
 #from enum import Enum
 
-activePlayer = 1
 turnCount = 1
-playerCount = 2
 dragalterModifier = [0,0]
 gameEnded = False
 silverLining = False
@@ -26,10 +24,10 @@ muscipulaRex = False
 nobleShamanUsed = False
 canModify = False
 globalModifier = 0
+activePlayer = activePlayerClass()
 
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame(test="None") -> None:
-    global playerCount, activePlayer
     if testingPhase:
         print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
@@ -38,18 +36,19 @@ def startGame(test="None") -> None:
     shuffle(monsterDeck)
     drawMonsterCard(3)
     if ranked:
+        activePlayer.playerCount(2)
         shuffle(p1Deck)
         shuffle(p2Deck)
-        playerCount = 2
         #Start the first player's turn, determine who goes first
         #For ranked, run a coin flip. For all other modes, every player rolls the dice and highest roller goes first, then in clockwise.
-        activePlayer = flipCoin()+1
-    else:        
+        if not flipCoin(): activePlayer.increment()
+    else:      
+        activePlayer.playerCount(2)
         shuffle(mainDeck)
         if testingPhase:
             print(f"Main Deck:  {mainDeck}")
         chooseLeader()
-    for player in range(1,playerCount+1,1):
+    for player in range(1,activePlayer.count()+1,1):
         drawCard(5,player)
     if testingPhase:
         print("PreGame Phase finished")
@@ -70,12 +69,12 @@ def startGame(test="None") -> None:
 #Is the main game loop. When the game ends, it returns to startGame which then ends
 def main(test: str) -> None:
     while not gameEnded:
-        global activePlayer, playerCount, turnCount, heroAbilityUsed
+        global turnCount, heroAbilityUsed
         #Start of Turn
         if testingPhase:
-            print(f"Player {activePlayer} turn started")
+            print(f"Player {activePlayer.current()} turn started")
         heroAbilityUsed = []
-        for i in range(0,len(playerHeroes[activePlayer])):
+        for i in range(0,len(playerHeroes[activePlayer.current()])):
             heroAbilityUsed.append(False)
         startTurn() 
         chooseAction() #Basically, it waits for input
@@ -86,49 +85,46 @@ def main(test: str) -> None:
 
         #End of Turn
         if testingPhase:
-            print(f"Player {activePlayer} End Phase started")
+            print(f"Player {activePlayer.current()} End Phase started")
         if str(input()) == "end":
             endGame("Test")
-        if not playerHand[activePlayer]:
-            if "Clawed Nightmare" in playerMonsters[activePlayer]:
+        if not playerHand[activePlayer.current()]:
+            if "Clawed Nightmare" in playerMonsters[activePlayer.current()]:
                 first = int(input())
                 second = int(input())
                 pullCard(first)
                 pullCard(second)
-            if "Goretelodont" in playerMonsters[activePlayer]:
+            if "Goretelodont" in playerMonsters[activePlayer.current()]:
                 if askPlayer():
                     drawCard(3)
-            if "Scavenger Griffin" in playerMonsters[activePlayer]:
+            if "Scavenger Griffin" in playerMonsters[activePlayer.current()]:
                 stealHero()
         global silverLining, panguardian, nobleShamanUsed, globalModifier, canModify
         silverLining = panguardian = nobleShamanUsed = canModify = False
         globalModifier = 0
-        playerEffects[activePlayer] = []
-        if activePlayer == playerCount:
-            activePlayer = 1
-        else:
-            activePlayer += 1
+        playerEffects[activePlayer.current()] = []
+        activePlayer.increment()
         turnCount += 1
         #All of this code (in the End of Turn section) MUST NOT cause anything to happen visually. It must run quickly before the game ends (if it does)
         #repeats while there is no winner
     return
 
 #All the "Standby Phase" Stuff
-def startTurn(player=activePlayer) -> None:
+def startTurn() -> None:
     global leaderAbilityUsed, heroAbilityUsed, AP
     leaderAbilityUsed = False
     AP = 3
-    if "Mega Slime" in playerMonsters[activePlayer]: AP += 1
+    if "Mega Slime" in playerMonsters[activePlayer.current()]: AP += 1
     if testingPhase:
         print("Turn Number:", turnCount)
         #if turnCount > 1:
-            #print(f"Start of turn effect: {playerLeaders[activePlayer]["Start of Turn"]}")
-    if (Leaders[playerLeaders[activePlayer]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
+            #print(f"Start of turn effect: {playerLeaders[activePlayer.current()]["Start of Turn"]}")
+    if (Leaders[playerLeaders[activePlayer.current()]]["Start of Turn"] and turnCount != 0): #Only for the KickStarter leaders and Individual Exclusive leaders
         leaderTypeSwitch()
         if testingPhase:
-            print(f"{playerLeaders[activePlayer]}: {leaderCurrentType[activePlayer]}")
+            print(f"{playerLeaders[activePlayer.current()]}: {leaderCurrentType[activePlayer.current()]}")
     heroAbilityUsed = []
-    for hero in range(0,len(playerHeroes[activePlayer])): #setup stuff, to make it easier
+    for hero in range(0,len(playerHeroes[activePlayer.current()])): #setup stuff, to make it easier
         if len(heroAbilityUsed) <= hero: heroAbilityUsed.append(False)
         else: heroAbilityUsed[hero] = False
     return
@@ -136,68 +132,68 @@ def startTurn(player=activePlayer) -> None:
 def chooseLeader() -> None: #Pick your leader at the start of the game. Only used in casual
     if testingPhase:
         print("     Leader Section:\n")
-    for i in range(1, playerCount+1,1):
+    for i in range(1, activePlayer.playerCount()+1,1):
         leaderCurrentType[i] = Leaders[(playerLeaders[i])]["Class"]
         if testingPhase:
             print(f"Player {i}: {playerLeaders[i]}, Class: {leaderCurrentType[i]}")
     return
 
 #For the KSE/IE leaders, asks player if they want to switch types, then switches if they say yes
-def leaderTypeSwitch(leader=playerLeaders[activePlayer]) -> None:
+def leaderTypeSwitch(leader=playerLeaders[activePlayer.current()]) -> None:
     if input(f"{switchLeaderType}\n") == "y":
-        with leaderCurrentType[activePlayer] as leaderType:
+        with leaderCurrentType[activePlayer.current()] as leaderType:
             match leader:
                 case "Brutal Bow":
                     #Fighter/Ranger
                     if leaderType == heroClass.Fighter:
-                        leaderCurrentType[activePlayer] = heroClass.Ranger
+                        leaderCurrentType[activePlayer.current()] = heroClass.Ranger
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Fighter
+                        leaderCurrentType[activePlayer.current()] = heroClass.Fighter
                     return
                 case "Mystical Maestro":
                     #Wizard/Bard
                     if leaderType == heroClass.Wizard:
-                        leaderCurrentType[activePlayer] = heroClass.Bard
+                        leaderCurrentType[activePlayer.current()] = heroClass.Bard
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Wizard
+                        leaderCurrentType[activePlayer.current()] = heroClass.Wizard
                     return
                 case "Veiled Raider":
                     #Guardian/Thief
                     if leaderType == heroClass.Guardian:
-                        leaderCurrentType[activePlayer] = heroClass.Thief
+                        leaderCurrentType[activePlayer.current()] = heroClass.Thief
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Guardian
+                        leaderCurrentType[activePlayer.current()] = heroClass.Guardian
                     return
                 case "Unstable Unicorn":
                     #Copy another Leader
-                    if playerCount == 2:
-                        if activePlayer == 1:
-                            unstableUnicornTarget[activePlayer] = 2
+                    if activePlayer.playerCount() == 2:
+                        if activePlayer.current() == 1:
+                            unstableUnicornTarget[activePlayer.current()] = 2
                         else:
-                            unstableUnicornTarget[activePlayer] = 1
+                            unstableUnicornTarget[activePlayer.current()] = 1
                     else:
-                        unstableUnicornTarget[activePlayer] = choosePlayer()
+                        unstableUnicornTarget[activePlayer.current()] = choosePlayer()
                     return
                 case "Fierce Panguardian":
                     #Guardian/Fighter
                     if leaderType == heroClass.Guardian:
-                        leaderCurrentType[activePlayer] = heroClass.Fighter
+                        leaderCurrentType[activePlayer.current()] = heroClass.Fighter
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Guardian
+                        leaderCurrentType[activePlayer.current()] = heroClass.Guardian
                     return
                 case "Illusive Trickster":
                     #Wizard/Thief
                     if leaderType == heroClass.Wizard:
-                        leaderCurrentType[activePlayer] = heroClass.Thief
+                        leaderCurrentType[activePlayer.current()] = heroClass.Thief
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Wizard
+                        leaderCurrentType[activePlayer.current()] = heroClass.Wizard
                     return
                 case "Rhythmic Archer":
                     #Bard/Ranger
                     if leaderType == heroClass.Bard:
-                        leaderCurrentType[activePlayer] = heroClass.Ranger
+                        leaderCurrentType[activePlayer.current()] = heroClass.Ranger
                     else:
-                        leaderCurrentType[activePlayer] = heroClass.Bard
+                        leaderCurrentType[activePlayer.current()] = heroClass.Bard
                     return
     return
 
@@ -215,9 +211,9 @@ def flipCoin(count: int = 1, stopOnTails: bool = False) -> int:
         coinFlip = count
     return coinFlip
 
-def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer) -> int:
+def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer.current()) -> int:
     diceRoll = randint(1,6) + randint(1,6)
-    if player == activePlayer:
+    if player == activePlayer.current():
         diceRoll += globalModifier
     diceRoll += "Anuran Cauldron" in playerMonsters[player]
     if not heroRoll: return diceRoll
@@ -269,7 +265,7 @@ def rollDice(heroRoll: bool = False, index: int = 0, player: int = activePlayer)
                 discardSpecific()
                 diceRoll += 1
         
-    for i in range(1,playerCount):
+    for i in range(1,activePlayer.playerCount()):
         if playerLeaders[i] == "Noble Shaman" and not nobleShamanUsed:
             if askPlayer():
                 diceRoll -= 1
@@ -282,8 +278,9 @@ def rollDie() -> int:
 
 def chooseAction() -> None:
     global AP
+    print(f"Active Player: {activePlayer.current()}")
     while AP > 0 and not gameEnded:
-        print(playerHand[activePlayer])
+        print(playerHand[activePlayer.current()])
         action: str = input("Do:")
         match(action):
             case "end":
@@ -297,7 +294,7 @@ def chooseAction() -> None:
                 attack()
             case "hero":
                 index: int = int(input())
-                playHero(index,activePlayer)
+                playHero(index,activePlayer.current())
             case "leader":
                 activateLeaderAbility()
             case "play":
@@ -305,12 +302,14 @@ def chooseAction() -> None:
                 playFromHand(index, Cards[playerHand[index]]["Card Type"])
             case "dt":
                 index: int = int(input())
-                print(Cards[playerHand[activePlayer][index]]["Description"])
+                print(Cards[playerHand[activePlayer.current()][index]]["Description"])
             case "field":
-                print(playerHeroes[activePlayer])
-                print(heroItems[activePlayer])
+                print(playerHeroes[activePlayer.current()])
+                print(heroItems[activePlayer.current()])
             case "gy":
                 print(discardPile)
+            case "monster":
+                print(monsterField)
     return
 
 def playFromHand(card: int, cardType) -> None:
@@ -322,12 +321,12 @@ def playFromHand(card: int, cardType) -> None:
     elif cardType == cardType.Item:
         target = int(input(targetStr))
         index = int(input())
-        playItem(index, playerHand[activePlayer][card],target)
+        playItem(index, playerHand[activePlayer.current()][card],target)
     if testingPhase:
-        print(playerHand[activePlayer])
+        print(playerHand[activePlayer.current()])
     return
 
-def activateHeroAbility(index: int, summoned: bool = False, player: int = activePlayer) -> None:
+def activateHeroAbility(index: int, summoned: bool = False, player: int = activePlayer.current()) -> None:
     global AP, silverLining, panguardian, heroAbilityUsed
     if heroAbilityUsed[index] and not heroItems[player][index] == "Bottomless Bag":
         if testingPhase:
@@ -343,8 +342,9 @@ def activateHeroAbility(index: int, summoned: bool = False, player: int = active
             reduceAP()
         reduceAP()
     diceRoll = rollDice(True,index,player) #includes item buffs
-    index = len(playerHeroes[activePlayer])-1
-    print(f"Required: {Cards[playerHeroes[activePlayer][index]]["Effect Roll"]}")
+    index = len(playerHeroes[activePlayer.current()])-1
+    #card = playerHeroes[activePlayer.current()][index]
+    #print(f"Required: {Cards[card]["Effect Roll"]}")
     if not panguardian:
         diceRoll += modifier()
     if heroItems[player][index] == "Goblet of Caffeination" and diceRoll < Cards[playerHeroes[player][index]]["Effect Roll"]: 
@@ -384,11 +384,11 @@ def activateHeroAbility(index: int, summoned: bool = False, player: int = active
     #TODO Here to Sleigh: Freshly Sharpened Skates / Milk and Cookies
     return
 
-def activateLeaderAbility(leader=playerLeaders[activePlayer]) -> None:
+def activateLeaderAbility(leader=playerLeaders[activePlayer.current()]) -> None:
     global leaderAbilityUsed
     #Sets the Unicorn's ability to whatever it copied at the start of the turn
     if leader == "Unstable Unicorn":
-        leader = playerLeaders[(unstableUnicornTarget[activePlayer])]
+        leader = playerLeaders[(unstableUnicornTarget[activePlayer.current()])]
 
     #Checks if it can be activated, pulls index of target leader so UU works
     if AP < Leaders[leader]["AP Cost"]:
@@ -409,11 +409,11 @@ def activateLeaderAbility(leader=playerLeaders[activePlayer]) -> None:
             case "Gnawing Dread":
                 index = searchDiscard(cardType.Any)
                 reduceAP(2)
-                playerHand[activePlayer].append(discardPile[index].pop())
+                playerHand[activePlayer.current()].append(discardPile[index].pop())
                 leaderAbilityUsed = True
                 return
             case "Illusive Trickster":
-                if checkHand(cardType.Magic, activePlayer):
+                if checkHand(cardType.Magic, activePlayer.current()):
                     discardSpecific(cardType.Magic,1)
                     drawCard(3)
                     leaderAbilityUsed = True
@@ -438,16 +438,16 @@ def useHeroAbility(hero) -> None:
             discardSpecific(choosePlayer(),2,1)
         case cardEffect.PanChucks:
             drawCard(2)
-            firstDraw = playerHand[activePlayer][-2]
-            secondDraw = playerHand[activePlayer][-1]
+            firstDraw = playerHand[activePlayer.current()][-2]
+            secondDraw = playerHand[activePlayer.current()][-1]
             if testingPhase:
                 print(f"Drew {firstDraw} and {secondDraw}")
-                if Cards[activePlayer][firstDraw]["Effect"] == cardEffect.Challenge:
+                if Cards[activePlayer.current()][firstDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-2)
                     player = choosePlayer()
                     target = chooseHero()
                     destroy(target, player)
-                elif Cards[activePlayer][secondDraw]["Effect"] == cardEffect.Challenge:
+                elif Cards[activePlayer.current()][secondDraw]["Effect"] == cardEffect.Challenge:
                     revealCard(-1)
                     player = choosePlayer()
                     target = chooseHero()
@@ -463,8 +463,8 @@ def useHeroAbility(hero) -> None:
             #discard up to 3, pop hero for each
         case cardEffect.ToughTeddy:
             #Every player owning a fighter discards
-            for player in range(1,playerCount,1):
-                if player == activePlayer:
+            for player in range(1,activePlayer.playerCount(),1):
+                if player == activePlayer.current():
                     continue
                 for j in playerHeroes[player]:
                     if Cards[playerHeroes[player][j]]["Class"] == heroClass.Fighter:
@@ -486,7 +486,7 @@ def useHeroAbility(hero) -> None:
                     playHero(playerHand[player][-1],player,False)
         case cardEffect.MellowDee:
             drawCard()
-            if playerHand[activePlayer][-1] == cardType.Hero:
+            if playerHand[activePlayer.current()][-1] == cardType.Hero:
                 if askPlayer():
                     playHero(playerHand[player][-1],player,False)
         case cardEffect.TipsyTootie:
@@ -494,15 +494,15 @@ def useHeroAbility(hero) -> None:
             selfIndex = int(input())
             trade(index, choosePlayer(), selfIndex)
         case cardEffect.CalmingVoice:
-            playerEffects[activePlayer].append("Calming Voice")
+            playerEffects[activePlayer.current()].append("Calming Voice")
         case cardEffect.HolyCurselifter:
             index = int(input())
             playerHand.append(heroItems[player][index])
             heroItems[player][index] = "None"
         case cardEffect.IronResolve:
-            playerEffects[activePlayer].append("Iron Resolve")
+            playerEffects[activePlayer.current()].append("Iron Resolve")
         case cardEffect.MightyBlade:
-            playerEffects[activePlayer].append("Mighty Blade")
+            playerEffects[activePlayer.current()].append("Mighty Blade")
         case cardEffect.VibrantGlow:
             globalModifier += 5
         case cardEffect.WiseShield:
@@ -559,7 +559,7 @@ def useHeroAbility(hero) -> None:
             pullCard(target)
             discardSpecific(target=player)
         case cardEffect.SmoothMimimeow:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if i == player:
                     continue
                 if len(playerHand[j]) > 0:
@@ -577,12 +577,12 @@ def useHeroAbility(hero) -> None:
             sacrifice(choosePlayer())
         case cardEffect.Snowball:
             drawCard()
-            if playerHand[activePlayer][-1] == cardType.Magic:
+            if playerHand[activePlayer.current()][-1] == cardType.Magic:
                 if askPlayer():
                     playMagic(-1,player)
                     drawCard()
         case cardEffect.Spooky:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if i == player:
                     continue
                 if playerHeroes[i]:
@@ -592,7 +592,7 @@ def useHeroAbility(hero) -> None:
             destroy(chooseHero(),chooseHero(),choosePlayer())
         case cardEffect.Wiggles:
             hasHero = False
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if len(playerHeroes[i]) > 0:
                     hasHero = True
                     continue
@@ -631,7 +631,7 @@ def useHeroAbility(hero) -> None:
             playerEffects[player].append("Critical Fang")
         case cardEffect.HardenedHunter:
             count = 0
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if i == player:
                     continue
                 count += len(playerMonsters[i])
@@ -648,11 +648,11 @@ def useHeroAbility(hero) -> None:
         case cardEffect.Annihilator:
             searchDiscard(cardType.Challenge,player)
         case cardEffect.BrawlingSpirit:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if len(playerHeroes) > 2:
                     sacrifice(i)
         case cardEffect.GruesomeGladiator:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if i == player:
                     continue
                 pullCard(i,revealHand=True)
@@ -667,7 +667,7 @@ def useHeroAbility(hero) -> None:
                 destroy(chooseHero(),chooseHero(),choosePlayer(),activator=player)
         case cardEffect.RoaryalGuard:
             chosenClass = int(input())
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 for j in range(0,len(playerHeroes[i])):
                     if playerHeroes[i][j]["Class"] == chosenClass:
                         playerHand[i].append(playerHeroes[i].pop(j))
@@ -699,7 +699,7 @@ def useHeroAbility(hero) -> None:
                 searchDiscard(player=player)
                 searchDiscard(player=player)
         case cardEffect.GrimPupper:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 sacrifice(i)
         case cardEffect.HollowHusk:
             pullCard(choosePlayer(),cardType.Magic,True)
@@ -720,7 +720,7 @@ def useHeroAbility(hero) -> None:
             target = int(input())
             playerLeaders[player],playerLeaders[target] = playerLeaders[target],playerLeaders[player]
         case cardEffect.Extraga:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 for j in range(0,len(playerHeroes[i])):
                     if Cards[playerHeroes[i][j]]["Class"] == heroClass.Sorcerer:
                         playerHand[i].append(playerHeroes[i][j].pop())
@@ -762,7 +762,7 @@ def useHeroAbility(hero) -> None:
             discardSpecific(count=count,target=player)
             globalModifier += 2*count
         case cardEffect.Hamlet:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 for j in range(0,len(playerHeroes[i])):
                     if Cards[playerHeroes[i][j]] == "Hamlet" and i == player:
                         continue
@@ -775,7 +775,7 @@ def useHeroAbility(hero) -> None:
             secondIndex = chooseHero()
             heroItems[target][index],heroItems[secondTarget][secondIndex] = heroItems[secondTarget][secondIndex],heroItems[target][index]
         case cardEffect.PurringBandit:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 if i == player:
                     continue
                 if len(playerHand[i]) > len(playerHand[player]):
@@ -817,10 +817,10 @@ def useHeroAbility(hero) -> None:
         case cardEffect.PullAndPlay:
             pullCard(choosePlayer(),True,Cards[hero]["Search Target"])
         case cardEffect.Play2:
-            playCards(activePlayer,2,type=Cards[hero]["Search Target"])
+            playCards(activePlayer.current(),2,type=Cards[hero]["Search Target"])
     return
 
-def playCards(target = activePlayer,count: int = 1,type=cardType.Any) -> None: #When you are forced to (aka given the option)
+def playCards(target = activePlayer.current(),count: int = 1,type=cardType.Any) -> None: #When you are forced to (aka given the option)
     index = int(input())
     for i in range(0,count):
         match(type):
@@ -834,7 +834,7 @@ def playCards(target = activePlayer,count: int = 1,type=cardType.Any) -> None: #
                 return
     return
 
-def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from your hand. Target is who it's used on
+def playMagic(index,target: int = activePlayer.current()) -> None: #Play a magic card from your hand. Target is who it's used on
     global AP 
     discardPile.append(playerHand[target][index].pop())
     match(Cards[playerHand[target][index]]["Effect"]):
@@ -858,7 +858,7 @@ def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from
             trade(index,choosePlayer(),selfIndex)
             return
         case cardEffect.WindsOfChange:
-            for i in range(1,playerCount):
+            for i in range(1,activePlayer.playerCount()):
                 for i in range(0,len(heroItems[i])):
                     playerHand[i].append(heroItems[i].pop())
         case cardEffect.BeastCall:
@@ -874,7 +874,7 @@ def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from
             drawCard(4)
         case cardEffect.LightningLabrys:
             count = int(input())
-            if count > len(playerHand[activePlayer]):
+            if count > len(playerHand[activePlayer.current()]):
                 count = len(playerHand())
             for i in range(0,count):
                 discardSpecific()
@@ -894,7 +894,7 @@ def playMagic(index,target: int = activePlayer) -> None: #Play a magic card from
         drawCard(player = target)
     return
 
-def playItem(index, item, target:int = activePlayer) -> None:
+def playItem(index, item, target:int = activePlayer.current()) -> None:
     if heroItems[target][index]:
         if testingPhase:
             print("An Item is already equipped")
@@ -934,7 +934,7 @@ def playItem(index, item, target:int = activePlayer) -> None:
     if Cards[item]["Effect"] == cardEffect.Mask: getPartyCounts(target)
     return
 
-def playHero(index,player=activePlayer,loseAP: bool = True) -> None:
+def playHero(index,player=activePlayer.current(),loseAP: bool = True) -> None:
     if loseAP:
         reduceAP()
     if challenge(): return
@@ -955,9 +955,9 @@ def playHero(index,player=activePlayer,loseAP: bool = True) -> None:
 
 def trade(index: int, target: int, selfTarget: int) -> None:
     #Swap the heroes
-    playerHeroes[target][index],playerHeroes[activePlayer][selfTarget] = playerHeroes[activePlayer][selfTarget],playerHeroes[target][index]
+    playerHeroes[target][index],playerHeroes[activePlayer.current()][selfTarget] = playerHeroes[activePlayer.current()][selfTarget],playerHeroes[target][index]
     #Swap the items
-    heroItems[target][index],heroItems[activePlayer][selfTarget] = heroItems[activePlayer][selfTarget],heroItems[target][index]
+    heroItems[target][index],heroItems[activePlayer.current()][selfTarget] = heroItems[activePlayer.current()][selfTarget],heroItems[target][index]
     return
 
 def askPlayer(output: str = "") -> bool: #A yes or no prompt
@@ -965,39 +965,39 @@ def askPlayer(output: str = "") -> bool: #A yes or no prompt
     return False
 
 def choosePlayer(req: str = "") -> int:
-    if playerCount == 2: 
-        player = not(activePlayer - 1) + 1
+    if activePlayer.playerCount() == 2: 
+        player = not(activePlayer.current() - 1) + 1
         oneOpponent = True
     otherPlayer = player
     if testingPhase: return 2
     match(req):
         case "hasCard": #has card in hand
             try: player = int(input())
-            except not playerHand[player] or (not playerHand[otherPlayer] and playerCount == 2):
+            except not playerHand[player] or (not playerHand[otherPlayer] and activePlayer.playerCount() == 2):
                 choosePlayer(req = "hasCard")   
         case "hasHero":
             try: player = int(input())
-            except not playerHeroes[player] or (not playerHeroes[otherPlayer] and playerCount == 2):
+            except not playerHeroes[player] or (not playerHeroes[otherPlayer] and activePlayer.playerCount() == 2):
                 choosePlayer(req = "hasHero")
         case "": #Non-specific, no requirements
-            if playerCount == 2: 
+            if activePlayer.playerCount() == 2: 
                 return player
             else:
                 player = int(input())
     return player
     
-def chooseHero(player=activePlayer) -> int:
+def chooseHero(player=activePlayer.current()) -> int:
     index = int(input())
     return index
 
 def challenge() -> bool:
     global panguardian
     player = 0
-    if "Mighty Blade" in playerEffects[activePlayer]:
+    if "Mighty Blade" in playerEffects[activePlayer.current()]:
         return
     hasChallenge = []
-    for i in range(1,playerCount):
-        if i == activePlayer:
+    for i in range(1,activePlayer.playerCount()):
+        if i == activePlayer.current():
             continue
         if hasCardEffect(cardEffect.Challenge,i):
             hasChallenge.append(i)
@@ -1009,16 +1009,16 @@ def challenge() -> bool:
     print(f"Player: {player}")
     if player == 0: return False #Breaks if no one challenges
     mainRoll = rollDice()
-    if playerLeaders[activePlayer] == "Fist of Reason":
+    if playerLeaders[activePlayer.current()] == "Fist of Reason":
         mainRoll += 2
     challengeRoll = rollDice()
     if playerLeaders[player] == "Fist of Reason":
         challengeRoll += 2
     if playerLeaders[player] == "Fierce Panguardian":
         panguardian = False
-    if "Bloodwing" in playerMonsters[activePlayer]:
+    if "Bloodwing" in playerMonsters[activePlayer.current()]:
         discardSpecific(target=player)
-    mainRoll += "Titan Wyvern" in playerMonsters[activePlayer]
+    mainRoll += "Titan Wyvern" in playerMonsters[activePlayer.current()]
     challengeRoll += "Titan Wyvern" in playerMonsters[player]
     mainRoll += modifier()
     challengeRoll += modifier() #TODO make this into one function call
@@ -1031,10 +1031,10 @@ def challenge() -> bool:
 def hasModifier() -> list[int]:
     hasChallenge:int = []
     stagguardPlayer = -1
-    for i in range(1,playerCount):
+    for i in range(1,activePlayer.playerCount()):
         if "Stagguard" in playerEffects[i]:
             stagguardPlayer: int = i
-    for j in range(1,playerCount+1):
+    for j in range(1,activePlayer.playerCount()+1):
         if not(stagguardPlayer == -1 or i == stagguardPlayer):
             continue
         for i in range(0,len(playerHand[j])):
@@ -1043,7 +1043,7 @@ def hasModifier() -> list[int]:
     return hasChallenge
 
 netModifier: int = 0
-def modifier(player: int = activePlayer) -> int:
+def modifier(player: int = activePlayer.current()) -> int:
     count: int = 0
     global netModifier
     if not askAllToModifyOrChallenge:
@@ -1052,20 +1052,20 @@ def modifier(player: int = activePlayer) -> int:
             if askPlayer(useModifier):
                 netModifier += playModifier(listPlayers[i])
                 count += 1
-                if i != activePlayer and "Abyss Queen" in playerMonsters[activePlayer]:
+                if i != activePlayer.current() and "Abyss Queen" in playerMonsters[activePlayer.current()]:
                     netModifier += 1
     else:
-        for i in range(1,playerCount+2):
+        for i in range(1,activePlayer.playerCount()+2):
             if askPlayer(output=useModifier):
                 netModifier += playModifier(i)
                 count += 1
-                if i != activePlayer and "Abyss Queen" in playerMonsters[activePlayer]:
+                if i != activePlayer.current() and "Abyss Queen" in playerMonsters[activePlayer.current()]:
                     netModifier += 1
     if netModifier != 0:
-        for i in range(1,playerCount):
+        for i in range(1,activePlayer.playerCount()):
             if "Crowned Serpent" in playerMonsters[i]:
                 drawCard(player = i)
-    for i in range(1,playerCount):
+    for i in range(1,activePlayer.playerCount()):
         if "Crowned Serpent" in playerMonsters[i]:
             drawCard(count,i)
     if "Dragalter" in playerEffects[player]:
@@ -1102,13 +1102,13 @@ def playModifier(player) -> int:
                 return boost
     return boost
 
-def hasCardEffect(effect,player=activePlayer) -> bool:
+def hasCardEffect(effect,player=activePlayer.current()) -> bool:
     for i in range(0,len(playerHand[player])):
         if Cards[playerHand[player][i]]["Effect"] == effect:
             return True
     return False
 
-def pullCard(target: int = activePlayer,reqType: int = cardType.Any, revealHand: bool = False) -> bool:
+def pullCard(target: int = activePlayer.current(),reqType: int = cardType.Any, revealHand: bool = False) -> bool:
     #target is who is stolen from, req is true/false for if there is a requirement, reqType is what card type you need to pull or else you dont pull
     index = -1
     if revealHand:
@@ -1120,20 +1120,20 @@ def pullCard(target: int = activePlayer,reqType: int = cardType.Any, revealHand:
     pulledCard: str = playerHand[target].pop(index)
     if testingPhase:
         print(f"Pulled Card: {pulledCard}")
-    playerHand[activePlayer].append(pulledCard)
+    playerHand[activePlayer.current()].append(pulledCard)
     return (Cards[pulledCard]["Card Type"] == reqType) #return if it matched the type you were looking for
 
-def searchDiscard(cardType = cardType.Any, player: int = activePlayer, alternateCardType = cardType.Any) -> None:
+def searchDiscard(cardType = cardType.Any, player: int = activePlayer.current(), alternateCardType = cardType.Any) -> None:
     return
 
-def revealCard(index: int, player: int = activePlayer) -> None:
+def revealCard(index: int, player: int = activePlayer.current()) -> None:
     print(playerHand[player][index])
     return
 
 def whichCard(matchType,typeToMatch) -> int:
     return
 
-def checkHand(cardType, player=activePlayer) -> None:
+def checkHand(cardType, player=activePlayer.current()) -> None:
     for card in playerHand[player]:
         if Cards[(playerHand[player][card])]["Card Type"] == cardType:
             return True
@@ -1142,17 +1142,17 @@ def checkHand(cardType, player=activePlayer) -> None:
 def checkField() -> bool:
     return
 
-def handSize(player=activePlayer) -> int:
+def handSize(player=activePlayer.current()) -> int:
     return len(playerHand[player])
 
 def viewHand(player) -> None:
     return
 
-def mill(numMilled, target=activePlayer) -> None:
+def mill(numMilled, target=activePlayer.current()) -> None:
     #mainDeck
     return
 
-def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,activator: int = activePlayer) -> int: #target should be the index of the card
+def destroy(index,target,player: int = activePlayer.current(), shurikitty: bool = False,activator: int = activePlayer.current()) -> int: #target should be the index of the card
     #Always pops item, but only pops item if it has Decoy Doll
     global heroAbilityUsed
     heroDestroyed = 0
@@ -1185,7 +1185,7 @@ def destroy(index,target,player: int = activePlayer, shurikitty: bool = False,ac
     #else:
     return heroDestroyed
 
-def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
+def sacrificeSpecific(target: int = activePlayer.current(),index: int = -1) -> None:
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
         if askPlayer():
@@ -1206,7 +1206,7 @@ def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
             discardPile.append(heroItems[target][i].pop())
             discardPile.append(heroItems[target][index].pop())
     if WarriorsAndDruids:
-        for i in range(1,playerCount):
+        for i in range(1,activePlayer.playerCount()):
             if "Feral Dragon" in playerMonsters[i]:
                 drawCard(player=i)
                 continue
@@ -1225,7 +1225,7 @@ def sacrificeSpecific(target: int = activePlayer,index: int = -1) -> None:
                 playHero(index,target)
     return
 
-def sacrifice(target: int = activePlayer,heroClass=heroClass.NoClass, count: int = 1, forcedIndex: int = 0) -> None:
+def sacrifice(target: int = activePlayer.current(),heroClass=heroClass.NoClass, count: int = 1, forcedIndex: int = 0) -> None:
     global heroAbilityUsed
     hasHero = False #in hand
     if "Dragon Wasp" in playerMonsters[target]:
@@ -1250,7 +1250,7 @@ def sacrifice(target: int = activePlayer,heroClass=heroClass.NoClass, count: int
             discardPile.append(heroItems[target][i].pop())
             discardPile.append(heroItems[target][index].pop())
     if WarriorsAndDruids:
-        for i in range(1,playerCount):
+        for i in range(1,activePlayer.playerCount()):
             if "Feral Dragon" in playerMonsters[i]:
                 drawCard(player=i)
                 continue
@@ -1270,12 +1270,12 @@ def sacrifice(target: int = activePlayer,heroClass=heroClass.NoClass, count: int
                 playHero(index,target)
     return
 
-def stealHero(playerDestination: int = activePlayer, playerTarget: int = activePlayer) -> None:
+def stealHero(playerDestination: int = activePlayer.current(), playerTarget: int = activePlayer.current()) -> None:
     global heroAbilityUsed
-    if playerCount == 2 and "Calming Voice" in playerEffects[not(activePlayer-1)+1]:
+    if activePlayer.playerCount() == 2 and "Calming Voice" in playerEffects[not(activePlayer.current()-1)+1]:
         print("Cannot steal a hero from this player by Calming Voice's effect")
         return
-    if playerTarget == activePlayer:
+    if playerTarget == activePlayer.current():
         try:
             playerTarget = choosePlayer()
         except "Calming Voice" in playerEffects[playerTarget]:
@@ -1291,30 +1291,30 @@ def stealHero(playerDestination: int = activePlayer, playerTarget: int = activeP
                 heroItems[playerDestination].append(heroItems[playerTarget][i].pop())
     return
 
-def tradeHands(targetOne: int = activePlayer, targetTwo: int = not(activePlayer-1)+1) -> None:
+def tradeHands(targetOne: int = activePlayer.current(), targetTwo: int = not(activePlayer.current()-1)+1) -> None:
     playerHand[targetOne], playerHand[targetTwo] = playerHand[targetTwo], playerHand[targetOne]
     return
 
 def allPlayersDiscard(hitSelf: bool = True, type=cardType.Any) -> None:
-    for i in range(1,playerCount+1):
-        if hitSelf or i != activePlayer:
+    for i in range(1,activePlayer.playerCount()+1):
+        if hitSelf or i != activePlayer.current():
             discardSpecific(type,1,1)
     return
 
-def addFromDiscard(count: int = playerCount-1, player: int = activePlayer) -> None:
+def addFromDiscard(count: int = activePlayer.playerCount()-1, player: int = activePlayer.current()) -> None:
     for i in range(count-1,-1,-1):
         print(discardPile[i])
     index = int(input())
     playerHand[player].append(discardPile.pop(-index))
     return
 
-def protectionStatus(player=activePlayer) -> bool: #Will probably remove
+def protectionStatus(player=activePlayer.current()) -> bool: #Will probably remove
     return
 
 def draw() -> None: #Spend AP and draw a card as an action
-    if not ("Muscipula Rex" in playerMonsters[activePlayer] and not muscipulaRex):
+    if not ("Muscipula Rex" in playerMonsters[activePlayer.current()] and not muscipulaRex):
         reduceAP()
-    if not "Lumbering Demon" in playerMonsters[activePlayer]:
+    if not "Lumbering Demon" in playerMonsters[activePlayer.current()]:
         drawCard()
     else:
         if askPlayer():
@@ -1331,7 +1331,7 @@ def shuffleGYintoDeck() -> None:
     shuffle(mainDeck)
     return
 
-def drawCard(count: int = 1, player: int = activePlayer) -> None:
+def drawCard(count: int = 1, player: int = activePlayer.current()) -> None:
     newCount = 0
     shuffle = False
     if len(mainDeck) < count:
@@ -1387,21 +1387,21 @@ def attack(dontLoseAP=False) -> None:
         print("Not enough AP")
         return
     monster = selectMonster()
-    if not checkAtkRequirements(monsterField[monster]) and not "Nimble Gray" in playerEffects[activePlayer]:
+    if not checkAtkRequirements(monsterField[monster]) and not "Nimble Gray" in playerEffects[activePlayer.current()]:
         print("Doesn't meet Party Requirements")
         return
     if not dontLoseAP:
         reduceAP(2)
     diceRoll = rollDice()
-    diceRoll += (playerLeaders[activePlayer] == "Divine Arrow" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Divine Arrow"))
-    if "Reptilian Ripper" in playerMonsters[activePlayer]:
+    diceRoll += (playerLeaders[activePlayer.current()] == "Divine Arrow" or (playerLeaders[activePlayer.current()] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer.current()]] == "Divine Arrow"))
+    if "Reptilian Ripper" in playerMonsters[activePlayer.current()]:
         diceRoll += 2
-    if "Ancient Megashark" in playerMonsters[activePlayer]:
+    if "Ancient Megashark" in playerMonsters[activePlayer.current()]:
         diceRoll += 1
-    if "Critical Fang" in playerEffects[activePlayer]:
+    if "Critical Fang" in playerEffects[activePlayer.current()]:
         diceRoll += 4
-    for player in range(1,playerCount): #Checks all player parties
-        if player == activePlayer: #Don't apply the negative to yourself
+    for player in range(1,activePlayer.playerCount()): #Checks all player parties
+        if player == activePlayer.current(): #Don't apply the negative to yourself
             continue
         if "Chitin Scourge" in playerMonsters[player]:
             diceRoll -= 1
@@ -1416,26 +1416,26 @@ def attack(dontLoseAP=False) -> None:
         effect = monsterRollEffect.noEffect
     if testingPhase:
         print(f"Effect: {effect}")
-    if playerLeaders[activePlayer] == "Rhythmic Archer" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Rhythmic Archer"):
+    if playerLeaders[activePlayer.current()] == "Rhythmic Archer" or (playerLeaders[activePlayer.current()] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer.current()]] == "Rhythmic Archer"):
         if effect != monsterRollEffect.slay:
             drawCard()
     
     match(effect):
         case monsterRollEffect.slay:
-                if len(playerMonsters[activePlayer-1]) < 2:
-                    if playerLeaders[activePlayer] == "Raging Manticore" or (playerLeaders[activePlayer] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer]] == "Raging Manticore"):
+                if len(playerMonsters[activePlayer.current()-1]) < 2:
+                    if playerLeaders[activePlayer.current()] == "Raging Manticore" or (playerLeaders[activePlayer.current()] == "Unstable Unicorn" and playerLeaders[unstableUnicornTarget[activePlayer.current()]] == "Raging Manticore"):
                         drawCard()
                     #Copy the card to the player's field and then replace it with one from the Deck
                     print(f"Monster attacked: {monsterField[monster]}")
-                    playerMonsters[activePlayer-1].append(monsterField[monster])
-                    print(f"Player {activePlayer}'s Monsters: {playerMonsters[activePlayer-1]}")
+                    playerMonsters[activePlayer.current()-1].append(monsterField[monster])
+                    print(f"Player {activePlayer.current()}'s Monsters: {playerMonsters[activePlayer.current()-1]}")
                     if testingPhase:
-                        print(f"{monsterField[monster]} was slain by Player {activePlayer}")
+                        print(f"{monsterField[monster]} was slain by Player {activePlayer.current()}")
                     monsterField[monster] = monsterDeck.pop()
                     if testingPhase:
                         print(f"Monsters: {monsterField}")
                     monsterField[monster] = monsterDeck.pop()
-                    if playerLeaders[activePlayer] == "Raging Manticore":
+                    if playerLeaders[activePlayer.current()] == "Raging Manticore":
                         drawCard(2)
                     if testingPhase:
                         print(f"Monsters: {monsterField}")
@@ -1455,7 +1455,7 @@ def attack(dontLoseAP=False) -> None:
             return
     return
 
-def endGame(typeOfWin: str, winningPlayer: int = activePlayer) -> None:
+def endGame(typeOfWin: str, winningPlayer: int = activePlayer.current()) -> None:
     global gameEnded
     gameEnded = True
     if typeOfWin == "Classes":
@@ -1490,7 +1490,7 @@ def checkAtkRequirements(monster) -> bool:
         return False
     return True
 
-def getPartyCounts(target: int = activePlayer) -> tuple[int,list]: #Returns an int value and a list of enum'd ints
+def getPartyCounts(target: int = activePlayer.current()) -> tuple[int,list]: #Returns an int value and a list of enum'd ints
     if testingPhase:
         print("Getting class counts")
     heroCount = len(playerHeroes[target])
@@ -1514,12 +1514,12 @@ def getPartyCounts(target: int = activePlayer) -> tuple[int,list]: #Returns an i
         endGame("Classes", target)
     return heroCount, classSet
 
-def discardHand(player=activePlayer) -> None:
-    if not playerHand[activePlayer]: return #Return if empty
+def discardHand(player=activePlayer.current()) -> None:
+    if not playerHand[activePlayer.current()]: return #Return if empty
     handSize = len(playerHand[player])
     for card in range(0,handSize):
         discardPile.append(playerHand[player].pop())
-    for i in range(1,playerCount):
+    for i in range(1,activePlayer.playerCount()):
         if "Razor Tongue" in playerMonsters[i]:
             drawCard(player=i)
     return
@@ -1534,7 +1534,7 @@ def discardDraw() -> None: #Pay 3 AP, discard your hand, draw 5
     drawCard(5)
     return
 
-def discardSpecific(type=cardType.Any,count=1,target=activePlayer, canCancel: bool = False) -> int:
+def discardSpecific(type=cardType.Any,count=1,target=activePlayer.current(), canCancel: bool = False) -> int:
     if not playerHand[target]: return
     if len(playerHand[target]) < count: count = len(playerHand[target])
     for i in range(0,count):
@@ -1543,22 +1543,22 @@ def discardSpecific(type=cardType.Any,count=1,target=activePlayer, canCancel: bo
             count = i
             continue
         discardSelected(cardIndex,target)
-    for i in range(1,playerCount):
+    for i in range(1,activePlayer.playerCount()):
         if "Razor Tongue" in playerMonsters[i] and i != target:
             drawCard(player=i)
     return count
 
-def selectFromHand(type=cardType.Any,target=activePlayer, canCancel: bool = False) -> int:
+def selectFromHand(type=cardType.Any,target=activePlayer.current(), canCancel: bool = False) -> int:
     cancelled = False #If the player wants to cancel
     try:
-        index = int(input())
+        index = int(input())-1
     except type != Cards[playerHand[target][index]]["Card Type"]:
         selectFromHand(type,target)
     except cancelled and canCancel:
         return -1
     return index
 
-def discardSelected(cardIndex,target=activePlayer) -> None:
+def discardSelected(cardIndex,target=activePlayer.current()) -> None:
     discardPile.append(playerHand[target].pop(cardIndex))
     return
 

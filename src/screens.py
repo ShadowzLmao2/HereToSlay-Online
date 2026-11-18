@@ -1,4 +1,5 @@
 from draw import *
+import config
 
 def menu():
     pass

@@ -9,7 +9,6 @@ from random import randint, shuffle
 sys.dont_write_bytecode = True
 
 #ranked = True
-playerCount = 4
 
 def testPullCard() -> None:
     playerHand[2].append("Bear Claw")
@@ -142,6 +141,23 @@ def drawTests() -> None:
     drawCard(2,1)
     return
 
+def otherPlayerEffects():
+    activePlayer.increment()
+    drawCard(player=2)
+    print(f"Player {activePlayer.current()}: {playerHand[activePlayer.current()]}")
+    return
+
+def activePlayerTest():
+    playerHand[1] = ["Player 1"]
+    playerHand[2] = ["Player 2"]
+    activePlayer = activePlayerClass()
+    activePlayer.playerCount(2)
+    activePlayer.increment()
+    activePlayer.increment()
+    print(playerHand[activePlayer.current()])
+    return
+
+
 '''  Game Order
 PreGame Phase      - "PreGame Phase initialized"
     Deck Shuffle Phase - the deck name is printed and then the deck
@@ -161,5 +177,6 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 #checkCardsInHand()
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
-
-testWin() #Run testWin and dont give an input to just test the game
+#otherPlayerEffects()
+activePlayerTest()
+#testWin() #Run testWin and dont give an input to just test the game
