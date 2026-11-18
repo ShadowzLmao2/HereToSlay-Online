@@ -6,27 +6,25 @@ heroAbilityUsed: bool = []
 discardPile = []
 
 class activePlayerClass:
-    activePlayer = 1
-    def __init__(self,playerCount):
+    def __init__(self,playerCount: int,activePlayer: int = 1):
+        self.activePlayer = activePlayer
         self.playerCount = playerCount
 
     def updatePlayerCount(self,playerCount):
         self.playerCount = playerCount
 
     def increment(self):
-        cls = type(self)
         if testingPhase:
-            print(f"Before: {cls.activePlayer}")
-        if cls.activePlayer == self.playerCount:
-            cls.activePlayer = 1
+            print(f"Before: {self.activePlayer}")
+        if self.activePlayer == self.playerCount:
+            self.activePlayer = 1
         else:
-            cls.activePlayer += 1
+            self.activePlayer += 1
         if testingPhase:
-            print(f"After: {cls.activePlayer}")
+            print(f"After: {self.activePlayer}")
 
-    @classmethod
-    def current(cls):
-        return cls.activePlayer
+    def current(self):
+        return self.activePlayer
 
     def count(self):
         return self.playerCount
