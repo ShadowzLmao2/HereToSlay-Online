@@ -1,12 +1,15 @@
+import sys
+sys.dont_write_bytecode = True
+
 from card_images import *
 from strings import *
 from config import *
 from cards import *
 from functions import *
 from main import *
-import random as rand
+from random import randint, shuffle
+
 #ranked = True
-playerCount = 4
 
 def testPullCard() -> None:
     playerHand[2].append("Bear Claw")
@@ -40,7 +43,7 @@ def checkCardsInHand() -> None:
     playerHand[1].append("Mirroryu")
     playerHand[1].append("Luut")
     #Random index in hand
-    index = rand.randint(0,len(playerHand[1])-1)
+    index = randint(0,len(playerHand[1])-1)
     print(f"Random index: {index}")
     print(f"Hand Size: {len(playerHand[1])}")
     #print(f"Card: {playerHand[1]}")
@@ -75,7 +78,7 @@ def testAttackReqCheck():
     return
 
 def monsterDeckPopTest():
-    #random.shuffle(monsterDeck)
+    #shuffle(monsterDeck)
     print(monsterDeck)
     monsterField[0] = monsterDeck.pop()
     monsterField[1] = monsterDeck.pop()
@@ -139,6 +142,22 @@ def drawTests() -> None:
     drawCard(2,1)
     return
 
+def otherPlayerEffects():
+    activePlayer.increment()
+    drawCard(player=2)
+    print(f"Player {activePlayer.current()}: {playerHand[activePlayer.current()]}")
+    return
+
+def activePlayerTest():
+    playerHand[1] = ["Player 1"]
+    playerHand[2] = ["Player 2"]
+    activePlayer = activePlayerClass(2)
+    activePlayer.increment()
+    activePlayer.increment()
+    print(playerHand[activePlayer.current()])
+    return
+
+
 '''  Game Order
 PreGame Phase      - "PreGame Phase initialized"
     Deck Shuffle Phase - the deck name is printed and then the deck
@@ -148,7 +167,7 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 '''
 #What you want to test (comment out all other test functions):
 #print("_________________________________________________________________________________________________________________________________________________________________________________________________________________________________")
-drawTests()
+#drawTests()
 # modifierTest()
 #testAttackReqCheck()
 #addFromDiscardTest()
@@ -158,4 +177,6 @@ drawTests()
 #checkCardsInHand()
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
+#otherPlayerEffects()
+activePlayerTest()
 #testWin() #Run testWin and dont give an input to just test the game

@@ -9,7 +9,7 @@ type: Feature
 ---
 
 **Why do you want this feature**
-What does your suggestion accomplish (think long and hard about its implications and side effects)
+What does your suggestion accomplish (think about its implications and side effects)
 
 **Describe the feature you'd like**
 A clear and concise description of what you want to happen.

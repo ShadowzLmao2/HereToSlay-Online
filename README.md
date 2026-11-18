@@ -4,10 +4,15 @@ Make sure you have Python and pip downloaded. Run the commands
 `python --version`  
 `pip --version`  
 If you have an older version of Python, you can update it by running the Python install manager and launching it.
+If you have an older version of Pip, run `py -m pip install --upgrade pip` 
 and if both return a version number, then you are good. If not, install Python from the official website or from the Microsoft Store. Then, install pip by clicking on this link and running the file: https://bootstrap.pypa.io/pip/pip.pyz  
-Once that's done, you can run the two previously mentioned commands again and they should give a version number  
-Once that's done, you need to install Pygame. Run: `pip install pygame`. You can test to make sure it worked by running `python3 -m pygame.examples.aliens`  
+ 
+Once that's done, you need to install Pygame. Run `pip install pygame`
 If you already have it downloaded, you can run `pip install pygame --upgrade` to update it instead.
+
+To get Cython working, run `pip install Cython`
+You can instead update Taichi by running `pip install --upgrade Cython`
+In the windows search bar, search "Use developer features", and under terminal, enable "Enable sudo"
   
 To run the game, go into powershell (or python if it works for you) and run draw.py (go into the src folder with the cd command and type `python run.py`)  
   
@@ -59,6 +64,8 @@ Todo:
     - BQ Modifiers, all of Here to Sleigh
 - Banner Quest hero abilities (why, just why does it have to be like that)
 - Create tests required to pass before PRing
+
+Unsure if we should use cython or taichi
 
 Specific Ruling Clarified by Staff:
 - Leader abilities are all optional

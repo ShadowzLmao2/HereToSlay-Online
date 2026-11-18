@@ -6,7 +6,7 @@ rankedList = [
 "Heavy Bear",
 "Pan Chucks",
 "Qi Bear",
-"Tough Teddy"
+"Tough Teddy",
 #"Dodgy Dealer",
 "Fuzzy Cheeks",
 "Greedy Cheeks",
@@ -66,7 +66,7 @@ rankedList = [
 "Bark Hexer",
 "Beholden Retriever",
 "Bone Collector",
-"Boston Terror"
+"Boston Terror",
 #"Grim Pupper",
 "Hollow Husk",
 "Perfect Vessel",
@@ -79,7 +79,7 @@ rankedList = [
 "Roaryal Guard",
 "Vicious Wildcat",
 "Unbridled Fury",
-"Dragalter"
+"Dragalter",
 #"Dystortivern",
 "Extraga",
 "Luut",
@@ -110,6 +110,6 @@ rankedList = [
 "Holly Jolly"
 ]
 rankedMonsterBanlist = [
-    "Venomous Gemini"
+    "Venomous Gemini",
     "Clawed Nightmare"
 ]

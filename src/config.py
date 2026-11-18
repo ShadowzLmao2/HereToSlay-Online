@@ -1,4 +1,6 @@
 from enum import Enum #From enuxio?
+import sys
+sys.dont_write_bytecode = True
 testingPhase = True
 
 gamemode = 1 #1 is 1v1 or FFA, 2 is 2v2 

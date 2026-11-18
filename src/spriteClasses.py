@@ -1,5 +1,7 @@
 import pygame
-
+from card_images import *
+from main import *
+from config import *
 from cards import *
 
 #Classes for cards

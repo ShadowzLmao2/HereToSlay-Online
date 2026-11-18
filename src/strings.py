@@ -1,3 +1,6 @@
+import sys
+sys.dont_write_bytecode = True
+
 switchLeaderType = 'Would you like to switch the type of your Leader?'
 useModifier = 'Would you like to use a modifier?'
 protectingHornMod = "+1 or -1 to this modifier? (0 is +1, 1 is -1, blank to cancel)"

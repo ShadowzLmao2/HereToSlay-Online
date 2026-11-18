@@ -31,7 +31,7 @@ StaticButtons = {
         "x": 0,
         "y": 0,
         "type": "text",
-        "value": 'Ranked', #The index of the image we want (I couldent get cardImageRef to work bc I'm dumb, if you can get it to work plz do)
+        "value": 'Ranked', #The index of the image we want (I couldn't get cardImageRef to work bc I'm dumb, if you can get it to work plz do)
         "method": startGame,
         "centered": True,
     },

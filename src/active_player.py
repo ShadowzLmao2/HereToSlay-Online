@@ -1,10 +1,35 @@
 from cards import *
 #from card_images import *
 #from config import *
-activatedHeroAbility: bool = []
-activatePlayer = 1
-playerCount = 4 #Max = 6
+leaderAbilityUsed = False
+heroAbilityUsed: bool = []
 discardPile = []
+
+class activePlayerClass:
+    def __init__(self,playerCount: int,activePlayer: int = 1):
+        self.activePlayer = activePlayer
+        self.playerCount = playerCount
+
+    def updatePlayerCount(self,playerCount):
+        self.playerCount = playerCount
+
+    def increment(self):
+        if testingPhase:
+            print(f"Before: {self.activePlayer}")
+        if self.activePlayer == self.playerCount:
+            self.activePlayer = 1
+        else:
+            self.activePlayer += 1
+        if testingPhase:
+            print(f"After: {self.activePlayer}")
+
+    def current(self):
+        return self.activePlayer
+
+    def count(self):
+        return self.playerCount
+
+
 playerEffects = [
     [],
     [],
