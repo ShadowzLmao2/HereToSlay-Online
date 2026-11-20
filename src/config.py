@@ -17,6 +17,7 @@ ExtraEnemyMonsterSlot = True
 if MonsterExpansion == False:
     ExtraEnemyMonsterSlot = True
 askAllToModifyOrChallenge = True
+framerate = 120
 #Ranked
 ranked = False
 maxRankedCards = 60

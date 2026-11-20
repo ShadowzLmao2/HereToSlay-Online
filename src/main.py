@@ -18,7 +18,6 @@ from random import randint, shuffle
 
 turnCount = 1
 dragalterModifier = [0,0]
-gameEnded = False
 silverLining = False
 panguardian = False
 muscipulaRex = False
@@ -31,7 +30,7 @@ activePlayer = activePlayerClass(2)
 #Separate from the GUI, handles the main game once you enter a game with another player
 def startGame(test="") -> None:
     if testingPhase:
-        print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
+        print("\n___________________________________________________________________________________________________________________________________________________________________________________________________________")
         print("PreGame Phase started\n")
     if testingPhase:
         print("\nMonster Deck:")
@@ -53,7 +52,7 @@ def startGame(test="") -> None:
         drawCard(5,player)
     if testingPhase:
         print("PreGame Phase finished")
-        print("\n________________________________________________________________________________________________________________________________________________________________________________________________________________")
+        print("\n___________________________________________________________________________________________________________________________________________________________________________________________________________")
         if test == "atk":
             playerHeroes[1] = ["Bad Axe","Meowzio", "Lucky Bucky"]
             monsterField[0] = "Abyss Queen"
@@ -69,7 +68,7 @@ def startGame(test="") -> None:
 
 #Is the main game loop. When the game ends, it returns to startGame which then ends
 def main(test: str) -> None:
-    while not gameEnded:
+    while not activePlayer.isGameDone():
         global turnCount, heroAbilityUsed
         #Start of Turn
         if testingPhase:
@@ -105,6 +104,7 @@ def main(test: str) -> None:
         globalModifier = 0
         playerEffects[activePlayer.current()] = []
         activePlayer.increment()
+        print(f"Active: {activePlayer.current()}")
         turnCount += 1
         #All of this code (in the End of Turn section) MUST NOT cause anything to happen visually. It must run quickly before the game ends (if it does)
         #repeats while there is no winner
@@ -280,7 +280,7 @@ def rollDie() -> int:
 def chooseAction() -> None:
     global AP
     print(f"Active Player: {activePlayer.current()}")
-    while AP > 0 and not gameEnded:
+    while AP > 0 and not activePlayer.isGameDone():
         print(playerHand[activePlayer.current()])
         action: str = input("Do:")
         match(action):
@@ -288,21 +288,24 @@ def chooseAction() -> None:
                 AP = 0
                 return
             case "draw":
-                draw()
+                draw(activePlayer.current())
             case "redraw":
                 discardDraw()
             case "atk":
                 attack()
             case "hero":
-                index: int = int(input())+1
-                playHero(index,activePlayer.current())
+                index: int = int(input())
+                index -= 1
+                playHero(index)
             case "leader":
                 activateLeaderAbility()
             case "play":
-                index: int = int(input())+1
-                playFromHand(index, Cards[playerHand[index]]["Card Type"])
+                index: int = int(input())
+                index -= 1
+                playFromHand(index, Cards[playerHand[activePlayer.current()][index]]["Card Type"])
             case "dt":
-                index: int = int(input())+1
+                index: int = int(input())
+                index -= 1
                 print(Cards[playerHand[activePlayer.current()][index]]["Description"])
             case "field":
                 print(f"Heroes: {playerHeroes[activePlayer.current()]}")
@@ -312,20 +315,22 @@ def chooseAction() -> None:
             case "monster":
                 print(monsterField)
             case "stop":
-                gameEnded = True
+                activePlayer.endGame()
                 return
     return
 
-def playFromHand(card: int, cardType) -> None:
-    if cardType == cardType.Hero:
-        playHero(card)
-    elif cardType == cardType.Magic:
-        target = int(input(targetStr))
-        playMagic(card,target)
-    elif cardType == cardType.Item:
-        target = int(input(targetStr))
-        index = int(input())
-        playItem(index, playerHand[activePlayer.current()][card],target)
+def playFromHand(card: int, cardType: int) -> None:
+    print(f"Active: {activePlayer.current()}")
+    match(cardType):
+        case cardType.Hero:
+            playHero(card)
+        case cardType.Magic:
+            target = int(input(targetStr))
+            playMagic(card,target)
+        case cardType.Item:
+            target = int(input(targetStr))
+            index = int(input())
+            playItem(index, playerHand[activePlayer.current()][card],target)
     if testingPhase:
         print(playerHand[activePlayer.current()])
     return
@@ -597,7 +602,7 @@ def useHeroAbility(hero,player: int = activePlayer.current()) -> None:
                     continue
             if not hasHero: return
             stealHero(player,choosePlayer())
-            activateHeroAbility(-1,player=player)
+            activateHeroAbility(len(playerHeroes[i])-1,player=player)
         case cardEffect.BigBuckley:
             attack(True)
         case cardEffect.BuckOmens:
@@ -938,6 +943,7 @@ def playItem(index, item, target:int = activePlayer.current()) -> None:
 def playHero(index,player=activePlayer.current(),loseAP: bool = True) -> None:
     if loseAP:
         reduceAP()
+        print(AP)
     if challenge(): return
     global heroAbilityUsed, heroItems
     heroAbilityUsed.append(False)
@@ -947,7 +953,8 @@ def playHero(index,player=activePlayer.current(),loseAP: bool = True) -> None:
         tribute = int(input())
         playerHeroes[player][tribute] = playerHand[index]
         playerHand[player].pop(index)
-
+    
+    heroAbilityUsed[player].append(False)
     
     if len(heroItems[player]) < len(playerHeroes[player]): #Expands heroItems list to match the playerHeroes length
         heroItems[player].append("")
@@ -1299,17 +1306,14 @@ def addFromDiscard(count: int = activePlayer.count()-1, player: int = activePlay
     playerHand[player].append(discardPile.pop(-index))
     return
 
-def draw() -> None: #Spend AP and draw a card as an action
+def draw(player) -> None: #Spend AP and draw a card as an action
     if not ("Muscipula Rex" in playerMonsters[activePlayer.current()] and not muscipulaRex):
         reduceAP()
-    if not "Lumbering Demon" in playerMonsters[activePlayer.current()]:
-        drawCard()
-    else:
+    drawCard(player=player)
+    if "Lumbering Demon" in playerMonsters[activePlayer.current()]:
         if askPlayer():
-            drawCard(2)
-            discardSpecific()
-        else:
-            drawCard()
+            drawCard(player=player)
+            discardSpecific(target=player)
     return
 
 def shuffleGYintoDeck() -> None:
@@ -1322,6 +1326,7 @@ def shuffleGYintoDeck() -> None:
 def drawCard(count: int = 1, player: int = activePlayer.current()) -> None:
     newCount = 0
     shuffle = False
+    print(f"Active: {player}")
     if len(mainDeck) < count:
         newCount = count - len(mainDeck)
         count = len(mainDeck)
@@ -1444,16 +1449,13 @@ def attack(dontLoseAP=False) -> None:
     return
 
 def endGame(typeOfWin: str, winningPlayer: int = activePlayer.current()) -> None:
-    global gameEnded
-    gameEnded = True
+    activePlayer.endGame()
     if typeOfWin == "Classes":
         winType = winByClasses
     elif typeOfWin == "Monsters":
         winType = winByMonsters
     elif typeOfWin == "Test":
         winType = winByTest
-    else: #Potentially unnecessary
-        gameEnded = False
     print(f"Player {winningPlayer} won by {winType}.")
     return #Goes back to where you were, eventually returning to main, which ends the game loop
 
