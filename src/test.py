@@ -95,7 +95,7 @@ def monsterDeckPopTest():
     return
 
 def testWin() -> None:
-    print(testCommands)
+    #print(testCommands)
     test: str = input("What are you testing: ")
     match test:
         case "Class":
@@ -178,5 +178,5 @@ Player Turn Phase  - Player # is printed and their turn is started. Currently, t
 #testLeaderTypeSwap()
 #monsterDeckPopTest()
 #otherPlayerEffects()
-activePlayerTest()
-#testWin() #Run testWin and dont give an input to just test the game
+#activePlayerTest()
+testWin() #Run testWin and dont give an input to just test the game

@@ -9,6 +9,7 @@ class activePlayerClass:
     def __init__(self,playerCount: int,activePlayer: int = 1):
         self.activePlayer = activePlayer
         self.playerCount = playerCount
+        self.gameEnded = False
 
     def updatePlayerCount(self,playerCount):
         self.playerCount = playerCount
@@ -28,6 +29,12 @@ class activePlayerClass:
 
     def count(self):
         return self.playerCount
+
+    def isGameDone(self):
+        return self.gameEnded
+    
+    def endGame(self):
+        self.gameEnded = True
 
 
 playerEffects = [
