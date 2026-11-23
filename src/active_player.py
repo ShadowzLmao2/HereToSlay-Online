@@ -43,7 +43,6 @@ playerEffects = [
     [],
     [],
     [],
-    [],
     []
 ]
 majestelk = False

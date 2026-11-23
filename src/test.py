@@ -123,13 +123,13 @@ def modifierTest() -> None:
     print(f"Modifier: {mod}")
     return
 
-def addFromDiscardTest() -> None:
+def addFromDiscardTest() -> None: #Yeah, I deleted the function and put it into BearyWise's effect
     discardPile.append("Mirroryu")
     discardPile.append("Extraga")
     discardPile.append("Lucky Bucky")
     discardPile.append("Bad Axe")
     print(f"Discard Pile: {discardPile}")
-    addFromDiscard(4,1)
+    #addFromDiscard(4,1)
     return
 
 def drawTests() -> None:
