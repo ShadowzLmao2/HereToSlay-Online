@@ -23,6 +23,7 @@ panguardian = False
 muscipulaRex = False
 nobleShamanUsed = False
 canModify = False
+activatedBanner, hunterBanner = False
 globalModifier = 0
 
 activePlayer = activePlayerClass(2)
@@ -100,7 +101,7 @@ def main(test: str) -> None:
             if "Scavenger Griffin" in playerMonsters[activePlayer.current()]:
                 stealHero(activePlayer.current(),choosePlayer())
         global silverLining, panguardian, nobleShamanUsed, globalModifier, canModify
-        silverLining = panguardian = nobleShamanUsed = canModify = False
+        silverLining, panguardian, nobleShamanUsed, canModify, activatedBanner = False
         globalModifier = 0
         playerEffects[activePlayer.current()-1] = []
         activePlayer.increment()
@@ -260,7 +261,8 @@ def rollDice(player, heroRoll: bool = False, index: int = 0) -> int:
         case "Charismatic Song":
             diceRoll += 1
         case "Piercing Howl":
-            diceRoll += len(heroItems[player])
+            for i in range(0,len(heroItems[player])):
+                diceRoll += (heroItems[player][i] != "None")
         case "Fearless Flame":
             if askPlayer():
                 discardSpecific()
@@ -337,7 +339,7 @@ def playFromHand(card: int, cardType: int) -> None:
 
 def activateHeroAbility(player, index: int, summoned: bool = False) -> None:
     global AP, silverLining, panguardian, heroAbilityUsed
-    if heroAbilityUsed[index] and not heroItems[player][index] == "Bottomless Bag":
+    if activatedHeroAbility[index] and not heroItems[player][index] == "Bottomless Bag" and not bardBanner:
         if testingPhase:
             print("Ability already activated this turn")
         return
@@ -365,7 +367,8 @@ def activateHeroAbility(player, index: int, summoned: bool = False) -> None:
                 diceRoll += modifier()
     print(playerHeroes[player][index])
     if diceRoll >= Cards[playerHeroes[player][index]]["Effect Roll"]:
-        heroAbilityUsed[index] = True
+        if not bardBanner:
+            activatedHeroAbility[index] = True
         #Leaders
         if playerLeaders[player] == "Veiled Raider" and diceRoll >= 12:
             stealHero(player,choosePlayer())
@@ -430,7 +433,45 @@ def activateLeaderAbility(leader=playerLeaders[activePlayer.current()]) -> None:
                 return
     return
 
-def useHeroAbility(hero,player) -> None:
+def activateBanner(banner = playerBanners[activePlayer]):
+    global activatedBanner
+    match(banner):
+        case "Bard Banner":
+            discardSpecific()
+            activateHeroAbility(int(input()),bardBanner=True)
+        case "Berserker Banner":
+            discardSpecific(count=3)
+            attack(True)
+        case "Druid Banner":
+            discardSpecific(count=2)
+            drawCard(2)
+        case "Fighter Banner":
+            discardSpecific(count=2)
+            destroy(int(input()),int(input()),choosePlayer())
+        case "Guardian Banner":
+            discardSpecific()
+            searchDiscard(cardType.Modifier)
+        case "Necromancer":
+            discardSpecific(count=2)
+            searchDiscard(cardType.Hero)
+            playHero(-1,loseAP=False)
+        case "Ranger Banner":
+            drawCard()
+        case "Thief Banner":
+            discardSpecific(count=3)
+            stealHero(playerTarget = choosePlayer())
+        case "Warrior Banner":
+            discardSpecific()
+            index = int(input())
+            playItem(index,playerHand[activePlayer][index])
+        case "Wizard Banner":
+            discardSpecific()
+            index = int(input())
+            playItem(index,playerHand[activePlayer][index])
+    activatedBanner = True
+    return
+    
+def useHeroAbility(hero) -> None:
     global playerEffects, globalModifier, AP, canModify, dragalterModifier
     match Cards[hero]["Effect"]:
         case cardEffect.BadAxe:
@@ -896,6 +937,13 @@ def playMagic(index,target: int) -> None: #Play a magic card from your hand. Tar
             pullCard(choosePlayer())
         case cardEffect.CaptivatingSpell:
             globalModifier += 3
+        case cardEffect.relicAmp:
+            for i in range(0,len(heroItems[player])):
+                globalModifier += 2(heroItems[player][i]!="None")
+        case cardEffect.synergyBoost:
+            chosenClass = int(input())
+            for i in range(0,len(playerHeroes[player])):
+                globalModifier += 2*(Cards[playerHeroes[player][i]]["Class"] == chosenClass)
     if playerLeaders[target] == "Cloaked Sage":
         drawCard(player = target)
     if "Voltclaw Lion" in playerMonsters[target]:
@@ -916,28 +964,55 @@ def playItem(index, item, target:int = activePlayer.current()) -> None:
         roll = rollDie()
         match(roll):
             case 1:
-                morphMaskType[target][index] = heroClass.Fighter
+                maskClass[target][index] = heroClass.Fighter
             case 2:
-                morphMaskType[target][index] = heroClass.Ranger
+                maskClass[target][index] = heroClass.Ranger
             case 3:
-                morphMaskType[target][index] = heroClass.Thief
+                maskClass[target][index] = heroClass.Thief
             case 4:
-                morphMaskType[target][index] = heroClass.Guardian
+                maskClass[target][index] = heroClass.Guardian
             case 5:
-                morphMaskType[target][index] = heroClass.Bard
+                maskClass[target][index] = heroClass.Ranger
             case 6:
-                morphMaskType[target][index] = heroClass.Wizard
+                maskClass[target][index] = heroClass.Wizard
     elif item == "Chaos Mask":
         roll = randint(1,6) + randint(1,6)
         match(roll):
             case 1 | 2 | 3:
-                morphMaskType[target][index] = heroClass.Warrior
+                maskClass[target][index] = heroClass.Warrior
             case 4 | 5 | 6:
-                morphMaskType[target][index] = heroClass.Druid
+                maskClass[target][index] = heroClass.Druid
             case 7 | 8 | 9:
-                morphMaskType[target][index] = heroClass.Berserker
+                maskClass[target][index] = heroClass.Berserker
             case 10 | 11 | 12:
-                morphMaskType[target][index] = heroClass.Necromancer
+                maskClass[target][index] = heroClass.Necromancer
+    elif item == "Prism Mask":
+        choice = int(input())
+        match(choice):
+            case 0:
+                maskClass[target][index] = heroClass.Fighter
+            case 1:
+                maskClass[target][index] = heroClass.Ranger
+            case 2:
+                maskClass[target][index] = heroClass.Thief
+            case 3:
+                maskClass[target][index] = heroClass.Guardian
+            case 4:
+                maskClass[target][index] = heroClass.Ranger
+            case 5:
+                maskClass[target][index] = heroClass.Wizard
+            case 6:
+                maskClass[target][index] = heroClass.Warrior
+            case 7:
+                maskClass[target][index] = heroClass.Druid
+            case 8:
+                maskClass[target][index] = heroClass.Berserker
+            case 9:
+                maskClass[target][index] = heroClass.Necromancer
+            case 10:
+                maskClass[target][index] = heroClass.Sorcerer
+
+
     if "Wicked Sea Serpent" in playerMonsters[target]:
         drawCard(player=target)
     #Check if you won after equipping a class changing item
@@ -1374,6 +1449,7 @@ def drawMonsterCard(count=1) -> None:
     return
 
 def attack(dontLoseAP=False) -> None:
+    global hunterBanner
     if AP < 2 and not dontLoseAP:
         print("Not enough AP")
         return
@@ -1396,8 +1472,12 @@ def attack(dontLoseAP=False) -> None:
             continue
         if "Chitin Scourge" in playerMonsters[player]:
             diceRoll -= 1
-    # if testingPhase:
-    #     diceRoll = 12
+    if testingPhase:
+        diceRoll = 12
+    if not hunterBanner and "Hunter Banner" in playerBanners[activePlayer]:
+        if bool(input()):
+            diceRoll += 1
+            hunterBanner = True
     print(f"Rolled a: {diceRoll}")
     if diceRoll >= Monsters[monsterField[monster]]["Win Roll"]:
         effect = Monsters[monsterField[monster]]["Win Effect"]
@@ -1488,7 +1568,7 @@ def getPartyCounts(target: int) -> tuple[int,list]: #Returns an int value and a 
         mask = heroItems[target][card]
         if Cards[mask]["Effect"] == cardEffect.Mask:
             if mask == "Morph Mask":
-                classSet.add(morphMaskType[target][card])
+                classSet.add(maskClass[target][card])
             else:
                 classSet.add(Cards[heroItems[target][card]]["Mask Type"])
         else:
@@ -1497,7 +1577,7 @@ def getPartyCounts(target: int) -> tuple[int,list]: #Returns an int value and a 
     if testingPhase:
         print(f"Hero Count: {heroCount}")
         print(f"Classes in Party: {classSet}")
-    if len(classSet) == 6:
+    if len(classSet) >= heroWinCount:
         endGame("Classes", target)
     return heroCount, classSet
 

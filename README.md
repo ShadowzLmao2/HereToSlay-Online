@@ -61,7 +61,8 @@ Todo:
 - GUI - tkinter stuff
 - Internet Connection and p2p
 - Fix images (higher res) for:
-    - BQ Cards/Monsters, all of Here to Sleigh
+    - BQ Modifiers, all of Here to Sleigh
+- Banner Quest hero abilities (why, just why does it have to be like that)
 - Create tests required to pass before PRing
 
 Unsure if we should use cython or taichi

@@ -255,21 +255,23 @@ class cardEffect(Enum):
     MilkAndCookies         = 151
     Gift                   = 152
     #Gifts
-    BagOfHoldingGifts    = 153
-    EZMixPotions         = 154
-    MythicalMystery      = 155
-    RudolphsNose         = 156
-    SnowsofTime          = 157
-    TheGiftofDestruction = 158
-    WarmSocks            = 159
-    EndlessUnwrapping    = 160
-    GagGift              = 161
-    LumpofCoal           = 162
-    MintConditionMittens = 163
-    PotluckSurprise      = 164
-    ReallyItchySweater   = 165
-    WatchfulMedallion    = 166
-    WhiteElephant        = 22 #22 is unused, but I'm not fixing the list -- actually I did but i forgot that
+    BagOfHoldingGifts    = 154
+    EZMixPotions         = 155
+    MythicalMystery      = 156
+    RudolphsNose         = 157
+    SnowsofTime          = 158
+    TheGiftofDestruction = 159
+    WarmSocks            = 160
+    EndlessUnwrapping    = 161
+    GagGift              = 162
+    LumpofCoal           = 163
+    MintConditionMittens = 164
+    PotluckSurprise      = 165
+    ReallyItchySweater   = 166
+    WatchfulMedallion    = 167
+    WhiteElephant        = 22 #22 is unused, but I'm not fixing the list
+    relicAmp             = 168
+    synergyBoost         = 169
 
 
     
@@ -1220,7 +1222,20 @@ Cards = {
         "Image" : 'src/card_images/KSE/Cards/captivatingSpell.png',
         "Effect" : cardEffect.CaptivatingSpell,
         "Card Type" : cardType.Magic,
-        "Description" : "+3 to all of your rolls until the end of your turn"
+        "Description" : "+3 to all of your rolls until the end of your turn."
+    },
+    #Banner Quest Magic
+    "Relic Amp" : {
+        "Image" : 'src/card_images/BannerQuest/Cards/relicAmp.png',
+        "Effect" : cardEffect.relicAmp,
+        "Card Type" : cardType.Magic,
+        "Description" : "For each item card in your Party, +2 to all of your rolls until the end of your turn."
+    },
+    "Synergy Boost" : {
+        "Image" : 'src/card_images/BannerQuest/Cards/synergyBoost.png',
+        "Effect" : cardEffect.synergyBoost,
+        "Card Type" : cardType.Magic,
+        "Description" : "Choose a class. For each Hero card in your Party of that class, +2 to all your rolls until the end of your turn."
     },
 #Items
     #Masks
@@ -1301,6 +1316,14 @@ Cards = {
         "Card Type" : cardType.Item,
         "Description" : "The equipped Hero card is considered a Sorcerer instead of its original class."
     },
+    "Prism Mask" : {
+        "Image" : 'src/card_images/KSE/Cards/prismMask.png',
+        "Curse" : True,
+        "Effect" : cardEffect.Mask,
+        "Mask Type" : heroClass.NoClass,
+        "Card Type" : cardType.Item,
+        "Description" : "This Hero card has no class."
+    },
     "Chaos Mask" : {
         "Image" : 'src/card_images/BannerQuest/Cards/chaosMask.png',
         "Curse" : True,
@@ -1317,11 +1340,10 @@ Cards = {
     },
     "Mask of Misfortune" : {
         "Image" : 'src/card_images/KSE/Cards/maskOfMisfortune.png',
-        "Curse" : True,
         "Effect" : cardEffect.Mask,
         "Mask Type" : heroClass.NoClass,
         "Card Type" : cardType.Item,
-        "Description" : "This Hero card has no class."
+        "Description" : "When this card is equipped, choose a class, The equipped Hero card is considered that class instead of its original class."
     },
     #Base Game Items
     "Decoy Doll" : {
@@ -2470,6 +2492,118 @@ Cards = {
     },
     
     #Banner Quest
+    "Bone Bruiser" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/boneBruiser.png',
+        "Class" : heroClass.Necromancer,
+        "Secondary Class" : heroClass.Berserker,
+        "Token Type" : heroClass.Necromancer,
+        "Effect" : cardEffect.boneBruiser,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Necromancer token to it.",
+        "Description" : "Switch this Hero card's class from Necromancer to Berserker or from Berserker to Necromancer."
+    },
+    "Crushing Crusader" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/crushingCrusader.png',
+        "Class" : heroClass.Guardian,
+        "Secondary Class" : heroClass.Fighter,
+        "Token Type" : heroClass.Guardian,
+        "Effect" : cardEffect.crushingCrusader,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Guardian token to it.",
+        "Description" : "Switch this Hero card's class from Guardian to Fighter or from Fighter to Guardian"
+    },
+    "Deft Paw" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/deftPaw.png',
+        "Class" : heroClass.Ranger,
+        "Secondary Class" : heroClass.Thief,
+        "Token Type" : heroClass.Ranger,
+        "Effect" : cardEffect.deftPaw,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Ranger token to it.",
+        "Description" : "Switch this Hero card's class from Ranger to Thief or from Thief to Ranger."
+    },
+    "Grave Howl" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/graveHowl.png',
+        "Class" : heroClass.Berserker,
+        "Secondary Class" : heroClass.Necromancer,
+        "Token Type" : heroClass.Berserker,
+        "Effect" : cardEffect.graveHowl,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Berserker token to it.",
+        "Description" : "Switch this Hero card's class from Berserker to Necromancer or from Necromancer to Berserker."
+    },
+    "Loopy Lyricist" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/loopyLyricist.png',
+        "Class" : heroClass.Bard,
+        "Secondary Class" : heroClass.Wizard,
+        "Token Type" : heroClass.Bard,
+        "Effect" : cardEffect.loopyLyricist,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Bard token to it.",
+        "Description" : "Switch this Hero car's class from Bard to Wizard or from Wizard to Bard."
+    },
+    "Mystical Melody" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/mysticalMelody.png',
+        "Class" : heroClass.Wizard,
+        "Secondary Class" : heroClass.Bard,
+        "Token Type" : heroClass.Wizard,
+        "Effect" : cardEffect.mysticalMelody,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Wizard token to it.",
+        "Description" : "Switch this Hero card's class from Wizard to Bard or from Bard to Wizard."
+    },
+    "Shadow Striker" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/shadowStriker.png',
+        "Class" : heroClass.Thief,
+        "Secondary Class" : heroClass.Ranger,
+        "Token Type" : heroClass.Thief,
+        "Effect" : cardEffect.shadowStriker,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Thief token to it.",
+        "Description" : "Switch this Hero card's class from Thief to Ranger or from Ranger to Thief."
+    },
+    "Thorn Blade" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/thornBlade.png',
+        "Class" : heroClass.Warrior,
+        "Secondary Class" : heroClass.Druid,
+        "Token Type" : heroClass.Warrior,
+        "Effect" : cardEffect.thornBlade,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Warrior token to it.",
+        "Description" : "Switch this Hero card's class from Warrior to Druid or from Druid to Warrior."
+    },
+    "Ursine Protector" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/ursineProtector.png',
+        "Class" : heroClass.Fighter,
+        "Secondary Class" : heroClass.Guardian,
+        "Token Type" : heroClass.Fighter,
+        "Effect" : cardEffect.ursineProtector,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Fighter token to it.",
+        "Description" : "Switch this Hero card's class from Fighter to Guardian or from Guardian to Fighter"
+    },
+    "Wild Hooves" : {
+        "Image" : 'src/card_images/HereToSleigh/Cards/wildHooves.png',
+        "Class" : heroClass.Warrior,
+        "Secondary Class" : heroClass.Druid,
+        "Token Type" : heroClass.Warrior,
+        "Effect" : cardEffect.wildHooves,
+        "Effect Roll" : 7,
+        "Card Type" : cardType.Hero,
+        "Second Description" : "When this card enters your Party, add a Warrior token to it.",
+        "Description" : "Switch this Hero card's class from Druid to Warrior or from Warrior to Druid."
+    },
+
+
 }
 #Banners
 Banners = {
@@ -2544,7 +2678,7 @@ Banners = {
         "Banner": bannerType.Warrior,
         "Requirement Amount": 3,
         "Requirement Type": heroClass.Warrior, 
-        "Description": "Once per turn on your turn, you may DISCARD a card, then play an item card immediately."
+        "Description": "Once per turn on your turn, you may DISCARD a card, then play an Item card immediately."
     },
     "Wizard Banner": {
         "Image": 'src/card_images/BannerQuest/Banners/WizardBanner.png',
@@ -2896,9 +3030,11 @@ moeDeck = [ #Monster Expansion card list
 if WarriorsAndDruids:
     monsterDeck.extend(wadMonsterDeck)
     mainDeck.extend(wadDeck)
+    heroWinCount = 7
 if BerserkersAndNecromancers:
     monsterDeck.extend(banMonsterDeck)
     mainDeck.extend(banDeck)
+    heroWinCount = 7
 if DragonSorcerers:
     monsterDeck.extend(dsMonsterDeck)
     mainDeck.extend(dsDeck)
